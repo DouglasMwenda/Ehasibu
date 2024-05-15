@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Ehasibu</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="log_in_to_your_account">Log in to your account</string>
+    <string name="welcome">Welcome ,</string>
+    <string name="ehasibu_platform">EHASIBU PLATFORM</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
+</resources>
