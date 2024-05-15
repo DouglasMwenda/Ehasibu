@@ -154,6 +154,7 @@
             android:textSize="16sp"
             android:layout_marginStart="32dp"
             android:layout_gravity="end"
+
             android:id="@+id/signup_btn"/>
 
     </LinearLayout>
