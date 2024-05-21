@@ -72,4 +72,16 @@
     <string name="today_s_expenses">Today\'s Expenses</string>
     <string name="new_customers_">New Customers</string>
     <string name="add_sale">Add Sale</string>
+    <string name="ehasibu">EHASIBU</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="sales">Sales</string>
+    <string name="purchases">Purchases</string>
+    <string name="products">Products</string>
+    <string name="services">Services</string>
+    <string name="accounts">Accounts</string>
+    <string name="budget">Budget</string>
+    <string name="expenses">Expenses</string>
+    <string name="roles">Roles</string>
+    <string name="users">Users</string>
+    <string name="returns">Returns</string>
 </resources>

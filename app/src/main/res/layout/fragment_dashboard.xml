@@ -44,11 +44,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:paddingStart="16dp"
-                        android:text="EHASIBU"
+                        android:paddingStart="20dp"
+                        android:text="@string/ehasibu"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
 
 
                 </LinearLayout>
@@ -67,7 +68,6 @@
                 <ImageView
                     android:id="@+id/profile"
                     android:layout_gravity="end"
-
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/profile"
@@ -300,7 +300,6 @@
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Repeat for other split cards -->
 
                 </LinearLayout>
 
@@ -315,7 +314,7 @@
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"/>
-    <!-- app:headerLayout="@layout/nav_header"
-         app:menu="drawer_menu" /> -->
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="drawer_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>
