@@ -84,4 +84,16 @@
     <string name="roles">Roles</string>
     <string name="users">Users</string>
     <string name="returns">Returns</string>
+    <string name="orders">Orders</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="apply">Apply</string>
+    <string name="all_orders">All Orders</string>
+    <string name="add_purchase_order">Add Purchase Order</string>
+    <string name="no">No</string>
+    <string name="vendor_name">Vendor Name</string>
+    <string name="purchase_date">Purchase Date</string>
+    <string name="delivery_date">Delivery Date</string>
+    <string name="action">Action</string>
+    <string name="status">Status</string>
 </resources>

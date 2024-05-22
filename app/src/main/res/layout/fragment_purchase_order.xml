@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/purchase_orders"
+    tools:context=".purchases.Purchase_Order">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            >
+
+            <ImageView
+                android:id="@+id/basket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/shopping_basket"
+                android:clickable="true"
+                android:focusable="true"
+                app:tint="#800000"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="24sp"
+                android:text="@string/orders"
+                android:textColor="#800000"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingTop="16dp"
+            tools:ignore="RtlSymmetry">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="@string/start_date"
+                android:textColor="#800000"
+                tools:ignore="SmallSp" />
+
+            <DatePicker
+                android:id="@+id/start_date_picker"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight=".1"
+                android:background="@drawable/datepicker"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/end_date"
+                android:textSize="10sp"
+                android:textColor="#800000"
+                tools:ignore="SmallSp" />
+
+            <DatePicker
+                android:id="@+id/end_date_picker"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="2dp"
+                android:layout_weight=".1"
+                android:textSize="10sp"
+                android:background="@drawable/datepicker"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                tools:ignore="SmallSp" />
+
+            <Button
+                android:id="@+id/filter_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/apply" />
+        </LinearLayout>
+
+        <!-- Split Cards -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2.5"
+            android:padding="8dp"
+            android:paddingStart="8dp"
+            tools:ignore="RtlSymmetry">
+
+            <!-- Today's Sales Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".4"
+                android:padding="8dp"
+                android:backgroundTint="@android:color/white"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="6dp"
+                        android:src="@drawable/shopping_basket"
+                        app:tint="#800000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="4dp"
+                        android:paddingTop="7dp"
+                        android:text="@string/all_orders"
+                        android:textColor="#800000"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:layout_marginEnd="4dp"
+                android:backgroundTint="@android:color/white"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/calendar_today"
+                        app:tint="#800000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="6dp"
+                        android:text="Today's Orders"
+
+                        android:textColor="#800000"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:layout_marginEnd="4dp"
+                android:backgroundTint="@android:color/white"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/pending_orders"
+                        app:tint="#800000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="4dp"
+                        android:text="Pending  Orders"
+                        android:textSize="13sp"
+                        android:textColor="#800000" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp">
+
+            <Button
+                android:id="@+id/add_purchase_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:backgroundTint="#800000"
+                android:padding="8dp"
+                android:text="@string/add_purchase_order"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no"
+                        android:textStyle="bold"
+                        android:padding="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/vendor_name"
+                        android:textStyle="bold"
+                        android:padding="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/purchase_date"
+                        android:textStyle="bold"
+                        android:padding="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/delivery_date"
+                        android:textStyle="bold"
+                        android:padding="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status"
+                        android:textStyle="bold"
+                        android:padding="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action"
+                        android:textStyle="bold"
+                        android:padding="5dp" />
+                </TableRow>
+
+
+
+            </TableLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
