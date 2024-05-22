@@ -73,4 +73,20 @@
     <string name="new_customers_">New Customers</string>
     <string name="add_sale">Add Sale</string>
     <string name="all_sales">All Sales</string>
+    <string name="generate_invoice">Generate Invoice</string>
+    <string name="back">Back</string>
+    <string name="mode_of_payment">Mode of Payment</string>
+    <string name="balance">Balance</string>
+    <string name="amount_paid">Amount Paid</string>
+    <string name="summary_net_total">Summary Net Total</string>
+    <string name="summary_tax">Summary Tax</string>
+    <string name="product">Product</string>
+    <string name="product_id">Product Id</string>
+    <string name="description">Description</string>
+    <string name="category">Category</string>
+    <string name="unit">Unit</string>
+    <string name="no">No.</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="add_product">Add Product</string>
+    <string name="summary_total">Summary Total</string>
 </resources>
