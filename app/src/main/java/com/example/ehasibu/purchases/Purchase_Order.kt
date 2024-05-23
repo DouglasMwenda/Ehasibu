@@ -14,7 +14,6 @@ class Purchase_Order : Fragment() {
         fun newInstance() = Purchase_Order()
     }
 
-
     private val viewModel: PurchaseOrderViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
