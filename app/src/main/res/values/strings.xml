@@ -21,7 +21,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
- 
+
     <string name="business_name">Business_name</string>
     <string name="first_name">first_name</string>
     <string name="last_name">last_name</string>
@@ -68,5 +68,7 @@
     <string name="customer_name">Customer Name</string>
     <string name="add_product">Add Product</string>
     <string name="summary_total">Summary Total</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
