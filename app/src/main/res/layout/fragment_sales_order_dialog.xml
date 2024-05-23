@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".salesOrders.SalesOrderDialog">
+
+   <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Order " />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="number"
+        android:text= "Customer Name"
+        android:textColor="#800000"
+        android:textSize="16sp"
+        android:textColorHint="#800000"
+        android:background="@drawable/rounded_corner"
+        android:layout_margin="16dp"
+        android:inputType="none"
+        android:padding="16dp"
+        android:paddingEnd="12dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:inputType="none"
+        android:text="Product Id"
+        android:textColor="#800000"
+        android:textSize="16sp"
+        android:textColorHint="#800000"
+        android:background="@drawable/rounded_corner"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:inputType="none"
+        android:text="Product Name"
+        android:textColor="#800000"
+        android:textSize="16sp"
+        android:textColorHint="#800000"
+        android:background="@drawable/rounded_corner"
+        tools:ignore="Autofill,LabelFor" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:inputType="none"
+        android:text="Description"
+        android:textColor="#800000"
+        android:textSize="16sp"
+        android:textColorHint="#800000"
+        android:background="@drawable/rounded_corner"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:inputType="none"
+        android:text="Quantity"
+        android:textColor="#800000"
+        android:textSize="16sp"
+        android:textColorHint="#800000"
+        android:background="@drawable/rounded_corner"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:inputType="none"
+        android:text="Delivery Date"
+        android:textColor="#800000"
+        android:textSize="16sp"
+        android:textColorHint="#800000"
+        android:background="@drawable/rounded_corner"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="start"
+            android:backgroundTint="#800000"
+            android:text="Submit"
+            android:id="@+id/invoicebutton"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="start"
+            android:backgroundTint="#800000"
+            android:text="Delete"
+            android:id="@+id/backbutton"
+            />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+
+    </RelativeLayout>
