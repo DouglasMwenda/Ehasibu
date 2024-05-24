@@ -21,7 +21,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
- 
+
     <string name="business_name">Business_name</string>
     <string name="first_name">first_name</string>
     <string name="last_name">last_name</string>
@@ -68,5 +68,21 @@
     <string name="customer_name">Customer Name</string>
     <string name="add_product">Add Product</string>
     <string name="summary_total">Summary Total</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start_date">Start Date</string>
+    <string name="today_s_orders">Today\'s Orders</string>
+    <string name="pending_orders">Pending Orders</string>
+    <string name="orders">Orders</string>
+    <string name="end_date">End Date</string>
+    <string name="apply">Apply</string>
+    <string name="all_orders">All Orders</string>
+    <string name="add_purchase_order">Add Purchase Order</string>
+    <string name="vendor_name">Vendor Name</string>
+    <string name="purchase_date">Purchase Date</string>
+    <string name="delivery_date">Delivery Date</string>
+    <string name="status">Status</string>
+    <string name="action">Action</string>
+    <string name="submit">Submit</string>
 
 </resources>
