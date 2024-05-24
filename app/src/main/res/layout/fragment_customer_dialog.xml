@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".customerinformation.CustomerDialog">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Customer " />
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_corner"
+        android:inputType="none"
+        android:padding="16dp"
+        android:paddingEnd="12dp"
+        android:text="Customer Type"
+        android:textColor="#800000"
+        android:textColorHint="#800000"
+        android:textSize="16sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="number"
+            android:text= "FirstName"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:padding="16dp"
+            android:paddingEnd="12dp"
+             />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="LastName"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+             />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="PhhoneNumber"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            tools:ignore="Autofill,LabelFor" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="Email Adress"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="Company Name"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="Address"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_gravity="start"
+                android:backgroundTint="#800000"
+                android:text="Save"
+                android:id="@+id/invoicebutton"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_gravity="start"
+                android:backgroundTint="#800000"
+                android:text="Cancel"
+                android:id="@+id/backbutton"
+                />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

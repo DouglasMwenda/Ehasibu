@@ -1,4 +1,4 @@
-package com.example.ehasibu.sales
+package com.example.ehasibu.allsales
 
 import androidx.lifecycle.ViewModel
 
