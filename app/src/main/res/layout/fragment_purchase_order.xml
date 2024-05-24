@@ -157,7 +157,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="6dp"
-                        android:text="Today's Orders"
+                        android:text="@string/today_s_orders"
 
                         android:textColor="#800000"
                         android:textSize="13sp" />
@@ -186,7 +186,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="4dp"
-                        android:text="Pending  Orders"
+                        android:text="@string/pending_orders"
                         android:textSize="13sp"
                         android:textColor="#800000" />
                 </LinearLayout>
@@ -197,7 +197,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="8dp">
+            android:paddingStart="8dp"
+            tools:ignore="RtlSymmetry">
 
             <Button
                 android:id="@+id/add_purchase_btn"
@@ -217,7 +218,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
-
             tools:ignore="RtlSymmetry">
 
             <TableLayout
