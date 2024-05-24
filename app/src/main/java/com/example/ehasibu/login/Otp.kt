@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.findNavController
 import com.example.ehasibu.R
 
 class Otp : Fragment() {
@@ -26,6 +28,11 @@ class Otp : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_otp, container, false)
+        var view=inflater.inflate(R.layout.fragment_otp, container, false)
+
+
+        view.findViewById<Button>(R.id.verify_otp_button).setOnClickListener{view.findNavController().navigate(R.id.dashboard)}
+
+        return view
     }
 }
