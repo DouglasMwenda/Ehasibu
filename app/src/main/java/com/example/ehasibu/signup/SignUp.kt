@@ -35,7 +35,7 @@ class SignUp : Fragment() {
     ): View {
      var view =inflater.inflate(R.layout.fragment_sign_up, container, false)
 
-        view.findViewById<Button>(R.id.register_btn).setOnClickListener{view.findNavController().navigate(R.id.Otp)}
+        view.findViewById<Button>(R.id.register_btn).setOnClickListener{view.findNavController().navigate(R.id.otp)}
 
             return view
     }
