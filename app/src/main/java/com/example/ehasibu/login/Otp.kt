@@ -30,9 +30,8 @@ class Otp : Fragment() {
     ): View {
         var view=inflater.inflate(R.layout.fragment_otp, container, false)
 
-        view.findViewById<Button>(R.id.verify_otp_button).setOnClickListener{view.findNavController().navigate(R.id.Login)}
 
-        view.findViewById<Button>(R.id.verify_otp_button).setOnClickListener{view.findNavController().navigate(R.id.Dashboard)}
+        view.findViewById<Button>(R.id.verify_otp_button).setOnClickListener{view.findNavController().navigate(R.id.dashboard)}
 
         return view
     }

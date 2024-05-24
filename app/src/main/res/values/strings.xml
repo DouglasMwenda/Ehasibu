@@ -84,6 +84,9 @@
     <string name="status">Status</string>
     <string name="action">Action</string>
     <string name="submit">Submit</string>
-r
+    <string name="remember_me">remember me</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email_address">email address</string>
+    r
 
 </resources>
