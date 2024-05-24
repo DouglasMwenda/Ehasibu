@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_otp_to_dashboard"
             app:destination="@id/dashboard" />
+        <action
+            android:id="@+id/action_otp_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/dashboard"
