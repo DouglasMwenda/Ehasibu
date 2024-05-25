@@ -6,26 +6,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ehasibu.R
+import com.example.ehasibu.databinding.FragmentDashboardBinding
 
 class Dashboard : Fragment() {
+    private lateinit var binding: FragmentDashboardBinding
+    private lateinit var drawerLayout: DrawerLayout
 
     companion object {
         fun newInstance() = Dashboard()
     }
 
-    private val viewModel: DashboardViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO: Use the ViewModel
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+        val binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        this.binding = binding
+        return binding.root
+
+
+    }
+    fun toggleDrawer() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
     }
 }
