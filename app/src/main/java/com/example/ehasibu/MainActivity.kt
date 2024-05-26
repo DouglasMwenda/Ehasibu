@@ -10,18 +10,25 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.ehasibu.R
+import com.example.ehasibu.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-    }
 
+        // Inflate the layout using ViewBinding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+    }
     override fun onSupportNavigateUp(): Boolean {
         navController = findNavController(androidx.navigation.fragment.R.id.nav_host_fragment_container)
         return navController.navigateUp()|| super.onSupportNavigateUp()
     }
+
 }
