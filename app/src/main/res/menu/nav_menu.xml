@@ -12,50 +12,99 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home"
+            android:iconTint="#800000"
             android:title="Home" />
         <item
             android:id="@+id/nav_dashboard"
             android:icon="@drawable/dashboard_24"
+            android:iconTint="#800000"
             android:title="Dashboard" />
         <item
             android:id="@+id/nav_sales"
             android:icon="@drawable/shopping_cart_24"
-            android:title="Sales" />
+            android:iconTint="#800000"
+            android:title="Sales"
+            >
+            <menu>
+                <item
+                    android:id="@+id/product_sales"
+                    android:title="@string/product_sales"/>
+
+                <item
+                    android:id="@+id/service_sales"
+                    android:title="@string/service_sales"/>
+
+                <item
+                    android:id="@+id/quotation"
+                    android:title="@string/quotation"/>
+
+                <item
+                    android:id="@+id/customerinformation"
+                    android:title="@string/customer_information"
+                    />
+
+
+            </menu>
+        </item>
         <item
             android:id="@+id/nav_purchases"
             android:icon="@drawable/shopping_bag_24"
-            android:title="Purchases" />
+            android:iconTint="#800000"
+            android:title="@string/purchases" >
+
+            <menu>
+                <item
+                    android:id="@+id/purchase_orders"
+                    android:title="@string/purchase_orders"/>
+                <item
+                    android:id="@+id/vendor"
+                    android:title="@string/vendor"/>
+                <item
+                    android:id="@+id/purchasebill"
+                    android:title="@string/purchase_bill"/>
+
+
+            </menu>
+        </item>
         <item
             android:id="@+id/nav_products"
             android:icon="@drawable/shopping_bag_24"
+            android:iconTint="#800000"
             android:title="Products" />
         <item
             android:id="@+id/nav_services"
             android:icon="@drawable/services"
+            android:iconTint="#800000"
             android:title="Services" />
         <item
             android:id="@+id/nav_accounts"
             android:icon="@drawable/accounts"
+            android:iconTint="#800000"
             android:title="Accounts" />
         <item
             android:id="@+id/nav_budget"
             android:icon="@drawable/pending_orders"
+            android:iconTint="#800000"
             android:title="Budget" />
         <item
             android:id="@+id/nav_expenses"
             android:icon="@drawable/dashboard_24"
+            android:iconTint="#800000"
             android:title="Expenses" />
         <item
             android:id="@+id/nav_reports"
             android:icon="@drawable/dashboard_24"
-            android:title="Reports" />
+            android:iconTint="#800000"
+            android:title="@string/reports" />
         <item
             android:id="@+id/nav_returns"
             android:icon="@drawable/dashboard_24"
+            android:iconTint="#800000"
             android:title="@string/returns" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/settings"
+            android:iconTint="#800000"
             android:title="@string/settings" />
     </group>
 
