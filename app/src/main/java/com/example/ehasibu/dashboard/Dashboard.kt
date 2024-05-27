@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentDashboardBinding
+import com.google.android.material.navigation.NavigationView
 
 class Dashboard : Fragment() {
     private lateinit var binding: FragmentDashboardBinding
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var toggle: ActionBarDrawerToggle
 
     companion object {
         fun newInstance() = Dashboard()
@@ -37,12 +41,28 @@ class Dashboard : Fragment() {
         return binding.root
 
 
+
     }
-    fun toggleDrawer() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        drawerLayout = binding.drawerLayout
+        navView = binding.navView
+        val toolbar = binding.toolbar
+
+
+        toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+
+        setupNavigationView(navView)
     }
+
+    private fun setupNavigationView(navView: NavigationView) {
+
+    }
+
 }
