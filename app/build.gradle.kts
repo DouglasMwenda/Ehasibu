@@ -51,6 +51,8 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.annotation)
     implementation (libs.material.v130)
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
     implementation (libs.kotlinx.coroutines.android)
     implementation (libs.androidx.constraintlayout.v204)
     implementation(libs.androidx.navigation.fragment.ktx)

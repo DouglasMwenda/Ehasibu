@@ -17,7 +17,7 @@
 
 
     <TextView
-            android:id="@+id/otp_text_view"
+            android:id="@+id/otp_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/we_have_sent_an_otp_to_your_email_enter_here_to_continue"
@@ -28,7 +28,7 @@
             android:layout_marginTop="16dp" />
 
         <EditText
-            android:id="@+id/otp_edit_text"
+            android:id="@+id/otp_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""

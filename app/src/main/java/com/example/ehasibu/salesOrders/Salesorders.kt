@@ -14,6 +14,7 @@ class Salesorders : Fragment() {
         fun newInstance() = Salesorders()
     }
 
+
     private val viewModel: SalesordersViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
