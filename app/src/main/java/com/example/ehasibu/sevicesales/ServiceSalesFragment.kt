@@ -1,4 +1,4 @@
-package com.example.ehasibu.allsales
+package com.example.ehasibu.sevicesales
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.ehasibu.R
 
-class Sales : Fragment() {
+class ServiceSalesFragment : Fragment() {
 
     companion object {
-        fun newInstance() = Sales()
+        fun newInstance() = ServiceSalesFragment()
     }
 
-    private val viewModel: SalesViewModel by viewModels()
+    private val viewModel: ServiceSalesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class Sales : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_sales, container, false)
+        return inflater.inflate(R.layout.fragment_service_sales, container, false)
     }
 }
