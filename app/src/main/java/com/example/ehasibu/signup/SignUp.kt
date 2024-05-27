@@ -5,11 +5,13 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentSignUpBinding
+import com.google.android.material.textfield.TextInputEditText
 
 class SignUp : Fragment() {
 
@@ -123,6 +125,8 @@ class SignUp : Fragment() {
                     }
                     else -> {
                         binding.passwordInput.error = null
+                        /*  binding.confirmPasswordInput.apply { setStartIconDrawable(R.drawable.check_circle)
+                             setStartIconTintList(colorStateList.valueOf(Color.Green))}*/
                     }
                 }
             }
@@ -139,12 +143,17 @@ class SignUp : Fragment() {
                         binding.confirmPasswordInput.error = getString(R.string.error_password_mismatch)
                     }
                     else -> {
-                        binding.confirmPasswordInput.error = null
+                        binding.passwordInput.error = null
+
+
+                        /*  binding.confirmPasswordInput.apply { setStartIconDrawable(R.drawable.check_circle)
+                              setStartIconTintList(colorStateList.valueOf(Color.Green))}*/
                     }
                 }
             }
         }
     }
+
 
     private fun validateInput(): Boolean {
         val businessName = binding.businessNameInput.text.toString().trim()

@@ -2,7 +2,6 @@ package com.example.ehasibu.login
 
 import android.os.Bundle
 import android.util.Patterns
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentLoginBinding
+import com.example.ehasibu.login.view_model.LoginViewModel
 
 class Login : Fragment() {
     companion object {
