@@ -88,6 +88,8 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="email_address">email address</string>
     <string name="home">Home</string>
+    <string name="navigation_drawer_open" />
+    <string name="navigation_drawer_close" />
     r
 
 </resources>
