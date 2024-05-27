@@ -1,4 +1,4 @@
-package com.example.ehasibu.allsales
+package com.example.ehasibu.productsales
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
