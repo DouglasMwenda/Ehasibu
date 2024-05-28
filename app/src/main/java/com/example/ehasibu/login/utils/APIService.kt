@@ -6,23 +6,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object APIService {
-    private const val BASE_URL="http://localhost:9922/api/v1/auth/login"
+    private const val BASE_URL = "http://192.168.88.206:9922/api/v1/"
 
-    fun getService():APIConsumer {
 
-        val client: OkHttpClient = OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30,TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .build()
 
-        val builder: Retrofit.Builder=Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
 
-        val retrofit: Retrofit=builder.build()
-        return retrofit.create(APIConsumer::class.java)
+      val instance: APIConsumer by lazy {
+          val retrofit = Retrofit.Builder()
+          .baseUrl(BASE_URL)
+          .addConverterFactory(GsonConverterFactory.create())
+          .build()
 
-    }
+          retrofit.create(APIConsumer::class.java)
+
+      }
 }

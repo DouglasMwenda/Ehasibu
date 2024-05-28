@@ -1,14 +1,32 @@
 package com.example.ehasibu.login.view_model
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
-import com.example.ehasibu.dashboard.Dashboard
-import com.example.ehasibu.login.repository.AuthRepository
+import androidx.lifecycle.viewModelScope
+import com.example.ehasibu.login.data.EntityResponse
+import com.example.ehasibu.login.data.User
+import com.example.ehasibu.login.utils.APIService
+import kotlinx.coroutines.launch
+import retrofit2.Response
 
-class LoginViewModel (val authRepository:AuthRepository, val application: Application): ViewModel() {
-    // TODO: Implement the ViewModel
+class LoginViewModel : ViewModel() {
 
-    val fragment = Dashboard()
+    fun login(email: String, password: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
+        viewModelScope.launch {
+            try {
+                val response: Response<EntityResponse> = APIService.instance.login(User(email, password))
 
+                if (response.isSuccessful) {
+                    response.body()?.let {
 
+                    } ?: run {
+                        onError("Response body is null")
+                    }
+                } else {
+                    onError("Error: ${response.code()}")
+                }
+            } catch (e: Exception) {
+                onError("Exception: ${e.message}")
+            }
+        }
+    }
 }

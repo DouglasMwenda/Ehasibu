@@ -53,6 +53,7 @@ class Otp : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
     private fun validateOtp(): Boolean {
         val otp = binding.otpInput.text.toString().trim()
 

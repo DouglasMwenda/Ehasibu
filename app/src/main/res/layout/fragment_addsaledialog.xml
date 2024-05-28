@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,40 +40,42 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/no"
-                    android:textColor="@color/white"
-                    />
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/product"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/product_id"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/description"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/category"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/unit"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
             </TableRow>
         </TableLayout>
@@ -84,8 +87,7 @@
             android:layout_gravity="start"
             android:backgroundTint="#800000"
             android:text="@string/add_product"
-            android:id="@+id/addproductbutton"
-            />
+            android:id="@+id/addproductbutton" />
 
         <EditText
             android:layout_width="match_parent"
@@ -101,6 +103,7 @@
             android:padding="16dp"
             android:paddingEnd="12dp"
             tools:ignore="LabelFor,RtlSymmetry" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,6 +116,7 @@
             android:textColorHint="#800000"
             android:background="@drawable/rounded_corner"
             tools:ignore="Autofill,LabelFor" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,6 +129,7 @@
             android:textColorHint="#800000"
             android:background="@drawable/rounded_corner"
             tools:ignore="Autofill,LabelFor" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,6 +142,7 @@
             android:textColorHint="#800000"
             android:background="@drawable/rounded_corner"
             tools:ignore="Autofill" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -147,8 +153,7 @@
             android:textColor="#800000"
             android:textSize="16sp"
             android:textColorHint="#800000"
-            android:background="@drawable/rounded_corner"
-            />
+            android:background="@drawable/rounded_corner" />
 
         <AutoCompleteTextView
             android:id="@+id/modeofpayment"
@@ -164,10 +169,12 @@
             android:textColorHint="#800000"
             android:textSize="16sp"
             tools:ignore="LabelFor,RtlSymmetry" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,8 +182,8 @@
                 android:layout_gravity="start"
                 android:backgroundTint="#800000"
                 android:text="@string/generate_invoice"
-                android:id="@+id/invoicebutton"
-                />
+                android:id="@+id/invoicebutton" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -184,15 +191,13 @@
                 android:layout_gravity="start"
                 android:backgroundTint="#800000"
                 android:text="@string/back"
-                android:id="@+id/backbutton"
-                />
+                android:id="@+id/backbutton" />
 
 
         </LinearLayout>
 
 
     </LinearLayout>
-
 
 
 </RelativeLayout>
