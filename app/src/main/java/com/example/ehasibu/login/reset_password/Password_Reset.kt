@@ -1,34 +1,29 @@
-package com.example.ehasibu.signup
-/*
+package com.example.ehasibu.login.reset_password
+
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.ehasibu.R
-import com.example.ehasibu.databinding.FragmentSignUpBinding
-import com.google.android.material.textfield.TextInputEditText
+import com.example.ehasibu.databinding.FragmentPasswordResetBinding
 
-class SignUp : Fragment() {
+class Password_Reset : Fragment() {
 
-    private var _binding: FragmentSignUpBinding? = null
+    private var _binding: FragmentPasswordResetBinding? = null
     private val binding get() = _binding!!
 
-    companion object {
-        fun newInstance() = SignUp()
-    }
-
-    private val viewModel: SignUpViewModel by viewModels()
+    private val viewModel: PasswordResetViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSignUpBinding.inflate(inflater, container, false)
+    ): View? {
+        _binding = FragmentPasswordResetBinding.inflate(inflater, container, false)
         val view = binding.root
 
         setupFocusChangeListeners()
@@ -49,38 +44,6 @@ class SignUp : Fragment() {
     }
 
     private fun setupFocusChangeListeners() {
-        binding.businessNameInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                val businessName = binding.businessNameInput.text.toString().trim()
-                if (businessName.isEmpty()) {
-                    binding.businessNameInput.error = getString(R.string.error_empty_business_name)
-                } else {
-                    binding.businessNameInput.error = null
-                }
-            }
-        }
-
-        binding.firstNameInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                val firstName = binding.firstNameInput.text.toString().trim()
-                if (firstName.isEmpty()) {
-                    binding.firstNameInput.error = getString(R.string.error_empty_first_name)
-                } else {
-                    binding.firstNameInput.error = null
-                }
-            }
-        }
-
-        binding.lastNameInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                val lastName = binding.lastNameInput.text.toString().trim()
-                if (lastName.isEmpty()) {
-                    binding.lastNameInput.error = getString(R.string.error_empty_last_name)
-                } else {
-                    binding.lastNameInput.error = null
-                }
-            }
-        }
 
         binding.otherNamesInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
@@ -125,8 +88,6 @@ class SignUp : Fragment() {
                     }
                     else -> {
                         binding.passwordInput.error = null
-                        /*  binding.confirmPasswordInput.apply { setStartIconDrawable(R.drawable.check_circle)
-                             setStartIconTintList(colorStateList.valueOf(Color.Green))}*/
                     }
                 }
             }
@@ -143,50 +104,17 @@ class SignUp : Fragment() {
                         binding.confirmPasswordInput.error = getString(R.string.error_password_mismatch)
                     }
                     else -> {
-                        binding.passwordInput.error = null
-
-
-                        /*  binding.confirmPasswordInput.apply { setStartIconDrawable(R.drawable.check_circle)
-                              setStartIconTintList(colorStateList.valueOf(Color.Green))}*/
+                        binding.confirmPasswordInput.error = null
                     }
                 }
             }
         }
     }
 
-
     private fun validateInput(): Boolean {
-        val businessName = binding.businessNameInput.text.toString().trim()
-        val firstName = binding.firstNameInput.text.toString().trim()
-        val lastName = binding.lastNameInput.text.toString().trim()
-        val otherNames = binding.otherNamesInput.text.toString().trim()
         val email = binding.emailInput.text.toString().trim()
         val password = binding.passwordInput.text.toString().trim()
         val confirmPassword = binding.confirmPasswordInput.text.toString().trim()
-
-        if (businessName.isEmpty()) {
-            binding.businessNameInput.error = getString(R.string.error_empty_business_name)
-            binding.businessNameInput.requestFocus()
-            return false
-        }
-
-        if (firstName.isEmpty()) {
-            binding.firstNameInput.error = getString(R.string.error_empty_first_name)
-            binding.firstNameInput.requestFocus()
-            return false
-        }
-
-        if (lastName.isEmpty()) {
-            binding.lastNameInput.error = getString(R.string.error_empty_last_name)
-            binding.lastNameInput.requestFocus()
-            return false
-        }
-
-        if (otherNames.isEmpty()) {
-            binding.otherNamesInput.error = getString(R.string.error_empty_other_name)
-            binding.otherNamesInput.requestFocus()
-            return false
-        }
 
         if (email.isEmpty()) {
             binding.emailInput.error = getString(R.string.error_empty_email)
@@ -233,4 +161,3 @@ class SignUp : Fragment() {
         return passwordMatcher.matches(password)
     }
 }
-*/

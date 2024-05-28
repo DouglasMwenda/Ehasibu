@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".accounts.AccountsFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +25,7 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#800000"
                 android:text="Add Account"
-                android:id="@+id/addaccountsbutton"/>
+                android:id="@+id/addaccountsbutton" />
 
             <ImageView
                 android:layout_width="25dp"
@@ -40,67 +41,65 @@
                 android:backgroundTint="#800000"
                 android:layout_marginStart="10dp"
                 android:text="Report"
-                android:id="@+id/reportsbutton"/>
+                android:id="@+id/reportsbutton" />
 
         </LinearLayout>
 
-            <TableLayout
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#800000">
 
-                <TableRow
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="#800000">
+                    android:layout_weight="1"
+                    android:text="No."
+                    android:textColor="@color/white" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="No."
-                        android:textColor="@color/white"
-                        />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=" Account Code"
+                    android:textColor="@color/white" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text=" Account Code"
-                        android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Account Name"
+                    android:textColor="@color/white" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Account Name"
-                        android:textColor="@color/white"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Account Type"
-                        android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Account Type"
+                    android:textColor="@color/white" />
 
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Balance"
-                        android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Balance"
+                    android:textColor="@color/white" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Action"
-                        android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Action"
+                    android:textColor="@color/white" />
 
 
-
-                </TableRow>
-            </TableLayout>
+            </TableRow>
+        </TableLayout>
 
     </LinearLayout>
 

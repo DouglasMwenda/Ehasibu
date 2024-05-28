@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group
         android:checkableBehavior="single"
@@ -23,25 +21,23 @@
             android:id="@+id/nav_sales"
             android:icon="@drawable/shopping_cart_24"
             android:iconTint="#800000"
-            android:title="Sales"
-            >
+            android:title="Sales">
             <menu>
                 <item
                     android:id="@+id/product_sales"
-                    android:title="@string/product_sales"/>
+                    android:title="@string/product_sales" />
 
                 <item
                     android:id="@+id/service_sales"
-                    android:title="@string/service_sales"/>
+                    android:title="@string/service_sales" />
 
                 <item
                     android:id="@+id/quotation"
-                    android:title="@string/quotation"/>
+                    android:title="@string/quotation" />
 
                 <item
                     android:id="@+id/customerinformation"
-                    android:title="@string/customer_information"
-                    />
+                    android:title="@string/customer_information" />
 
 
             </menu>
@@ -50,18 +46,18 @@
             android:id="@+id/nav_purchases"
             android:icon="@drawable/shopping_bag_24"
             android:iconTint="#800000"
-            android:title="@string/purchases" >
+            android:title="@string/purchases">
 
             <menu>
                 <item
                     android:id="@+id/purchase_orders"
-                    android:title="@string/purchase_orders"/>
+                    android:title="@string/purchase_orders" />
                 <item
                     android:id="@+id/vendor"
-                    android:title="@string/vendor"/>
+                    android:title="@string/vendor" />
                 <item
                     android:id="@+id/purchasebill"
-                    android:title="@string/purchase_bill"/>
+                    android:title="@string/purchase_bill" />
 
 
             </menu>

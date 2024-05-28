@@ -12,28 +12,29 @@
         android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Customer " />
-    <AutoCompleteTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/rounded_corner"
-        android:inputType="none"
-        android:padding="16dp"
-        android:paddingEnd="12dp"
-        android:text="Customer Type"
-        android:textColor="#800000"
-        android:textColorHint="#800000"
-        android:textSize="16sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Customer " />
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_corner"
+            android:inputType="none"
+            android:padding="16dp"
+            android:paddingEnd="12dp"
+            android:text="Customer Type"
+            android:textColor="#800000"
+            android:textColorHint="#800000"
+            android:textSize="16sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="number"
-            android:text= "FirstName"
+            android:text="FirstName"
             android:textColor="#800000"
             android:textSize="16sp"
             android:textColorHint="#800000"
@@ -41,8 +42,8 @@
             android:layout_margin="16dp"
             android:inputType="none"
             android:padding="16dp"
-            android:paddingEnd="12dp"
-             />
+            android:paddingEnd="12dp" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,8 +54,7 @@
             android:textColor="#800000"
             android:textSize="16sp"
             android:textColorHint="#800000"
-            android:background="@drawable/rounded_corner"
-             />
+            android:background="@drawable/rounded_corner" />
 
         <EditText
             android:layout_width="match_parent"
@@ -68,6 +68,7 @@
             android:textColorHint="#800000"
             android:background="@drawable/rounded_corner"
             tools:ignore="Autofill,LabelFor" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,8 +92,8 @@
             android:textColor="#800000"
             android:textSize="16sp"
             android:textColorHint="#800000"
-            android:background="@drawable/rounded_corner"
-            />
+            android:background="@drawable/rounded_corner" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,12 +104,13 @@
             android:textColor="#800000"
             android:textSize="16sp"
             android:textColorHint="#800000"
-            android:background="@drawable/rounded_corner"
-            />
+            android:background="@drawable/rounded_corner" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,8 +118,8 @@
                 android:layout_gravity="start"
                 android:backgroundTint="#800000"
                 android:text="Save"
-                android:id="@+id/invoicebutton"
-                />
+                android:id="@+id/invoicebutton" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -125,12 +127,10 @@
                 android:layout_gravity="start"
                 android:backgroundTint="#800000"
                 android:text="Cancel"
-                android:id="@+id/backbutton"
-                />
+                android:id="@+id/backbutton" />
 
 
         </LinearLayout>
-
 
 
     </LinearLayout>

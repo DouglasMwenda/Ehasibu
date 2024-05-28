@@ -1,16 +1,14 @@
 package com.example.ehasibu.customerinformation
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TableRow
 import android.widget.TextView
-import com.example.ehasibu.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.ehasibu.databinding.FragmentCustomersBinding
-import com.example.ehasibu.databinding.FragmentDashboardBinding
 
 class Customers : Fragment() {
     private lateinit var binding: FragmentCustomersBinding

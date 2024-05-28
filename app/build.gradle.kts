@@ -50,14 +50,25 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.annotation)
-    implementation (libs.material.v130)
+    implementation(libs.material.v130)
+    //retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    implementation (libs.kotlinx.coroutines.android)
-    implementation (libs.androidx.constraintlayout.v204)
+    //coroutines
+
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx.v280)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v280)
+
+
+    implementation (libs.kotlinx.coroutines.core)
+    implementation (libs.kotlinx.coroutines.android.v164)
+
+    implementation(libs.androidx.constraintlayout.v204)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.material3.android)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

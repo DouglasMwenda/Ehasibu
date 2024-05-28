@@ -1,14 +1,14 @@
 package com.example.ehasibu.login.utils
 
-import com.example.ehasibu.login.data.EmailResponse
-import com.example.ehasibu.login.data.ValidateEmail
+import com.example.ehasibu.login.data.EntityResponse
+import com.example.ehasibu.login.data.User
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface APIConsumer {
 
-    @POST("users/login")
-    fun validateUser(@Body Body: ValidateEmail): Response<EmailResponse>
+    @POST("auth/login")
+    suspend fun login (@Body Body: User): Response<EntityResponse>
 
 }
