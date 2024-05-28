@@ -1,18 +1,15 @@
-package com.example.ehasibu.login
+package com.example.ehasibu.login.model
 
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentLoginBinding
-import com.example.ehasibu.login.view_model.LoginViewModel
 
 class Login : Fragment() {
     companion object {
