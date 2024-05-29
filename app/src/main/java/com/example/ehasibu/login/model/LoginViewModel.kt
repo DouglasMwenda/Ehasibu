@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.login.data.EntityResponse
 import com.example.ehasibu.login.data.User
-import com.example.ehasibu.login.utils.APIService
+import com.example.ehasibu.login.api.APIService
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
