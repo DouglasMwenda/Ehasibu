@@ -1,34 +1,24 @@
 package com.example.ehasibu.productsales
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import com.example.ehasibu.R
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Addsaledialog.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Addsaledialog : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +28,78 @@ class Addsaledialog : Fragment() {
         return inflater.inflate(R.layout.fragment_addsaledialog, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Addsaledialog.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Addsaledialog().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val datePickerEditText: EditText = view.findViewById(R.id.datepicker_edittext)
+        val customerNameField: AutoCompleteTextView = view.findViewById(R.id.customerNameField)
+        val summaryTotal: EditText = view.findViewById(R.id.summaryTotal)
+        val summaryTax: EditText = view.findViewById(R.id.summaryTax)
+        val summaryNetTotal: EditText = view.findViewById(R.id.summaryNetTotal)
+        val amountPaid: EditText = view.findViewById(R.id.amountPaid)
+        val addproductbutton : Button = view.findViewById(R.id.addproductbutton)
+        val paybutton : Button = view.findViewById(R.id.paybutton)
+        val cancel_button: Button = view.findViewById(R.id.cancel_button)
+
+
+        // Sample customer list
+        val customers = listOf("John Doe", "Jane Smith", "Alice Johnson", "Robert Brown")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, customers)
+        customerNameField.setAdapter(adapter)
+
+        datePickerEditText.setOnClickListener {
+            showDatePickerDialog(datePickerEditText)
+        }
+
+
+        customerNameField.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
             }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Handle before text changed
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Handle on text changed
+            }
+        })
+
+        addproductbutton.setOnClickListener {
+            Toast.makeText(requireContext(), "Add Product Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        paybutton.setOnClickListener {
+            Toast.makeText(requireContext(), "Proceed to Pay Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        cancel_button.setOnClickListener {
+            Toast.makeText(requireContext(), "Cancel Button Clicked", Toast.LENGTH_SHORT).show()
+        }
     }
+    private fun showDatePickerDialog(editText: EditText) {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            { _, selectedYear, selectedMonth, _ ->
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(selectedYear, selectedMonth, 1)
+                val format = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+                editText.setText(format.format(selectedDate.time))
+            },
+            year, month, day
+        )
+        datePickerDialog.show()
+    }
+
+
+
 }
+
+
+

@@ -18,14 +18,13 @@
             android:id="@+id/nav_dashboard"
             android:icon="@drawable/dashboard_24"
             android:iconTint="#800000"
-            android:title="Dashboard" />
+            android:title="@string/dashboard" />
         <item
-            android:id="@+id/nav_sales"
+            android:id="@+id/sales"
             android:icon="@drawable/shopping_cart_24"
             android:iconTint="#800000"
-            android:title="Sales"
-            >
-            <menu>
+            android:title="Sales">
+<menu>
                 <item
                     android:id="@+id/product_sales"
                     android:title="@string/product_sales"/>
@@ -42,17 +41,17 @@
                     android:id="@+id/customerinformation"
                     android:title="@string/customer_information"
                     />
-
-
-            </menu>
+</menu>
         </item>
+
         <item
-            android:id="@+id/nav_purchases"
+            android:id="@+id/purchases"
             android:icon="@drawable/shopping_bag_24"
             android:iconTint="#800000"
             android:title="@string/purchases" >
-
             <menu>
+
+
                 <item
                     android:id="@+id/purchase_orders"
                     android:title="@string/purchase_orders"/>
@@ -62,35 +61,34 @@
                 <item
                     android:id="@+id/purchasebill"
                     android:title="@string/purchase_bill"/>
-
-
             </menu>
+
         </item>
         <item
             android:id="@+id/nav_products"
             android:icon="@drawable/shopping_bag_24"
             android:iconTint="#800000"
-            android:title="Products" />
+            android:title="@string/products" />
         <item
             android:id="@+id/nav_services"
             android:icon="@drawable/services"
             android:iconTint="#800000"
-            android:title="Services" />
+            android:title="@string/services" />
         <item
             android:id="@+id/nav_accounts"
             android:icon="@drawable/accounts"
             android:iconTint="#800000"
-            android:title="Accounts" />
+            android:title="@string/accounts" />
         <item
             android:id="@+id/nav_budget"
             android:icon="@drawable/pending_orders"
             android:iconTint="#800000"
-            android:title="Budget" />
+            android:title="@string/budget" />
         <item
             android:id="@+id/nav_expenses"
             android:icon="@drawable/dashboard_24"
             android:iconTint="#800000"
-            android:title="Expenses" />
+            android:title="@string/expenses" />
         <item
             android:id="@+id/nav_reports"
             android:icon="@drawable/dashboard_24"

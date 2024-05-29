@@ -4,8 +4,10 @@ import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -61,8 +63,118 @@ class Dashboard : Fragment() {
         setupNavigationView(navView)
     }
 
-    private fun setupNavigationView(navView: NavigationView) {
 
-    }
+        private fun setupNavigationView(navView: NavigationView) {
+            navView.setNavigationItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.nav_home -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_dashboard -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
 
-}
+                    R.id.sales -> {
+                        handleSubMenu(menuItem)
+                        true
+                    }
+                    R.id.purchases -> {
+                        handleSubMenu(menuItem)
+                        true
+                    }
+                    R.id.product_sales -> {
+                        Toast.makeText(context, "Product Sales clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.service_sales -> {
+                        Toast.makeText(context, "Service Sales clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.quotation -> {
+                        Toast.makeText(context, "Quotation clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.purchase_orders -> {
+                        Toast.makeText(context, "Purchase Orders clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.purchasebill -> {
+                        Toast.makeText(context, "Purchase Bill clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.vendor -> {
+                        Toast.makeText(context, "Vendor clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.customerinformation -> {
+                        Toast.makeText(context, "Customer Information clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_products -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_services -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_accounts -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_budget -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_expenses -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_reports -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_returns -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_settings -> {
+                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    else -> false
+
+                }
+            }
+        }
+
+        private fun handleSubMenu(menuItem: MenuItem) {
+            if (menuItem.isChecked) {
+                menuItem.isChecked = false
+                collapseSubMenu(menuItem)
+            } else {
+                menuItem.isChecked = true
+                expandSubMenu(menuItem)
+            }
+        }
+
+        private fun expandSubMenu(menuItem: MenuItem) {
+            for (i in 0 until menuItem.subMenu!!.size()) {
+                menuItem.subMenu!!.getItem(i).isVisible = true
+                menuItem.subMenu!!.getItem(i).isEnabled = true
+            }
+        }
+
+        private fun collapseSubMenu(menuItem: MenuItem) {
+            for (i in 0 until menuItem.subMenu!!.size()) {
+                menuItem.subMenu!!.getItem(i).isVisible = false
+                menuItem.subMenu!!.getItem(i).isEnabled = false
+            }
+        }
+            }
+
+
+
+
