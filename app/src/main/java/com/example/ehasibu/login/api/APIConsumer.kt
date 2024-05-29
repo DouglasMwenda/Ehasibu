@@ -1,4 +1,4 @@
-package com.example.ehasibu.login.utils
+package com.example.ehasibu.login.api
 
 import com.example.ehasibu.login.data.EntityResponse
 import com.example.ehasibu.login.data.User

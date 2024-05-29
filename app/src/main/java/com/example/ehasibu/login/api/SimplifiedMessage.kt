@@ -1,4 +1,4 @@
-package com.example.ehasibu.login.utils
+package com.example.ehasibu.login.api
 
 import org.json.JSONException
 import org.json.JSONObject
@@ -7,6 +7,7 @@ object SimplifiedMessage {
     fun get(StringMessage: String): HashMap<String, String> {
         val messages = HashMap<String, String>()
         val jsonObject = JSONObject(StringMessage)
+
 
         try {
             val jsonMessages = jsonObject.getJSONObject("message")
