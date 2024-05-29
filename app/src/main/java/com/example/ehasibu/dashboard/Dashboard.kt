@@ -1,16 +1,14 @@
 package com.example.ehasibu.dashboard
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentDashboardBinding
 import com.google.android.material.navigation.NavigationView
@@ -26,10 +24,8 @@ class Dashboard : Fragment() {
     }
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
 
     }
@@ -43,8 +39,8 @@ class Dashboard : Fragment() {
         return binding.root
 
 
-
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,7 +49,13 @@ class Dashboard : Fragment() {
         val toolbar = binding.toolbar
 
 
-        toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        toggle = ActionBarDrawerToggle(
+            requireActivity(),
+            drawerLayout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
 
 
         drawerLayout.addDrawerListener(toggle)

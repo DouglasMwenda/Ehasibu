@@ -1,4 +1,4 @@
-package com.example.ehasibu.login
+package com.example.ehasibu.login.model
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -53,6 +53,7 @@ class Otp : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
     private fun validateOtp(): Boolean {
         val otp = binding.otpInput.text.toString().trim()
 

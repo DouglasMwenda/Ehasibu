@@ -83,7 +83,6 @@
     <string name="error_password_mismatch">Passwords do not match</string>
 
 
-
     <string name="error_empty_otp">OTP cannot be empty</string>
     <string name="error_invalid_otp">OTP must be 6 digits</string>
     <string name="error_incorrect_otp">Incorrect OTP. Please try again.</string>
@@ -123,9 +122,17 @@
     <string name="vendor">Vendor</string>
     <string name="purchase_bill">Purchase Bill</string>
     <string name="reports">Reports</string>
+
     <string name="proceed_to_pay">Proceed to Pay</string>
     <string name="cancel">Cancel</string>
     <string name="due_date">Due Date</string>
+
+    <string name="check_your_email_we_have_sent_you_a_rest_link">Check Your email, we have sent you a rest link</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="check_your_email_we_have_sent_your_current_password">check your email, we have sent your current password</string>
+
 
 
 </resources>

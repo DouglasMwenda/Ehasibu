@@ -25,7 +25,7 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#800000"
                 android:text="Add Budget"
-                android:id="@+id/addbudgetbutton"/>
+                android:id="@+id/addbudgetbutton" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
                 android:backgroundTint="#800000"
                 android:text="Set Price"
                 android:layout_marginStart="10dp"
-                android:id="@+id/setpricebutton"/>
+                android:id="@+id/setpricebutton" />
 
             <ImageView
                 android:layout_width="25dp"
@@ -50,7 +50,7 @@
                 android:backgroundTint="#800000"
                 android:layout_marginStart="5dp"
                 android:text="Report"
-                android:id="@+id/reportsbutton"/>
+                android:id="@+id/reportsbutton" />
 
         </LinearLayout>
 
@@ -68,29 +68,28 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="No."
-                    android:textColor="@color/white"
-                    />
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text=" Product Name"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Description"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Category"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
 
                 <TextView
@@ -98,36 +97,35 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Quantity"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Unit"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Buying Price (KES)"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Selling Price (KES)"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Action"
-                    android:textColor="@color/white"/>
-
+                    android:textColor="@color/white" />
 
 
             </TableRow>
