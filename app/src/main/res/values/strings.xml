@@ -132,7 +132,7 @@
     <string name="new_password">New Password</string>
     <string name="current_password">Current Password</string>
     <string name="check_your_email_we_have_sent_your_current_password">check your email, we have sent your current password</string>
-
+    <string name="reset_password">Reset Password</string>
 
 
 </resources>

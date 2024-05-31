@@ -13,12 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toas
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-
+import android.widget.Toast
 import com.example.ehasibu.R
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -73,6 +68,7 @@ class Addsaledialog : Fragment() {
         })
 
         addproductbutton.setOnClickListener {
+
             Toast.makeText(requireContext(), "Add Product Button Clicked", Toast.LENGTH_SHORT).show()
         }
 
