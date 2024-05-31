@@ -70,6 +70,8 @@ class Otp : Fragment() {
 
 
 
+
+
     private fun validateOtp(): Boolean {
         val otp = binding.otpInput.text.toString().trim()
 
