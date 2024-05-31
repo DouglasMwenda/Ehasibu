@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_password_Reset_to_login"
             app:destination="@id/login" />
+        <argument
+            android:name="request"
+            app:argType="com.example.ehasibu.login.data.UserRequest" />
     </fragment>
 
     <fragment
