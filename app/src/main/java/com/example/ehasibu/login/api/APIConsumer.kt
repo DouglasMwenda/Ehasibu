@@ -19,7 +19,7 @@ interface APIConsumer {
    @POST("auth/resetPassword")
     fun passwordReset (@Body loginRequest: PassRequest):Call<ApiResponse<PasswordRequest>>
 
-    @POST("auth/verifyOtp")
+    @POST("auth/verifyOTP")
     fun otpVerify (@Body loginRequest: OtpRequest ):Call<ApiResponse<AuthUserResponse>>
 
 
