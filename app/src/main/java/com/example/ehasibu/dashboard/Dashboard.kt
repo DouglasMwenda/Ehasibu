@@ -24,11 +24,6 @@ class Dashboard : Fragment() {
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,10 +64,10 @@ class Dashboard : Fragment() {
         private fun setupNavigationView(navView: NavigationView) {
             navView.setNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
-                    R.id.nav_home -> {
+                 /*   R.id.nav_home -> {
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
-                    }
+                    }*/
                     R.id.nav_dashboard -> {
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
@@ -86,7 +81,7 @@ class Dashboard : Fragment() {
                         handleSubMenu(menuItem)
                         true
                     }
-                    R.id.product_sales -> {
+                  /*  R.id.product_sales -> {
                         Toast.makeText(context, "Product Sales clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
@@ -97,12 +92,12 @@ class Dashboard : Fragment() {
                     R.id.quotation -> {
                         Toast.makeText(context, "Quotation clicked", Toast.LENGTH_SHORT).show()
                         true
-                    }
+                    }*/
                     R.id.purchase_orders -> {
                         Toast.makeText(context, "Purchase Orders clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
-                    R.id.purchasebill -> {
+                   /* R.id.purchasebill -> {
                         Toast.makeText(context, "Purchase Bill clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
@@ -114,6 +109,7 @@ class Dashboard : Fragment() {
                         Toast.makeText(context, "Customer Information clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+                    */
                     R.id.nav_products -> {
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
