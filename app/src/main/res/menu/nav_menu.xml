@@ -21,7 +21,7 @@
             android:iconTint="#800000"
             android:title="@string/dashboard" />
         <item
-            android:id="@+id/sales"
+            android:id="@+id/nav_sales"
             android:icon="@drawable/shopping_cart_24"
             android:iconTint="#800000"
             android:title="Sales"
@@ -29,7 +29,7 @@
 
 
         <item
-            android:id="@+id/purchases"
+            android:id="@+id/nav_purchases"
             android:icon="@drawable/shopping_bag_24"
             android:iconTint="#800000"
 
