@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentDashboardBinding
 import com.google.android.material.navigation.NavigationView
@@ -64,7 +67,7 @@ class Dashboard : Fragment() {
         private fun setupNavigationView(navView: NavigationView) {
             navView.setNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
-                 /*   R.id.nav_home -> {
+                    /*   R.id.nav_home -> {
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }*/
@@ -73,15 +76,20 @@ class Dashboard : Fragment() {
                         true
                     }
 
-                    R.id.sales -> {
+                    R.id.nav_sales -> {
                         handleSubMenu(menuItem)
                         true
                     }
-                    R.id.purchases -> {
-                        handleSubMenu(menuItem)
+
+                    R.id.nav_purchases -> {
+                        findNavController().navigate(R.id.purchase_Order)
+
+                        Toast.makeText(context, "Purchase Orders clicked", Toast.LENGTH_SHORT)
+                            .show()
                         true
+
                     }
-                  /*  R.id.product_sales -> {
+                    /*  R.id.product_sales -> {
                         Toast.makeText(context, "Product Sales clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
@@ -92,12 +100,15 @@ class Dashboard : Fragment() {
                     R.id.quotation -> {
                         Toast.makeText(context, "Quotation clicked", Toast.LENGTH_SHORT).show()
                         true
-                    }*/
+                    }
                     R.id.purchase_orders -> {
-                        Toast.makeText(context, "Purchase Orders clicked", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.services)
+
+                        Toast.makeText(context, "Purchase Orders clicked", Toast.LENGTH_SHORT)
+                            .show()
                         true
                     }
-                   /* R.id.purchasebill -> {
+                     R.id.purchasebill -> {
                         Toast.makeText(context, "Purchase Bill clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
@@ -111,43 +122,65 @@ class Dashboard : Fragment() {
                     }
                     */
                     R.id.nav_products -> {
+                        findNavController().navigate(R.id.products)
+
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     R.id.nav_services -> {
+                        findNavController().navigate(R.id.services)
+
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     R.id.nav_accounts -> {
+                        findNavController().navigate(R.id.accounts)
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     R.id.nav_budget -> {
+
+                        findNavController().navigate(R.id.budget)
+
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     R.id.nav_expenses -> {
+                        findNavController().navigate(R.id.expenses)
+
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     R.id.nav_reports -> {
+                        findNavController().navigate(R.id.report)
+
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     R.id.nav_returns -> {
+
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     R.id.nav_settings -> {
                         Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     else -> false
 
+                }.also {
+                    drawerLayout.closeDrawer(GravityCompat.START)
                 }
             }
         }
-
         private fun handleSubMenu(menuItem: MenuItem) {
             if (menuItem.isChecked) {
                 menuItem.isChecked = false
