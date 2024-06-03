@@ -126,6 +126,9 @@
     <string name="proceed_to_pay">Proceed to Pay</string>
     <string name="cancel">Cancel</string>
     <string name="due_date">Due Date</string>
+    <string name="payment">Payment</string>
+    <string name="amount_payable">Amount Payable</string>
+    <string name="amount_received">Amount Received</string>
 
 
 </resources>

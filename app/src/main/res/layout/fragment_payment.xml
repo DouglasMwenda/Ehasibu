@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".productsales.PaymentFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/payment"
+        android:textFontWeight="50"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:inputType="none"
+        android:text="@string/mode_of_payment"
+        android:textColor="#800000"
+        android:textSize="16sp"
+        android:textColorHint="#800000"
+        android:background="@drawable/rounded_corner"
+        tools:ignore="Autofill,LabelFor" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="@string/amount_payable"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            tools:ignore="Autofill,LabelFor" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="@string/amount_received"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            tools:ignore="Autofill,LabelFor" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="@string/amount_paid"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            tools:ignore="Autofill,LabelFor" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:inputType="none"
+            android:text="@string/balance"
+            android:textColor="#800000"
+            android:textSize="16sp"
+            android:textColorHint="#800000"
+            android:background="@drawable/rounded_corner"
+            tools:ignore="Autofill,LabelFor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="start"
+            android:backgroundTint="#800000"
+            android:text="@string/submit"
+            android:id="@+id/submitbutton"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="start"
+            android:backgroundTint="#800000"
+            android:text="@string/cancel"
+            android:id="@+id/cancel_button"
+            />
+
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
+
+</FrameLayout>

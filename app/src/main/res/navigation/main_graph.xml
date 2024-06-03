@@ -44,4 +44,10 @@
             android:id="@+id/action_signUp_to_Login"
             app:destination="@id/login" />
     </fragment>
+    <fragment
+        android:id="@+id/product_sales"
+        android:name="com.example.ehasibu.productsales.Sales"
+        android:label="fra">
+
+    </fragment>
 </navigation>
