@@ -3,18 +3,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".productsales.Sales">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Customers"
             android:textColor="#800000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All Customers"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today's Customers"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Customers"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"

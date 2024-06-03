@@ -10,6 +10,63 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sales Revenue"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cost of Goods"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expense"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Equity"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="wrap_content"

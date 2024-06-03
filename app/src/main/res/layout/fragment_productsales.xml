@@ -16,6 +16,42 @@
             android:text="@string/all_sales"
             android:textColor="#800000" />
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today's Sales"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+            </com.google.android.material.card.MaterialCardView>
+            >
+            <com.google.android.material.card.MaterialCardView
+                style="@style/displayCards"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monthly Sales"
+                    android:textSize="12sp"
+                    android:textColor="#800000"
+                    android:gravity="top|center"
+                    android:layout_gravity="top|center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
