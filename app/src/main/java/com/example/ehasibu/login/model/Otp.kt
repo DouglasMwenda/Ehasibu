@@ -55,7 +55,7 @@ class Otp : Fragment() {
 
                 otpverification(cont,  otp, binding.verifyOtpButton)
                 // If OTP is correct, navigate to the dashboard
-                //  view.findNavController().navigate(R.id.dashboard)
+
             }
         }
         return binding.root
@@ -77,11 +77,6 @@ class Otp : Fragment() {
             return false
         }
 
-//        if (otp != correctOtp) {
-//            binding.otpInput.error = getString(R.string.error_incorrect_otp)
-//            binding.otpInput.requestFocus()
-//            return false
-//        }
 
         return true
     }
