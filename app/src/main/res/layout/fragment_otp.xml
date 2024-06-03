@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/otp_layout"
-    tools:context=".login.Otp">
+    tools:context=".login.model.Otp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         tools:ignore="UselessParent">
 
 
-    <TextView
+        <TextView
             android:id="@+id/otp_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

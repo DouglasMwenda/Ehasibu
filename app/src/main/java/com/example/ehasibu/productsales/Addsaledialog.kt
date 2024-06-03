@@ -2,6 +2,7 @@ package com.example.ehasibu.productsales
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
@@ -67,6 +68,7 @@ class Addsaledialog : Fragment() {
         })
 
         addproductbutton.setOnClickListener {
+
             Toast.makeText(requireContext(), "Add Product Button Clicked", Toast.LENGTH_SHORT).show()
         }
 

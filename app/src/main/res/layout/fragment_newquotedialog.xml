@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,22 +42,21 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/no"
-                    android:textColor="@color/white"
-                    />
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/product"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Description"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
 
                 <TextView
@@ -64,26 +64,28 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Sales Price"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Quantity"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Total Amount"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Action"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
             </TableRow>
         </TableLayout>
@@ -95,8 +97,7 @@
             android:layout_gravity="start"
             android:backgroundTint="#800000"
             android:text="Add Product"
-            android:id="@+id/addproductsbutton"
-            />
+            android:id="@+id/addproductsbutton" />
 
         <EditText
             android:layout_width="match_parent"
@@ -112,86 +113,84 @@
             android:padding="16dp"
             android:paddingEnd="12dp"
             tools:ignore="LabelFor,RtlSymmetry" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="5dp">
-            <Button
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_gravity="start"
-                android:backgroundTint="#800000"
-                android:text="Create Quote"
-                android:id="@+id/invoicebutton"
-                />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/backButton"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="5dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="start"
+                    android:backgroundTint="#800000"
+                    android:text="Create Quote"
+                    android:id="@+id/invoicebutton" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/backButton"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:textColor="#800000"
+                    android:layout_margin="5dp"
+                    app:strokeColor="#800000"
+                    android:backgroundTint="@color/white" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/approveButton"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approve Quote"
+                    android:layout_margin="5dp"
+                    android:textColor="#800000"
+                    app:strokeColor="#800000"
+                    android:backgroundTint="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Back"
-                android:textColor="#800000"
-                android:layout_margin="5dp"
-                app:strokeColor="#800000"
-                android:backgroundTint="@color/white"
-           />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/approveButton"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Approve Quote"
-                android:layout_margin="5dp"
-                android:textColor="#800000"
-                app:strokeColor="#800000"
-                android:backgroundTint="@color/white"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/rejectButton"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reject Quote"
-                android:layout_margin="5dp"
-                android:textColor="#800000"
-                app:strokeColor="#800000"
-                android:backgroundTint="@color/white"
-                />
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/rejectButton"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reject Quote"
+                    android:layout_margin="5dp"
+                    android:textColor="#800000"
+                    app:strokeColor="#800000"
+                    android:backgroundTint="@color/white" />
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/printquoteButton"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Print Quote"
-                android:textColor="#800000"
-                android:layout_margin="5dp"
-                app:strokeColor="#800000"
-                android:backgroundTint="@color/white"
-                />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/printquoteButton"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Print Quote"
+                    android:textColor="#800000"
+                    android:layout_margin="5dp"
+                    app:strokeColor="#800000"
+                    android:backgroundTint="@color/white" />
             </LinearLayout>
 
 
+        </LinearLayout>
 
 
     </LinearLayout>
-
-
-    </LinearLayout>
-
 
 
 </RelativeLayout>

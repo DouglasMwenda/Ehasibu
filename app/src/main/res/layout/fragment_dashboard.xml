@@ -21,88 +21,73 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="250dp"
                 android:background="#800000"
                 android:paddingEnd="20dp"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                tools:ignore="ExtraText">
+                tools:ignore="ExtraText,RtlSymmetry">
+
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:paddingStart="0dp"
-                        android:text="@string/ehasibu"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        tools:ignore="RtlSymmetry" />
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="end"
+                    android:orientation="vertical"
+                    android:gravity="center"
                     android:paddingTop="20dp"
-                    android:layout_gravity="end">
+                    android:layout_gravity="center">
 
                     <ImageView
                         android:id="@+id/notification"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:contentDescription="TODO"
                         android:src="@drawable/profile"
-                        app:tint="@color/white" />
+                        app:tint="@color/white"
+                        tools:ignore="ContentDescription,HardcodedText" />
 
-                    <View
-                        android:layout_width="16dp"
-                    android:layout_height="match_parent" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
-                    <ImageView
-                        android:id="@+id/profile"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/notification"
-                        app:tint="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:paddingStart="0dp"
+                            android:text="@string/welcome_back"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
+
+
+                    </LinearLayout>
                 </LinearLayout>
 
             </androidx.appcompat.widget.Toolbar>
-         </com.google.android.material.appbar.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
-
-                <!-- Horizontal Scrollable Cards -->
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp">
+                android:padding="8dp">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:padding="8dp">
 
                         <!--  Cards-->
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="130dp"
+                            android:layout_width="120dp"
                             android:layout_height="80dp"
                             android:layout_marginEnd="8dp"
                             android:backgroundTint="@android:color/white"
@@ -114,23 +99,24 @@
                                 android:orientation="vertical"
                                 android:gravity="center">
 
-                              <!--  <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:tint="@android:color/holo_red_dark" />-->
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/add_sale"
-                                    android:textColor="#800000" />
+                                    android:text="Create invoice"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="130dp"
+                            android:layout_width="120dp"
                             android:layout_height="80dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginEnd="4dp"
                             android:backgroundTint="@android:color/white"
                             app:cardElevation="8dp">
 
@@ -140,21 +126,57 @@
                                 android:orientation="vertical"
                                 android:gravity="center">
 
-                              <!--  <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:tint="@android:color/holo_red_dark" />-->
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Add Sale"
-                                    android:textColor="#800000" />
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
 
+
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="130dp"
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="4dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Purchase"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <!--  Cards-->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
                             android:layout_height="80dp"
                             android:layout_marginEnd="8dp"
                             android:backgroundTint="@android:color/white"
@@ -166,21 +188,84 @@
                                 android:orientation="vertical"
                                 android:gravity="center">
 
-                              <!--  <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:tint="@android:color/holo_red_dark" />-->
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Add Sale"
-                                    android:textColor="#800000" />
+                                    android:text="Add Service"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="130dp"
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="4dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Create Quatation"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="4dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Create Bill"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <!--  Cards-->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
                             android:layout_height="80dp"
                             android:layout_marginEnd="8dp"
                             android:backgroundTint="@android:color/white"
@@ -192,122 +277,253 @@
                                 android:orientation="vertical"
                                 android:gravity="center">
 
-                              <!--  <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:tint="@android:color/holo_red_dark" />-->
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/add_sale"
-                                    android:textColor="#800000" />
+                                    android:text="Create Budget"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
 
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="4dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Account"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="4dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Product"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
                     </LinearLayout>
-                </HorizontalScrollView>
 
-                <!-- Split Cards -->
+
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="3"
-                    android:padding="8dp"
-                    android:layout_margin="4dp">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
 
-                    <!-- Today's Sales Card -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="4dp"
-                        android:backgroundTint="@android:color/white"
-                        app:cardElevation="4dp">
+                        <!--  Cards-->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="4dp">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
 
-                           <!-- <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/shopping_cart"
-                                app:tint="@color/white" />-->
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/today_s_sales"
-                                android:textColor="#800000" />
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="4dp"
-                        android:backgroundTint="@android:color/white"
-                        app:cardElevation="4dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Record Epense"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
 
-                            <!--<ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/shopping_cart"
-                                app:tint="#800000" />-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/new_customers_"
-                                android:textColor="@android:color/black" />
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-                   <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="4dp"
-                        android:backgroundTint="@android:color/white"
-                        app:cardElevation="4dp">
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Customer"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
-                            <!--<ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/shopping_cart"
-                                app:tint="#800000" />-->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/today_s_expenses"
-                                android:textColor="@android:color/black" />
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Vendor"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Create invoice"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="120dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="8dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Create invoice"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
 
 
-                </LinearLayout>
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="130dp"
+                            android:layout_height="80dp"
+                            android:layout_marginEnd="4dp"
+                            android:backgroundTint="@android:color/white"
+                            app:cardElevation="8dp">
 
-                <!-- Other Content -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <!--  <ImageView
+                                      android:layout_width="45dp"
+                                      android:layout_height="45dp"
+                                      android:tint="@android:color/holo_red_dark" />-->
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add purchase"
+                                    android:textColor="#800000"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
 
             </LinearLayout>
-        </ScrollView>
+
     </LinearLayout>
 
     <!-- Navigation Drawer -->
@@ -317,6 +533,116 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu"
+        tools:ignore="VisualLintBounds" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+
+
+
+
+
+
+    <!-- Split Cards
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:padding="8dp"
+        android:layout_margin="4dp">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@android:color/white"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                 <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/shopping_cart"
+                     app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/today_s_sales"
+                    android:textColor="#800000" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@android:color/white"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shopping_cart"
+                    app:tint="#800000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/new_customers_"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@android:color/white"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shopping_cart"
+                    app:tint="#800000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/today_s_expenses"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout> -->
+
+
+
+

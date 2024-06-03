@@ -1,5 +1,5 @@
 package com.example.ehasibu.signup
-
+/*
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -36,7 +36,7 @@ class SignUp : Fragment() {
         binding.registerBtn.setOnClickListener {
             if (validateInput()) {
                 // If input is valid, navigate to the login
-                view.findNavController().navigate(R.id.action_signUp_to_Login)
+                view.findNavController().navigate(R.id.action_password_Reset_to_login)
             }
         }
 
@@ -233,3 +233,4 @@ class SignUp : Fragment() {
         return passwordMatcher.matches(password)
     }
 }
+*/

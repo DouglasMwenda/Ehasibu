@@ -4,30 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@id/login">
-
     <fragment
         android:id="@+id/login"
-        android:name="com.example.ehasibu.login.Login"
+        android:name="com.example.ehasibu.login.model.Login"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login_to_otp"
             app:destination="@id/otp" />
         <action
-            android:id="@+id/action_login_to_signUp"
-            app:destination="@id/signUp" />
+            android:id="@+id/action_login_to_password_Reset"
+            app:destination="@id/password_Reset" />
     </fragment>
+
+    <fragment
+        android:id="@+id/password_Reset"
+        android:name="com.example.ehasibu.login.reset_password.Password_Reset"
+        android:label="fragment_password__reset"
+        tools:layout="@layout/fragment_password__reset" >
+        <action
+            android:id="@+id/action_password_Reset_to_login"
+            app:destination="@id/login" />
+        <argument
+            android:name="request"
+            app:argType="com.example.ehasibu.login.data.UserRequest" />
+    </fragment>
+
     <fragment
         android:id="@+id/otp"
-        android:name="com.example.ehasibu.login.Otp"
+        android:name="com.example.ehasibu.login.model.Otp"
         android:label="fragment_otp"
-        tools:layout="@layout/fragment_otp" >
+        tools:layout="@layout/fragment_otp">
         <action
             android:id="@+id/action_otp_to_dashboard"
             app:destination="@id/dashboard" />
-        <action
-            android:id="@+id/action_otp_to_login"
-            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/dashboard"
@@ -35,19 +45,5 @@
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
-    <fragment
-        android:id="@+id/signUp"
-        android:name="com.example.ehasibu.signup.SignUp"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
-        <action
-            android:id="@+id/action_signUp_to_Login"
-            app:destination="@id/login" />
-    </fragment>
-    <fragment
-        android:id="@+id/product_sales"
-        android:name="com.example.ehasibu.productsales.Sales"
-        android:label="fra">
 
-    </fragment>
 </navigation>

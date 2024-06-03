@@ -1,0 +1,130 @@
+package com.example.ehasibu.login.model
+
+import android.content.Context
+import android.content.SharedPreferences
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.ehasibu.R
+import com.example.ehasibu.databinding.FragmentOtpBinding
+import com.example.ehasibu.login.ApiResponse
+import com.example.ehasibu.login.api.APIService
+import com.example.ehasibu.login.data.AuthUserResponse
+import com.example.ehasibu.login.data.OtpRequest
+import com.example.ehasibu.utils.LOGIN_EMAIL
+import com.example.ehasibu.utils.PREF
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+private val TAG = "otp"
+class Otp : Fragment() {
+
+
+
+    private val viewModel: OtpViewModel by viewModels()
+
+    private lateinit var binding: FragmentOtpBinding
+    private lateinit var pref: SharedPreferences
+
+
+    //(In real applications, this should come from the server)
+    //private val correctOtp = "123456"
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentOtpBinding.inflate(inflater, container, false)
+        pref = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
+        binding.verifyOtpButton.setOnClickListener {
+            if (validateOtp()) {
+
+                val cont = requireContext()
+
+                val otp = binding.otpInput.text.toString().trim()
+
+
+                otpverification(cont,  otp, binding.verifyOtpButton)
+                // If OTP is correct, navigate to the dashboard
+                //  view.findNavController().navigate(R.id.dashboard)
+            }
+        }
+        return binding.root
+    }
+
+
+    private fun validateOtp(): Boolean {
+        val otp = binding.otpInput.text.toString().trim()
+
+        if (otp.isEmpty()) {
+            binding.otpInput.error = getString(R.string.error_empty_otp)
+            binding.otpInput.requestFocus()
+            return false
+        }
+
+        if (otp.length != 6) {
+            binding.otpInput.error = getString(R.string.error_invalid_otp)
+            binding.otpInput.requestFocus()
+            return false
+        }
+
+//        if (otp != correctOtp) {
+//            binding.otpInput.error = getString(R.string.error_incorrect_otp)
+//            binding.otpInput.requestFocus()
+//            return false
+//        }
+
+        return true
+    }
+
+
+    private fun otpverification(cont: Context, otp: String, verifyOtpButton: Button) {
+        val ret = APIService.instance
+        val email = pref.getString(LOGIN_EMAIL, "")
+        val req = ret.otpVerify(OtpRequest(otp, email!!.trim()))
+        req.enqueue(object : Callback<ApiResponse<AuthUserResponse>> {
+            override fun onResponse(
+                call: Call<ApiResponse<AuthUserResponse>>,
+                response: Response<ApiResponse<AuthUserResponse>>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body() != null) {
+                        if (response.body()!!.statusCode == 200) {
+                            val message = response.body()!!.message
+                            Log.d(TAG, message)
+                            Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
+                            verifyOtpButton.findFragment<Login>().findNavController()
+                                .navigate(R.id.action_otp_to_dashboard)
+
+                        } else {
+                            val message = response.body()!!.message
+                            Log.d(TAG, message)
+                            Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }else{
+
+                    val message = response.toString()
+                    Log.d(TAG, message)
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResponse<AuthUserResponse>>, t: Throwable) {
+                 Toast.makeText(cont, t.message, Toast.LENGTH_SHORT).show()
+                Log.d(TAG, t.message!!)
+
+            }
+
+        })
+    }
+
+}
