@@ -43,6 +43,13 @@
         android:id="@+id/dashboard"
         android:name="com.example.ehasibu.dashboard.Dashboard"
         android:label="fragment_dashboard"
+
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/addsaledialog"
+        android:name="com.example.ehasibu.productsales.Addsaledialog"
+        android:label="fragment_addsaledialog"
+        tools:layout="@layout/fragment_addsaledialog" />
         tools:layout="@layout/fragment_dashboard" >
         <action
             android:id="@+id/action_dashboard_to_accounts"
@@ -84,11 +91,16 @@
         android:name="com.example.ehasibu.expenses.ExpensesFragment"
         android:label="fragment_expenses"
         tools:layout="@layout/fragment_expenses" />
+
     <fragment
         android:id="@+id/payment"
         android:name="com.example.ehasibu.productsales.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" />
+
+
+
+
     <fragment
         android:id="@+id/products"
         android:name="com.example.ehasibu.product.ProductFragment"

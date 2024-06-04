@@ -11,7 +11,13 @@ import com.example.ehasibu.R
 class PaymentFragment : Fragment() {
 
     companion object {
-        fun newInstance() = PaymentFragment()
+        fun newInstance(
+            customerName: String,
+            total: Double,
+            tax: Double,
+            netTotal: Double,
+            paidAmount: Double
+        ) = PaymentFragment()
     }
 
     private val viewModel: PaymentViewModel by viewModels()
