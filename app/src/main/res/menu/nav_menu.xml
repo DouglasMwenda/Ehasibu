@@ -25,7 +25,20 @@
             android:icon="@drawable/shopping_cart_24"
             android:iconTint="#800000"
             android:title="Sales"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText" >
+            <menu>
+                <item
+                    android:title="Product Sales"/>
+                <item
+                    android:title="Service Sales"/>
+                <item
+                    android:title="Quotation"/>
+                <item
+                    android:title="Customer Information"/>
+
+
+            </menu>
+        </item>
 
 
         <item
