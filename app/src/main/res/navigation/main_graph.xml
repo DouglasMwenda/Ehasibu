@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_login_to_password_Reset"
             app:destination="@id/password_Reset" />
+        <action
+            android:id="@+id/action_login_to_forgotPass"
+            app:destination="@id/forgotPass" />
     </fragment>
 
     <fragment
@@ -28,6 +31,9 @@
         <argument
             android:name="request"
             app:argType="com.example.ehasibu.login.data.UserRequest" />
+        <action
+            android:id="@+id/action_password_Reset_to_login2"
+            app:destination="@id/login" />
     </fragment>
 
     <fragment
@@ -38,6 +44,7 @@
         <action
             android:id="@+id/action_otp_to_dashboard"
             app:destination="@id/dashboard" />
+
     </fragment>
     <fragment
         android:id="@+id/dashboard"
@@ -109,6 +116,36 @@
         android:name="com.example.ehasibu.services.ServicesFragment"
         android:label="fragment_services"
         tools:layout="@layout/fragment_services" />
+    <fragment
+        android:id="@+id/forgotPass"
+        android:name="com.example.ehasibu.login.forgot_password.ForgotPass"
+        android:label="fragment_forgot_pass"
+        tools:layout="@layout/fragment_forgot_pass" >
+
+        <action
+            android:id="@+id/action_forgotPass_to_passResetOtp"
+            app:destination="@id/passResetOtp" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/passResetOtp"
+        android:name="com.example.ehasibu.login.forgot_password.PassResetOtp"
+        android:label="fragment_pass_reset_otp"
+        tools:layout="@layout/fragment_pass_reset_otp" >
+        <action
+            android:id="@+id/action_passResetOtp2_to_passReset"
+            app:destination="@id/passReset" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/passReset"
+        android:name="com.example.ehasibu.login.forgot_password.PassReset"
+        android:label="fragment_pass_reset"
+        tools:layout="@layout/fragment_pass_reset" >
+        <action
+            android:id="@+id/action_passReset_to_login"
+            app:destination="@id/login" />
+    </fragment>
 
 
 </navigation>

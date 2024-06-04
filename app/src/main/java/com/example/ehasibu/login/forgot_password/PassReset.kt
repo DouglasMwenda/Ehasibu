@@ -1,10 +1,9 @@
-package com.example.ehasibu.login.reset_password
+package com.example.ehasibu.login.forgot_password
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,38 +13,35 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.ehasibu.R
-import com.example.ehasibu.databinding.FragmentPasswordResetBinding
+import com.example.ehasibu.databinding.FragmentPassResetBinding
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.login.api.APIService
 import com.example.ehasibu.login.data.PassRequest
-import com.example.ehasibu.login.data.UserRequest
 import com.example.ehasibu.login.model.Login
+import com.example.ehasibu.login.reset_password.PasswordRequest
 import com.example.ehasibu.utils.LOGIN_EMAIL
-import com.example.ehasibu.utils.LOGIN_PASSWORD
 import com.example.ehasibu.utils.PREF
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-private const val TAG = "PassReset"
 
-class Password_Reset : Fragment() {
+private const val TAG = "P_Reset"
 
-    //val args: PasswordResetArgs? by navArgs()
+class PassReset : Fragment() {
+
     private lateinit var pref: SharedPreferences
 
-    private lateinit var binding: FragmentPasswordResetBinding
+    private lateinit var binding: FragmentPassResetBinding
 
-    private val viewModel: PasswordResetViewModel by viewModels()
+    private val viewModel: PassResetViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPasswordResetBinding.inflate(inflater)
+        binding = FragmentPassResetBinding.inflate(inflater)
         pref = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
 
 
@@ -54,13 +50,13 @@ class Password_Reset : Fragment() {
 
         setupFocusChangeListeners()
         val cont = requireContext()
-        binding.passwordResetBtn.setOnClickListener {
+        binding.passResetBtn.setOnClickListener {
             if (validateInput()) {
-                val password = binding.passwordInput.text.toString().trim()
-                val confirmPassword = binding.confirmPasswordInput.text.toString().trim()
-
-                passwordReset(cont,
-                    newPassword = password, confirmPassword=confirmPassword, binding.passwordResetBtn)
+                val currentPassword = binding.currentPassInput.text.toString().trim()
+                val confirmPassword = binding.confirmPassInput.text.toString().trim()
+                val newPassword = binding.newPassInput.text.toString().trim()
+                passwordReset(cont, currentPassword = currentPassword,
+                    newPassword = newPassword, confirmPassword=confirmPassword, binding.passResetBtn)
 
             }
         }
@@ -71,33 +67,48 @@ class Password_Reset : Fragment() {
     private fun setupFocusChangeListeners() {
 
 
-        binding.passwordInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+        binding.currentPassInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                val password = binding.passwordInput.text.toString().trim()
+                val currentPassword = binding.currentPassInput.text.toString().trim()
                 when {
-                    password.isEmpty() -> {
-                        binding.passwordInput.error = getString(R.string.error_empty_password)
+                    currentPassword.isEmpty() -> {
+                        binding.currentPassInput.error = getString(R.string.error_empty_password)
                     }
 
                     else -> {
-                        binding.passwordInput.error = null
+                        binding.currentPassInput.error = null
                     }
                 }
             }
         }
 
-        binding.confirmPasswordInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+        binding.newPassInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                val confirmPassword = binding.confirmPasswordInput.text.toString().trim()
+                val newPassword = binding.newPassInput.text.toString().trim()
+                when {
+                    newPassword.isEmpty() -> {
+                        binding.newPassInput.error = getString(R.string.error_empty_password)
+                    }
+
+                    else -> {
+                        binding.newPassInput.error = null
+                    }
+                }
+            }
+        }
+
+        binding.confirmPassInput.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                val confirmPassword = binding.confirmPassInput.text.toString().trim()
                 when {
                     confirmPassword.isEmpty() -> {
-                        binding.confirmPasswordInput.error = getString(R.string.error_empty_confirm_password)
+                        binding.confirmPassInput.error = getString(R.string.error_empty_confirm_password)
                     }
-                    binding.passwordInput.text.toString().trim() != confirmPassword -> {
-                        binding.confirmPasswordInput.error = getString(R.string.error_password_mismatch)
+                    binding.newPassInput.text.toString().trim() != confirmPassword -> {
+                        binding.confirmPassInput.error = getString(R.string.error_password_mismatch)
                     }
                     else -> {
-                        binding.confirmPasswordInput.error = null
+                        binding.confirmPassInput.error = null
                     }
                 }
             }
@@ -106,27 +117,33 @@ class Password_Reset : Fragment() {
 
     private fun validateInput(): Boolean {
 
-        val password = binding.passwordInput.text.toString().trim()
-        val confirmPassword = binding.confirmPasswordInput.text.toString().trim()
+        val currentPassword = binding.currentPassInput.text.toString().trim()
+        val newPassword = binding.newPassInput.text.toString().trim()
+        val confirmPassword = binding.confirmPassInput.text.toString().trim()
 
 
 
-        if (password.isEmpty()) {
-            binding.passwordInput.error = getString(R.string.error_empty_password)
-            binding.passwordInput.requestFocus()
+        if (currentPassword.isEmpty()) {
+            binding.currentPassInput.error = getString(R.string.error_empty_password)
+            binding.currentPassInput.requestFocus()
             return false
         }
 
+        if (newPassword.isEmpty()) {
+            binding.newPassInput.error = getString(R.string.error_empty_password)
+            binding.newPassInput.requestFocus()
+            return false
+        }
 
         if (confirmPassword.isEmpty()) {
-            binding.confirmPasswordInput.error = getString(R.string.error_empty_confirm_password)
-            binding.confirmPasswordInput.requestFocus()
+            binding.confirmPassInput.error = getString(R.string.error_empty_confirm_password)
+            binding.confirmPassInput.requestFocus()
             return false
         }
 
-        if (password != confirmPassword) {
-            binding.confirmPasswordInput.error = getString(R.string.error_password_mismatch)
-            binding.confirmPasswordInput.requestFocus()
+        if (newPassword != confirmPassword) {
+            binding.confirmPassInput.error = getString(R.string.error_password_mismatch)
+            binding.confirmPassInput.requestFocus()
             return false
         }
 
@@ -135,21 +152,20 @@ class Password_Reset : Fragment() {
 
     private fun passwordReset(
         cont: Context,
+        currentPassword: String,
         newPassword: String,
         confirmPassword: String,
         passwordResetBtn: Button,) {
         val ret = APIService.instance
 
         val logEmail = pref.getString(LOGIN_EMAIL, "")
-        val logPass = pref.getString(LOGIN_PASSWORD, "")
 
         Log.d(TAG, logEmail.toString())
-        Log.d(TAG, logPass.toString())
 
         val req = ret.passwordReset(PassRequest(email =  logEmail.toString(),
             confirmPassword = confirmPassword.trim(),
             newPassword = newPassword.trim(),
-            currentPassword = logPass!!))
+            currentPassword = currentPassword.trim()))
 
         req.enqueue(object : Callback<ApiResponse<PasswordRequest>> {
             override fun onResponse(
@@ -162,7 +178,7 @@ class Password_Reset : Fragment() {
                             val message = response.body()!!.message
                             Log.d(TAG, message)
                             Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
-                            passwordResetBtn.findFragment<Login>().findNavController().navigate(R.id. action_password_Reset_to_login)
+                            passwordResetBtn.findFragment<Login>().findNavController().navigate(R.id. action_passReset_to_login)
                         }
                     }else{
                         val message = response.toString()

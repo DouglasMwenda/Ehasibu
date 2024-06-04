@@ -18,3 +18,11 @@ data class OtpRequest(
     val otp: String,
     val email: String,
 )
+
+data class PassResetRequest(
+    val email: String,
+    )
+data class OtpRequest2(
+    val email: String,
+    val otp: String,
+    )
