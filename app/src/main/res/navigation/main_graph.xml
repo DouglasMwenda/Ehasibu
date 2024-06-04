@@ -43,12 +43,54 @@
         android:id="@+id/dashboard"
         android:name="com.example.ehasibu.dashboard.Dashboard"
         android:label="fragment_dashboard"
+
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/addsaledialog"
         android:name="com.example.ehasibu.productsales.Addsaledialog"
         android:label="fragment_addsaledialog"
         tools:layout="@layout/fragment_addsaledialog" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboard_to_accounts"
+            app:destination="@id/accounts" />
+        <action
+            android:id="@+id/action_dashboard_to_budget"
+            app:destination="@id/budget" />
+        <action
+            android:id="@+id/action_dashboard_to_expenses"
+            app:destination="@id/expenses" />
+        <action
+            android:id="@+id/action_dashboard_to_payment"
+            app:destination="@id/payment" />
+        <action
+            android:id="@+id/action_dashboard_to_products"
+            app:destination="@id/products" />
+        <action
+            android:id="@+id/action_dashboard_to_purchase_Order"
+            app:destination="@id/purchase_Order" />
+        <action
+            android:id="@+id/action_dashboard_to_report"
+            app:destination="@id/report" />
+        <action
+            android:id="@+id/action_dashboard_to_services"
+            app:destination="@id/services" />
+    </fragment>
+    <fragment
+        android:id="@+id/accounts"
+        android:name="com.example.ehasibu.accounts.AccountsFragment"
+        android:label="fragment_accounts"
+        tools:layout="@layout/fragment_accounts" />
+    <fragment
+        android:id="@+id/budget"
+        android:name="com.example.ehasibu.budget.BudgetFragment"
+        android:label="fragment_budget"
+        tools:layout="@layout/fragment_budget" />
+    <fragment
+        android:id="@+id/expenses"
+        android:name="com.example.ehasibu.expenses.ExpensesFragment"
+        android:label="fragment_expenses"
+        tools:layout="@layout/fragment_expenses" />
 
     <fragment
         android:id="@+id/payment"
@@ -57,6 +99,28 @@
         tools:layout="@layout/fragment_payment" />
 
 
+
+
+    <fragment
+        android:id="@+id/products"
+        android:name="com.example.ehasibu.product.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/purchase_Order"
+        android:name="com.example.ehasibu.purchases.Purchase_Order"
+        android:label="fragment_purchase_order"
+        tools:layout="@layout/fragment_purchase_order" />
+    <fragment
+        android:id="@+id/report"
+        android:name="com.example.ehasibu.reports.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/services"
+        android:name="com.example.ehasibu.services.ServicesFragment"
+        android:label="fragment_services"
+        tools:layout="@layout/fragment_services" />
 
 
 </navigation>
