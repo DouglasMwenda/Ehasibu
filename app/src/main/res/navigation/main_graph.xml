@@ -44,6 +44,19 @@
         android:name="com.example.ehasibu.dashboard.Dashboard"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/addsaledialog"
+        android:name="com.example.ehasibu.productsales.Addsaledialog"
+        android:label="fragment_addsaledialog"
+        tools:layout="@layout/fragment_addsaledialog" />
+
+    <fragment
+        android:id="@+id/payment"
+        android:name="com.example.ehasibu.productsales.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+
+
 
 
 </navigation>
