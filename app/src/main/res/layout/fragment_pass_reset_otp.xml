@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/otp_layout"
+    tools:context=".login.forgot_password.PassResetOtp">
+
+
+    <TextView
+        android:id="@+id/otp_text"
+        android:layout_width="336dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/we_have_sent_an_otp_to_your_email_enter_here_to_continue"
+        android:textColor="#800000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.175"
+        tools:ignore="MissingConstraints" />
+
+
+    <EditText
+        android:id="@+id/otp_input"
+        android:layout_width="201dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:autofillHints=""
+        android:background="@drawable/rounded_corner"
+        android:hint="@string/otp"
+        android:inputType="number"
+        android:padding="16dp"
+        android:textAlignment="center"
+        android:textColor="#800000"
+        android:textColorHint="#800000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otp_text"
+        app:layout_constraintVertical_bias="0.096"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/validate_otp_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#800000"
+        android:padding="8dp"
+        android:text="@string/verify"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otp_input"
+        app:layout_constraintVertical_bias="0.141"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

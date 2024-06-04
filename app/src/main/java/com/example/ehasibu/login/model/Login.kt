@@ -39,6 +39,8 @@ class Login : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
+
     ): View {
         binding = FragmentLoginBinding.inflate(inflater)
 
@@ -57,7 +59,9 @@ class Login : Fragment() {
             }
 
         }
-
+        binding.forgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_login_to_forgotPass)
+        }
 
         return binding.root
     }

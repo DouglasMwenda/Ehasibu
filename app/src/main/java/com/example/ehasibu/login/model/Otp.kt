@@ -24,7 +24,7 @@ import com.example.ehasibu.utils.PREF
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-private val TAG = "otp"
+private const val TAG = "otp"
 class Otp : Fragment() {
 
 
@@ -34,18 +34,16 @@ class Otp : Fragment() {
     private lateinit var binding: FragmentOtpBinding
     private lateinit var pref: SharedPreferences
 
-
-    //(In real applications, this should come from the server)
-    //private val correctOtp = "123456"
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
+
         binding = FragmentOtpBinding.inflate(inflater, container, false)
         pref = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         binding.verifyOtpButton.setOnClickListener {
+
             if (validateOtp()) {
 
                 val cont = requireContext()
@@ -54,10 +52,10 @@ class Otp : Fragment() {
 
 
                 otpverification(cont,  otp, binding.verifyOtpButton)
-                // If OTP is correct, navigate to the dashboard
 
             }
         }
+
         return binding.root
     }
 
