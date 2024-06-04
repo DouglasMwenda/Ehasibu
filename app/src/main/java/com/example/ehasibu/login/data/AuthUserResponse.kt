@@ -1,5 +1,7 @@
 package com.example.ehasibu.login.data
 
+import androidx.compose.ui.semantics.Role
+
 data class AuthUserResponse(
     val access_token: String,
     val businessResponse: BusinessResponse,

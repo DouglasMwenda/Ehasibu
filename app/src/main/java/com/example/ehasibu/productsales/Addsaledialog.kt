@@ -76,7 +76,7 @@ class Addsaledialog : Fragment() {
            val paymentFragment = PaymentFragment.newInstance(customerName, total, tax, netTotal, paidAmount)
 
            activity.supportFragmentManager.beginTransaction()
-               .replace(R.id.addsaledialog, paymentFragment)
+               .replace(R.id.addSaleDialog, paymentFragment)
                .addToBackStack(null)
                .commit()
         }
