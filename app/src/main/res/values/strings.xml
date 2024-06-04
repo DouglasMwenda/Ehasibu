@@ -140,6 +140,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="delete">Delete</string>
+    <string name="update_budget">Update Budget</string>
+    <string name="budget_type">Budget Type</string>
+    <string name="amount_budgeted">Amount Budgeted</string>
 
 
 </resources>
