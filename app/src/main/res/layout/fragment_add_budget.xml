@@ -3,25 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".budget.addBudgetFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Update Budget" />
+        android:orientation="vertical"
+       >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/update_budget" />
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/expenseType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=""
-            >
+            android:hint="">
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
@@ -30,55 +31,70 @@
                 android:background="@drawable/rounded_corner"
                 android:inputType="none"
                 android:padding="16dp"
-                android:text="Budget Type"
+                android:text="@string/budget_type"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                android:visibility="visible"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:autofillHints="number"
+                android:background="@drawable/rounded_corner"
+                android:inputType="none"
+                android:padding="16dp"
+                android:text="Description"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:autofillHints="number"
+                android:background="@drawable/rounded_corner"
+                android:inputType="none"
+                android:padding="16dp"
+                android:text="@string/amount_budgeted"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
                 android:textSize="16sp" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints="number"
-                android:text="Description"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:backgroundTint="#800000"
+                android:text="Submit"
+                android:id="@+id/submitbudgetbutton"
+                />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/printquoteButton"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:text="Delete"
                 android:textColor="#800000"
-                android:textSize="16sp"
-                android:textColorHint="#800000"
-                android:background="@drawable/rounded_corner"
-                android:layout_margin="16dp"
-                android:inputType="none"
-                android:padding="16dp"
-                 />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints="number"
-                android:text="Amount Budgeted"
-                android:textColor="#800000"
-                android:textSize="16sp"
-                android:textColorHint="#800000"
-                android:background="@drawable/rounded_corner"
-                android:layout_margin="16dp"
-                android:inputType="none"
-                android:padding="16dp"
-                android:paddingEnd="12dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints="number"
-                android:text="Amount Spent"
-                android:textColor="#800000"
-                android:textSize="16sp"
-                android:textColorHint="#800000"
-                android:background="@drawable/rounded_corner"
-                android:layout_margin="16dp"
-                android:inputType="none"
-                android:padding="16dp"
-                android:paddingEnd="12dp" />
+                app:strokeColor="#800000" />
+        </LinearLayout>
 
 
 
 
-        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
 </FrameLayout>

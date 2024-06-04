@@ -191,9 +191,6 @@
                 android:id="@+id/paybutton"
                 />
 
-                android:text="@string/generate_invoice"
-                android:id="@+id/invoicebutton" />
-
 
             <Button
                 android:layout_width="wrap_content"
@@ -201,13 +198,11 @@
                 android:layout_margin="5dp"
                 android:layout_gravity="start"
                 android:backgroundTint="#800000"
-
                 android:text="@string/cancel"
                 android:id="@+id/cancel_button"
                 />
 
-                android:text="@string/back"
-                android:id="@+id/backbutton" />
+
 
 
 
