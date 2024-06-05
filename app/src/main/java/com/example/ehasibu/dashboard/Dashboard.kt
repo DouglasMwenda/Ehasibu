@@ -5,6 +5,10 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -77,7 +81,8 @@ class Dashboard : Fragment() {
                     }
 
                     R.id.nav_sales -> {
-                        handleSubMenu(menuItem)
+                        setupSalesSpinner()
+
                         true
                     }
 
@@ -116,10 +121,7 @@ class Dashboard : Fragment() {
                         Toast.makeText(context, "Vendor clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
-                    R.id.customerinformation -> {
-                        Toast.makeText(context, "Customer Information clicked", Toast.LENGTH_SHORT).show()
-                        true
-                    }
+
                     */
                     R.id.nav_products -> {
                         findNavController().navigate(R.id.products)
@@ -181,29 +183,45 @@ class Dashboard : Fragment() {
                 }
             }
         }
-        private fun handleSubMenu(menuItem: MenuItem) {
-            if (menuItem.isChecked) {
-                menuItem.isChecked = false
-                collapseSubMenu(menuItem)
-            } else {
-                menuItem.isChecked = true
-                expandSubMenu(menuItem)
+
+    private fun setupSalesSpinner() {
+
+        val inflater = LayoutInflater.from(requireContext())
+        val binding = com.example.ehasibu.databinding.SalesSpinnerBinding.inflate(inflater)
+
+        val salesSpinner: Spinner = binding.salesSpinner
+
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.sales_spinner_items,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        salesSpinner.adapter = adapter
+
+        salesSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                handleSpinnerSelection(position)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Do nothing
             }
         }
 
-        private fun expandSubMenu(menuItem: MenuItem) {
-            for (i in 0 until menuItem.subMenu!!.size()) {
-                menuItem.subMenu!!.getItem(i).isVisible = true
-                menuItem.subMenu!!.getItem(i).isEnabled = true
-            }
-        }
+        // Show the spinner
+        Toast.makeText(requireContext(), "Sales item selected", Toast.LENGTH_SHORT).show()
+    }
 
-        private fun collapseSubMenu(menuItem: MenuItem) {
-            for (i in 0 until menuItem.subMenu!!.size()) {
-                menuItem.subMenu!!.getItem(i).isVisible = false
-                menuItem.subMenu!!.getItem(i).isEnabled = false
-            }
+    private fun handleSpinnerSelection(position: Int) {
+        when (position) {
+            0 -> Toast.makeText(context, "Product Sales Selected", Toast.LENGTH_SHORT).show()
+            1 -> Toast.makeText(context, "Service Sales Selected", Toast.LENGTH_SHORT).show()
+            2 -> Toast.makeText(context, "Quotation Selected", Toast.LENGTH_SHORT).show()
+            3 -> Toast.makeText(context, "Customer Information Selected", Toast.LENGTH_SHORT).show()
         }
+    }
+
             }
 
 
