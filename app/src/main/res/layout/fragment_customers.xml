@@ -74,7 +74,7 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#800000"
                 android:text="Add Customer"
-                android:id="@+id/addsalebutton" />
+                android:id="@+id/addcustomerbutton" />
 
             <ImageView
                 android:layout_width="25dp"
@@ -92,7 +92,7 @@
 
 
             <TableLayout
-                android:id="@+id/customertable"
+                android:id="@+id/customerstable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:stretchColumns="*">
