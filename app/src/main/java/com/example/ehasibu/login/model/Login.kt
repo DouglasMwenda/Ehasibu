@@ -111,7 +111,10 @@ class Login : Fragment() {
                             loginBtn.findFragment<Login>().findNavController()
                                 .navigate(R.id.action_login_to_password_Reset)
                         } else if (response.body()!!.statusCode == 200) {
-                            val message = response.toString()
+
+                           // val message = response.body()!!.message
+                            val message = response.body()?.message ?: "null body...."
+
                             Log.d(TAG, message)
                             Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
 

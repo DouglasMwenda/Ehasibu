@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_dashboard_to_services"
             app:destination="@id/services" />
+        <action
+            android:id="@+id/action_dashboard_to_productSales"
+            app:destination="@id/productSales" />
     </fragment>
     <fragment
         android:id="@+id/accounts"
@@ -154,6 +157,19 @@
             android:id="@+id/action_passReset_to_login"
             app:destination="@id/login" />
     </fragment>
+    <fragment
+        android:id="@+id/productSales"
+        android:name="com.example.ehasibu.productsales.ProductSales"
+        android:label="fragment_productsales"
+        tools:layout="@layout/fragment_productsales" >
+        <action
+            android:id="@+id/action_productSales_to_addsaledialog"
+            app:destination="@id/addsaledialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/addsaledialog"
+        android:name="com.example.ehasibu.productsales.Addsaledialog"
+        android:label="Addsaledialog" />
 
 
 </navigation>
