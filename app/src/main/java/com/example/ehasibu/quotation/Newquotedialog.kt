@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TableLayout
@@ -14,7 +15,7 @@ import com.example.ehasibu.databinding.FragmentNewquotedialogBinding
 
 class Newquotedialog : Fragment() {
     private lateinit var binding: FragmentNewquotedialogBinding
-    private lateinit var customerName: EditText
+    private lateinit var customerName: AutoCompleteTextView
     private lateinit var productsTableLayout: TableLayout
     private lateinit var summaryTotal: EditText
     private lateinit var createQuoteButton: Button

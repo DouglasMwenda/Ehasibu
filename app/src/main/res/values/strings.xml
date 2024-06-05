@@ -145,6 +145,9 @@
     <string name="amount_budgeted">Amount Budgeted</string>
     <string name="total_amount">Total Amount</string>
     <string name="approve_quote">Approve Quote</string>
+    <string name="address">Address</string>
+    <string name="company_name">Company Name</string>
+    <string name="email_adress">Email Adress</string>
 
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>
