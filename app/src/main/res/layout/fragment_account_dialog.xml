@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".accounts.AccountDialogFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/update_budget" />
+            android:text="Add Account" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -32,7 +33,7 @@
                 android:background="@drawable/rounded_corner"
                 android:inputType="none"
                 android:padding="16dp"
-                android:text="@string/budget_type"
+                android:text="Account Type"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
                 android:textSize="16sp"
@@ -40,7 +41,7 @@
                 tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -48,7 +49,7 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="Description"
+            android:text="Account Name"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp"
@@ -62,7 +63,7 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="@string/amount_budgeted"
+            android:text="Opening Balance"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp" />
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/submitbudgetbutton"
+                android:id="@+id/submitaccountbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
@@ -82,19 +83,18 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/deletebudgetButton"
+                android:id="@+id/cancelaccountButton"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                android:text="Delete"
+                android:text="Cancel"
                 android:textColor="#800000"
                 app:strokeColor="#800000" />
         </LinearLayout>
 
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
