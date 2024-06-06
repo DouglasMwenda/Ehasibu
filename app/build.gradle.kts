@@ -63,7 +63,7 @@ dependencies {
 
     implementation (libs.kotlinx.coroutines.core)
     implementation (libs.kotlinx.coroutines.android.v164)
-
+    implementation (libs.mpandroidchart)
     implementation(libs.androidx.constraintlayout.v204)
     implementation (libs.androidx.constraintlayout)
 
