@@ -16,9 +16,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentPassResetOtpBinding
 import com.example.ehasibu.login.ApiResponse
-import com.example.ehasibu.login.api.APIService
+import com.example.ehasibu.utils.api.APIService
 import com.example.ehasibu.login.data.OtpRequest2
 import com.example.ehasibu.login.model.Otp
+import com.example.ehasibu.login.viewmodel.PassResetOtpViewModel
 import com.example.ehasibu.utils.LOGIN_EMAIL
 import com.example.ehasibu.utils.PREF
 import retrofit2.Call

@@ -1,9 +1,9 @@
-package com.example.ehasibu.login.model
+package com.example.ehasibu.login.viewmodel
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ehasibu.login.api.APIService
+import com.example.ehasibu.utils.api.APIService
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.UserRequest
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.ehasibu.product
+package com.example.ehasibu.product.model
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
+import com.example.ehasibu.product.viewmodel.ProductViewModel
 
-class ProductFragment : Fragment() {
+class Product : Fragment() {
 
     companion object {
-        fun newInstance() = ProductFragment()
+        fun newInstance() = Product()
     }
 
     private val viewModel: ProductViewModel by viewModels()

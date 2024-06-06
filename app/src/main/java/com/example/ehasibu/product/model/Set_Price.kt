@@ -1,4 +1,4 @@
-package com.example.ehasibu.product
+package com.example.ehasibu.product.model
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

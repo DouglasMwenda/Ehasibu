@@ -1,4 +1,4 @@
-package com.example.ehasibu.login.forgot_password
+package com.example.ehasibu.login.viewmodel
 
 import androidx.lifecycle.ViewModel
 

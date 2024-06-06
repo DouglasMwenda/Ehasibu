@@ -1,4 +1,4 @@
-package com.example.ehasibu.login.model
+package com.example.ehasibu.login.viewmodel
 
 import androidx.lifecycle.ViewModel
 
