@@ -7,12 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.example.ehasibu.R
-import com.example.ehasibu.databinding.FragmentAddsaledialogBinding
 import com.example.ehasibu.databinding.FragmentProductsalesBinding
 
 class ProductSales : Fragment() {
@@ -59,7 +55,7 @@ class ProductSales : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.addsalebutton.setOnClickListener{
             val addSaleDialog = Addsaledialog()
-            addSaleDialog.show(childFragmentManager,"addSaleDialog")
+            addSaleDialog.show(parentFragmentManager,"addSaleDialog")
 
 
         }

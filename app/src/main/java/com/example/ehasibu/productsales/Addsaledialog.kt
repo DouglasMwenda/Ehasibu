@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.MainActivity
@@ -22,7 +23,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-class Addsaledialog : Fragment() {
+class Addsaledialog : DialogFragment() {
     private lateinit var binding: FragmentAddsaledialogBinding
     private val viewModel: ProductSalesViewModel by viewModels()
 
