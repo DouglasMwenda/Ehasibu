@@ -30,6 +30,11 @@ class Customers : Fragment() {
         binding = FragmentCustomersBinding.inflate(inflater,container,false)
         addCustomerButton = binding.addcustomerbutton
         customersTableLayout = binding.customerstable
+
+        addCustomerButton.setOnClickListener {
+            val dialog= CustomerDialog()
+            dialog.show(parentFragmentManager,"CustomerDialog")
+        }
         return binding.root
 
     }

@@ -152,6 +152,12 @@
     <string name="buying_price_kes">Buying Price (KES)</string>
     <string name="selling_price_kes">Selling Price (KES)</string>
     <string name="productname">ProductName</string>
+    <string name="period">Period</string>
+    <string name="amount_spent">Amount Spent</string>
+    <string name="service_name">Service Name</string>
+    <string name="service">Service</string>
+    <string name="save">Save</string>
+    <string name="service_price">Service Price</string>
 
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>

@@ -30,7 +30,7 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#800000"
                 android:text="Add New Quote"
-                android:id="@+id/addsalebutton" />
+                android:id="@+id/addnewquotebutton" />
 
             <ImageView
                 android:layout_width="25dp"
@@ -43,6 +43,7 @@
 
 
         <TableLayout
+            android:id="@+id/quotesTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
