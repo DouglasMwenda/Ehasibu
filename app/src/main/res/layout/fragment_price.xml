@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".accounts.AccountDialogFragment">
+    tools:context=".product.PriceFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/update_budget" />
+            android:text="Product"
+            android:paddingBottom="16dp"/>
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -32,7 +33,7 @@
                 android:background="@drawable/rounded_corner"
                 android:inputType="none"
                 android:padding="16dp"
-                android:text="@string/budget_type"
+                android:text="Product Name"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
                 android:textSize="16sp"
@@ -48,7 +49,7 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="Description"
+            android:text="Buying Price"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp"
@@ -62,7 +63,7 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="@string/amount_budgeted"
+            android:text="Selling Price Percentage"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp" />
@@ -72,24 +73,24 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/submitbudgetbutton"
+                android:id="@+id/setpricebutton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:backgroundTint="#800000"
-                android:text="Submit" />
+                android:text="Set Price" />
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/deletebudgetButton"
+                android:id="@+id/cancelpriceButton"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                android:text="Delete"
+                android:text="Cancel"
                 android:textColor="#800000"
                 app:strokeColor="#800000" />
         </LinearLayout>
