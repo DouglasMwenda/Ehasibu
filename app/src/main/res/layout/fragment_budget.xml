@@ -41,11 +41,12 @@
                 android:backgroundTint="#800000"
                 android:layout_marginStart="10dp"
                 android:text="Report"
-                android:id="@+id/reportsbutton" />
+                android:id="@+id/budgetreportsbutton" />
 
         </LinearLayout>
 
         <TableLayout
+            android:id="@+id/budgetTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
