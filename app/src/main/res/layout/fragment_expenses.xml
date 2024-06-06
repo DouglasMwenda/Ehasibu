@@ -75,7 +75,7 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#800000"
                 android:text="Add Expenses"
-                android:id="@+id/addbudgetbutton"
+                android:id="@+id/addexpensebutton"
                 tools:ignore="HardcodedText" />
 
             <ImageView
@@ -93,12 +93,13 @@
                 android:backgroundTint="#800000"
                 android:layout_marginStart="10dp"
                 android:text="Report"
-                android:id="@+id/reportsbutton"
+                android:id="@+id/budgetsbutton"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
         <TableLayout
+            android:id="@+id/expensestable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

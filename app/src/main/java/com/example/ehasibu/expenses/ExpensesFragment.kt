@@ -4,17 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TableLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
+import com.example.ehasibu.databinding.FragmentExpensesBinding
 
 class ExpensesFragment : Fragment() {
+    private lateinit var binding: FragmentExpensesBinding
+    private lateinit var expenseButton: Button
+    private lateinit var expensesTableLayout: TableLayout
+    private val viewModel: ExpensesViewModel by viewModels()
 
     companion object {
         fun newInstance() = ExpensesFragment()
     }
 
-    private val viewModel: ExpensesViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +33,14 @@ class ExpensesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_expenses, container, false)
+        binding= FragmentExpensesBinding.inflate(inflater,container,false)
+        expenseButton= binding.addexpensebutton
+        expensesTableLayout= binding.expensestable
+
+        expenseButton.setOnClickListener {
+            val dialog = updateExpenseFragment()
+            dialog.show(parentFragmentManager,"updateExpenseFragment")
+        }
+        return binding.root
     }
 }
