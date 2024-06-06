@@ -8,12 +8,14 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
+import com.example.ehasibu.budget.addBudgetFragment
 import com.example.ehasibu.databinding.FragmentCustomerDialogBinding
 
-class CustomerDialog : Fragment() {
+class CustomerDialog : DialogFragment() {
     private lateinit var binding: FragmentCustomerDialogBinding
     private val viewModel: CustomersViewModel by viewModels()
     private lateinit var  customerType : AutoCompleteTextView
@@ -79,6 +81,17 @@ class CustomerDialog : Fragment() {
 
         }
         return binding.root
+    }
+    override fun onStart() {
+        super.onStart()
+
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    companion object {
+        fun newInstance(): CustomerDialog {
+            return CustomerDialog()
+        }
     }
 
 

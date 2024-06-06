@@ -8,12 +8,14 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TableLayout
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.example.ehasibu.R
+import com.example.ehasibu.budget.addBudgetFragment
 import com.example.ehasibu.databinding.FragmentNewquotedialogBinding
 
 
-class Newquotedialog : Fragment() {
+class Newquotedialog : DialogFragment() {
     private lateinit var binding: FragmentNewquotedialogBinding
     private lateinit var customerName: AutoCompleteTextView
     private lateinit var productsTableLayout: TableLayout
@@ -62,6 +64,17 @@ class Newquotedialog : Fragment() {
         }
 
         return binding.root
+    }
+    override fun onStart() {
+        super.onStart()
+
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    companion object {
+        fun newInstance(): Newquotedialog {
+            return Newquotedialog()
+        }
     }
 
 

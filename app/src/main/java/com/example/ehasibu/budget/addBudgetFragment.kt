@@ -16,6 +16,8 @@ class addBudgetFragment : DialogFragment() {
     private lateinit var budgetType: AutoCompleteTextView
     private lateinit var description:EditText
     private lateinit var amountBudgeted:EditText
+    private lateinit var amountSpent: EditText
+    private lateinit var period: AutoCompleteTextView
     private lateinit var submitButton: Button
     private lateinit var deleteButton: Button
 
@@ -33,6 +35,8 @@ class addBudgetFragment : DialogFragment() {
         budgetType = binding.budgetType
         description = binding.description
         amountBudgeted = binding.amountbudgeted
+        amountSpent = binding.amountspent
+        period= binding.period
         submitButton=binding.submitbudgetbutton
         deleteButton= binding.deletebudgetButton
 
