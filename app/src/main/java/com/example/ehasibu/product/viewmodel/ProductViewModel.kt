@@ -1,4 +1,4 @@
-package com.example.ehasibu.product
+package com.example.ehasibu.product.viewmodel
 
 import androidx.lifecycle.ViewModel
 

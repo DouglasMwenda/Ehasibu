@@ -1,4 +1,4 @@
-package com.example.ehasibu.product
+package com.example.ehasibu.product.model
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ehasibu.R
+import com.example.ehasibu.product.viewmodel.AddProductViewModel
 
 class Add_Product : Fragment() {
 

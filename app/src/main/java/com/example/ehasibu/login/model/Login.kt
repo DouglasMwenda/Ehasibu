@@ -17,9 +17,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentLoginBinding
 import com.example.ehasibu.login.ApiResponse
-import com.example.ehasibu.login.api.APIService
+import com.example.ehasibu.utils.api.APIService
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.UserRequest
+import com.example.ehasibu.login.viewmodel.LoginViewModel
 import com.example.ehasibu.utils.LOGIN_EMAIL
 import com.example.ehasibu.utils.LOGIN_PASSWORD
 import com.example.ehasibu.utils.PREF

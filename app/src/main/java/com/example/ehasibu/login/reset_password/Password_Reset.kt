@@ -18,7 +18,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentPasswordResetBinding
 import com.example.ehasibu.login.ApiResponse
-import com.example.ehasibu.login.api.APIService
+import com.example.ehasibu.utils.api.APIService
 import com.example.ehasibu.login.data.PassRequest
 import com.example.ehasibu.login.data.UserRequest
 import com.example.ehasibu.login.model.Login

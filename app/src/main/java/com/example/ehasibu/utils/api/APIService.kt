@@ -1,4 +1,4 @@
-package com.example.ehasibu.login.api
+package com.example.ehasibu.utils.api
 
 import okhttp3.ConnectionSpec
 import okhttp3.OkHttpClient
