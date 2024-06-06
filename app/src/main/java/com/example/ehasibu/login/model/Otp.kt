@@ -49,7 +49,7 @@ class Otp : Fragment() {
                 val cont = requireContext()
 
                 val otp = binding.otpInput.text.toString().trim()
-
+                Log.d(TAG, "otp: $otp")
 
                 otpverification(cont,  otp, binding.verifyOtpButton)
 
@@ -75,7 +75,6 @@ class Otp : Fragment() {
             return false
         }
 
-
         return true
     }
 
@@ -84,6 +83,7 @@ class Otp : Fragment() {
         val ret = APIService.instance
         val email = pref.getString(LOGIN_EMAIL, "")
         val req = ret.otpVerify(OtpRequest(otp, email!!.trim()))
+        Log.d(TAG, email)
         req.enqueue(object : Callback<ApiResponse<AuthUserResponse>> {
             override fun onResponse(
                 call: Call<ApiResponse<AuthUserResponse>>,
@@ -92,7 +92,9 @@ class Otp : Fragment() {
                 if (response.isSuccessful) {
                     if (response.body() != null) {
                         if (response.body()!!.statusCode == 200) {
+
                             val message = response.body()!!.message
+
                             Log.d(TAG, message)
                             Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
                             verifyOtpButton.findFragment<Login>().findNavController()

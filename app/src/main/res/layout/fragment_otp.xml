@@ -7,52 +7,53 @@
     tools:context=".login.model.Otp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="357dp"
+        android:layout_height="203dp"
+        android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
-        android:layout_centerInParent="true"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent,TextSizeCheck">
 
 
         <TextView
             android:id="@+id/otp_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/we_have_sent_an_otp_to_your_email_enter_here_to_continue"
-            android:textSize="12sp"
-            android:textColor="#800000"
-            android:fontFamily="sans-serif-black"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/we_have_sent_an_otp_to_your_email_enter_here_to_continue"
+            android:textColor="#800000"
+            android:textSize="12sp" />
 
         <EditText
             android:id="@+id/otp_input"
-            android:layout_width="match_parent"
+            android:layout_width="155dp"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:autofillHints=""
-            android:hint="@string/otp"
-            android:textColor="#800000"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textColorHint="#800000"
             android:background="@drawable/rounded_corner"
-            android:padding="16dp"
+            android:hint="@string/otp"
             android:inputType="number"
-            android:layout_margin="16dp" />
+            android:padding="16dp"
+            android:textAlignment="center"
+            android:textColor="#800000"
+            android:textColorHint="#800000"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/verify_otp_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/verify"
-            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:backgroundTint="#800000"
             android:padding="8dp"
+            android:text="@string/verify"
+            android:textColor="@color/white"
             android:textSize="16sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp" />
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
 </RelativeLayout>
