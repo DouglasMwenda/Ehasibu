@@ -148,6 +148,10 @@
     <string name="address">Address</string>
     <string name="company_name">Company Name</string>
     <string name="email_adress">Email Adress</string>
+    <string name="quantity">Quantity</string>
+    <string name="buying_price_kes">Buying Price (KES)</string>
+    <string name="selling_price_kes">Selling Price (KES)</string>
+    <string name="productname">ProductName</string>
 
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>

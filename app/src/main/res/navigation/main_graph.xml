@@ -3,22 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/login">
-    <fragment
-        android:id="@+id/login"
-        android:name="com.example.ehasibu.login.model.Login"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_login_to_otp"
-            app:destination="@id/otp" />
-        <action
-            android:id="@+id/action_login_to_password_Reset"
-            app:destination="@id/password_Reset" />
-        <action
-            android:id="@+id/action_login_to_forgotPass"
-            app:destination="@id/forgotPass" />
-    </fragment>
+    app:startDestination="@id/navigation2">
 
     <fragment
         android:id="@+id/password_Reset"
@@ -27,13 +12,13 @@
         tools:layout="@layout/fragment_password__reset" >
         <action
             android:id="@+id/action_password_Reset_to_login"
-            app:destination="@id/login" />
+            app:destination="@id/navigation2" />
         <argument
             android:name="request"
             app:argType="com.example.ehasibu.login.data.UserRequest" />
         <action
             android:id="@+id/action_password_Reset_to_login2"
-            app:destination="@id/login" />
+            app:destination="@id/navigation2" />
     </fragment>
 
     <fragment
@@ -111,7 +96,11 @@
         android:id="@+id/products"
         android:name="com.example.ehasibu.product.ProductFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_products_to_add_Product"
+            app:destination="@id/add_Product" />
+    </fragment>
     <fragment
         android:id="@+id/purchase_Order"
         android:name="com.example.ehasibu.purchases.Purchase_Order"
@@ -155,7 +144,7 @@
         tools:layout="@layout/fragment_pass_reset" >
         <action
             android:id="@+id/action_passReset_to_login"
-            app:destination="@id/login" />
+            app:destination="@id/navigation2" />
     </fragment>
     <fragment
         android:id="@+id/productSales"
@@ -170,6 +159,33 @@
         android:id="@+id/addsaledialog"
         android:name="com.example.ehasibu.productsales.Addsaledialog"
         android:label="Addsaledialog" />
+    <navigation android:id="@+id/navigation2"
+        app:startDestination="@id/navigation">
+        <navigation
+            android:id="@+id/navigation"
+            app:startDestination="@id/login">
+            <fragment
+                android:id="@+id/login"
+                android:name="com.example.ehasibu.login.model.Login"
+                android:label="fragment_login"
+                tools:layout="@layout/fragment_login">
+                <action
+                    android:id="@+id/action_login_to_otp"
+                    app:destination="@id/otp" />
+                <action
+                    android:id="@+id/action_login_to_password_Reset"
+                    app:destination="@id/password_Reset" />
+                <action
+                    android:id="@+id/action_login_to_forgotPass"
+                    app:destination="@id/forgotPass" />
+            </fragment>
+        </navigation>
+    </navigation>
+    <fragment
+        android:id="@+id/add_Product"
+        android:name="com.example.ehasibu.product.Add_Product"
+        android:label="fragment_add__product"
+        tools:layout="@layout/fragment_add__product" />
 
 
 </navigation>
