@@ -2,10 +2,7 @@ package com.example.ehasibu.productsales
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,19 +10,32 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView
+import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.viewModels
 import com.example.ehasibu.MainActivity
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentAddsaledialogBinding
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class Addsaledialog : DialogFragment() {
     private lateinit var binding: FragmentAddsaledialogBinding
-    private val viewModel: ProductSalesViewModel by viewModels()
+    private lateinit var datePickerEditText: TextInputEditText
+    private lateinit var customerNameField: AppCompatSpinner
+    private lateinit var summaryTotal: TextInputEditText
+    private lateinit var summaryTax: TextInputEditText
+    private lateinit var summaryNetTotal: TextInputEditText
+    private lateinit var amountPaid: TextInputEditText
+    private lateinit var modeOfPayment: AutoCompleteTextView
+    private lateinit var addproductButton: Button
+    private lateinit var paybutton: Button
+    private lateinit var cancelbutton:Button
+
+   // private val viewModel: ProductSalesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,24 +48,39 @@ class Addsaledialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val datePickerEditText: EditText = binding.datepickerEdittext
-        val customerNameField: AutoCompleteTextView = binding.customerNameField
-        val summaryTotal: EditText = binding.summaryTotal
-        val summaryTax: EditText =binding.summaryTax
-        val summaryNetTotal: EditText = binding.summaryNetTotal
-        val amountPaid: EditText = binding.amountPaid
-        val addproductbutton : Button = binding.addproductbutton
-        val paybutton : Button = binding.paybutton
-        val cancelbutton: Button =binding.cancelButton
+         datePickerEditText = binding.datepicker
+         customerNameField = binding.customerNameField
+         summaryTotal = binding.summaryTotal
+         summaryTax =binding.summaryTax
+         summaryNetTotal= binding.summaryNetTotal
+         amountPaid = binding.amountPaid
+        modeOfPayment=binding.modeofpayment
+
+        val paymentModesArray: Array<String> = resources.getStringArray(R.array.payment_modes)
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, paymentModesArray)
+
+
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+
+
+        modeOfPayment.setAdapter(adapter)
+
+
+        modeOfPayment.setOnClickListener{
+            modeOfPayment.showDropDown()
+        }
+         addproductButton  = binding.addproductbutton
+         paybutton  = binding.paybutton
+         cancelbutton= binding.cancelButton
 
         val customerAdapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_dropdown_item_1line)
         binding.customerNameField.setAdapter(customerAdapter)
 
-        viewModel.customers.observe(viewLifecycleOwner) { customers ->
+        /*viewModel.customers.observe(viewLifecycleOwner) { customers ->
             customerAdapter.clear()
             customerAdapter.addAll(customers)
             customerAdapter.notifyDataSetChanged()
-        }
+        }*/
 
         datePickerEditText.setOnClickListener {
             showDatePickerDialog(datePickerEditText)
@@ -66,7 +91,7 @@ class Addsaledialog : DialogFragment() {
 
         }
         val activity: MainActivity by lazy { requireActivity() as MainActivity }
-       binding.paybutton.setOnClickListener {
+      /* binding.paybutton.setOnClickListener {
            val customerName = binding.customerNameField.text.toString()
            val total = viewModel.summaryTotal.value?.toDoubleOrNull() ?: 0.0
            val tax = viewModel.summaryTax.value?.toDoubleOrNull() ?: 0.0
@@ -80,68 +105,16 @@ class Addsaledialog : DialogFragment() {
                .replace(R.id.addSaleDialog, paymentFragment)
                .addToBackStack(null)
                .commit()
-        }
+        }*/
 
         binding.cancelButton.setOnClickListener {
+            dismiss()
         }
-        summaryTotal.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val newTotal = s.toString().toDoubleOrNull() ?: 0.0
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
-            }
-
-        })
-        summaryTax.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
-            }
-
-        })
-        summaryNetTotal.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
-            }
-
-        })
-        amountPaid.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
-            }
-
-        })
-
+        paybutton.setOnClickListener {
+            dismiss()
+            val dialog = PaymentFragment()
+            dialog.show(parentFragmentManager,"PaymentFragment")
+        }
 
     }
     private fun showDatePickerDialog(editText: EditText) {
@@ -162,11 +135,6 @@ class Addsaledialog : DialogFragment() {
         )
         datePickerDialog.show()
     }
-
-    fun show(childFragmentManager: FragmentManager, s: String) {
-
-    }
-
 
 }
 

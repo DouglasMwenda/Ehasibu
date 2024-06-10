@@ -5,27 +5,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context="productsales.Addsaledialog"
     android:id="@+id/addSaleDialog">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
 
-        <AutoCompleteTextView
-            android:id="@+id/customerNameField"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@drawable/rounded_corner"
-            android:inputType="none"
-            android:padding="16dp"
-            android:paddingEnd="12dp"
-            android:text="@string/customer_name"
-            android:textColor="#800000"
-            android:textColorHint="#800000"
-            android:textSize="16sp"
-            />
+            android:hint="Customer">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/customerNameField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType=""
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -90,90 +95,117 @@
             android:text="@string/add_product"
             android:id="@+id/addproductbutton" />
 
-        <EditText
-            android:id="@+id/summaryTotal"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:autofillHints="number"
-            android:background="@drawable/rounded_corner"
-            android:inputType="none"
-            android:padding="16dp"
-            android:paddingEnd="12dp"
-            android:text="@string/summary_total"
-            android:textColor="#800000"
-            android:textColorHint="#800000"
-            android:textSize="16sp"
-            tools:ignore="LabelFor,RtlSymmetry" />
+            android:layout_margin="8dp"
+            android:hint="Summary Total">
 
-        <EditText
-            android:id="@+id/summaryTax"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_margin="16dp"
-            android:inputType="none"
-            android:text="@string/summary_tax"
-            android:textColor="#800000"
-            android:textSize="16sp"
-            android:textColorHint="#800000"
-            android:background="@drawable/rounded_corner"
-            tools:ignore="Autofill,LabelFor" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/summaryTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="number"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/summaryNetTotal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_margin="16dp"
-            android:inputType="none"
-            android:text="@string/summary_net_total"
-            android:textColor="#800000"
-            android:textSize="16sp"
-            android:textColorHint="#800000"
-            android:background="@drawable/rounded_corner"
-            tools:ignore="Autofill,LabelFor" />
 
-        <EditText
-            android:id="@+id/amountPaid"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_margin="16dp"
-            android:inputType="none"
-            android:text="@string/amount_paid"
-            android:textColor="#800000"
-            android:textSize="16sp"
-            android:textColorHint="#800000"
-            android:background="@drawable/rounded_corner"
-            tools:ignore="Autofill" />
+            android:layout_margin="8dp"
+            android:hint="Summary Tax">
 
-        <EditText
-            android:id="@+id/datepicker_edittext"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/summaryTax"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="number"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_margin="16dp"
-            android:inputType="none"
-            android:text="@string/due_date"
-            android:textColor="#800000"
-            android:textSize="16sp"
-            android:textColorHint="#800000"
-            android:background="@drawable/rounded_corner" />
-        <AutoCompleteTextView
-            android:id="@+id/modeofpayment"
+            android:layout_margin="8dp"
+            android:hint="Summary Net Total">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/summaryNetTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="number"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@drawable/rounded_corner"
-            android:inputType="none"
-            android:padding="16dp"
-            android:paddingEnd="12dp"
-            android:text="@string/mode_of_payment"
-            android:textColor="#800000"
-            android:textColorHint="#800000"
-            android:textSize="16sp"
-            tools:ignore="LabelFor,RtlSymmetry" />
+            android:layout_margin="8dp"
+            android:hint="Amount Paid">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/amountPaid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="number"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Due date">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/datepicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="none"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Mode Of Payment">
+
+            <AutoCompleteTextView
+                android:id="@+id/modeofpayment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints=""
+                android:inputType="none"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <LinearLayout
@@ -184,10 +216,9 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="8dp"
                 android:layout_gravity="start"
                 android:backgroundTint="#800000"
-
                 android:text="@string/proceed_to_pay"
                 android:id="@+id/paybutton"
                 />
@@ -195,7 +226,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="8dp"
                 android:layout_gravity="start"
                 android:backgroundTint="#800000"
                 android:text="@string/cancel"
@@ -205,6 +236,5 @@
 
 
     </LinearLayout>
-
-
+</ScrollView>
 </RelativeLayout>

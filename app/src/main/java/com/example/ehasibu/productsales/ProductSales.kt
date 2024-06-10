@@ -14,7 +14,6 @@ import com.example.ehasibu.databinding.FragmentProductsalesBinding
 class ProductSales : Fragment() {
 
     private lateinit var binding:FragmentProductsalesBinding
-    private val viewModel: ProductSalesViewModel by viewModels()
     private lateinit var salesTableLayout: TableLayout
     private lateinit var Addsalebutton:Button
 
@@ -31,9 +30,12 @@ class ProductSales : Fragment() {
         binding= FragmentProductsalesBinding.inflate(inflater,container,false)
         salesTableLayout = binding.salestable
         Addsalebutton = binding.addsalebutton
-        viewModel.salesData.observe(viewLifecycleOwner) { sales->
-            updateSalesTable(sales)
+
+        Addsalebutton.setOnClickListener {
+            val dialog = Addsaledialog()
+            dialog.show(parentFragmentManager,"Addsaledialog")
         }
+
         return binding.root
     }
     private fun updateSalesTable(sales: List<SalesItem>) {
@@ -50,17 +52,5 @@ class ProductSales : Fragment() {
             salesTableLayout.addView(dataRow)
         }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.addsalebutton.setOnClickListener{
-            val addSaleDialog = Addsaledialog()
-            addSaleDialog.show(parentFragmentManager,"addSaleDialog")
-
-
-        }
-    }
-
-
 
 }

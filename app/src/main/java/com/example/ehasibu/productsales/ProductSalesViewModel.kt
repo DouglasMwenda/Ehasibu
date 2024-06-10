@@ -3,8 +3,7 @@ package com.example.ehasibu.productsales
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
-class ProductSalesViewModel (salesRepository: SalesRepository) : ViewModel() {
+/*class ProductSalesViewModel (salesRepository: SalesRepository) : ViewModel() {
     private val _customers = MutableLiveData<List<String>>()
     val customers: LiveData<List<String>> = _customers
     private val _summaryTotal = MutableLiveData<String>()
@@ -29,4 +28,4 @@ class ProductSalesViewModel (salesRepository: SalesRepository) : ViewModel() {
 
 private fun Any.getSalesData(): LiveData<List<SalesItem>> {
 return getSalesData()
-}
+}*/
