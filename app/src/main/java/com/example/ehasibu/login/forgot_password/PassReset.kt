@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.ehasibu.AppModule
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentPassResetBinding
 import com.example.ehasibu.login.ApiResponse
-import com.example.ehasibu.utils.api.APIService
 import com.example.ehasibu.login.data.PassRequest
 import com.example.ehasibu.login.model.Login
 import com.example.ehasibu.login.reset_password.PasswordRequest
@@ -157,7 +157,7 @@ class PassReset : Fragment() {
         newPassword: String,
         confirmPassword: String,
         passwordResetBtn: Button,) {
-        val ret = APIService.instance
+        val ret = AppModule().getRetrofitInstance("")
 
         val logEmail = pref.getString(LOGIN_EMAIL, "")
 

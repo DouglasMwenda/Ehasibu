@@ -2,13 +2,6 @@ package com.example.ehasibu.login.viewmodel
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.ehasibu.utils.api.APIService
-import com.example.ehasibu.login.data.AuthUserResponse
-import com.example.ehasibu.login.data.UserRequest
-import kotlinx.coroutines.launch
-import retrofit2.Response
-import retrofit2.Retrofit
 
 class LoginViewModel : ViewModel() {
     val res=mutableStateOf<String>("")

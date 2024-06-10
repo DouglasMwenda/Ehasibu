@@ -13,18 +13,20 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.ehasibu.AppModule
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentOtpBinding
 import com.example.ehasibu.login.ApiResponse
-import com.example.ehasibu.utils.api.APIService
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.OtpRequest
 import com.example.ehasibu.login.viewmodel.OtpViewModel
+import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.LOGIN_EMAIL
 import com.example.ehasibu.utils.PREF
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 private const val TAG = "otp"
 class Otp : Fragment() {
 
@@ -60,6 +62,9 @@ class Otp : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
 
     private fun validateOtp(): Boolean {
         val otp = binding.otpInput.text.toString().trim()
@@ -81,7 +86,7 @@ class Otp : Fragment() {
 
 
     private fun otpverification(cont: Context, otp: String, verifyOtpButton: Button) {
-        val ret = APIService.instance
+        val ret = AppModule().getRetrofitInstance("")
         val email = pref.getString(LOGIN_EMAIL, "")
         val req = ret.otpVerify(OtpRequest(otp, email!!.trim()))
         Log.d(TAG, email)
@@ -96,7 +101,9 @@ class Otp : Fragment() {
 
                             val message = response.body()!!.message
 
-                            Log.d(TAG, message)
+                            pref.edit().putString(API_TOKEN, response.body()!!.entity.access_token).apply()
+
+                            Log.d(TAG, response.body()!!.entity.access_token)
                             Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
                             verifyOtpButton.findFragment<Login>().findNavController()
                                 .navigate(R.id.action_otp_to_dashboard)

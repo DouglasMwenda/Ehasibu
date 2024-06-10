@@ -1,7 +1,7 @@
 package com.example.ehasibu.product.data
 
-data class ProductResponse(
-    val entity: Entity,
+data class ProdRequest(
+    val entity: List<Entity>,
     val message: String,
     val statusCode: Int
 )

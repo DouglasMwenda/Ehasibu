@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.ehasibu.AppModule
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentPassResetOtpBinding
 import com.example.ehasibu.login.ApiResponse
-import com.example.ehasibu.utils.api.APIService
 import com.example.ehasibu.login.data.OtpRequest2
 import com.example.ehasibu.login.model.Otp
 import com.example.ehasibu.login.viewmodel.PassResetOtpViewModel
@@ -84,7 +84,7 @@ class PassResetOtp : Fragment() {
     }
 
     private fun otpValidation(cont: Context,  email: String, Otp: String, validateOtpButton: Button) {
-        val apiService = APIService.instance
+        val apiService = AppModule().getRetrofitInstance("")
         val request = apiService.otpValidate(OtpRequest2(email.trim(),Otp))
 
             request.enqueue(object : Callback<ApiResponse<OtpValResponse>> {
