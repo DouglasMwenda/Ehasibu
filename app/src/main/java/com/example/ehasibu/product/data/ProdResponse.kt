@@ -1,6 +1,8 @@
 package com.example.ehasibu.product.data
 
-data class Entity(
+import java.io.Serializable
+
+data class ProdResponse(
     val amount: Double,
     val availableForSale: Boolean,
     val buyingPrice: Double,
@@ -22,4 +24,10 @@ data class Entity(
     val totalDaysInInventory: Int,
     val unit: String,
     val user: Any
+
+): Serializable
+data class ApiResponse<T>(
+    val entity: T,
+    val message: String,
+    val statusCode: Int
 )

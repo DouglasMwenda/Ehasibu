@@ -10,10 +10,12 @@ import com.example.ehasibu.login.data.UserRequest
 import com.example.ehasibu.login.forgot_password.ForgotPassResponse
 import com.example.ehasibu.login.forgot_password.OtpValResponse
 import com.example.ehasibu.login.reset_password.PasswordRequest
+import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductRequest
+import com.example.ehasibu.product.data.ProductResponse
 import retrofit2.Call
-
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface APIConsumer {
@@ -33,7 +35,9 @@ interface APIConsumer {
     @POST("auth/validateForgotPasswordOTP")
     fun otpValidate(@Body loginRequest: OtpRequest2): Call<ApiResponse<OtpValResponse>>
     @POST("products/add")
-    fun addProduct(@Body loginRequest: ProductRequest): Call<ApiResponse<OtpValResponse>>
+    fun addProduct(@Body productRequest: ProductRequest): Call<ApiResponse<ProductResponse>>
+    @GET("products/findAllProducts")
+    fun getProducts():Call<ApiResponse<List<ProdResponse>>>
 
 }
 

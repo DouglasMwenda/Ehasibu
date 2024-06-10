@@ -14,10 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.ehasibu.AppModule
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentLoginBinding
 import com.example.ehasibu.login.ApiResponse
-import com.example.ehasibu.utils.api.APIService
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.UserRequest
 import com.example.ehasibu.login.viewmodel.LoginViewModel
@@ -96,7 +96,7 @@ class Login : Fragment() {
 
 
     private fun userLogin(cont: Context, email: String, password: String, loginBtn: Button) {
-        val ret = APIService.instance
+        val ret = AppModule().getRetrofitInstance("")
 
         val req = ret.login(UserRequest(email.trim(), password.trim()))
         req.enqueue(object : Callback<ApiResponse<AuthUserResponse>> {
