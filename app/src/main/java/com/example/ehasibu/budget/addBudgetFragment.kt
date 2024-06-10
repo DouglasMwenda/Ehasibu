@@ -30,7 +30,7 @@ class addBudgetFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding= FragmentAddBudgetBinding.inflate(inflater,container,false)
         budgetType = binding.budgetType
         description = binding.description

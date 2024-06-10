@@ -55,6 +55,11 @@
     <string name="generate_invoice">Generate Invoice</string>
     <string name="back">Back</string>
     <string name="mode_of_payment">Mode of Payment</string>
+    <string-array name="payment_modes">
+        <item> Bank Transfer</item>
+        <item> M-PESA</item>
+        <item>Cash</item>
+    </string-array>
     <string name="balance">Balance</string>
     <string name="amount_paid">Amount Paid</string>
     <string name="summary_net_total">Summary Net Total</string>

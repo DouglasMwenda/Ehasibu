@@ -1,5 +1,6 @@
 package com.example.ehasibu.productsales
 
+import android.app.Dialog
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.DialogFragment
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentPaymentBinding
 
-class PaymentFragment : Fragment() {
+class PaymentFragment : DialogFragment() {
     private lateinit var binding:FragmentPaymentBinding
     private val viewModel: PaymentViewModel by viewModels()
     private lateinit var modeOfPaymentEditText: EditText
@@ -56,12 +58,19 @@ class PaymentFragment : Fragment() {
 
         submitButton.setOnClickListener{
 
+
         }
         cancelButton.setOnClickListener {
+            dismiss()
 
         }
 
 
         return binding.root
+    }
+    override fun onStart() {
+        super.onStart()
+
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 }
