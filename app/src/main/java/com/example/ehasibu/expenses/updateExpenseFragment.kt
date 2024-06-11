@@ -46,6 +46,7 @@ class updateExpenseFragment : DialogFragment() {
 
         }
         deleteButton.setOnClickListener {
+            dismissAllowingStateLoss()
 
         }
 

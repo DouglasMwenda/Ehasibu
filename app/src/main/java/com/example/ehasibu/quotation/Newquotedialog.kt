@@ -51,6 +51,7 @@ class Newquotedialog : DialogFragment() {
 
         }
         backButton.setOnClickListener {
+            dismiss()
 
         }
         approveQuoteButton.setOnClickListener {
