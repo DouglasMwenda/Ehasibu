@@ -9,14 +9,15 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.example.ehasibu.databinding.FragmentAddBudgetBinding
+import com.google.android.material.textfield.TextInputEditText
 
 
-class addBudgetFragment : DialogFragment() {
+class AddBudgetFragment : DialogFragment() {
     private lateinit var binding: FragmentAddBudgetBinding
     private lateinit var budgetType: AutoCompleteTextView
-    private lateinit var description:EditText
-    private lateinit var amountBudgeted:EditText
-    private lateinit var amountSpent: EditText
+    private lateinit var description:TextInputEditText
+    private lateinit var amountBudgeted:TextInputEditText
+    private lateinit var amountSpent: TextInputEditText
     private lateinit var period: AutoCompleteTextView
     private lateinit var submitButton: Button
     private lateinit var deleteButton: Button
@@ -58,8 +59,8 @@ class addBudgetFragment : DialogFragment() {
     }
 
     companion object {
-        fun newInstance(): addBudgetFragment {
-            return addBudgetFragment()
+        fun newInstance(): AddBudgetFragment {
+            return AddBudgetFragment()
         }
     }
 

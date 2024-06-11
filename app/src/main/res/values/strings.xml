@@ -163,7 +163,7 @@
     <string name="service">Service</string>
     <string name="save">Save</string>
     <string name="service_price">Service Price</string>
-<string name="Sales"> Sales</string>
+    <string name="Sales"> Sales</string>
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>
         <item>Service Sales</item>

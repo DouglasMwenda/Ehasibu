@@ -38,8 +38,8 @@ class ExpensesFragment : Fragment() {
         expensesTableLayout= binding.expensestable
 
         expenseButton.setOnClickListener {
-            val dialog = updateExpenseFragment()
-            dialog.show(parentFragmentManager,"updateExpenseFragment")
+            val dialog = UpdateExpenseFragment()
+            dialog.show(parentFragmentManager,"UpdateExpenseFragment")
         }
         return binding.root
     }
