@@ -9,13 +9,14 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.example.ehasibu.databinding.FragmentAccountDialogBinding
+import com.google.android.material.textfield.TextInputEditText
 
 
 class AccountDialogFragment : DialogFragment() {
     private lateinit var binding: FragmentAccountDialogBinding
     private lateinit var accountType: AutoCompleteTextView
     private lateinit var accountName: AutoCompleteTextView
-    private lateinit var openingBalance: EditText
+    private lateinit var openingBalance: TextInputEditText
     private lateinit var submitAccountButton: Button
     private lateinit var cancelAccountButton: Button
 

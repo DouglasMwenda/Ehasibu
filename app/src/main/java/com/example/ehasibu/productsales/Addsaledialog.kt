@@ -25,7 +25,7 @@ import java.util.Locale
 class Addsaledialog : DialogFragment() {
     private lateinit var binding: FragmentAddsaledialogBinding
     private lateinit var datePickerEditText: TextInputEditText
-    private lateinit var customerNameField: AppCompatSpinner
+    private lateinit var customerNameField: AutoCompleteTextView
     private lateinit var summaryTotal: TextInputEditText
     private lateinit var summaryTax: TextInputEditText
     private lateinit var summaryNetTotal: TextInputEditText

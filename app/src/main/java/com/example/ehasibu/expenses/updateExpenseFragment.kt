@@ -1,7 +1,6 @@
 package com.example.ehasibu.expenses
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +8,10 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
-import com.example.ehasibu.R
-import com.example.ehasibu.budget.addBudgetFragment
 import com.example.ehasibu.databinding.FragmentUpdateExpenseBinding
 
 
-class updateExpenseFragment : DialogFragment() {
+class UpdateExpenseFragment : DialogFragment() {
     private lateinit var binding: FragmentUpdateExpenseBinding
     private lateinit var expenseType: AutoCompleteTextView
     private lateinit var budgetType: AutoCompleteTextView
@@ -46,6 +43,7 @@ class updateExpenseFragment : DialogFragment() {
 
         }
         deleteButton.setOnClickListener {
+            dismissAllowingStateLoss()
 
         }
 
@@ -59,8 +57,8 @@ class updateExpenseFragment : DialogFragment() {
     }
 
     companion object {
-        fun newInstance(): updateExpenseFragment {
-            return updateExpenseFragment()
+        fun newInstance(): UpdateExpenseFragment {
+            return UpdateExpenseFragment()
         }
     }
 

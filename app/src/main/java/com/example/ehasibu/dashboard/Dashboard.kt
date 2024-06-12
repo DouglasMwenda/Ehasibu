@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -78,8 +79,12 @@ class Dashboard : Fragment() {
                     }
 
                     R.id.nav_sales -> {
+
                       //  setupSalesSpinner()
                         findNavController().navigate(R.id.productSales)
+
+                       showSalesSpinner()
+
 
                         true
                     }
@@ -182,22 +187,17 @@ class Dashboard : Fragment() {
             }
         }
 
-    private fun setupSalesSpinner() {
+    private fun showSalesSpinner() {
+        val context = requireContext()
 
-        val inflater = LayoutInflater.from(requireContext())
-        val binding = com.example.ehasibu.databinding.SalesSpinnerBinding.inflate(inflater)
-
-        val salesSpinner: Spinner = binding.salesSpinner
-
-        val adapter = ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.sales_spinner_items,
-            android.R.layout.simple_spinner_item
-        )
+        val spinner = Spinner(context)
+        val salesItems = resources.getStringArray(R.array.sales_spinner_items)
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, salesItems)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        salesSpinner.adapter = adapter
+        spinner.adapter = adapter
 
-        salesSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 handleSpinnerSelection(position)
             }
@@ -205,13 +205,14 @@ class Dashboard : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Do nothing
             }
+
         }
 
-        // Show the spinner
-        Toast.makeText(requireContext(), "Sales item selected", Toast.LENGTH_SHORT).show()
+        spinner.performClick()
     }
 
     private fun handleSpinnerSelection(position: Int) {
+        val context = requireContext()
         when (position) {
             0 -> Toast.makeText(context, "Product Sales Selected", Toast.LENGTH_SHORT).show()
             1 -> Toast.makeText(context, "Service Sales Selected", Toast.LENGTH_SHORT).show()
@@ -219,8 +220,7 @@ class Dashboard : Fragment() {
             3 -> Toast.makeText(context, "Customer Information Selected", Toast.LENGTH_SHORT).show()
         }
     }
-
-            }
+}
 
 
 

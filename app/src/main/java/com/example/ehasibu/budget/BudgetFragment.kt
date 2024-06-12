@@ -37,8 +37,8 @@ class BudgetFragment : Fragment() {
         budgetTableLayout = binding.budgetTable
 
         addBudgetButton.setOnClickListener{
-            val dialog = addBudgetFragment()
-            dialog.show(parentFragmentManager,"addBudgetFragment")
+            val dialog = AddBudgetFragment()
+            dialog.show(parentFragmentManager,"AddBudgetFragment")
         }
         return binding.root
 

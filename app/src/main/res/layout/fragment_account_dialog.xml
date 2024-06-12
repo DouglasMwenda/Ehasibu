@@ -17,14 +17,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Add Account" />
+            android:text="Add Account"
+            android:textColor="#800000"
+            android:textSize="18sp"/>
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/expenseType"
+          style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="">
+            android:hint="Account Type">
 
             <AutoCompleteTextView
                 android:id="@+id/accountType"
@@ -34,13 +36,18 @@
                 android:background="@drawable/rounded_corner"
                 android:inputType="none"
                 android:padding="16dp"
-                android:text="Account Type"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
                 android:textSize="16sp"
                 android:visibility="visible"
                 tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Account Name">
 
         <AutoCompleteTextView
             android:id="@+id/accountName"
@@ -51,13 +58,18 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="Account Name"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp"
             tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Opening Balance" >
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/openingbalance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,10 +78,10 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="Opening Balance"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
