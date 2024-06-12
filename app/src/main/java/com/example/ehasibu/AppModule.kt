@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 interface AppModuleInterface {
     fun getRetrofitInstance(token: String): APIConsumer
 }
-class AppModule: AppModuleInterface {
+class AppModule : AppModuleInterface {
     override fun getRetrofitInstance(token: String): APIConsumer {
 
         val interceptor = TokenInterceptor(token)

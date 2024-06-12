@@ -8,19 +8,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ehasibu.AppModule
 import com.example.ehasibu.databinding.FragmentProductBinding
-import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.product.data.Adapter
-import com.example.ehasibu.product.data.ProdResponse
+import com.example.ehasibu.product.repo.ProductRepository
+import com.example.ehasibu.product.viewmodel.ProductProvider
+import com.example.ehasibu.product.viewmodel.ProductViewModel
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 const val TAG = "product"
 
@@ -33,6 +30,7 @@ class Product : Fragment() {
     private lateinit var binding: FragmentProductBinding
     private lateinit var adapter: Adapter
 
+
     @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,13 +38,32 @@ class Product : Fragment() {
     ): View {
         binding = FragmentProductBinding.inflate(inflater, container, false)
 
+        val pref = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
+        val apiToken = pref.getString(API_TOKEN, "")
+
+        val repo = ProductRepository(apiToken!!)
+
+        val factory: ProductProvider by lazy {
+            ProductProvider(repo)
+        }
+
+        // Initialize the ViewModel using the ViewModelProvider
+        val productViewModel: ProductViewModel by viewModels {
+            factory
+        }
+
+        productViewModel.products.observe(viewLifecycleOwner) { products ->
+            Log.d(TAG, "onCreateView: $products")
+            adapter = Adapter(products)
+            binding.recyclerView.adapter = adapter
+        }
+
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")
 
         // Initialize RecyclerView with a LinearLayoutManager
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        fetchProducts(binding, token!!)
 
         binding.addProductBtn.setOnClickListener {
             Log.d(TAG, "show us our frame")
@@ -63,29 +80,4 @@ class Product : Fragment() {
         return binding.root
     }
 
-    private fun fetchProducts(binding: FragmentProductBinding, token: String) {
-        Log.d(TAG, "fetchProducts: $token")
-        val call = AppModule().getRetrofitInstance(token).getProducts()
-        call.enqueue(object : Callback<ApiResponse<List<ProdResponse>>> {
-            override fun onResponse(call: Call<ApiResponse<List<ProdResponse>>>, response: Response<ApiResponse<List<ProdResponse>>>) {
-                Log.d(TAG, "products: ${response.body()}")
-
-                if (response.isSuccessful) {
-                    val products = response.body()?.entity ?: emptyList()
-                    binding.recyclerView.apply{
-                        layoutManager = LinearLayoutManager(requireContext())
-                        adapter = Adapter(products)
-                        setHasFixedSize(true)
-                    }
-
-                } else {
-                    Toast.makeText(requireContext(), "Failed to fetch products", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<ApiResponse<List<ProdResponse>>>, t: Throwable) {
-                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 }

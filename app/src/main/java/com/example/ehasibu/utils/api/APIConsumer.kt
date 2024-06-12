@@ -14,6 +14,7 @@ import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.data.ProductResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -38,6 +39,8 @@ interface APIConsumer {
     fun addProduct(@Body productRequest: ProductRequest): Call<ApiResponse<ProductResponse>>
     @GET("products/findAllProducts")
     fun getProducts():Call<ApiResponse<List<ProdResponse>>>
+    @GET("products/findAllProducts")
+    suspend fun getAllProducts(): Response<ApiResponse<List<ProdResponse>>>
 
 }
 

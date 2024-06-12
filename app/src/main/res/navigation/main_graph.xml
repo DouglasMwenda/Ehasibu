@@ -209,8 +209,8 @@
         android:name="com.example.ehasibu.product.model.ProductFloorFragment"
         android:label="ProductFloorFragment">
         <argument
-            android:name="product"
-            app:argType="com.example.ehasibu.product.data.ProdResponse" />
+            android:name="productId"
+            app:argType="string" />
     </fragment>
 
 

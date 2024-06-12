@@ -108,6 +108,10 @@
     <string name="delivery_date">Delivery Date</string>
     <string name="status">Status</string>
     <string name="action">Action</string>
+    <string-array name="product_actions">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
     <string name="submit">Submit</string>
     <string name="remember_me">remember me</string>
     <string name="forgot_password">Forgot Password</string>

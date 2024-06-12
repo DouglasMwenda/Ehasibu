@@ -9,6 +9,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,80 +18,87 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="20dp">
 
-            <TextView
-                android:id="@+id/product_id"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="164dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:text="Product id"
-                android:textColor="@color/colorMaroon"
-                android:textSize="14sp" />
+                android:padding="20dp">
 
-            <TextView
-                android:id="@+id/productName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:text="Product Name"
-                android:textColor="@color/colorMaroon"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/product_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:text="Product id"
+                    android:textColor="@color/colorMaroon"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:text="Description"
-                android:textColor="@color/colorMaroon"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:text="Product Name"
+                    android:textColor="@color/colorMaroon"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:text="Category"
-                android:textColor="@color/colorMaroon"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:text="Description"
+                    android:textColor="@color/colorMaroon"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:text="Quantity"
-                android:textColor="@color/colorMaroon"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:text="Category"
+                    android:textColor="@color/colorMaroon"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:text="Unit"
-                android:textColor="@color/colorMaroon"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:text="Quantity"
+                    android:textColor="@color/colorMaroon"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/s_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:text="Selling Price"
-                android:textColor="@color/colorMaroon"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:text="Unit"
+                    android:textColor="@color/colorMaroon"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/b_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:text="Buying price"
-                android:textColor="@color/colorMaroon"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/s_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:text="Selling Price"
+                    android:textColor="@color/colorMaroon"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/b_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:text="Buying price"
+                    android:textColor="@color/colorMaroon"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
