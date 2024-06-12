@@ -2,12 +2,10 @@ package com.example.ehasibu.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -15,7 +13,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentDashboardBinding
@@ -77,12 +74,17 @@ class Dashboard : Fragment() {
                         true
                     }*/
                     R.id.nav_dashboard -> {
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Dashboard clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 
                     R.id.nav_sales -> {
+
+                      //  setupSalesSpinner()
+                        findNavController().navigate(R.id.productSales)
+
                        showSalesSpinner()
+
 
                         true
                     }
@@ -127,20 +129,20 @@ class Dashboard : Fragment() {
                     R.id.nav_products -> {
                         findNavController().navigate(R.id.products)
 
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Products clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 
                     R.id.nav_services -> {
                         findNavController().navigate(R.id.services)
 
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Services clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 
                     R.id.nav_accounts -> {
                         findNavController().navigate(R.id.accounts)
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Accounts clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 
@@ -148,32 +150,32 @@ class Dashboard : Fragment() {
 
                         findNavController().navigate(R.id.budget)
 
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Budget clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 
                     R.id.nav_expenses -> {
                         findNavController().navigate(R.id.expenses)
 
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "expenses clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 
                     R.id.nav_reports -> {
                         findNavController().navigate(R.id.report)
 
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Reports clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 
                     R.id.nav_returns -> {
 
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Returns clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 
                     R.id.nav_settings -> {
-                        Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Settings clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
 

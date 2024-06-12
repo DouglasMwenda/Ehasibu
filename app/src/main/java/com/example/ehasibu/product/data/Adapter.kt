@@ -16,14 +16,16 @@ class Adapter(private val products: List<ProdResponse>) :
     RecyclerView.Adapter<Adapter.ViewHolder>() {
     inner class ViewHolder(val binding: ProductsRecViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
+            //fetchAllProducts
         fun bind(products: ProdResponse) {
             binding.productName.text = products.productName
+                binding.productDescription.text = products.description
             binding.sellP.text = products.buyingPrice.toString()
          //   binding.productImage.setImageResource(products.productImage)
 
             binding.root.setOnClickListener {
                 val bundle = Bundle().apply {
-                    putSerializable("product", products)
+                    putString("productId", products.productId)
                 }
                 it.findFragment<Product>().findNavController().navigate(R.id.action_products_to_productFloorFragment, bundle)
             }

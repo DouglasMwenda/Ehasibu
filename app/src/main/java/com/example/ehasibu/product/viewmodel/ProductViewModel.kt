@@ -1,25 +1,44 @@
 package com.example.ehasibu.product.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.ehasibu.product.data.ProductRequest
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.example.ehasibu.product.data.ProdResponse
+import com.example.ehasibu.product.repo.ProductRepository
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 
-class ProductViewModel : ViewModel() {
+class ProductViewModel(private val repository: ProductRepository) : ViewModel() {
 
-    private val _products = MutableLiveData<List<ProductRequest>>()
-    val products: LiveData<List<ProductRequest>> get() = _products
+    val products = MutableLiveData<List<ProdResponse>>(emptyList())
 
     init {
-        loadProducts()
+        getProducts()
     }
 
-    private fun loadProducts() {
-        // Fetch products from the database and post the values to _products
-        val fetchedProducts = listOf(
-            ProductRequest("Food", "grain", 2, "flour", "kg"),
-            // Add more products fetched from your database
-        )
-        _products.postValue(fetchedProducts)
+    private fun getProducts() {
+        viewModelScope.launch {
+            while (isActive) {
+                try {
+                    val response = repository.getAllProducts()
+                    if (response.isSuccessful) {
+                        if (response.body() != null)
+                            products.value = response.body()!!.entity
+                        delay(1000)
+                    }
+                }catch (t: Throwable){
+                    println(t.message)
+                }
+            }
+        }
     }
+}
+
+class ProductProvider(val repo:ProductRepository): ViewModelProvider.Factory{
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return ProductViewModel(repo) as T
+    }
+
 }
