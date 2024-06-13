@@ -11,11 +11,8 @@ import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.ehasibu.databinding.FragmentAddProductBinding
 import com.example.ehasibu.databinding.FragmentProductBinding
-import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.product.data.ProdResponse
-import com.example.ehasibu.product.data.ProductResponse
 import com.example.ehasibu.product.repo.ProductRepository
 import com.example.ehasibu.product.viewmodel.ProductProvider
 import com.example.ehasibu.product.viewmodel.ProductViewModel
