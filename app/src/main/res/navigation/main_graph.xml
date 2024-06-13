@@ -95,9 +95,7 @@
         android:name="com.example.ehasibu.product.model.Product"
         android:label="fragment_product"
         tools:layout="@layout/fragment_product">
-        <action
-            android:id="@+id/action_products_to_add_Product"
-            app:destination="@id/add_Product" />
+
         <action
             android:id="@+id/action_products_to_set_Price"
             app:destination="@id/set_Price" />
@@ -186,15 +184,7 @@
             </fragment>
         </navigation>
     </navigation>
-    <fragment
-        android:id="@+id/add_Product"
-        android:name="com.example.ehasibu.product.Add_Product"
-        android:label="fragment_add__product"
-        tools:layout="@layout/fragment_add__product">
-        <action
-            android:id="@+id/action_add_Product_to_products"
-            app:destination="@id/products" />
-    </fragment>
+
     <fragment
         android:id="@+id/set_Price"
         android:name="com.example.ehasibu.product.model.Set_Price"

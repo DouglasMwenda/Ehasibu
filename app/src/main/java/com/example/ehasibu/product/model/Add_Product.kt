@@ -3,16 +3,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.DialogFragment
 import com.example.ehasibu.databinding.FragmentAddProductBinding
-import com.example.ehasibu.product.viewmodel.AddProductViewModel
 
-class Add_Product : Fragment() {
+class Add_Product : DialogFragment() {
 
     private lateinit var binding: FragmentAddProductBinding
 
-    private val viewModel: AddProductViewModel by viewModels()
 
     companion object {
         fun newInstance() = Add_Product()
@@ -22,23 +19,26 @@ class Add_Product : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAddProductBinding.inflate(inflater, container, false)
-    //}
-
-    //override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    //    super.onViewCreated(view, savedInstanceState)
-
-       // saveProductButton = binding.saveProductButton
 
 
         binding.saveProductBtn.setOnClickListener {
 
 
 
+
+
         }
         binding.cancelProductButton.setOnClickListener {
-            requireActivity().onBackPressed()
+          dismiss()
         }
         return binding.root
 
     }
+    override fun onStart() {
+        super.onStart()
+
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+
 }

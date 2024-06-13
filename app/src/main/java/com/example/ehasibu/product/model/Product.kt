@@ -1,5 +1,6 @@
 package com.example.ehasibu.product.model
 
+import Add_Product
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
@@ -10,8 +11,11 @@ import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.ehasibu.databinding.FragmentAddProductBinding
 import com.example.ehasibu.databinding.FragmentProductBinding
+import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.product.data.ProdResponse
+import com.example.ehasibu.product.data.ProductResponse
 import com.example.ehasibu.product.repo.ProductRepository
 import com.example.ehasibu.product.viewmodel.ProductProvider
 import com.example.ehasibu.product.viewmodel.ProductViewModel
@@ -44,12 +48,8 @@ class Product : Fragment() {
         }
 
         binding.addProductBtn.setOnClickListener {
-         /*   val fragment = AddProductFragment.newInstance()
-            val trans = childFragmentManager.beginTransaction()
-            trans.replace(binding.frameLayout.id, fragment).commit()
-            binding.frameLayout.visibility = View.VISIBLE
-
-          */
+         val dialog= Add_Product()
+            dialog.show(parentFragmentManager,"Add_Product")
         }
 
         binding.setPriceBtn.setOnClickListener {
@@ -93,4 +93,5 @@ class Product : Fragment() {
             tableLayout.addView(row)
         }
     }
+
 }
