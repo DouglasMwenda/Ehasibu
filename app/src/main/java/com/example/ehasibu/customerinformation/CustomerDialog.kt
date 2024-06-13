@@ -12,7 +12,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
-import com.example.ehasibu.budget.addBudgetFragment
 import com.example.ehasibu.databinding.FragmentCustomerDialogBinding
 
 class CustomerDialog : DialogFragment() {

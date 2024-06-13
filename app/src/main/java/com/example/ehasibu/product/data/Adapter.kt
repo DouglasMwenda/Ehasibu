@@ -1,6 +1,6 @@
 package com.example.ehasibu.product.data
 
-
+/*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.ProductsRecViewBinding
-import com.example.ehasibu.product.model.Product
+import com.google.android.gms.analytics.ecommerce.Product
 
 
 class Adapter(private val products: List<ProdResponse>) :
@@ -50,6 +50,6 @@ class Adapter(private val products: List<ProdResponse>) :
         return products.size
     }
 }
-
+*/
 
 
