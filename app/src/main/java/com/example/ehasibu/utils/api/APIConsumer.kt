@@ -36,9 +36,8 @@ interface APIConsumer {
     @POST("auth/validateForgotPasswordOTP")
     fun otpValidate(@Body loginRequest: OtpRequest2): Call<ApiResponse<OtpValResponse>>
     @POST("products/add")
-    fun addProduct(@Body productRequest: ProductRequest): Call<ApiResponse<ProductResponse>>
-    @GET("products/findAllProducts")
-    fun getProducts():Call<ApiResponse<List<ProdResponse>>>
+    fun addProduct(@Body productRequest: ProductRequest): Response<ApiResponse<ProductResponse>>
+
     @GET("products/findAllProducts")
     suspend fun getAllProducts(): Response<ApiResponse<List<ProdResponse>>>
 
