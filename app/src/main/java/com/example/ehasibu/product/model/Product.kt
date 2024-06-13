@@ -1,83 +1,96 @@
 package com.example.ehasibu.product.model
 
-import Add_Product
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableRow
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ehasibu.databinding.FragmentProductBinding
-import com.example.ehasibu.product.data.Adapter
+import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.repo.ProductRepository
 import com.example.ehasibu.product.viewmodel.ProductProvider
 import com.example.ehasibu.product.viewmodel.ProductViewModel
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 
-const val TAG = "product"
+private const val TAG = "product"
 
 class Product : Fragment() {
 
-    companion object {
-        fun newInstance() = Product()
-    }
-
     private lateinit var binding: FragmentProductBinding
-    private lateinit var adapter: Adapter
 
-
-    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProductBinding.inflate(inflater, container, false)
 
-        val pref = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
-        val apiToken = pref.getString(API_TOKEN, "")
+        val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
+        val token = sharedPrefs.getString(API_TOKEN, "")!!
 
-        val repo = ProductRepository(apiToken!!)
+        val repo = ProductRepository(token)
 
-        val factory: ProductProvider by lazy {
+        val productViewModel: ProductViewModel by viewModels {
             ProductProvider(repo)
         }
 
-        // Initialize the ViewModel using the ViewModelProvider
-        val productViewModel: ProductViewModel by viewModels {
-            factory
-        }
-
         productViewModel.products.observe(viewLifecycleOwner) { products ->
-            Log.d(TAG, "onCreateView: $products")
-            adapter = Adapter(products)
-            binding.recyclerView.adapter = adapter
+            updateTable(products)
         }
-
-        val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
-        val token = sharedPrefs.getString(API_TOKEN, "")
-
-        // Initialize RecyclerView with a LinearLayoutManager
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
 
         binding.addProductBtn.setOnClickListener {
-            Log.d(TAG, "show us our frame")
-            val fragment = Add_Product.newInstance()
+         /*   val fragment = AddProductFragment.newInstance()
             val trans = childFragmentManager.beginTransaction()
             trans.replace(binding.frameLayout.id, fragment).commit()
             binding.frameLayout.visibility = View.VISIBLE
+
+          */
         }
 
         binding.setPriceBtn.setOnClickListener {
+            // Implement the logic for setting the price
         }
-
 
         return binding.root
     }
 
+    private fun updateTable(products: List<ProdResponse>) {
+        val tableLayout = binding.tableLayout
+
+        // Clear existing rows (except for the header row)
+        while (tableLayout.childCount > 1) {
+            tableLayout.removeViewAt(1)
+        }
+
+        // Add rows for each product
+        for (product in products) {
+            val row = TableRow(context).apply { gravity= Gravity.CENTER_HORIZONTAL }
+            val no =TextView(context).apply { text= product.productId; gravity = Gravity.CENTER }
+            val name = TextView(context).apply { text = product.productName; gravity = Gravity.CENTER }
+            val description = TextView(context).apply { text = product.description; gravity = Gravity.CENTER}
+            val category = TextView(context).apply { text = product.category; gravity = Gravity.CENTER }
+            val quantity = TextView(context).apply { text = product.quantity.toString(); gravity = Gravity.CENTER }
+            val unit = TextView(context).apply { text = product.unit; gravity = Gravity.CENTER }
+            val buyingPrice = TextView(context).apply { text = product.buyingPrice.toString(); gravity = Gravity.CENTER }
+            val sellingPrice = TextView(context).apply { text = product.sellingPrice.toString(); gravity = Gravity.CENTER }
+            // Add other product details as necessary
+
+            row.addView(no)
+            row.addView(name)
+            row.addView(description)
+            row.addView(category)
+            row.addView(quantity)
+            row.addView(unit)
+            row.addView(buyingPrice)
+            row.addView(sellingPrice)
+            // Add other views to the row
+
+            tableLayout.addView(row)
+        }
+    }
 }
