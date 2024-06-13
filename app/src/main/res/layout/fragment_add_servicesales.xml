@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,157 +12,163 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="16dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:hint="Customer Name">
 
             <AutoCompleteTextView
                 android:id="@+id/customerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:inputType=""
+                android:inputType="text"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
-                android:textSize="16sp"
-                tools:ignore="VisualLintTextFieldSize" />
+                android:textSize="16sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TableLayout
+        <!-- Wrapping TableLayout in ScrollView and HorizontalScrollView -->
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
 
-            <TableRow
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#800000">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/no"
-                    android:textColor="@color/white" />
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/product"
-                    android:textColor="@color/white" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#800000">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/product_id"
-                    android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/no"
+                            android:textColor="@color/white"
+                            android:padding="8dp"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/description"
-                    android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/product"
+                            android:textColor="@color/white"
+                            android:padding="8dp"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/category"
-                    android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/product_id"
+                            android:textColor="@color/white"
+                            android:padding="8dp"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/unit"
-                    android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/description"
+                            android:textColor="@color/white"
+                            android:padding="8dp"/>
 
-            </TableRow>
-        </TableLayout>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/category"
+                            android:textColor="@color/white"
+                            android:padding="8dp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/unit"
+                            android:textColor="@color/white"
+                            android:padding="8dp"/>
+
+                    </TableRow>
+                    <!-- Add more TableRow elements here as needed -->
+
+                </TableLayout>
+            </HorizontalScrollView>
+        </ScrollView>
 
         <Button
             android:id="@+id/addproductbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_margin="5dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="#800000"
-            android:text="@string/add_product" />
+            android:text="@string/add_product"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginTop="16dp"
             android:hint="Total">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Total"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
                 android:inputType="number"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
-                android:textSize="16sp"
-                tools:ignore="VisualLintTextFieldSize" />
+                android:textSize="16sp"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginTop="16dp"
             android:hint="Mode Of Payment">
 
             <AutoCompleteTextView
                 android:id="@+id/modeofpayment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:autofillHints=""
+                android:layout_height="wrap_content"
                 android:inputType="none"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
-                android:textSize="16sp"
-                tools:ignore="VisualLintTextFieldSize" />
+                android:textSize="16sp"/>
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
 
             <Button
                 android:id="@+id/invoicebutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_gravity="start"
+                android:layout_marginEnd="8dp"
                 android:backgroundTint="#800000"
-                android:text="Generate Invoice"
-                />
+                android:text="Generate Invoice"/>
 
             <Button
+                android:id="@+id/backbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_gravity="start"
                 android:backgroundTint="#800000"
-                android:text="Back"
-                android:id="@+id/backbutton"
-                />
+                android:text="Back"/>
         </LinearLayout>
-
-
-
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
