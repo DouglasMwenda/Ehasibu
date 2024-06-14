@@ -23,37 +23,33 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:hint="Budget Type">
 
             <AutoCompleteTextView
                 android:id="@+id/budgetType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@drawable/rounded_corner"
                 android:inputType="none"
-                android:padding="16dp"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
                 android:textSize="16sp"
-                android:visibility="visible"
-                tools:ignore="LabelFor" />
+          />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:hint="Description">
+
             <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
                 android:maxLines="1"
             android:autofillHints=""
-            android:background="@drawable/rounded_corner"
             android:inputType="none"
-            android:padding="16dp"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp"
@@ -63,17 +59,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:hint="Amount Budgeted">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/amountbudgeted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:autofillHints="number"
-            android:background="@drawable/rounded_corner"
             android:inputType="none"
-            android:padding="16dp"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp" />
@@ -82,17 +76,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:hint="Amount Spent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/amountspent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:autofillHints="number"
-            android:background="@drawable/rounded_corner"
             android:inputType="none"
-            android:padding="16dp"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp" />
@@ -102,16 +94,14 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:hint="Period">
 
             <AutoCompleteTextView
                 android:id="@+id/period"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@drawable/rounded_corner"
                 android:inputType="none"
-                android:padding="16dp"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
                 android:textSize="16sp"

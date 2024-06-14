@@ -46,11 +46,12 @@ class Product : Fragment() {
             updateTable(products)
         }
 
+
         AddProductbutton= binding.addProductBtn
         AddProductbutton.setOnClickListener {
             val dialog= Add_Product()
             dialog.show(parentFragmentManager,"addProduct")
-        }
+
 
         binding.setPriceBtn.setOnClickListener {
             // Implement the logic for setting the price
@@ -93,4 +94,5 @@ class Product : Fragment() {
             tableLayout.addView(row)
         }
     }
+
 }

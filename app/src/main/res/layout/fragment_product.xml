@@ -222,7 +222,7 @@
             android:text="Report"
             tools:ignore="ButtonStyle,DuplicateIds,HardcodedText,VisualLintButtonSize,TouchTargetSizeCheck" />
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 

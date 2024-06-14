@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.databinding.FragmentAddProductBinding
 import com.example.ehasibu.product.data.ProductRequest
@@ -15,13 +16,18 @@ import com.example.ehasibu.utils.PREF
 
 private const val TAG = "addproduct"
 
+
+import com.example.ehasibu.databinding.FragmentAddProductBinding
+
 class Add_Product : DialogFragment() {
 
     private lateinit var binding: FragmentAddProductBinding
 
+
     private val viewModel: AddProductViewModel by viewModels {
         AddProductViewModel(ProductRepository(getAPIAuthToken()))
     }
+
 
     companion object {
         fun newInstance() = Add_Product()
@@ -33,14 +39,21 @@ class Add_Product : DialogFragment() {
     ): View {
         binding = FragmentAddProductBinding.inflate(inflater, container, false)
 
+
         binding.cancelProductButton.setOnClickListener {
             requireActivity().onBackPressed()
         }
         return binding.root
 
+
+
+        binding.saveProductBtn.setOnClickListener {
+
+
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         binding.saveProductBtn.setOnClickListener {
             val product = ProductRequest(
@@ -50,10 +63,13 @@ class Add_Product : DialogFragment() {
                 unit = binding.unit.text.toString(),
             )
             viewModel.addProduct(product)
+
+
+
         }
 
         binding.cancelProductButton.setOnClickListener {
-            requireActivity().onBackPressed()
+          dismiss()
         }
     }
 
@@ -61,4 +77,11 @@ class Add_Product : DialogFragment() {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         return sharedPrefs.getString(API_TOKEN, "")?: ""
     }
+    override fun onStart() {
+        super.onStart()
+
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+
 }
