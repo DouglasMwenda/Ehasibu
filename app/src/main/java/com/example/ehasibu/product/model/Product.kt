@@ -1,11 +1,13 @@
 package com.example.ehasibu.product.model
 
+import Add_Product
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -23,6 +25,7 @@ private const val TAG = "product"
 class Product : Fragment() {
 
     private lateinit var binding: FragmentProductBinding
+    private lateinit var AddProductbutton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,13 +46,10 @@ class Product : Fragment() {
             updateTable(products)
         }
 
-        binding.addProductBtn.setOnClickListener {
-         /*   val fragment = AddProductFragment.newInstance()
-            val trans = childFragmentManager.beginTransaction()
-            trans.replace(binding.frameLayout.id, fragment).commit()
-            binding.frameLayout.visibility = View.VISIBLE
-
-          */
+        AddProductbutton= binding.addProductBtn
+        AddProductbutton.setOnClickListener {
+            val dialog= Add_Product()
+            dialog.show(parentFragmentManager,"addProduct")
         }
 
         binding.setPriceBtn.setOnClickListener {
