@@ -29,6 +29,7 @@ private val _isProductAdded = MutableLiveData<Boolean>()
 
                     }
                 } else {
+
                     Log.d(TAG, "Error: ${response.message()}")
                 }
             } catch (e: Exception) {
