@@ -65,6 +65,8 @@ class Login : Fragment() {
         }
 
         return binding.root
+
+
     }
 
 
@@ -91,6 +93,7 @@ class Login : Fragment() {
         }
 
         return true
+
     }
 
 
@@ -135,6 +138,9 @@ class Login : Fragment() {
 
                     }
                 }
+
+
+
             }
 
             override fun onFailure(call: Call<ApiResponse<AuthUserResponse>>, t: Throwable) {
@@ -144,6 +150,7 @@ class Login : Fragment() {
             }
 
         })
+
     }
 
 }

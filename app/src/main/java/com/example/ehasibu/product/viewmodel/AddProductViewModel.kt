@@ -1,6 +1,8 @@
 package com.example.ehasibu.product.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -10,27 +12,35 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "addproduct"
 
-class AddProductViewModel(private val repository: ProductRepository) : ViewModel(),
-    ViewModelProvider.Factory {
-fun  addProduct(product: ProductRequest) {
-viewModelScope.launch {
+class AddProductViewModel(private val repository: ProductRepository) : ViewModel() {
+private val _isProductAdded = MutableLiveData<Boolean>()
+    val isProductAdded: LiveData<Boolean> = _isProductAdded
 
-    try {
-        val response = repository.addProduct(product)
-        if (response.isSuccessful) {
-            val message = response.body()?.message
+    fun addProduct(product: ProductRequest) {
+        viewModelScope.launch {
+            try {
+                val response = repository.addProduct(product)
+                if (response.isSuccessful) {
+                    _isProductAdded.postValue(true)
 
-            if (message != null) {
-                Log.d(TAG, message)
+                    val message = response.body()?.message
+                    if (message != null) {
+                        Log.d(TAG, message)
+
+                    }
+                } else {
+
+                    Log.d(TAG, "Error: ${response.message()}")
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception occurred: ${e.message}", e)
             }
-        } else {
-            Log.d(TAG, "Error: ${response.message()}") // Log the error message
         }
-    } catch (e: Exception) {
-        Log.e(TAG, "Exception occurred: ${e.message}", e) // Log the exception with stack trace
     }
-    //  val repository = ProductRepository(token = String())
-    //  repository.addProduct(product)
-}
-}
+
+    class AddProductProvider(private val rep: ProductRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return AddProductViewModel(rep) as T
+        }
+    }
 }

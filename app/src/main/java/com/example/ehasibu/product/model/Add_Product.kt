@@ -1,12 +1,11 @@
-
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.ehasibu.databinding.FragmentAddProductBinding
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.repo.ProductRepository
@@ -16,44 +15,31 @@ import com.example.ehasibu.utils.PREF
 
 private const val TAG = "addproduct"
 
-
-import com.example.ehasibu.databinding.FragmentAddProductBinding
-
-class Add_Product : DialogFragment() {
+class AddProduct : DialogFragment() {
 
     private lateinit var binding: FragmentAddProductBinding
 
-
     private val viewModel: AddProductViewModel by viewModels {
-        AddProductViewModel(ProductRepository(getAPIAuthToken()))
+        val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
+        val token = sharedPrefs.getString(API_TOKEN, "")!!
+        AddProductViewModel.AddProductProvider(ProductRepository(token))
     }
-
 
     companion object {
-        fun newInstance() = Add_Product()
+        fun newInstance() = AddProduct()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
     ): View {
         binding = FragmentAddProductBinding.inflate(inflater, container, false)
 
-
-        binding.cancelProductButton.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
-        return binding.root
-
-
-
-        binding.saveProductBtn.setOnClickListener {
-
-
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+        viewModel.isProductAdded.observe(viewLifecycleOwner, Observer { isSuccess ->
+            if (isSuccess == true) {
+                dismiss()
+            }
+        })
 
         binding.saveProductBtn.setOnClickListener {
             val product = ProductRequest(
@@ -63,25 +49,16 @@ class Add_Product : DialogFragment() {
                 unit = binding.unit.text.toString(),
             )
             viewModel.addProduct(product)
-
-
-
         }
 
         binding.cancelProductButton.setOnClickListener {
-          dismiss()
+            dismiss()
         }
+        return binding.root
     }
 
-    private fun getAPIAuthToken(): String {
-        val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
-        return sharedPrefs.getString(API_TOKEN, "")?: ""
-    }
     override fun onStart() {
         super.onStart()
-
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
-
-
 }

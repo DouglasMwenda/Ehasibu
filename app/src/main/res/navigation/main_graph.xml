@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/navigation2">
+    app:startDestination="@id/login">
 
     <fragment
         android:id="@+id/password_Reset"
@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_password__reset">
         <action
             android:id="@+id/action_password_Reset_to_login"
-            app:destination="@id/navigation2" />
+            app:destination="@id/login" />
         <argument
             android:name="request"
             app:argType="com.example.ehasibu.login.data.UserRequest" />
         <action
             android:id="@+id/action_password_Reset_to_login2"
-            app:destination="@id/navigation2" />
+            app:destination="@id/login" />
     </fragment>
 
     <fragment
@@ -146,7 +146,10 @@
         tools:layout="@layout/fragment_pass_reset">
         <action
             android:id="@+id/action_passReset_to_login"
-            app:destination="@id/navigation2" />
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_passReset_to_login2"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/productSales"
@@ -161,12 +164,7 @@
         android:id="@+id/addsaledialog"
         android:name="com.example.ehasibu.productsales.Addsaledialog"
         android:label="Addsaledialog" />
-    <navigation
-        android:id="@+id/navigation2"
-        app:startDestination="@id/navigation">
-        <navigation
-            android:id="@+id/navigation"
-            app:startDestination="@id/login">
+
             <fragment
                 android:id="@+id/login"
                 android:name="com.example.ehasibu.login.model.Login"
@@ -182,8 +180,7 @@
                     android:id="@+id/action_login_to_forgotPass"
                     app:destination="@id/forgotPass" />
             </fragment>
-        </navigation>
-    </navigation>
+
 
     <fragment
         android:id="@+id/set_Price"
