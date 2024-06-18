@@ -44,7 +44,7 @@
             android:inputType="none"
             android:padding="16dp"
             android:paddingEnd="12dp"
-            android:text="FirstName"
+            android:hint="First Name"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp" />
@@ -57,8 +57,8 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="LastName"
-            android:textColor="#800000"
+           android:textColor="#800000"
+            android:hint="Last Name"
             android:textColorHint="#800000"
             android:textSize="16sp" />
 
@@ -70,7 +70,7 @@
             android:background="@drawable/rounded_corner"
             android:inputType="number"
             android:padding="16dp"
-            android:text="PhhoneNumber"
+           android:hint="phone number"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp"
@@ -84,8 +84,8 @@
             android:background="@drawable/rounded_corner"
             android:inputType="textEmailAddress"
             android:padding="16dp"
-            android:text="@string/email_adress"
             android:textColor="#800000"
+            android:hint="Email adress"
             android:textColorHint="#800000"
             android:textSize="16sp"
             tools:ignore="Autofill" />
@@ -98,7 +98,7 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="@string/company_name"
+            android:hint="Company Name"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp" />
@@ -111,7 +111,7 @@
             android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
-            android:text="@string/address"
+            android:hint="Address"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp" />
