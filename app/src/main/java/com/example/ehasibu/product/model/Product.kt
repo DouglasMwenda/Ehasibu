@@ -1,6 +1,6 @@
 package com.example.ehasibu.product.model
 
-import Add_Product
+import AddProduct
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
@@ -47,52 +47,63 @@ class Product : Fragment() {
         }
 
 
-        AddProductbutton= binding.addProductBtn
+        AddProductbutton = binding.addProductBtn
         AddProductbutton.setOnClickListener {
-            val dialog= Add_Product()
-            dialog.show(parentFragmentManager,"addProduct")
+            val dialog = AddProduct()
+            dialog.show(parentFragmentManager, "addProduct")
 
 
-        binding.setPriceBtn.setOnClickListener {
-            // Implement the logic for setting the price
+            binding.setPriceBtn.setOnClickListener {
+                // Implement the logic for setting the price
+            }
+
         }
-
         return binding.root
     }
 
-    private fun updateTable(products: List<ProdResponse>) {
-        val tableLayout = binding.tableLayout
+        private fun updateTable(products: List<ProdResponse>) {
+            val tableLayout = binding.tableLayout
 
-        // Clear existing rows (except for the header row)
-        while (tableLayout.childCount > 1) {
-            tableLayout.removeViewAt(1)
-        }
+            // Clear existing rows (except for the header row)
+            while (tableLayout.childCount > 1) {
+                tableLayout.removeViewAt(1)
+            }
 
-        // Add rows for each product
-        for (product in products) {
-            val row = TableRow(context).apply { gravity= Gravity.CENTER_HORIZONTAL }
-            val no =TextView(context).apply { text= product.productId; gravity = Gravity.CENTER }
-            val name = TextView(context).apply { text = product.productName; gravity = Gravity.CENTER }
-            val description = TextView(context).apply { text = product.description; gravity = Gravity.CENTER}
-            val category = TextView(context).apply { text = product.category; gravity = Gravity.CENTER }
-            val quantity = TextView(context).apply { text = product.quantity.toString(); gravity = Gravity.CENTER }
-            val unit = TextView(context).apply { text = product.unit; gravity = Gravity.CENTER }
-            val buyingPrice = TextView(context).apply { text = product.buyingPrice.toString(); gravity = Gravity.CENTER }
-            val sellingPrice = TextView(context).apply { text = product.sellingPrice.toString(); gravity = Gravity.CENTER }
-            // Add other product details as necessary
+            // Add rows for each product
+            for (product in products) {
+                val row = TableRow(context).apply { gravity = Gravity.CENTER_HORIZONTAL }
+                val no =
+                    TextView(context).apply { text = product.productId; gravity = Gravity.NO_GRAVITY }
+                val name =
+                    TextView(context).apply { text = product.productName; gravity = Gravity.CENTER }
+                val description =
+                    TextView(context).apply { text = product.description; gravity = Gravity.CENTER }
+                val category =
+                    TextView(context).apply { text = product.category; gravity = Gravity.CENTER }
+                val quantity = TextView(context).apply {
+                    text = product.quantity.toString(); gravity = Gravity.CENTER
+                }
+                val unit = TextView(context).apply { text = product.unit; gravity = Gravity.CENTER }
+                val buyingPrice = TextView(context).apply {
+                    text = product.buyingPrice.toString(); gravity = Gravity.CENTER
+                }
+                val sellingPrice = TextView(context).apply {
+                    text = product.sellingPrice.toString(); gravity = Gravity.CENTER
+                }
+                // Add other product details as necessary
 
-            row.addView(no)
-            row.addView(name)
-            row.addView(description)
-            row.addView(category)
-            row.addView(quantity)
-            row.addView(unit)
-            row.addView(buyingPrice)
-            row.addView(sellingPrice)
-            // Add other views to the row
+                row.addView(no)
+                row.addView(name)
+                row.addView(description)
+                row.addView(category)
+                row.addView(quantity)
+                row.addView(unit)
+                row.addView(buyingPrice)
+                row.addView(sellingPrice)
+                // Add other views to the row
 
-            tableLayout.addView(row)
+                tableLayout.addView(row)
+            }
         }
     }
 
-}
