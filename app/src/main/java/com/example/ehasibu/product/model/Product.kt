@@ -12,6 +12,7 @@ import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentProductBinding
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.repo.ProductRepository
@@ -73,22 +74,37 @@ class Product : Fragment() {
             for (product in products) {
                 val row = TableRow(context).apply { gravity = Gravity.CENTER_HORIZONTAL }
                 val no =
-                    TextView(context).apply { text = product.productId; gravity = Gravity.NO_GRAVITY }
+                    TextView(context).apply { text = product.productId
+                     //   gravity = Gravity.NO_GRAVITY
+                        setTextColor(resources.getColor(R.color.white, null)) }
                 val name =
-                    TextView(context).apply { text = product.productName; gravity = Gravity.CENTER }
+                    TextView(context).apply { text = product.productName;
+                        //gravity = Gravity.CENTER
+                        setTextColor(resources.getColor(R.color.white, null)) }
                 val description =
-                    TextView(context).apply { text = product.description; gravity = Gravity.CENTER }
+                    TextView(context).apply { text = product.description
+                       // gravity = Gravity.CENTER
+                        setTextColor(resources.getColor(R.color.white, null)) }
                 val category =
-                    TextView(context).apply { text = product.category; gravity = Gravity.CENTER }
+                    TextView(context).apply { text = product.category
+                      //  gravity = Gravity.CENTER
+                        setTextColor(resources.getColor(R.color.white, null)) }
                 val quantity = TextView(context).apply {
-                    text = product.quantity.toString(); gravity = Gravity.CENTER
-                }
-                val unit = TextView(context).apply { text = product.unit; gravity = Gravity.CENTER }
+                    text = product.quantity.toString()
+                    gravity = Gravity.CENTER
+                    setTextColor(resources.getColor(R.color.white, null)) }
+                val unit = TextView(context).apply { text = product.unit
+                    gravity = Gravity.CENTER
+                    setTextColor(resources.getColor(R.color.white, null)) }
                 val buyingPrice = TextView(context).apply {
-                    text = product.buyingPrice.toString(); gravity = Gravity.CENTER
+                    text = product.buyingPrice.toString()
+                    gravity = Gravity.CENTER
+                    setTextColor(resources.getColor(R.color.white, null))
                 }
                 val sellingPrice = TextView(context).apply {
-                    text = product.sellingPrice.toString(); gravity = Gravity.CENTER
+                    text = product.sellingPrice.toString()
+                    gravity = Gravity.CENTER
+                    setTextColor(resources.getColor(R.color.white, null))
                 }
                 // Add other product details as necessary
 
