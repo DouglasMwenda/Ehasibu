@@ -7,7 +7,10 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -79,15 +82,15 @@ class Product : Fragment() {
                         setTextColor(resources.getColor(R.color.white, null)) }
                 val name =
                     TextView(context).apply { text = product.productName;
-                        //gravity = Gravity.CENTER
+                        gravity = Gravity.CENTER
                         setTextColor(resources.getColor(R.color.white, null)) }
                 val description =
                     TextView(context).apply { text = product.description
-                       // gravity = Gravity.CENTER
+                        gravity = Gravity.CENTER
                         setTextColor(resources.getColor(R.color.white, null)) }
                 val category =
                     TextView(context).apply { text = product.category
-                      //  gravity = Gravity.CENTER
+                       gravity = Gravity.CENTER
                         setTextColor(resources.getColor(R.color.white, null)) }
                 val quantity = TextView(context).apply {
                     text = product.quantity.toString()
@@ -106,8 +109,37 @@ class Product : Fragment() {
                     gravity = Gravity.CENTER
                     setTextColor(resources.getColor(R.color.white, null))
                 }
-                // Add other product details as necessary
 
+                val actionSpinner = Spinner(context).apply {
+                    gravity = Gravity.START
+                    adapter = ArrayAdapter.createFromResource(
+                        context,
+                        R.array.product_actions,
+                        android.R.layout.simple_spinner_item
+                    ).also { adapter ->
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    }
+
+                    onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                            val action = parent.getItemAtPosition(position) as String
+                            when (action) {
+                                "Edit" -> editProduct(product)
+                                "Delete" -> deleteProduct(product)
+                            }
+                        }
+
+                        override fun onNothingSelected(parent: AdapterView<*>) {
+                            // Do nothing
+                        }
+
+                    }
+                    setBackgroundResource(android.R.drawable.btn_default)
+                    setPadding(0, 16, 0, 0)
+
+                }
+
+                // Add all views to the row
                 row.addView(no)
                 row.addView(name)
                 row.addView(description)
@@ -116,10 +148,21 @@ class Product : Fragment() {
                 row.addView(unit)
                 row.addView(buyingPrice)
                 row.addView(sellingPrice)
-                // Add other views to the row
+
+                row.addView(actionSpinner)
 
                 tableLayout.addView(row)
             }
         }
+
+    private fun editProduct(product: ProdResponse) {
+        // edit product logic here
+       // Toast.makeText(context, "Edit product: ${product.productName}", Toast.LENGTH_SHORT).show()
     }
+
+    private fun deleteProduct(product: ProdResponse) {
+        // delete product logic here
+        //Toast.makeText(context, "Delete product: ${product.productName}", Toast.LENGTH_SHORT).show()
+    }
+}
 

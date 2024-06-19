@@ -1,223 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/background"
+    android:id="@+id/product"
+    tools:context=".product.model.Product">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/cardview_dark_background"
-        android:layout_height="match_parent"
-        tools:context=".product.model.Product">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="413dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="4dp"
-        android:background="#800000"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/search_layout"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/searchbar"
-        android:backgroundTint="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLayout">
-
-
-    </LinearLayout>
-
-    <ScrollView
-        android:id="@+id/scrollView4"
-        android:layout_width="584dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_layout"
-        app:layout_constraintVertical_bias="1.0">
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
-            app:layout_constraintVertical_bias="0.131"
-            tools:layout_editor_absoluteX="-34dp">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="Products"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <TableLayout
-                android:id="@+id/tableLayout"
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:hint="@string/search_product">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:shrinkColumns="*"
-                android:stretchColumns="*">
+                android:inputType="text" />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <TableRow
-                    android:id="@+id/tableRow"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="#800000"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
-                    app:layout_constraintVertical_bias="0.064">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/search_icon"
+            app:tint="@color/white" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:text="No"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Name"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/description"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Category"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/quantity"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/unit"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/s_price_kes"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/b_price_kes"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/action"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-                </TableRow>
-
-            </TableLayout>
-        </HorizontalScrollView>
-    </ScrollView>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/buttonLayout"
-        android:layout_width="293dp"
-        android:layout_height="62dp"
-        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/addProductBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#800000"
-            android:minHeight="48dp"
             android:text="Add Product"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/setPriceBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:backgroundTint="#800000"
-            android:minHeight="48dp"
             android:text="Set Price" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/reportsBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:backgroundTint="#800000"
             android:text="Report" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/search_edit_text"
-        android:layout_width="307dp"
-        android:layout_height="46dp"
-        android:backgroundTint="@color/white"
-        android:drawableStart="@null"
-        android:drawablePadding="10dp"
-        android:hint="@string/search_product"
-        android:padding="10dp"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="177dp" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fillViewport="false">
 
+            <ScrollView
+                android:id="@+id/scrollView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="580dp"
+                    android:layout_height="0dp"
+                    android:shrinkColumns="*"
+                    android:stretchColumns="*">
 
+                    <TableRow
+                        android:id="@+id/tableRow"
+                        android:layout_width="604dp"
+                        android:layout_height="match_parent"
+                        android:background="#800000">
 
+                        <TextView
+                            android:layout_width="46dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.1"
+                            android:text="No"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
+                        <TextView
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Name"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
+                        <TextView
+                            android:layout_width="87dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/description"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="16dp"
+                            android:layout_weight="1"
+                            android:text="Category"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/quantity"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="38dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/unit"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="78dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/s_price_kes"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/b_price_kes"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="57dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/action"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </TableRow>
+                </TableLayout>
+            </ScrollView>
+        </HorizontalScrollView>
+    </FrameLayout>
+</LinearLayout>
