@@ -43,6 +43,9 @@ interface APIConsumer {
 
     @GET("products/findAllProducts")
     suspend fun getAllProducts(): Response<ApiResponse<List<ProdResponse>>>
+     // productsale
+    @GET("sales/findAllSales")
+    suspend fun getAllSales(): Response<ApiResponse<List<ProdResponse>>>
 
 }
 
