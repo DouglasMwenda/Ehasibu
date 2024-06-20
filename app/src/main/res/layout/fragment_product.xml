@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/background"
+    android:background="@color/white"
     android:id="@+id/product"
     tools:context=".product.model.Product">
 
@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:text="Products"
-            android:textColor="@color/white"
+            android:textColor="@color/colorMaroon"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -113,7 +113,7 @@
 
                 <TableLayout
                     android:id="@+id/tableLayout"
-                    android:layout_width="580dp"
+                    android:layout_width="604dp"
                     android:layout_height="0dp"
                     android:shrinkColumns="*"
                     android:stretchColumns="*">
@@ -188,8 +188,9 @@
                             android:textAlignment="center"
                             android:textColor="@color/white" />
 
+
                         <TextView
-                            android:layout_width="57dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/action"

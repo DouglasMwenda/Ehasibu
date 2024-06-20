@@ -135,7 +135,7 @@ class Product : Fragment() {
 
                     }
                     setBackgroundResource(android.R.drawable.btn_default)
-                    setPadding(0, 16, 0, 0)
+                    setPadding(0, 0, 0, 0)
 
                 }
 
