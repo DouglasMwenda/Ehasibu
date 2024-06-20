@@ -79,43 +79,43 @@ class Product : Fragment() {
                 val no =
                     TextView(context).apply { text = product.productId
                      //   gravity = Gravity.NO_GRAVITY
-                        setTextColor(resources.getColor(R.color.white, null)) }
+                        setTextColor(resources.getColor(R.color.black, null)) }
                 val name =
                     TextView(context).apply { text = product.productName;
                         gravity = Gravity.CENTER
-                        setTextColor(resources.getColor(R.color.white, null)) }
+                        setTextColor(resources.getColor(R.color.black, null)) }
                 val description =
                     TextView(context).apply { text = product.description
                         gravity = Gravity.CENTER
-                        setTextColor(resources.getColor(R.color.white, null)) }
+                        setTextColor(resources.getColor(R.color.black, null)) }
                 val category =
                     TextView(context).apply { text = product.category
                        gravity = Gravity.CENTER
-                        setTextColor(resources.getColor(R.color.white, null)) }
+                        setTextColor(resources.getColor(R.color.black, null)) }
                 val quantity = TextView(context).apply {
                     text = product.quantity.toString()
                     gravity = Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.white, null)) }
+                    setTextColor(resources.getColor(R.color.black, null)) }
                 val unit = TextView(context).apply { text = product.unit
                     gravity = Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.white, null)) }
+                    setTextColor(resources.getColor(R.color.black, null)) }
                 val buyingPrice = TextView(context).apply {
                     text = product.buyingPrice.toString()
                     gravity = Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.white, null))
+                    setTextColor(resources.getColor(R.color.black, null))
                 }
                 val sellingPrice = TextView(context).apply {
                     text = product.sellingPrice.toString()
                     gravity = Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.white, null))
+                    setTextColor(resources.getColor(R.color.black, null))
                 }
 
                 val actionSpinner = Spinner(context).apply {
                     gravity = Gravity.START
-                    adapter = ArrayAdapter.createFromResource(
+                    adapter = ArrayAdapter(
                         context,
-                        R.array.product_actions,
-                        android.R.layout.simple_spinner_item
+                        android.R.layout.simple_spinner_item,
+                        listOf("Action", "Edit", "Delete")
                     ).also { adapter ->
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     }
@@ -135,7 +135,7 @@ class Product : Fragment() {
 
                     }
                     setBackgroundResource(android.R.drawable.btn_default)
-                    setPadding(0, 16, 0, 0)
+                    setPadding(0, 0, 0, 0)
 
                 }
 
