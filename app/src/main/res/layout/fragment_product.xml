@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/background"
+    android:background="@color/white"
     android:id="@+id/product"
     tools:context=".product.model.Product">
 
@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:text="Products"
-            android:textColor="@color/white"
+            android:textColor="#800000"
             android:textSize="18sp"
             android:textStyle="bold" />
 
