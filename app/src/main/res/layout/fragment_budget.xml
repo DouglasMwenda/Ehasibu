@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
     tools:context=".budget.BudgetFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="Budget"
+            android:textColor="#800000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
         <LinearLayout
@@ -44,85 +57,105 @@
                 android:id="@+id/budgetreportsbutton" />
 
         </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
         <TableLayout
             android:id="@+id/budgetTable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="700dp"
+            android:layout_height="0dp">
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="700dp"
                 android:layout_height="wrap_content"
                 android:background="#800000">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="No."
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text=" Budget Type"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Description"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Amount Budgeted"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
 
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Amount Spent"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Period"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Date"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Budget Balance"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Action"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
 
 
             </TableRow>
         </TableLayout>
+                </ScrollView>
+            </HorizontalScrollView>
+        </FrameLayout>
 
     </LinearLayout>
-
-</FrameLayout>
