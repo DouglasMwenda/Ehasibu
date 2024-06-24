@@ -18,6 +18,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface APIConsumer {
 
@@ -38,14 +39,18 @@ interface APIConsumer {
     @POST("products/add")
     suspend fun addProduct(@Body product: ProductRequest): Response<ApiResponse<ProductResponse>>
 
-  /*  @GET("products/findAllProducts")
-    fun getProducts():Call<ApiResponse<List<ProdResponse>>>*/
 
     @GET("products/findAllProducts")
     suspend fun getAllProducts(): Response<ApiResponse<List<ProdResponse>>>
-     // productsale
+
+    @GET("products/Find by product Name")
+    suspend fun fetchProduct(@Query("productName") productName: String): Response<ApiResponse<ProdResponse>>
+
+
+    // productsale
     @GET("sales/findAllSales")
     suspend fun getAllSales(): Response<ApiResponse<List<ProdResponse>>>
+
 
 }
 

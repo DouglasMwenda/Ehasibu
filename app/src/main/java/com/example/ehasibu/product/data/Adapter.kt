@@ -1,6 +1,6 @@
 package com.example.ehasibu.product.data
-
 /*
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -50,6 +50,6 @@ class Adapter(private val products: List<ProdResponse>) :
         return products.size
     }
 }
-*/
 
+*/
 

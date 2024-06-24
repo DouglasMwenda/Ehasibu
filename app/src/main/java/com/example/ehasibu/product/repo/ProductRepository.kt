@@ -19,4 +19,8 @@ class ProductRepository(private val token: String) {
         return APIConsumer.addProduct(product)
 
     }
+
+    suspend fun fetchProduct(productName: String): Response<ApiResponse<ProdResponse>> {
+        return APIConsumer.fetchProduct(productName)
+    }
 }

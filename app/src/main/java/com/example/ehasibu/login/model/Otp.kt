@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.AppModule
 import com.example.ehasibu.R
@@ -54,16 +55,14 @@ class Otp : Fragment() {
                 val otp = binding.otpInput.text.toString().trim()
                 Log.d(TAG, "otp: $otp")
 
-                otpverification(cont,  otp, binding.verifyOtpButton)
+                otpverification(cont, otp, binding.verifyOtpButton)
 
             }
         }
 
         return binding.root
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+
     }
 
     private fun validateOtp(): Boolean {
@@ -106,7 +105,9 @@ class Otp : Fragment() {
                             Log.d(TAG, response.body()!!.entity.access_token)
                             Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
                             verifyOtpButton.findFragment<Login>().findNavController()
-                                .navigate(R.id.action_otp_to_dashboard)
+                                .navigate(R.id.action_otp_to_dashboard,
+                                    null,
+                                    NavOptions.Builder().setPopUpTo(R.id.otp, true).build())
 
                         } else {
                             val message = response.body()!!.message
