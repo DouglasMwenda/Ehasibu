@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Inflate the layout using ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)

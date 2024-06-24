@@ -10,19 +10,23 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentProductBinding
 import com.example.ehasibu.product.data.ProdResponse
+import com.example.ehasibu.product.data.ProductFetchRequest
 import com.example.ehasibu.product.repo.ProductRepository
 import com.example.ehasibu.product.viewmodel.ProductProvider
 import com.example.ehasibu.product.viewmodel.ProductViewModel
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
+import com.google.android.material.textfield.TextInputEditText
 
 private const val TAG = "product"
 
@@ -30,7 +34,8 @@ class Product : Fragment() {
 
     private lateinit var binding: FragmentProductBinding
     private lateinit var AddProductbutton: Button
-
+    private lateinit var searchEditText: TextInputEditText
+    private lateinit var searchIcon: ImageView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,11 +56,24 @@ class Product : Fragment() {
         }
 
 
+        searchEditText = binding.searchEditText
+        searchIcon = binding.searchIcon
+
+        binding.searchIcon.setOnClickListener {
+            val productName = binding.searchEditText.text.toString().trim()
+            if (productName.isNotEmpty()) {
+                productViewModel.fetchProduct(ProductFetchRequest(productName))
+            }else{
+                Toast.makeText(context, "Enter Product Name", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+
         AddProductbutton = binding.addProductBtn
         AddProductbutton.setOnClickListener {
             val dialog = AddProduct()
             dialog.show(parentFragmentManager, "addProduct")
-
 
             binding.setPriceBtn.setOnClickListener {
                 // Implement the logic for setting the price

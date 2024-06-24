@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.AppModule
 import com.example.ehasibu.R
@@ -49,6 +50,9 @@ class Login : Fragment() {
         prefEditor = pref.edit()
 
         val cont = requireContext()
+
+        clearLoginFields()
+
         binding.loginBtn.setOnClickListener {
             if (validateInput()) {
 
@@ -67,6 +71,11 @@ class Login : Fragment() {
         return binding.root
 
 
+    }
+
+    private fun clearLoginFields() {
+        binding.emailInput.setText("")
+        binding.passwordInput.setText("")
     }
 
 
@@ -97,7 +106,6 @@ class Login : Fragment() {
     }
 
 
-
     private fun userLogin(cont: Context, email: String, password: String, loginBtn: Button) {
         val ret = AppModule().getRetrofitInstance("")
 
@@ -118,15 +126,17 @@ class Login : Fragment() {
                             prefEditor.putString(LOGIN_EMAIL, email.trim()).apply()
 
                             // val message = response.body()!!.message
-                            val message = response.body()?.message ?: "null body...."
+                            val message = response.body()?.message ?: "null body..."
 
                             Log.d(TAG, message)
                             Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
 
                             loginBtn.findFragment<Login>().findNavController()
-                                .navigate(R.id.action_login_to_otp)
+                                .navigate(R.id.action_login_to_otp, null,
 
-                        }else{
+                                    NavOptions.Builder().setPopUpTo(R.id.login, true).build())
+
+                        } else {
                             val message = response.body()!!.message
                             Log.d(TAG, message)
                             Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
@@ -140,11 +150,10 @@ class Login : Fragment() {
                 }
 
 
-
             }
 
             override fun onFailure(call: Call<ApiResponse<AuthUserResponse>>, t: Throwable) {
-               // Toast.makeText(cont, t.message, Toast.LENGTH_SHORT).show()
+                // Toast.makeText(cont, t.message, Toast.LENGTH_SHORT).show()
                 Log.d(TAG, t.message!!)
 
             }

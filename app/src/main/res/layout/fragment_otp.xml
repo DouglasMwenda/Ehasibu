@@ -7,8 +7,8 @@
     tools:context=".login.model.Otp">
 
     <LinearLayout
-        android:layout_width="357dp"
-        android:layout_height="203dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical"
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif-black"
             android:text="@string/we_have_sent_an_otp_to_your_email_enter_here_to_continue"
             android:textColor="#800000"
