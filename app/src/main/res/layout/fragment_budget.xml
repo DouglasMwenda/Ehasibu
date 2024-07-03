@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#800000"
-                android:text="Add Budget"
+                android:text="@string/add_budget"
                 android:id="@+id/addbudgetbutton" />
 
             <ImageView
@@ -90,7 +90,7 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text=" Budget Type"
+                    android:text="Budget Type"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
@@ -131,7 +131,7 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Date"
+                    android:text="@string/date"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
@@ -139,7 +139,7 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Budget Balance"
+                    android:text="@string/budget_balance"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
