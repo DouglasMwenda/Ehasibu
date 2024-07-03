@@ -18,7 +18,6 @@
         <item name ="android:layout_margin" > 8dp</item>
         <item name="cardElevation">4dp</item>
 
-
     </style>
 
 </resources>
