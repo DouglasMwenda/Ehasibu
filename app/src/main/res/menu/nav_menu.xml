@@ -7,14 +7,14 @@
         android:enabled="true"
         android:visible="true"
         android:id="@+id/nav_group"
-        tools:ignore="ExtraText">
+        tools:ignore="ExtraText">   
 
-       <!-- <item
+        <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home"
             android:iconTint="#800000"
             android:title="Home"
-            tools:ignore="HardcodedText" />-->
+            tools:ignore="HardcodedText" />
         <item
             android:id="@+id/nav_dashboard"
             android:icon="@drawable/dashboard_24"

@@ -92,10 +92,10 @@ import com.google.android.material.navigation.NavigationView
         private fun setupNavigationView(navView: NavigationView) {
                 navView.setNavigationItemSelectedListener { menuItem ->
                     when (menuItem.itemId) {
-                        /*   R.id.nav_home -> {
-                            Toast.makeText(context, "Home clicked", Toast.LENGTH_SHORT).show()
+                           R.id.nav_home -> {
+                               findNavController().navigate(R.id.home)
                             true
-                        }*/
+                        }
                         R.id.nav_dashboard -> {
 
                             true

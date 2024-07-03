@@ -86,7 +86,6 @@ class Product : Fragment() {
         private fun updateTable(products: List<ProdResponse>) {
             val tableLayout = binding.tableLayout
 
-            // Clear existing rows (except for the header row)
             while (tableLayout.childCount > 1) {
                 tableLayout.removeViewAt(1)
             }
