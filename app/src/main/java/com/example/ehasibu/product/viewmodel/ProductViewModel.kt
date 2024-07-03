@@ -30,6 +30,7 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
                     if (response.isSuccessful) {
                         if (response.body() != null)
                             products.value = response.body()!!.entity
+
                         delay(10000)
                     }
                 } catch (t: Throwable) {

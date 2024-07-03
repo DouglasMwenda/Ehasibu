@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.AppModule
 import com.example.ehasibu.R
@@ -132,9 +131,8 @@ class Login : Fragment() {
                             Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
 
                             loginBtn.findFragment<Login>().findNavController()
-                                .navigate(R.id.action_login_to_otp, null,
+                                .navigate(R.id.action_login_to_otp, null)
 
-                                    NavOptions.Builder().setPopUpTo(R.id.login, true).build())
 
                         } else {
                             val message = response.body()!!.message
