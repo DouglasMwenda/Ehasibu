@@ -9,10 +9,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-    import androidx.activity.OnBackPressedCallback
-    import androidx.appcompat.app.ActionBarDrawerToggle
-    import androidx.appcompat.app.AlertDialog
-    import androidx.cardview.widget.CardView
     import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -35,6 +31,8 @@ import com.example.ehasibu.R
         private lateinit var productCard: CardView
         private lateinit var customerCard: CardView
         private lateinit var vendorCard: CardView
+
+
 
 
         companion object {
@@ -78,6 +76,8 @@ import com.example.ehasibu.R
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+            (activity as? AppCompatActivity)?.supportActionBar?.hide()
 
             drawerLayout = binding.drawerLayout
             navView = binding.navView

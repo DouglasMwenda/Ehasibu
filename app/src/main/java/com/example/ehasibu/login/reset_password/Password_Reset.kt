@@ -9,9 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.AppModule
 import com.example.ehasibu.R
@@ -22,10 +22,10 @@ import com.example.ehasibu.login.model.Login
 import com.example.ehasibu.utils.LOGIN_EMAIL
 import com.example.ehasibu.utils.LOGIN_PASSWORD
 import com.example.ehasibu.utils.PREF
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 private const val TAG = "PassReset"
 
 class Password_Reset : Fragment() {
@@ -35,7 +35,14 @@ class Password_Reset : Fragment() {
 
     private lateinit var binding: FragmentPasswordResetBinding
 
-    private val viewModel: PasswordResetViewModel by viewModels()
+    //private val viewModel: PasswordResetViewModel by viewModels()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        (activity as? AppCompatActivity)?.supportActionBar?.show()
+        (activity as? AppCompatActivity)?.supportActionBar?.title = getString(R.string.password)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

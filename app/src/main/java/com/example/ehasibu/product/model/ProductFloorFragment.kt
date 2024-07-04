@@ -1,5 +1,5 @@
 package com.example.ehasibu.product.model
-
+/*
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -41,7 +41,7 @@ class ProductFloorFragment: Fragment() {
 
         // Observe the products LiveData
         productViewModel.products.observe(viewLifecycleOwner) { products ->
-            val realProduct = products.firstOrNull { it.productId == productId }
+            val realProduct = products?.firstOrNull { it.productId == productId }
             if (realProduct != null) {
                 Log.d(TAG1, realProduct.toString())
                 // Update the UI with realProduct
@@ -53,4 +53,4 @@ class ProductFloorFragment: Fragment() {
         Log.d(TAG1, productId.toString())
         return binding.root
     }
-}
+}*/
