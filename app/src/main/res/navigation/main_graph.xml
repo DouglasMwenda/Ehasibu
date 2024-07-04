@@ -189,7 +189,7 @@
         android:id="@+id/set_Price"
         android:name="com.example.ehasibu.product.model.Set_Price"
         android:label="fragment_price"
-        tools:layout="@layout/fragment_price">
+        tools:layout="@layout/fragment_setprice">
         <action
             android:id="@+id/action_set_Price_to_products"
             app:destination="@id/products" />

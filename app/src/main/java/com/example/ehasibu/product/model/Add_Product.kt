@@ -7,6 +7,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.ehasibu.databinding.FragmentAddProductBinding
+import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.repo.ProductRepository
 import com.example.ehasibu.product.viewmodel.AddProductViewModel
@@ -49,6 +50,7 @@ class AddProduct : DialogFragment() {
                 unit = binding.unit.text.toString(),
             )
             viewModel.addProduct(product)
+
         }
 
         binding.cancelProductButton.setOnClickListener {
