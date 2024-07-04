@@ -34,7 +34,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@drawable/rounded_corner"
                 android:inputType="none"
                 android:padding="16dp"
                 android:paddingEnd="12dp"
@@ -55,7 +54,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@drawable/rounded_corner"
                 android:inputType="none"
                 android:padding="16dp"
                 android:paddingEnd="12dp"
@@ -76,7 +74,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@drawable/rounded_corner"
                 android:inputType="none"
                 android:padding="16dp"
                 android:textColor="#800000"
@@ -96,7 +93,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:autofillHints="number"
-            android:background="@drawable/rounded_corner"
             android:inputType="none"
             android:padding="16dp"
             android:paddingEnd="12dp"
@@ -129,9 +125,7 @@
                 android:textColor="#800000"
                 app:strokeColor="#800000" />
 
-
         </LinearLayout>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

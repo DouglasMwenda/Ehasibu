@@ -1,5 +1,6 @@
     package com.example.ehasibu.dashboard
 
+    import AddProduct
     import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,23 +9,29 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
-    import androidx.appcompat.app.AppCompatActivity
     import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.R
-import com.example.ehasibu.databinding.FragmentDashboardBinding
-import com.google.android.material.navigation.NavigationView
+    import com.example.ehasibu.customerinformation.CustomerDialog
+    import com.example.ehasibu.databinding.FragmentDashboardBinding
+    import com.example.ehasibu.productsales.Addsaledialog
+    import com.example.ehasibu.quotation.Newquotedialog
+    import com.google.android.material.navigation.NavigationView
 
     class Dashboard : Fragment() {
         private lateinit var binding: FragmentDashboardBinding
         private lateinit var drawerLayout: DrawerLayout
         private lateinit var navView: NavigationView
         private lateinit var toggle: ActionBarDrawerToggle
+        private lateinit var saleCard: CardView
+        private lateinit var purchaseCard: CardView
+        private lateinit var quoteCard: CardView
+        private lateinit var productCard: CardView
+        private lateinit var customerCard: CardView
+        private lateinit var vendorCard: CardView
+
 
 
 
@@ -40,6 +47,28 @@ import com.google.android.material.navigation.NavigationView
         ): View {
             val binding = FragmentDashboardBinding.inflate(inflater, container, false)
             this.binding = binding
+
+            binding.salecard.setOnClickListener {
+                val dialog = Addsaledialog()
+                dialog.show(parentFragmentManager,"Addsaledialog")
+            }
+            binding.productCard.setOnClickListener {
+                val dialog = AddProduct()
+                dialog.show(parentFragmentManager,"AddProduct")
+            }
+            binding.quotecard.setOnClickListener {
+                val dialog= Newquotedialog()
+                dialog.show(parentFragmentManager,"Newquotedialog")
+            }
+            binding.customerCard.setOnClickListener {
+                val dialog= CustomerDialog()
+                dialog.show(parentFragmentManager,"CustomerDialog")
+            }
+            binding.vendorcard.setOnClickListener {
+
+            }
+            binding.purchasecard.setOnClickListener {  }
+
             return binding.root
 
 
@@ -240,6 +269,9 @@ import com.google.android.material.navigation.NavigationView
                 3 -> Toast.makeText(context, "Customer Information Selected", Toast.LENGTH_SHORT).show()
             }
         }
+
+
+
     }
 
 
