@@ -8,9 +8,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-    import androidx.activity.OnBackPressedCallback
-    import androidx.appcompat.app.ActionBarDrawerToggle
-    import androidx.appcompat.app.AlertDialog
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
+    import androidx.appcompat.app.AppCompatActivity
     import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -24,6 +25,8 @@ import com.google.android.material.navigation.NavigationView
         private lateinit var drawerLayout: DrawerLayout
         private lateinit var navView: NavigationView
         private lateinit var toggle: ActionBarDrawerToggle
+
+
 
         companion object {
             fun newInstance() = Dashboard()
@@ -44,6 +47,8 @@ import com.google.android.material.navigation.NavigationView
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+            (activity as? AppCompatActivity)?.supportActionBar?.hide()
 
             drawerLayout = binding.drawerLayout
             navView = binding.navView

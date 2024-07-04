@@ -2,6 +2,7 @@ package com.example.ehasibu.product.viewmodel
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,9 +16,13 @@ import kotlinx.coroutines.launch
 
 class ProductViewModel(private val repository: ProductRepository) : ViewModel() {
 
-    val products = MutableLiveData<List<ProdResponse>>(emptyList())
- private val _product = MutableLiveData<ProdResponse>()
-  val product: MutableLiveData<ProdResponse> get() = _product
+    val products = MutableLiveData<List<ProdResponse>?>(emptyList())
+
+    private val _product = MutableLiveData<ProdResponse>()
+    val product: LiveData<ProdResponse> get() = _product
+
+    private val _filteredProducts = MutableLiveData<List<ProdResponse>>()
+
     init {
         getProducts()
     }
@@ -28,11 +33,13 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
                 try {
                     val response = repository.getAllProducts()
                     if (response.isSuccessful) {
-                        if (response.body() != null)
-                            products.value = response.body()!!.entity
-
-                        delay(10000)
+                        response.body()?.entity?.let {
+                            products.value = it
+                            _filteredProducts.value =
+                                it // Initialize filteredProducts with all products
+                        }
                     }
+                    delay(10000)
                 } catch (t: Throwable) {
                     Log.e(TAG, "Exception occurred: ${t.message}", t)
                 }
@@ -42,14 +49,12 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
 
     fun fetchProduct(request: ProductFetchRequest) {
         viewModelScope.launch {
-
             try {
-
                 val response = repository.fetchProduct(request.productName)
                 if (response.isSuccessful) {
-                    response.body()?.let {
-                        _product.value = it.entity
-                    } ?: {
+                    response.body()?.entity?.let {
+                        _product.value = it
+                    } ?: run {
                         Log.d(TAG, "message: ${response.message()}")
                     }
                 } else {
@@ -61,10 +66,66 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
         }
     }
 
+    fun filterProducts(query: String) {
+        val currentProducts = products.value ?: emptyList()
+        val filteredList = if (query.isEmpty()) {
+            currentProducts
+        } else {
+            currentProducts.filter { it.productName.contains(query, ignoreCase = true) }
+        }
+        _filteredProducts.postValue(filteredList)
+    }
+
+    fun deleteProduct(productId: String) {
+        viewModelScope.launch {
+            try {
+                val response = repository.deleteProduct(productId)
+                if (response.isSuccessful) {
+                    val updatedProducts = products.value?.filterNot { it.productId == productId }
+                    products.value = updatedProducts
+                    Log.d(TAG, "message: ${response.message()}")
+                } else {
+                    Log.d(TAG, "message: ${response.message()}")
+                }
+            } catch (t: Throwable) {
+                Log.e(TAG, "Exception occurred: ${t.message}", t)
+            }
+        }
+
+    }
 }
-class ProductProvider(val repo:ProductRepository): ViewModelProvider.Factory{
+
+
+class ProductProvider(val repo: ProductRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return ProductViewModel(repo) as T
     }
-
 }
+
+/*
+rivate fun getProducts() {
+    viewModelScope.launch {
+        while (isActive) {
+            try {
+                val response = repository.getAllProducts()
+                if (response.isSuccessful) {
+                    response.body()?.entity?.let { fetchedProducts ->
+                        // Compare fetched products with the current list
+                        val currentProducts = products.value ?: emptyList()
+                        val updatedProducts = currentProducts.filter { currentProduct ->
+                            fetchedProducts.any { fetchedProduct -> fetchedProduct.productId == currentProduct.productId }
+                        } + fetchedProducts.filterNot { fetchedProduct ->
+                            currentProducts.any { currentProduct -> currentProduct.productId == fetchedProduct.productId }
+                        }
+
+                        products.value = updatedProducts
+                        _filteredProducts.value = updatedProducts
+                    }
+                }
+                delay(10000)
+            } catch (t: Throwable) {
+                Log.e(TAG, "Exception occurred: ${t.message}", t)
+            }
+        }
+    }
+}*/
