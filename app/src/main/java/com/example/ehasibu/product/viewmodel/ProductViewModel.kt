@@ -7,8 +7,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.ehasibu.product.data.ApiResponse
+import com.example.ehasibu.product.data.DelResponse
+import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductFetchRequest
+import com.example.ehasibu.product.model.Product
 import com.example.ehasibu.product.repo.ProductRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -20,6 +24,9 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
 
     private val _product = MutableLiveData<ProdResponse>()
     val product: LiveData<ProdResponse> get() = _product
+    private val _updateProductResponse = MutableLiveData<DelResponse>()
+    val updateProductResponse: LiveData<DelResponse> = _updateProductResponse
+
 
     private val _filteredProducts = MutableLiveData<List<ProdResponse>>()
 
@@ -93,39 +100,32 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
         }
 
     }
-}
 
-
-class ProductProvider(val repo: ProductRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return ProductViewModel(repo) as T
-    }
-}
-
-/*
-rivate fun getProducts() {
-    viewModelScope.launch {
-        while (isActive) {
+    fun updateProduct(product: EditRequest) {
+        viewModelScope.launch {
             try {
-                val response = repository.getAllProducts()
+                val response = repository.updateProduct(product)
                 if (response.isSuccessful) {
-                    response.body()?.entity?.let { fetchedProducts ->
-                        // Compare fetched products with the current list
-                        val currentProducts = products.value ?: emptyList()
-                        val updatedProducts = currentProducts.filter { currentProduct ->
-                            fetchedProducts.any { fetchedProduct -> fetchedProduct.productId == currentProduct.productId }
-                        } + fetchedProducts.filterNot { fetchedProduct ->
-                            currentProducts.any { currentProduct -> currentProduct.productId == fetchedProduct.productId }
-                        }
+                    _updateProductResponse.value = response.body()
 
-                        products.value = updatedProducts
-                        _filteredProducts.value = updatedProducts
-                    }
+                } else {
+                    Log.d("", "message")
                 }
-                delay(10000)
-            } catch (t: Throwable) {
-                Log.e(TAG, "Exception occurred: ${t.message}", t)
+
+            } catch (e: Exception) {
+                Log.e("", "nooo")
+
+
             }
         }
+
+
     }
-}*/
+}
+
+    class ProductProvider(val repo: ProductRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return ProductViewModel(repo) as T
+        }
+    }
+
