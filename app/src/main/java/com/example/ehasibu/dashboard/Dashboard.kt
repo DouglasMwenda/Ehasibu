@@ -31,6 +31,7 @@ class Dashboard : Fragment() {
     private lateinit var toggle: ActionBarDrawerToggle
 
 
+
     companion object {
         fun newInstance() = Dashboard()
     }
