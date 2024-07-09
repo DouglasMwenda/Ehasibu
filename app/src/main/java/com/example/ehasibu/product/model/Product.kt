@@ -184,7 +184,8 @@ class Product : Fragment() {
                                     unit = product.unit
 
                                 )
-                                editProduct(editRequest)
+                                val dialog = AddProduct.newInstance(editRequest)
+                                dialog.show(parentFragmentManager, "editProduct")
                             }
 
                             "Delete" -> deleteProduct(product.productId)
