@@ -11,6 +11,7 @@ import com.example.ehasibu.login.forgot_password.ForgotPassResponse
 import com.example.ehasibu.login.forgot_password.OtpValResponse
 import com.example.ehasibu.login.reset_password.PasswordRequest
 import com.example.ehasibu.product.data.DelResponse
+import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.data.ProductResponse
@@ -20,6 +21,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface APIConsumer {
@@ -50,6 +52,10 @@ interface APIConsumer {
 
     @DELETE("products/productId")
     suspend fun deleteProduct(@Query("productId") productId: String): Response<DelResponse>
+
+    @PUT("products/updateProduct")
+    suspend fun updateProduct (@Body product: EditRequest): Response<DelResponse>
+
 
 
     // productsale

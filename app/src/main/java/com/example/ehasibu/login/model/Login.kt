@@ -29,6 +29,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 private const val TAG = "Login"
 
 class Login : Fragment() {
@@ -38,53 +39,40 @@ class Login : Fragment() {
     private lateinit var pref: SharedPreferences
     private lateinit var prefEditor: SharedPreferences.Editor
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
-
     ): View {
         binding = FragmentLoginBinding.inflate(inflater)
-
         pref = requireActivity().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         prefEditor = pref.edit()
-
-        val cont = requireContext()
 
         clearLoginFields()
 
         binding.loginBtn.setOnClickListener {
             if (validateInput()) {
-
                 val email = binding.emailInput.text.toString().trim()
                 val password = binding.passwordInput.text.toString().trim()
-
-                userLogin(cont, email, password, binding.loginBtn)
-
+                userLogin(requireContext(), email, password, binding.loginBtn)
             }
-
         }
+
         binding.forgotPassword.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_forgotPass)
         }
 
         return binding.root
-
-
     }
 
     private fun clearLoginFields() {
         binding.emailInput.setText("")
         binding.passwordInput.setText("")
     }
-
 
     private fun validateInput(): Boolean {
         val email = binding.emailInput.text.toString().trim()
@@ -109,13 +97,10 @@ class Login : Fragment() {
         }
 
         return true
-
     }
-
 
     private fun userLogin(cont: Context, email: String, password: String, loginBtn: Button) {
         val ret = AppModule().getRetrofitInstance("")
-
         val req = ret.login(UserRequest(email.trim(), password.trim()))
         req.enqueue(object : Callback<ApiResponse<AuthUserResponse>> {
             override fun onResponse(
@@ -124,51 +109,43 @@ class Login : Fragment() {
             ) {
                 if (response.isSuccessful) {
                     if (response.body() != null) {
-                        if (response.body()!!.statusCode == 403) {
-                            prefEditor.putString(LOGIN_EMAIL, email.trim()).apply()
-                            prefEditor.putString(LOGIN_PASSWORD, password.trim()).apply()
-                            loginBtn.findFragment<Login>().findNavController()
-                                .navigate(R.id.action_login_to_password_Reset)
-                        } else if (response.body()!!.statusCode == 200) {
-                            prefEditor.putString(LOGIN_EMAIL, email.trim()).apply()
-
-                            // val message = response.body()!!.message
-                            val message = response.body()?.message ?: "null body..."
-
-                            Log.d(TAG, message)
-                            Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
-
-                            loginBtn.findFragment<Login>().findNavController()
-                                .navigate(R.id.action_login_to_otp, null)
-
-
-                        } else {
-                            val message = response.body()!!.message
-                            Log.d(TAG, message)
-                            Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
+                        val navController = loginBtn.findFragment<Login>().findNavController()
+                        when (response.body()!!.statusCode) {
+                            403 -> {
+                                prefEditor.putString(LOGIN_EMAIL, email.trim()).apply()
+                                prefEditor.putString(LOGIN_PASSWORD, password.trim()).apply()
+                                Log.d(TAG, "Navigating to Password Reset")
+                                navController.navigate(R.id.action_login_to_password_Reset)
+                            }
+                            200 -> {
+                                prefEditor.putString(LOGIN_EMAIL, email.trim()).apply()
+                                val message = response.body()?.message ?: "null body..."
+                                Log.d(TAG, message)
+                                Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
+                                Log.d(TAG, "Navigating to OTP")
+                                if (navController.currentDestination?.id == R.id.login) {
+                                    Log.d(TAG, "Current destination is login")
+                                    navController.navigate(R.id.action_login_to_otp, null)
+                                } else {
+                                    Log.e(TAG, "Current destination is not login")
+                                }
+                            }
+                            else -> {
+                                val message = response.body()!!.message
+                                Log.d(TAG, message)
+                                Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
+                            }
                         }
                     } else {
                         val message = response.toString()
-                        Toast.makeText(cont, message, Toast.LENGTH_SHORT).show()
                         Log.d(TAG, message)
-
                     }
                 }
-
-
             }
 
             override fun onFailure(call: Call<ApiResponse<AuthUserResponse>>, t: Throwable) {
-                // Toast.makeText(cont, t.message, Toast.LENGTH_SHORT).show()
                 Log.d(TAG, t.message!!)
-
             }
-
         })
-
     }
-
 }
-
-
-

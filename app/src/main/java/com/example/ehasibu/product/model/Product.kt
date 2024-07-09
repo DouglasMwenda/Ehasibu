@@ -22,6 +22,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentProductBinding
+import com.example.ehasibu.product.data.DelResponse
+import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductFetchRequest
 import com.example.ehasibu.product.repo.ProductRepository
@@ -96,7 +98,8 @@ class Product : Fragment() {
         }
 
         binding.setPriceBtn.setOnClickListener {
-            // Implement the logic for setting the price
+            val dialog = Set_Price()
+            dialog.show(parentFragmentManager, "Set_Price")
         }
 
         (activity as? AppCompatActivity)?.supportActionBar?.show()
@@ -172,7 +175,19 @@ class Product : Fragment() {
                     ) {
                         val action = parent.getItemAtPosition(position) as String
                         when (action) {
-                            "Edit" -> editProduct(product)
+                            "Edit" -> {
+                                val editRequest = EditRequest(
+                                    productId = product.productId,
+                                    productName = product.productName,
+                                    description = product.description,
+                                    category = product.category,
+                                    unit = product.unit
+
+                                )
+                                val dialog = AddProduct.newInstance(editRequest)
+                                dialog.show(parentFragmentManager, "editProduct")
+                            }
+
                             "Delete" -> deleteProduct(product.productId)
                         }
                     }
@@ -199,9 +214,13 @@ class Product : Fragment() {
             tableLayout.addView(row)
         }
     }
+    /*private fun editProduct(product: EditRequest) {
+        val dialog = EditProductDialog.newInstance(product)
+        dialog.show(parentFragmentManager, "EditProductDialog")
+    }*/
 
-    private fun editProduct(product: ProdResponse) {
-        // edit product logic here
+    private fun editProduct(product: EditRequest) {
+        productViewModel.updateProduct(product)
     }
 
     private fun deleteProduct(productId: String) {
