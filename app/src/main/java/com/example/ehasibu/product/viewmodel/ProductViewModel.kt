@@ -101,31 +101,11 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
 
     }
 
-    fun updateProduct(product: EditRequest) {
-        viewModelScope.launch {
-            try {
-                val response = repository.updateProduct(product)
-                if (response.isSuccessful) {
-                    _updateProductResponse.value = response.body()
-
-                } else {
-                    Log.d("", "message")
-                }
-
-            } catch (e: Exception) {
-                Log.e("", "nooo")
-
-
-            }
-        }
-
-
-    }
-}
 
     class ProductProvider(val repo: ProductRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return ProductViewModel(repo) as T
         }
     }
+
 
