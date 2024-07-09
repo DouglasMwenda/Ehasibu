@@ -102,30 +102,3 @@ class ProductProvider(val repo: ProductRepository) : ViewModelProvider.Factory {
     }
 }
 
-/*
-rivate fun getProducts() {
-    viewModelScope.launch {
-        while (isActive) {
-            try {
-                val response = repository.getAllProducts()
-                if (response.isSuccessful) {
-                    response.body()?.entity?.let { fetchedProducts ->
-                        // Compare fetched products with the current list
-                        val currentProducts = products.value ?: emptyList()
-                        val updatedProducts = currentProducts.filter { currentProduct ->
-                            fetchedProducts.any { fetchedProduct -> fetchedProduct.productId == currentProduct.productId }
-                        } + fetchedProducts.filterNot { fetchedProduct ->
-                            currentProducts.any { currentProduct -> currentProduct.productId == fetchedProduct.productId }
-                        }
-
-                        products.value = updatedProducts
-                        _filteredProducts.value = updatedProducts
-                    }
-                }
-                delay(10000)
-            } catch (t: Throwable) {
-                Log.e(TAG, "Exception occurred: ${t.message}", t)
-            }
-        }
-    }
-}*/
