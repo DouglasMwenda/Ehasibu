@@ -1,4 +1,4 @@
-package com.example.ehasibu.purchases.purchaseorder
+package com.example.ehasibu.purchaseorder.viewmodel
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package com.example.ehasibu.purchases.vendors
+package com.example.ehasibu.vendors.view
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ehasibu.R
+import com.example.ehasibu.vendors.viewmodel.VendorViewModel
 
 class VendorFragment : Fragment() {
 
