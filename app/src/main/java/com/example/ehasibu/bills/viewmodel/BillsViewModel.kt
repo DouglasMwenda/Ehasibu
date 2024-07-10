@@ -1,4 +1,4 @@
-package com.example.ehasibu.purchases.bills
+package com.example.ehasibu.bills.viewmodel
 
 import androidx.lifecycle.ViewModel
 

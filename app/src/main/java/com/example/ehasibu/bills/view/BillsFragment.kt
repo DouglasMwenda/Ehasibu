@@ -1,20 +1,21 @@
-package com.example.ehasibu.purchases.purchaseorder
+package com.example.ehasibu.bills.view
 
+import androidx.fragment.app.viewModels
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
+import com.example.ehasibu.bills.viewmodel.BillsViewModel
 
-class AddPOFragment : DialogFragment() {
+class BillsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = AddPOFragment()
+        fun newInstance() = BillsFragment()
     }
 
-    private val viewModel: AddPOViewModel by viewModels()
+    private val viewModel: BillsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,6 @@ class AddPOFragment : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_add_p_o, container, false)
+        return inflater.inflate(R.layout.fragment_bills, container, false)
     }
 }

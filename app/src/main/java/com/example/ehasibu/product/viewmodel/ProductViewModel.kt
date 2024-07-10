@@ -95,8 +95,9 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
                 Log.e(TAG, "Exception occurred: ${t.message}", t)
             }
         }
-
     }
+}
+
 
 
     class ProductProvider(val repo: ProductRepository) : ViewModelProvider.Factory {
@@ -105,4 +106,4 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
         }
     }
 
-}
+

@@ -22,7 +22,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentProductBinding
-import com.example.ehasibu.product.data.DelResponse
 import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductFetchRequest
@@ -213,18 +212,12 @@ class Product : Fragment() {
 
             tableLayout.addView(row)
         }
-    }
-    /*private fun editProduct(product: EditRequest) {
-        val dialog = EditProductDialog.newInstance(product)
-        dialog.show(parentFragmentManager, "EditProductDialog")
-    }*/
 
-    private fun editProduct(product: EditRequest) {
-        productViewModel.updateProduct(product)
     }
 
     private fun deleteProduct(productId: String) {
         productViewModel.deleteProduct(productId)
     }
+
 }
 

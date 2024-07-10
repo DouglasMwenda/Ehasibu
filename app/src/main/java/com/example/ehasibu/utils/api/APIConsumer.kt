@@ -15,6 +15,8 @@ import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.data.ProductResponse
+import com.example.ehasibu.purchaseorder.data.OrdersEntity
+import com.example.ehasibu.purchaseorder.data.OrderResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -40,6 +42,7 @@ interface APIConsumer {
 
     @POST("auth/validateForgotPasswordOTP")
     fun otpValidate(@Body loginRequest: OtpRequest2): Call<ApiResponse<OtpValResponse>>
+
     @POST("products/add")
     suspend fun addProduct(@Body product: ProductRequest): Response<ApiResponse<ProductResponse>>
 
@@ -54,13 +57,17 @@ interface APIConsumer {
     suspend fun deleteProduct(@Query("productId") productId: String): Response<DelResponse>
 
     @PUT("products/updateProduct")
-    suspend fun updateProduct (@Body product: EditRequest): Response<DelResponse>
-
+    suspend fun updateProduct(@Body product: EditRequest): Response<DelResponse>
 
 
     // productsale
     @GET("sales/findAllSales")
     suspend fun getAllSales(): Response<ApiResponse<List<ProdResponse>>>
+
+
+    //Purchases
+    @GET("purchases/getAllPurchases")
+    suspend fun fetchOrders(): Response<OrderResponse<OrdersEntity>>
 
 
 }
