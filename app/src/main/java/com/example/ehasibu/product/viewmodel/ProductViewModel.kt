@@ -7,12 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.ehasibu.product.data.ApiResponse
 import com.example.ehasibu.product.data.DelResponse
-import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductFetchRequest
-import com.example.ehasibu.product.model.Product
 import com.example.ehasibu.product.repo.ProductRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -108,4 +105,4 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
         }
     }
 
-
+}
