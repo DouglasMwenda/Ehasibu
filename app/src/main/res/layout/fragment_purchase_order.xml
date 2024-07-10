@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/purchase_orders"
-    tools:context=".purchases.purchaseorder.Purchase_Order">
+    tools:context=".purchaseorder.view.Purchase_Order">
 
     <LinearLayout
         android:layout_width="match_parent"
