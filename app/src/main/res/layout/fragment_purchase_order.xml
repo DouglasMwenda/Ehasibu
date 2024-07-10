@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/purchase_orders"
-    tools:context=".purchases.Purchase_Order">
+    tools:context=".purchases.purchaseorder.Purchase_Order">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
 
             <ImageView
                 android:id="@+id/basket"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/shopping_basket"
@@ -62,21 +63,22 @@
                 android:background="@drawable/datepicker"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 tools:ignore="SmallSp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/end_date"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:textColor="#800000"
-                tools:ignore="SmallSp" />
+                />
 
             <DatePicker
                 android:id="@+id/end_date_picker"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
+                android:calendarTextColor="@color/black"
                 android:layout_marginStart="2dp"
                 android:layout_weight=".1"
                 android:textSize="10sp"
@@ -89,12 +91,12 @@
                 android:id="@+id/filter_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/apply" />
+                android:backgroundTint="@color/colorMaroon"
+                android:text="@string/apply"
+                android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Split Cards -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,7 +105,6 @@
             android:paddingStart="8dp"
             tools:ignore="RtlSymmetry">
 
-            <!-- Today's Sales Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
