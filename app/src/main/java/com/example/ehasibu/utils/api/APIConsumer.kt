@@ -67,7 +67,7 @@ interface APIConsumer {
 
     //Purchases
     @GET("purchases/getAllPurchases")
-    suspend fun fetchOrders(): Response<OrderResponse<OrdersEntity>>
+    suspend fun fetchOrders(): Response<List<OrdersEntity>>
 
 
 }
