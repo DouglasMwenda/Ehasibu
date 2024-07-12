@@ -39,7 +39,7 @@
                     android:layout_gravity="center">
 
                     <ImageView
-                        android:id="@+id/notification"
+                        android:id="@+id/profile"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:contentDescription="TODO"
@@ -54,6 +54,7 @@
                         android:gravity="center_vertical">
 
                         <TextView
+                            android:id="@+id/welcome_back_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
