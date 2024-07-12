@@ -7,9 +7,10 @@ import com.example.ehasibu.purchaseorder.data.OrdersEntity
 import retrofit2.Response
 
 class OrderRepo(private val token: String) {
+
     private val APIConsumer= AppModule().getRetrofitInstance(token)
 
-   suspend fun getOrders(): Response<OrderResponse<OrdersEntity>> {
+   suspend fun getOrders(): Response<List<OrdersEntity>> {
        return APIConsumer.fetchOrders()
    }
 
