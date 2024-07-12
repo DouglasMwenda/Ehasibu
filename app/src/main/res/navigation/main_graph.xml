@@ -102,9 +102,7 @@
         <action
             android:id="@+id/action_products_to_set_Price"
             app:destination="@id/set_Price" />
-        <action
-            android:id="@+id/action_products_to_productFloorFragment"
-            app:destination="@id/productFloorFragment" />
+        
     </fragment>
     <fragment
         android:id="@+id/purchase_Order"
@@ -194,14 +192,7 @@
             android:id="@+id/action_set_Price_to_products"
             app:destination="@id/products" />
     </fragment>
-    <fragment
-        android:id="@+id/productFloorFragment"
-        android:name="com.example.ehasibu.product.model.ProductFloorFragment"
-        android:label="ProductFloorFragment">
-        <argument
-            android:name="productId"
-            app:argType="string" />
-    </fragment>
+
     <fragment
         android:id="@+id/home"
         android:name="com.example.ehasibu.home.HomeFragment"
