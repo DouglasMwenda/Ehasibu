@@ -11,25 +11,26 @@ import retrofit2.Response
 
 class ProductRepository(private val token: String) {
 
-    private val APIConsumer = AppModule().getRetrofitInstance(token)
+    private val apiConsumer = AppModule().getRetrofitInstance(token)
 
     suspend fun getAllProducts(): Response<ApiResponse<List<ProdResponse>>> {
-        return APIConsumer.getAllProducts()
+        return apiConsumer.getAllProducts()
     }
 
     suspend fun addProduct(product: ProductRequest): Response<ApiResponse<ProductResponse>> {
-        return APIConsumer.addProduct(product)
+        return apiConsumer.addProduct(product)
 
     }
 
     suspend fun fetchProduct(productName: String): Response<ApiResponse<ProdResponse>> {
-        return APIConsumer.fetchProduct(productName)
-    }
-    suspend fun deleteProduct(productId: String): Response<DelResponse> {
-        return APIConsumer.deleteProduct(productId)
+        return apiConsumer.fetchProduct(productName)
     }
 
-    suspend fun updateProduct(product: EditRequest):Response<DelResponse>{
-        return APIConsumer.updateProduct(product)
+    suspend fun deleteProduct(productId: String): Response<DelResponse> {
+        return apiConsumer.deleteProduct(productId)
+    }
+
+    suspend fun updateProduct(product: EditRequest): Response<DelResponse> {
+        return apiConsumer.updateProduct(product)
     }
 }

@@ -12,8 +12,10 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class PurchaseOrderViewModel(private val repo: OrderRepo) : ViewModel() {
-    private val _orders = MutableLiveData<List<OrdersEntity>>()
-    val orders: LiveData<List<OrdersEntity>> get() = _orders
+    val orders = MutableLiveData<List<OrdersEntity>?>(emptyList())
+
+    private val _order = MutableLiveData<OrdersEntity>()
+    val order: LiveData <OrdersEntity> get() = _order
 
     init {
         getAllOrders()
@@ -26,12 +28,11 @@ class PurchaseOrderViewModel(private val repo: OrderRepo) : ViewModel() {
                     val response = repo.getOrders()
                     if (response.isSuccessful) {
                         response.body()?.let {
-                            _orders.postValue(it)
-                        }
+                            orders.value = it                        }
                     }
                     delay(10000)
                 } catch (t: Throwable) {
-                    // Handle errors appropriately
+                    t.printStackTrace()
                 }
             }
         }

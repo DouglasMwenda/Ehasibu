@@ -76,7 +76,7 @@ class Product : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                val searchQueryLowerCase = s.toString().toLowerCase(Locale.ROOT)
+                val searchQueryLowerCase = s.toString().lowercase(Locale.ROOT)
                 productViewModel.filterProducts(searchQueryLowerCase)
             }
         })
