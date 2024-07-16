@@ -1,6 +1,8 @@
 package com.example.ehasibu.dashboard
 
 import AddProduct
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +12,12 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -24,6 +29,7 @@ import com.example.ehasibu.productsales.Addsaledialog
 import com.example.ehasibu.quotation.Newquotedialog
 import com.google.android.material.navigation.NavigationView
 
+
 class Dashboard : Fragment() {
     private lateinit var binding: FragmentDashboardBinding
     private lateinit var drawerLayout: DrawerLayout
@@ -31,8 +37,8 @@ class Dashboard : Fragment() {
     private lateinit var toggle: ActionBarDrawerToggle
 
 
-
     companion object {
+        private const val REQUEST_CODE_PERMISSION = 100
         fun newInstance() = Dashboard()
     }
 
@@ -64,6 +70,23 @@ class Dashboard : Fragment() {
 
         }
         binding.purchasecard.setOnClickListener { }
+
+        binding.profile.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                   android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                    REQUEST_CODE_PERMISSION
+                )
+            } else {
+                pickImageFromGallery()
+            }
+        }
+
 
         return binding.root
 
@@ -101,6 +124,30 @@ class Dashboard : Fragment() {
                     showExitConfirmationDialog()
                 }
             })
+    }
+
+    private val pickImageLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                binding.profile.setImageURI(it)
+            }
+        }
+
+    private fun pickImageFromGallery() {
+        pickImageLauncher.launch("image/*")
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                pickImageFromGallery()
+            }
+        }
     }
 
 
