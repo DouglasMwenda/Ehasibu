@@ -26,6 +26,7 @@ data class ProdResponse(
     val user: Any
 
 ): Serializable
+
 data class ApiResponse<T>(
     val entity: T,
     val message: String,

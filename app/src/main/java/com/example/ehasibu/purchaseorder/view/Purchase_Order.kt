@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentPurchaseOrderBinding
-import com.example.ehasibu.purchaseorder.data.OrdersEntity
+import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.repo.OrderRepo
 import com.example.ehasibu.purchaseorder.viewmodel.OrdersProvider
 import com.example.ehasibu.purchaseorder.viewmodel.PurchaseOrderViewModel
@@ -51,7 +51,7 @@ class Purchase_Order : Fragment() {
         return binding.root
     }
 
-    private fun updateOrders(orders: List<OrdersEntity>) {
+    private fun updateOrders(orders: List<OrderEntity>) {
         val tableLayout = binding.OrdersTable
 
         while (tableLayout.childCount > 1) {

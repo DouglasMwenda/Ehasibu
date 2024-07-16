@@ -1,6 +1,8 @@
 package com.example.ehasibu.purchaseorder.data
 
-data class OrdersEntity(
+import java.io.Serializable
+
+data class OrderEntity(
     val bill: Any,
     val business: Any,
     val date: Any,
@@ -11,4 +13,10 @@ data class OrdersEntity(
     val purchaseStatus: String,
     val user: Any,
     val vendor: Vendor
+): Serializable
+
+data class OrderResponse<T>(
+    val entity: T,
+    val message: String,
+    val statusCode: Int
 )
