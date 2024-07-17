@@ -9,9 +9,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentCustomerDialogBinding
 
 class CustomerDialog : DialogFragment() {
@@ -39,7 +37,7 @@ class CustomerDialog : DialogFragment() {
     ): View? {
         binding = FragmentCustomerDialogBinding.inflate(inflater,container,false)
         customerType = binding.customerType
-        val customerTypes = arrayOf("Type 1", "Type 2", "Type 3")
+        val customerTypes = arrayOf("Individual", "Business")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, customerTypes)
         customerType.setAdapter(adapter)
 
@@ -63,20 +61,19 @@ class CustomerDialog : DialogFragment() {
 
             if (customerTypeText.isEmpty()) {
                 customerType.error = "Please select customer type"
-                return@setOnClickListener
             }
 
             if (firstNameText.isEmpty()) {
                 firstName.error = "Please enter first name"
-                return@setOnClickListener
             }
+            if(lastNameText.isEmpty()){
+                lastName.error= "Please enter last name"
 
-            viewModel.saveCustomer(customerTypeText, firstNameText, lastNameText, phoneNumberText, emailAddressText, companyNameText, addressText)
-
+            }
 
         }
         cancelButton.setOnClickListener{
-
+            dismiss()
 
         }
         return binding.root
@@ -92,7 +89,5 @@ class CustomerDialog : DialogFragment() {
             return CustomerDialog()
         }
     }
-
-
 
 }

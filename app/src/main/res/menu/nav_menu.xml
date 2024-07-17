@@ -7,7 +7,7 @@
         android:enabled="true"
         android:visible="true"
         android:id="@+id/nav_group"
-        tools:ignore="ExtraText">   
+        tools:ignore="ExtraText">
 
         <item
             android:id="@+id/nav_home"
@@ -18,20 +18,74 @@
         <item
             android:id="@+id/nav_dashboard"
             android:icon="@drawable/dashboard_24"
-            android:iconTint="#800000"
             android:title="@string/dashboard" />
+
+        <!-- Sales Submenu -->
         <item
             android:id="@+id/nav_sales"
             android:icon="@drawable/shopping_cart_24"
             android:iconTint="#800000"
             android:title="Sales"
-            tools:ignore="HardcodedText"/>
+            tools:ignore="HardcodedText">
+            <menu>
+                <item
+                    android:id="@+id/nav_productsales"
+                    android:iconTint="#800000"
+                    android:title="Product Sales"
+                    tools:ignore="HardcodedText" />
 
+                <item
+                    android:id="@+id/nav_servicesales"
+                    android:iconTint="#800000"
+                    android:title="Service Sales"
+                    tools:ignore="HardcodedText" />
+
+                <item
+                    android:id="@+id/nav_quotation"
+                    android:iconTint="#800000"
+                    android:title="Quotation"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/nav_customers"
+                    android:iconTint="#800000"
+                    android:title="Customers"
+                    tools:ignore="HardcodedText" />
+
+
+
+
+                <!-- Add more sales sub-items here -->
+            </menu>
+        </item>
+
+        <!-- Purchases Submenu -->
         <item
             android:id="@+id/nav_purchases"
             android:icon="@drawable/shopping_bag_24"
             android:iconTint="#800000"
-            android:title="@string/purchases"/>
+            android:title="@string/purchases">
+            <menu>
+                <item
+                    android:id="@+id/nav_purchaseorders"
+                    android:iconTint="#800000"
+                    android:title="Purchase Orders"
+                    tools:ignore="HardcodedText" />
+
+                <item
+                    android:id="@+id/nav_Vendors"
+                    android:iconTint="#800000"
+                    android:title="Vendors"
+                    tools:ignore="HardcodedText" />
+
+                <item
+                    android:id="@+id/nav_bills"
+                    android:iconTint="#800000"
+                    android:title="Bills"
+                    tools:ignore="HardcodedText" />
+
+
+            </menu>
+        </item>
 
         <item
             android:id="@+id/nav_products"
