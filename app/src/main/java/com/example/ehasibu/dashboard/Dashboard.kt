@@ -179,52 +179,40 @@ class Dashboard : Fragment() {
                     true
                 }
 
-                R.id.nav_sales -> {
-
-                    //  setupSalesSpinner()
-                    findNavController().navigate(R.id.productSales)
-
-                    showSalesSpinner()
-
-
+                  R.id.nav_productsales -> {
+                      findNavController().navigate(R.id.productSales)
+                    true
+                }
+                R.id.nav_servicesales-> {
+                    findNavController().navigate(R.id.serviceSales)
                     true
                 }
 
-                R.id.nav_purchases -> {
+                R.id.nav_quotation-> {
+                    findNavController().navigate(R.id.quotation)
+                    true
+                }
+
+
+                R.id.nav_customers -> {
+                    findNavController().navigate(R.id.customers)
+                    true
+                }
+                R.id.nav_purchaseorders -> {
                     findNavController().navigate(R.id.purchase_Order)
 
                     true
-
                 }
-                /*  R.id.product_sales -> {
-                    Toast.makeText(context, "Product Sales clicked", Toast.LENGTH_SHORT).show()
+                 R.id.nav_bills -> {
+                     findNavController().navigate(R.id.bills)
                     true
                 }
-                R.id.service_sales -> {
-                    Toast.makeText(context, "Service Sales clicked", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.quotation -> {
-                    Toast.makeText(context, "Quotation clicked", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.purchase_orders -> {
-                    findNavController().navigate(R.id.services)
-
-                    Toast.makeText(context, "Purchase Orders clicked", Toast.LENGTH_SHORT)
-                        .show()
-                    true
-                }
-                 R.id.purchasebill -> {
-                    Toast.makeText(context, "Purchase Bill clicked", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.vendor -> {
-                    Toast.makeText(context, "Vendor clicked", Toast.LENGTH_SHORT).show()
+                R.id.nav_Vendors -> {
+                    findNavController().navigate(R.id.vendors)
                     true
                 }
 
-                */
+
                 R.id.nav_products -> {
                     findNavController().navigate(R.id.products)
 
@@ -277,46 +265,6 @@ class Dashboard : Fragment() {
             }.also {
                 drawerLayout.closeDrawer(GravityCompat.START)
             }
-        }
-    }
-
-    private fun showSalesSpinner() {
-        val context = requireContext()
-
-        val spinner = Spinner(context)
-        val salesItems = resources.getStringArray(R.array.sales_spinner_items)
-        val adapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, salesItems)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
-
-
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                handleSpinnerSelection(position)
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Do nothing
-            }
-
-        }
-
-        spinner.performClick()
-    }
-
-    private fun handleSpinnerSelection(position: Int) {
-        val context = requireContext()
-        when (position) {
-            0 -> Toast.makeText(context, "Product Sales Selected", Toast.LENGTH_SHORT).show()
-            1 -> Toast.makeText(context, "Service Sales Selected", Toast.LENGTH_SHORT).show()
-            2 -> Toast.makeText(context, "Quotation Selected", Toast.LENGTH_SHORT).show()
-            3 -> Toast.makeText(context, "Customer Information Selected", Toast.LENGTH_SHORT).show()
         }
     }
 
