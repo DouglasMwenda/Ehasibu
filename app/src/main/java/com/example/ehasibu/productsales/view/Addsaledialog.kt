@@ -1,4 +1,4 @@
-package com.example.ehasibu.productsales
+package com.example.ehasibu.productsales.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
