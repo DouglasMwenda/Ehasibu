@@ -88,7 +88,7 @@
 
     <fragment
         android:id="@+id/payment"
-        android:name="com.example.ehasibu.productsales.PaymentFragment"
+        android:name="com.example.ehasibu.productsales.view.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" />
 
@@ -154,7 +154,7 @@
     </fragment>
     <fragment
         android:id="@+id/productSales"
-        android:name="com.example.ehasibu.productsales.ProductSales"
+        android:name="com.example.ehasibu.productsales.view.ProductSales"
         android:label="fragment_productsales"
         tools:layout="@layout/fragment_productsales">
         <action
@@ -163,7 +163,7 @@
     </fragment>
     <fragment
         android:id="@+id/addsaledialog"
-        android:name="com.example.ehasibu.productsales.Addsaledialog"
+        android:name="com.example.ehasibu.productsales.view.Addsaledialog"
         android:label="Addsaledialog" />
 
             <fragment

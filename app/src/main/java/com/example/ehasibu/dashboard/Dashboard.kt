@@ -7,10 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -25,7 +21,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.R
 import com.example.ehasibu.customerinformation.CustomerDialog
 import com.example.ehasibu.databinding.FragmentDashboardBinding
-import com.example.ehasibu.productsales.Addsaledialog
+import com.example.ehasibu.productsales.view.Addsaledialog
 import com.example.ehasibu.quotation.Newquotedialog
 import com.google.android.material.navigation.NavigationView
 
