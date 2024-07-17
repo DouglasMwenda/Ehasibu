@@ -1,5 +1,6 @@
 package com.example.ehasibu.purchaseorder.view
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TableRow
 import android.widget.TextView
@@ -22,11 +24,17 @@ import com.example.ehasibu.purchaseorder.viewmodel.OrdersProvider
 import com.example.ehasibu.purchaseorder.viewmodel.PurchaseOrderViewModel
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 private const val TAG = "purchases"
 
-class Purchase_Order : Fragment() {
+class PurchaseOrder : Fragment() {
+
     private lateinit var binding: FragmentPurchaseOrderBinding
+    private lateinit var datePickerEditText: EditText
+    private lateinit var datePickerEditText2: EditText
 
     private val orderViewModel: PurchaseOrderViewModel by viewModels {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
@@ -40,6 +48,8 @@ class Purchase_Order : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPurchaseOrderBinding.inflate(inflater, container, false)
+
+
         orderViewModel.orders.observe(viewLifecycleOwner) { orders ->
             if (orders != null) {
                 updateOrders(orders)
@@ -49,6 +59,19 @@ class Purchase_Order : Fragment() {
         }
 
         return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        datePickerEditText2 = binding.datepicker2
+        datePickerEditText = binding.datepicker1
+
+        datePickerEditText.setOnClickListener {
+            showDatePickerDialog(datePickerEditText)
+        }
+        datePickerEditText2.setOnClickListener {
+            showDatePickerDialog(datePickerEditText2)
+        }
     }
 
     private fun updateOrders(orders: List<OrderEntity>) {
@@ -61,11 +84,11 @@ class Purchase_Order : Fragment() {
         for (order in orders) {
             val row = TableRow(context).apply { gravity = Gravity.CENTER_HORIZONTAL }
             val no = TextView(context).apply {
-                text = order.id.toString()
+                text = order.id
                 setTextColor(resources.getColor(R.color.black, null))
             }
             val name = TextView(context).apply {
-                text = order.vendor.toString()
+                text = order.vendor.vendorName.toString()
                 gravity = Gravity.CENTER
                 setTextColor(resources.getColor(R.color.black, null))
             }
@@ -89,7 +112,7 @@ class Purchase_Order : Fragment() {
                 adapter = ArrayAdapter(
                     context,
                     android.R.layout.simple_spinner_item,
-                    listOf("Action", "Edit", "Delete")
+                    listOf("Action", "Approve", "Reject", "Deliver", "Delete")
                 ).also { adapter ->
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 }
@@ -128,4 +151,24 @@ class Purchase_Order : Fragment() {
             tableLayout.addView(row)
         }
     }
+
+    private fun showDatePickerDialog(editText: EditText) {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            { _, selectedYear, selectedMonth, _ ->
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(selectedYear, selectedMonth, 1)
+                val format = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+                editText.setText(format.format(selectedDate.time))
+            },
+            year, month, day
+        )
+        datePickerDialog.show()
+    }
+
 }

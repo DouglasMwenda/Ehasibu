@@ -110,25 +110,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/savepobutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="5dp"
                 android:backgroundTint="#800000"
-                android:text="Save" />
+                android:text="@string/save" />
 
             <Button
                 android:id="@+id/cancelpobutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="5dp"
                 android:backgroundTint="#800000"
-                android:text="Cancel" />
+                android:text="@string/cancel" />
 
 
         </LinearLayout>
