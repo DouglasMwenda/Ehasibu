@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/purchase_Order"
-        android:name="com.example.ehasibu.purchaseorder.view.Purchase_Order"
+        android:name="com.example.ehasibu.purchaseorder.view.PurchaseOrder"
         android:label="fragment_purchase_order"
         tools:layout="@layout/fragment_purchase_order" />
     <fragment
