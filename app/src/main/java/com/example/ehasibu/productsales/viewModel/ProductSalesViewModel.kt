@@ -2,6 +2,7 @@ package com.example.ehasibu.productsales.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.productsales.data.SalesEntity
 import com.example.ehasibu.productsales.repo.SalesRepository
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class ProductSalesViewModel(private val repo: SalesRepository) : ViewModel() {
     private val _sales = MutableLiveData<List<SalesEntity>>(emptyList())
-    private val sales: MutableLiveData<List<SalesEntity>> get() = _sales
+    val sales: MutableLiveData<List<SalesEntity>> get() = _sales
 
     init {
         getAllSales()
@@ -23,13 +24,13 @@ class ProductSalesViewModel(private val repo: SalesRepository) : ViewModel() {
                 try {
                     val response = repo.getAllSales()
                     if (response.isSuccessful) {
-                        response.body()?.let { SalesPResponse ->
-                            _sales.value = SalesPResponse.entity
+                        response.body()?.let { salesPResponse ->
+                            _sales.value = salesPResponse.entity
                         }
                     }
 
                     delay(10000)
-                } catch (t: Throwable) {
+                } catch (_: Throwable) {
 
 
                 }
@@ -37,5 +38,15 @@ class ProductSalesViewModel(private val repo: SalesRepository) : ViewModel() {
         }
     }
 
+}
+
+class SalesProvider(private val repo: SalesRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(ProductSalesViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return ProductSalesViewModel(repo) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }
 
