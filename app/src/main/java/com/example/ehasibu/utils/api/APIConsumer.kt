@@ -67,6 +67,7 @@ interface APIConsumer {
     suspend fun getSales(): Response<SalesPResponse<List<SalesEntity>>>
 
 
+
     //Purchases
     @GET("purchases/getAllPurchases")
     suspend fun fetchOrders(): Response<OrderResponse<List<OrderEntity>>>
