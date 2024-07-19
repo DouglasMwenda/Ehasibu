@@ -1,4 +1,4 @@
-package com.example.ehasibu.customerinformation
+package com.example.ehasibu.customerinformation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.example.ehasibu.customerinformation.viewmodel.CustomersViewModel
 import com.example.ehasibu.databinding.FragmentCustomerDialogBinding
 
 class CustomerDialog : DialogFragment() {

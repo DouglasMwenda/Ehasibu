@@ -19,7 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.R
-import com.example.ehasibu.customerinformation.CustomerDialog
+import com.example.ehasibu.customerinformation.view.CustomerDialog
 import com.example.ehasibu.databinding.FragmentDashboardBinding
 import com.example.ehasibu.productsales.view.Addsaledialog
 import com.example.ehasibu.quotation.Newquotedialog
