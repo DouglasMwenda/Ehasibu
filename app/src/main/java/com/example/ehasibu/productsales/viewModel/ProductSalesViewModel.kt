@@ -11,8 +11,8 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class ProductSalesViewModel(private val repo: SalesRepository) : ViewModel() {
-    private val _sales = MutableLiveData<List<SalesEntity>>(emptyList())
-    val sales: MutableLiveData<List<SalesEntity>> get() = _sales
+    private val _sales = MutableLiveData<List<SalesEntity>?>(emptyList())
+    val sales: MutableLiveData<List<SalesEntity>?> get() = _sales
 
     init {
         getAllSales()
