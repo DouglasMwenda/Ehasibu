@@ -1,5 +1,7 @@
 package com.example.ehasibu.utils.api
 
+import com.example.ehasibu.customerinformation.data.CustomerRequest
+import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.OtpRequest
@@ -15,6 +17,8 @@ import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.data.ProductResponse
+import com.example.ehasibu.productsales.data.SalesEntity
+import com.example.ehasibu.productsales.data.SalesPResponse
 import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.data.OrderResponse
 import com.example.ehasibu.purchaseorder.data.ApproveResponse
@@ -61,9 +65,17 @@ interface APIConsumer {
     suspend fun updateProduct(@Body product: EditRequest): Response<DelResponse>
 
 
-    // productsale
+   //productsales
     @GET("sales/findAllSales")
-    suspend fun getAllSales(): Response<ApiResponse<List<ProdResponse>>>
+    suspend fun getSales(): Response<SalesPResponse<List<SalesEntity>>>
+
+
+
+    //customers
+    @POST("customers/customers")
+    fun createCustomer(@Body customer: CustomerRequest): Response<CustomerResponse>
+
+
 
 
     //Purchases

@@ -1,7 +1,6 @@
 package com.example.ehasibu.purchaseorder.view
 
 import android.app.DatePickerDialog
-import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -29,7 +28,6 @@ import com.example.ehasibu.utils.PREF
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
 private const val TAG = "purchases"
 

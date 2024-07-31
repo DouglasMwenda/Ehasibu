@@ -1,6 +1,6 @@
 package com.example.ehasibu.productsales.data
 
-data class Entity(
+data class SalesEntity(
     val amountForVat: Int,
     val customerId: Int,
     val customerName: String,
