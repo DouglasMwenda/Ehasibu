@@ -1,10 +1,13 @@
 package com.example.ehasibu.purchaseorder.viewmodel
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.ehasibu.purchaseorder.data.ApproveResponse
 import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.repo.OrderRepo
 import kotlinx.coroutines.delay
@@ -16,8 +19,8 @@ class PurchaseOrderViewModel(private val repo: OrderRepo) : ViewModel() {
     private val _orders = MutableLiveData<List<OrderEntity>>(emptyList())
     val orders: LiveData<List<OrderEntity>> get() = _orders
 
-    private val _order = MutableLiveData<OrderEntity>()
-    val order: LiveData<OrderEntity> get() = _order
+    private val _order = MutableLiveData<ApproveResponse>()
+    val order: LiveData<ApproveResponse> get() = _order
 
     init {
         getAllOrders()
@@ -42,6 +45,27 @@ class PurchaseOrderViewModel(private val repo: OrderRepo) : ViewModel() {
             }
         }
     }
+
+    fun approveOrder(id: String) {
+        viewModelScope.launch {
+            try {
+                val response = repo.approveOrder(id)
+
+                if (response.isSuccessful) {
+                    _order.postValue(response.body())
+                    Log.i(TAG, "approved successfully")
+                } else {
+                    Log.e(TAG, "Error: ${response.errorBody()?.string()}")
+                }
+
+            }
+            catch (t: Throwable) {
+                Log.e(TAG, "Exception occurred: ${t.message}", t)
+
+            }
+        }
+    }
+
 }
 
 class OrdersProvider(private val repo: OrderRepo) : ViewModelProvider.Factory {
@@ -53,3 +77,4 @@ class OrdersProvider(private val repo: OrderRepo) : ViewModelProvider.Factory {
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+

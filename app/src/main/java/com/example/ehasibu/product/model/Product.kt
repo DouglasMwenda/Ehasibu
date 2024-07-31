@@ -18,7 +18,6 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentProductBinding
@@ -35,7 +34,7 @@ import java.util.Locale
 
 private const val TAG = "product"
 
-class Product : Fragment() {
+class Product : androidx.fragment.app.Fragment() {
 
     private lateinit var binding: FragmentProductBinding
     private lateinit var addProductButton: Button
