@@ -72,7 +72,7 @@ interface APIConsumer {
 
     //customers
     @POST("customers/customers")
-    fun createCustomer(@Body customer: CustomerRequest): Response<CustomerResponse>
+    fun createCustomer(@Body customer: CustomerRequest): Response<ApiResponse<CustomerResponse>>
 
 
 
@@ -80,7 +80,6 @@ interface APIConsumer {
     //Purchases
     @GET("purchases/getAllPurchases")
     suspend fun fetchOrders(): Response<OrderResponse<List<OrderEntity>>>
-
 
 }
 
