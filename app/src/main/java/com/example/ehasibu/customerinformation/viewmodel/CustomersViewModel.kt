@@ -9,14 +9,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.repo.CustomersRepo
+import com.example.ehasibu.login.ApiResponse
 import kotlinx.coroutines.launch
 
 class CustomersViewModel (private val repo: CustomersRepo): ViewModel() {
-    private val _customers= MutableLiveData<CustomerResponse>()
-    val customer: LiveData<CustomerResponse> get() = _customers
+    private val _customers= MutableLiveData<ApiResponse<CustomerResponse>>()
+    val customer: LiveData<ApiResponse<CustomerResponse>> get() = _customers
 
 
-    fun createCustomer(customer: CustomerRequest){
+    fun getCustomers(customer: CustomerRequest){
         viewModelScope.launch {
             try {
                 val response= repo.createCustomer(customer)
