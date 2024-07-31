@@ -1,6 +1,7 @@
 package com.example.ehasibu.product.model
 
 import AddProduct
+import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
@@ -30,7 +31,6 @@ import com.example.ehasibu.product.viewmodel.ProductProvider
 import com.example.ehasibu.product.viewmodel.ProductViewModel
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
-import com.google.android.material.textfield.TextInputEditText
 import java.util.Locale
 
 private const val TAG = "product"

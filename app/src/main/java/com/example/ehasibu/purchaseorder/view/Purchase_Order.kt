@@ -1,6 +1,7 @@
 package com.example.ehasibu.purchaseorder.view
 
 import android.app.DatePickerDialog
+import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
@@ -27,6 +29,7 @@ import com.example.ehasibu.utils.PREF
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
 private const val TAG = "purchases"
 
@@ -57,9 +60,14 @@ class PurchaseOrder : Fragment() {
                 Log.d(TAG, "No orders to display")
             }
         }
-
+        orderViewModel.order.observe(viewLifecycleOwner) { result ->
+            result?.let {
+                Log.i(TAG, "Order approved: $it")
+            }
+        }
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -72,6 +80,10 @@ class PurchaseOrder : Fragment() {
         datePickerEditText2.setOnClickListener {
             showDatePickerDialog(datePickerEditText2)
         }
+
+        (activity as? AppCompatActivity)?.supportActionBar?.show()
+        (activity as? AppCompatActivity)?.supportActionBar?.title =
+            getString(R.string.purchase_orders)
     }
 
     private fun updateOrders(orders: List<OrderEntity>) {
@@ -126,9 +138,16 @@ class PurchaseOrder : Fragment() {
                     ) {
                         val action = parent.getItemAtPosition(position) as String
                         when (action) {
-                            "Edit" -> {
-                                // Handle edit action
+                            "Approve" -> orderViewModel.approveOrder(order.id)
+
+                            "Reject" -> {
+                                // Handle delete action
                             }
+
+                            "Deliver" -> {
+                                // Handle delete action
+                            }
+
                             "Delete" -> {
                                 // Handle delete action
                             }
@@ -171,4 +190,8 @@ class PurchaseOrder : Fragment() {
         datePickerDialog.show()
     }
 
+
+   /* private fun approveOrder(id: String) {
+        orderViewModel.approveOrder(id)
+    }*/
 }

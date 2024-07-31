@@ -176,6 +176,8 @@
     <string name="budget_balance">Budget Balance</string>
     <string name="profile_picture">Profile Picture</string>
     <string name="basket">basket</string>
+    <string name="filter">Filter</string>
+    <string name="add_purchase">Add_purchase</string>
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>
         <item>Service Sales</item>

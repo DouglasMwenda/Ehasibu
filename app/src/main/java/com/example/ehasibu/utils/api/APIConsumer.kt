@@ -17,6 +17,7 @@ import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.data.ProductResponse
 import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.data.OrderResponse
+import com.example.ehasibu.purchaseorder.data.ApproveResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -68,6 +69,9 @@ interface APIConsumer {
     //Purchases
     @GET("purchases/getAllPurchases")
     suspend fun fetchOrders(): Response<OrderResponse<List<OrderEntity>>>
+
+    @PUT("purchases/approvePurchase")
+    suspend fun approveOrder(@Query("id") id:String): Response<ApproveResponse>
 
 
 }
