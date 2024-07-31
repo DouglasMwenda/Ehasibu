@@ -1,31 +1,36 @@
 package com.example.ehasibu.customerinformation.view
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.ehasibu.customerinformation.viewmodel.CustomersViewModel
+import com.example.ehasibu.customerinformation.data.CustomerRequest
+import com.example.ehasibu.customerinformation.repo.CustomersRepo
+import com.example.ehasibu.customerinformation.viewmodel.AddCustomerViewmodel
 import com.example.ehasibu.databinding.FragmentCustomerDialogBinding
+import com.example.ehasibu.utils.API_TOKEN
+import com.example.ehasibu.utils.PREF
+
+const val TAG = "Add Customer"
 
 class CustomerDialog : DialogFragment() {
     private lateinit var binding: FragmentCustomerDialogBinding
-    private val viewModel: CustomersViewModel by viewModels()
     private lateinit var  customerType : AutoCompleteTextView
-    private lateinit var firstName: EditText
-    private lateinit var lastName: EditText
-    private lateinit var phoneNumber: EditText
-    private lateinit var emailAddress: EditText
-    private lateinit var companyName: EditText
-    private lateinit var address:EditText
-    private lateinit var saveButton: Button
-    private lateinit var cancelButton: Button
 
+
+    private val viewModel: AddCustomerViewmodel by viewModels {
+        val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
+        val token = sharedPrefs.getString(API_TOKEN, "")
+            ?: throw IllegalStateException("API Token is missing")
+        AddCustomerViewmodel.AddCustomerProvider(CustomersRepo(token))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,45 +40,38 @@ class CustomerDialog : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCustomerDialogBinding.inflate(inflater,container,false)
         customerType = binding.customerType
         val customerTypes = arrayOf("Individual", "Business")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, customerTypes)
         customerType.setAdapter(adapter)
 
-        firstName = binding.firstname
-        lastName = binding.lastname
-        phoneNumber = binding.phonenumbner
-        emailAddress = binding.emailadress
-        companyName = binding.companyname
-        address = binding.adress
-        saveButton = binding.savecustomerbutton
-        cancelButton = binding.cancelcustomerbutton
-
-        saveButton.setOnClickListener{
-            val customerTypeText = customerType.text.toString().trim()
-            val firstNameText = firstName.text.toString().trim()
-            val lastNameText = lastName.text.toString().trim()
-            val phoneNumberText = phoneNumber.text.toString().trim()
-            val emailAddressText = emailAddress.text.toString().trim()
-            val companyNameText = companyName.text.toString().trim()
-            val addressText = address.text.toString().trim()
-
-            if (customerTypeText.isEmpty()) {
-                customerType.error = "Please select customer type"
+        viewModel.isCustomerAdded.observe(viewLifecycleOwner){ isSuccess ->
+            if (isSuccess == true) {
+                Toast.makeText(context, "Customer added successfully", Toast.LENGTH_SHORT).show()
+                dismiss()
+            } else {
+                Toast.makeText(context, "Failed to add Customer", Toast.LENGTH_SHORT).show()
             }
+        }
 
-            if (firstNameText.isEmpty()) {
-                firstName.error = "Please enter first name"
-            }
-            if(lastNameText.isEmpty()){
-                lastName.error= "Please enter last name"
+       binding.savecustomerbutton.setOnClickListener{
+           val customer = CustomerRequest(
+               customerType = binding.customerType.text.toString(),
+               customerFirstName = binding.firstname.text.toString(),
+               customerLastName = binding.lastname.text.toString(),
+               phoneNumber = binding.phonenumbner.text.toString(),
+               emailAddress = binding.emailadress.text.toString(),
+               companyName = binding.companyname.text.toString(),
+               address = binding.adress.text.toString()
 
-            }
+           )
+           Log.d("CustomerDialog", "Customer data: $customer")
+           viewModel.createCustomer(customer)
 
         }
-        cancelButton.setOnClickListener{
+        binding.cancelcustomerbutton.setOnClickListener{
             dismiss()
 
         }
