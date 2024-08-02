@@ -18,7 +18,7 @@ import com.example.ehasibu.databinding.FragmentCustomerDialogBinding
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 
-const val TAG = "Add Customer"
+
 
 class CustomerDialog : DialogFragment() {
     private lateinit var binding: FragmentCustomerDialogBinding
@@ -27,9 +27,10 @@ class CustomerDialog : DialogFragment() {
 
     private val viewModel: AddCustomerViewmodel by viewModels {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
-        val token = sharedPrefs.getString(API_TOKEN, "")
-            ?: throw IllegalStateException("API Token is missing")
-        AddCustomerViewmodel.AddCustomerProvider(CustomersRepo(token))
+        val token = sharedPrefs.getString(API_TOKEN, "")!!
+        val repo= CustomersRepo(token)
+        AddCustomerViewmodel.AddCustomerProvider(repo)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

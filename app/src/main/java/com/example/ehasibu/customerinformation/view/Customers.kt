@@ -1,21 +1,38 @@
 package com.example.ehasibu.customerinformation.view
 
+import android.content.ContentValues
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TableLayout
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TableRow
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.ehasibu.R
+import com.example.ehasibu.customerinformation.data.CustomerResItem
+import com.example.ehasibu.customerinformation.repo.CustomersRepo
 import com.example.ehasibu.customerinformation.viewmodel.CustomersViewModel
 import com.example.ehasibu.databinding.FragmentCustomersBinding
+import com.example.ehasibu.utils.API_TOKEN
+import com.example.ehasibu.utils.PREF
+const val TAG ="Customers"
 
 class Customers : Fragment() {
     private lateinit var binding: FragmentCustomersBinding
-    private lateinit var addCustomerButton: Button
-    private lateinit var customersTableLayout: TableLayout
-    private val viewModel: CustomersViewModel by viewModels()
+
+    private val customerViewModel: CustomersViewModel by viewModels{
+        val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
+        val token = sharedPrefs.getString(API_TOKEN, "")!!
+        val repo = CustomersRepo(token)
+        CustomersViewModel.CustomerProvider(repo)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,20 +44,124 @@ class Customers : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCustomersBinding.inflate(inflater,container,false)
-        addCustomerButton = binding.addcustomerbutton
-        customersTableLayout = binding.customerstable
 
-        addCustomerButton.setOnClickListener {
-            val dialog= CustomerDialog()
-            dialog.show(parentFragmentManager,"CustomerDialog")
+
+        binding.addcustomerbutton.setOnClickListener {
+            val dialog = CustomerDialog()
+            dialog.show(parentFragmentManager, "CustomerDialog")
+        }
+
+        customerViewModel.customer.observe(viewLifecycleOwner){ customers ->
+            if (customers != null) {
+                updateCustomers(customers)
+            }
+            else {
+                Log.d(ContentValues.TAG, "No customers  to display")
+            }
+
         }
         return binding.root
 
     }
+    private fun updateCustomers(customers: List<CustomerResItem>) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        val customersTable= binding.customerstable
+
+        while (customersTable.childCount > 1) {
+          customersTable.removeViewAt(1)
+        }
+        for (customer in customers)  {
+            val row = TableRow(context).apply { gravity= Gravity.CENTER_HORIZONTAL }
+            val no = TextView(context).apply {
+                text= customer.customerId.toString()
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val type = TextView(context).apply {
+                text= customer.customerType
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val date = TextView(context).apply {
+                text = customer.entryDate
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val firstName = TextView(context).apply {
+                text= customer.customerFirstName
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val lastName= TextView(context).apply {
+                text= customer.customerLastName
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val phoneNumber = TextView(context).apply {
+                text = customer.phoneNumber
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val email = TextView(context).apply {
+                text= customer.emailAddress
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val company = TextView(context).apply {
+                text= customer.companyName
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+
+            val actionSpinner = Spinner(context).apply {
+                gravity = Gravity.START
+                adapter = ArrayAdapter(
+                    context,
+                    android.R.layout.simple_spinner_item,
+                    listOf("Action", "Approve", "Delete")
+                ).also { adapter ->
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                }
+
+                onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+                        val action = parent.getItemAtPosition(position) as String
+                        when (action) {
+                            "Edit" -> {
+                                // Handle edit action
+                            }
+
+                            "Delete" -> {
+                                // Handle delete action
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                        // Do nothing
+                    }
+                }
+                setBackgroundResource(android.R.drawable.btn_default)
+                setPadding(0, 0, 0, 0)
+            }
+
+            row.addView(no)
+            row.addView(type)
+            row.addView(firstName)
+            row.addView(lastName)
+            row.addView(date)
+            row.addView(phoneNumber)
+            row.addView(email)
+            row.addView(company)
+            row.addView(actionSpinner)
+            customersTable.addView(row)
 
 
+        }
     }
+
 }
