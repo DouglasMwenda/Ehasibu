@@ -165,7 +165,7 @@ class Dashboard : Fragment() {
     private fun setupNavigationView(navView: NavigationView) {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home -> {
+               /* R.id.nav_home -> {
                     findNavController().navigate(R.id.home)
                     true
                 }
@@ -173,9 +173,9 @@ class Dashboard : Fragment() {
                 R.id.nav_dashboard -> {
 
                     true
-                }
+                }*/
 
-                  R.id.nav_productsales -> {
+                R.id.nav_productsales -> {
                       findNavController().navigate(R.id.productSales)
                     true
                 }

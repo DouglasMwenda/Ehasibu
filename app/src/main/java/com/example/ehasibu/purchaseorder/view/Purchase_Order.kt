@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TableRow
 import android.widget.TextView
@@ -36,6 +37,7 @@ class PurchaseOrder : Fragment() {
     private lateinit var binding: FragmentPurchaseOrderBinding
     private lateinit var datePickerEditText: EditText
     private lateinit var datePickerEditText2: EditText
+    private lateinit var addButton: ImageButton
 
     private val orderViewModel: PurchaseOrderViewModel by viewModels {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
@@ -80,8 +82,19 @@ class PurchaseOrder : Fragment() {
         }
 
         (activity as? AppCompatActivity)?.supportActionBar?.show()
-        (activity as? AppCompatActivity)?.supportActionBar?.title =
-            getString(R.string.purchase_orders)
+        (activity as? AppCompatActivity)?.supportActionBar?.title =getString(R.string.purchase_orders)
+
+
+
+
+        addButton = binding.addPurchaseBtn
+        addButton.setOnClickListener {
+            val dialog = AddPOFragment.newInstance()
+            dialog.show(parentFragmentManager, "addPO")
+        }
+
+
+
     }
 
     private fun updateOrders(orders: List<OrderEntity>) {

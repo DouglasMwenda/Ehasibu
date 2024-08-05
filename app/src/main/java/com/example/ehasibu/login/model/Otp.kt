@@ -16,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.AppModule
+import com.example.ehasibu.MainActivity
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentOtpBinding
 import com.example.ehasibu.login.ApiResponse
@@ -43,6 +44,11 @@ class Otp : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
+
+        Log.d(TAG, "onViewCreated called")
+
+        (activity as? MainActivity)?.hideBottomNavigationView()
+
     }
 
     override fun onCreateView(
@@ -70,6 +76,13 @@ class Otp : Fragment() {
         return binding.root
 
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d(TAG, "onDestroyView called")
+
+        (activity as? MainActivity)?.showBottomNavigationView()
     }
 
     private fun validateOtp(): Boolean {

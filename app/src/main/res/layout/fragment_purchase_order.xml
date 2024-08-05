@@ -180,7 +180,7 @@
 
 
         <ImageButton
-            android:id="@+id/add_purchase_btn"
+            android:id="@+id/addPurchaseBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="start"

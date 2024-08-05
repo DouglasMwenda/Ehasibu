@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.AppModule
+import com.example.ehasibu.MainActivity
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentPasswordResetBinding
 import com.example.ehasibu.login.ApiResponse
@@ -42,6 +43,9 @@ class Password_Reset : Fragment() {
 
         (activity as? AppCompatActivity)?.supportActionBar?.show()
         (activity as? AppCompatActivity)?.supportActionBar?.title = getString(R.string.password)
+        (activity as? MainActivity)?.hideBottomNavigationView()
+
+
     }
 
     override fun onCreateView(
@@ -70,6 +74,11 @@ class Password_Reset : Fragment() {
         }
 
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as? MainActivity)?.showBottomNavigationView()
     }
 
     private fun setupFocusChangeListeners() {

@@ -16,6 +16,7 @@ import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.ehasibu.AppModule
+import com.example.ehasibu.MainActivity
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentLoginBinding
 import com.example.ehasibu.login.ApiResponse
@@ -42,6 +43,8 @@ class Login : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
+        (activity as? MainActivity)?.hideBottomNavigationView()
+
     }
 
     override fun onCreateView(
@@ -67,6 +70,11 @@ class Login : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as? MainActivity)?.showBottomNavigationView()
     }
 
     private fun clearLoginFields() {
