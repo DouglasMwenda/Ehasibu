@@ -1,6 +1,7 @@
 package com.example.ehasibu.utils.api
 
 import com.example.ehasibu.customerinformation.data.CustomerRequest
+import com.example.ehasibu.customerinformation.data.CustomerResItem
 import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.login.data.AuthUserResponse
@@ -74,7 +75,10 @@ interface APIConsumer {
 
     //customers
     @POST("customers/customers")
-    fun createCustomer(@Body customer: CustomerRequest): Response<ApiResponse<CustomerResponse>>
+   suspend fun createCustomer(@Body customer: CustomerRequest): Response<ApiResponse<CustomerResponse>>
+
+    @GET("customers/customers")
+   suspend fun getCustomers(): Response<ApiResponse<List<CustomerResItem>>>
 
 
 

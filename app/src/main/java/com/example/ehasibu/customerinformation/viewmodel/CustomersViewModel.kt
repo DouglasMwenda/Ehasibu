@@ -1,39 +1,49 @@
 package com.example.ehasibu.customerinformation.viewmodel
 
-import android.content.ContentValues.TAG
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.ehasibu.customerinformation.data.CustomerRequest
-import com.example.ehasibu.customerinformation.data.CustomerResponse
+import com.example.ehasibu.customerinformation.data.CustomerResItem
 import com.example.ehasibu.customerinformation.repo.CustomersRepo
-import com.example.ehasibu.login.ApiResponse
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-class CustomersViewModel (private val repo: CustomersRepo): ViewModel() {
-    private val _customers= MutableLiveData<ApiResponse<CustomerResponse>>()
-    val customer: LiveData<ApiResponse<CustomerResponse>> get() = _customers
+class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
+    private val _customers = MutableLiveData<List<CustomerResItem>?>(emptyList())
+    val customer: MutableLiveData<List<CustomerResItem>?> get() = _customers
+
+    init {
+        getCustomers()
+    }
 
 
-    fun getCustomers(customer: CustomerRequest){
+    private fun getCustomers() {
         viewModelScope.launch {
-            try {
-                val response= repo.createCustomer(customer)
+            while (isActive) {
+                try {
+                    val response = repo.getAllCustomers()
+                    if (response.isSuccessful) {
+                        response.body()?.let { customerRespo ->
+                            _customers.value = customerRespo.entity
+                        }
+                    }
+                    delay(10000)
+                } catch (t: Throwable) {
 
-            if (response.isSuccessful) {
-                (response.body()?. let {
-                    _customers.value = it
-                }) ?: run {
-                    Log.d(TAG, "message: ${response.message()}")
                 }
-            } else {
-                Log.d(TAG, "message: ${response.message()}")
             }
-        } catch (t: Throwable) {
-            Log.e(TAG, "Exception occurred: ${t.message}", t)
         }
+    }
+
+    class CustomerProvider(private val repo: CustomersRepo) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(CustomersViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return CustomersViewModel(repo) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
 

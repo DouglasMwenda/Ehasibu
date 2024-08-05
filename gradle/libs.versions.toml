@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.1"
+agp = "8.5.0"
 constraintlayoutVersion = "2.1.4"
 imagepickerVersion = "2.1.13"
 kotlin = "1.9.0"
