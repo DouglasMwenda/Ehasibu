@@ -98,7 +98,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="top|center"
                     android:contentDescription="Icon"
-                    android:src="@drawable/add_icon" />
+                    android:src="@drawable/addsale" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="top|center"
                     android:contentDescription="Icon"
-                    android:src="@drawable/add_icon" />
+                    android:src="@drawable/addpurch" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -162,15 +162,15 @@
                     android:layout_width="24dp"
                     android:layout_height="40dp"
                     android:layout_gravity="top|center"
-                    android:contentDescription="Icon"
-                    android:src="@drawable/add_icon" />
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/quotation" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Add Quote"
+                    android:text="@string/add_quote"
                     android:textColor="#800000"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -204,15 +204,15 @@
                     android:layout_width="24dp"
                     android:layout_height="40dp"
                     android:layout_gravity="top|center"
-                    android:contentDescription="Icon"
-                    android:src="@drawable/add_icon" />
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/person_add" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Add Vendor"
+                    android:text="@string/add_vendor"
                     android:textColor="#800000"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -237,15 +237,15 @@
                     android:layout_width="24dp"
                     android:layout_height="40dp"
                     android:layout_gravity="top|center"
-                    android:contentDescription="Icon"
-                    android:src="@drawable/add_icon" />
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/person_add" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Add Customer"
+                    android:text="@string/add_customer"
                     android:textColor="#800000"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -268,16 +268,25 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="40dp"
+                    android:paddingStart="16dp"
+                    android:layout_gravity="top|start"
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/add_icon"
+                   />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="top|center"
-                    android:contentDescription="Icon"
-                    android:src="@drawable/add_icon" />
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/addproduct"
+                   />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Add Product"
+                    android:text="@string/add_product"
                     android:textColor="#800000"
                     android:textSize="12sp"
                     android:textStyle="bold" />

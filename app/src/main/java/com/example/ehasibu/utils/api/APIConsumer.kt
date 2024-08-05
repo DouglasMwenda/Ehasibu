@@ -22,6 +22,7 @@ import com.example.ehasibu.productsales.data.SalesPResponse
 import com.example.ehasibu.purchaseorder.data.ApproveResponse
 import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.data.OrderResponse
+import com.example.ehasibu.purchaseorder.data.PoRequest
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -84,6 +85,9 @@ interface APIConsumer {
 
     @PUT("purchases/approvePurchase")
     suspend fun approveOrder(@Query("id") id:String): Response<ApproveResponse>
+
+@POST("purchases/addPurchase")
+suspend fun addOrder(@Body order: PoRequest): Response<OrderResponse<List<OrderEntity>>>
 }
 
 

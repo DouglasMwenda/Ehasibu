@@ -178,6 +178,14 @@
     <string name="basket">basket</string>
     <string name="filter">Filter</string>
     <string name="add_purchase">Add_purchase</string>
+    <string name="customers">Customers</string>
+    <string name="vendors">Vendors</string>
+    <string name="bills">Bills</string>
+    <string name="icon">Icon</string>
+    <string name="add_quote">Add Quote</string>
+    <string name="add_customer">Add Customer</string>
+    <string name="string_icon">string/icon</string>
+    <string name="add_vendor">Add Vendor</string>
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>
         <item>Service Sales</item>
