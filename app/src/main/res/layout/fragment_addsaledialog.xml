@@ -30,7 +30,7 @@
                 android:textColor="#800000"
                 android:textColorHint="#800000"
                 android:textSize="16sp"
-                tools:ignore="VisualLintTextFieldSize" />
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TableLayout
