@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".purchaseorder.view.AddPOFragment">
 
@@ -12,27 +11,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="16dp">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Purchase Order " />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/vendor_name">
+
+            <AutoCompleteTextView
+                android:id="@+id/vendorname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="productName"
+                android:inputType="none"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Product Name">
+            android:hint="@string/delivery_date">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/productname"
+                android:id="@+id/deliverydate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="number"
+                android:autofillHints="Delivery Date"
+                android:inputType="none"
+                android:textColor="#800000"
+                android:textColorHint="#800000"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/productname">
+
+            <AutoCompleteTextView
+                android:id="@+id/productnamefield"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="productName"
                 android:inputType="none"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
@@ -65,7 +102,7 @@
                 android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="none"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
                 android:textSize="16sp"
@@ -76,10 +113,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Amount Purchased">
+            android:hint="@string/quantity_purchased">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/amountpurchased"
+                android:id="@+id/quantitypurchased"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -94,7 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Unit">
+            android:hint="@string/unit">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/unit"
