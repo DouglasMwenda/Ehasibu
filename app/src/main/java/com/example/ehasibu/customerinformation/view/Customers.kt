@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
 import com.example.ehasibu.customerinformation.data.CustomerResItem
+import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.customerinformation.repo.CustomersRepo
 import com.example.ehasibu.customerinformation.viewmodel.CustomersViewModel
 import com.example.ehasibu.databinding.FragmentCustomersBinding
@@ -117,7 +118,7 @@ class Customers : Fragment() {
                 adapter = ArrayAdapter(
                     context,
                     android.R.layout.simple_spinner_item,
-                    listOf("Action", "Approve", "Delete")
+                    listOf("Action", "Edit", "Delete")
                 ).also { adapter ->
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 }
@@ -132,7 +133,9 @@ class Customers : Fragment() {
                         val action = parent.getItemAtPosition(position) as String
                         when (action) {
                             "Edit" -> {
-                                // Handle edit action
+
+                             //   val dialog = CustomerDialog.newInstance(customerUpdate)
+                              //  dialog.show(parentFragmentManager, "edit customer")
                             }
 
                             "Delete" -> {
