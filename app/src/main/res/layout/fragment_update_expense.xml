@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Add Expense"
+            android:text="@string/add_expense"
             android:textColor="#800000"
             android:textSize="18sp" />
 
@@ -27,7 +27,7 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Expense Type">
+            android:hint="@string/expense_type">
 
             <AutoCompleteTextView
                 android:id="@+id/expensetype"
