@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.customerinformation.data.CustomerRequest
+import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.customerinformation.repo.CustomersRepo
 import kotlinx.coroutines.launch
 
@@ -35,6 +36,27 @@ class AddCustomerViewmodel(private val repo: CustomersRepo):  ViewModel() {
             }
         }
     }
+
+    fun updateCustomer(customerRequest: UpdateCustomerRequest){
+        viewModelScope.launch {
+            try {
+                val response= repo.updateCustomer(customerRequest)
+
+                if (response.isSuccessful) {
+                    _isCustomerAdded.postValue(true)
+                    val message = response.body()?.message
+                    if (message != null) {
+                        Log.d(TAG, message)
+                    }
+                } else {
+                    Log.d(TAG, "Error: ${response.message()}")
+                }
+            } catch (_: Throwable) {
+            }
+        }
+    }
+
+
 
     class AddCustomerProvider(private val repo: CustomersRepo) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {

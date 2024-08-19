@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.customerinformation.data.CustomerRequest
+import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.customerinformation.repo.CustomersRepo
 import com.example.ehasibu.customerinformation.viewmodel.AddCustomerViewmodel
 import com.example.ehasibu.databinding.FragmentCustomerDialogBinding
@@ -19,10 +20,10 @@ import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 
 
-
 class CustomerDialog : DialogFragment() {
     private lateinit var binding: FragmentCustomerDialogBinding
     private lateinit var  customerType : AutoCompleteTextView
+    private var editRequest: UpdateCustomerRequest? = null
 
 
     private val viewModel: AddCustomerViewmodel by viewModels {
@@ -32,9 +33,24 @@ class CustomerDialog : DialogFragment() {
         AddCustomerViewmodel.AddCustomerProvider(repo)
 
     }
+    companion object{
+        private const val ARG_EDIT_REQUEST = "edit_request"
+
+        fun newInstance (editRequest: UpdateCustomerRequest? = null) : CustomerDialog {
+            val fragment = CustomerDialog()
+            val args = Bundle().apply {
+                putParcelable(ARG_EDIT_REQUEST, editRequest)
+            }
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            editRequest = it.getParcelable(ARG_EDIT_REQUEST)
+        }
 
     }
 
@@ -58,18 +74,36 @@ class CustomerDialog : DialogFragment() {
         }
 
        binding.savecustomerbutton.setOnClickListener{
-           val customer = CustomerRequest(
-               customerType = binding.customerType.text.toString(),
-               customerFirstName = binding.firstname.text.toString(),
-               customerLastName = binding.lastname.text.toString(),
-               phoneNumber = binding.phonenumbner.text.toString(),
-               emailAddress = binding.emailadress.text.toString(),
-               companyName = binding.companyname.text.toString(),
-               address = binding.adress.text.toString()
+           if (validateInput()) {
+               if (editRequest == null) {
 
-           )
-           Log.d("CustomerDialog", "Customer data: $customer")
-           viewModel.createCustomer(customer)
+                   val customer = CustomerRequest(
+                       customerType = binding.customerType.text.toString(),
+                       customerFirstName = binding.firstname.text.toString(),
+                       customerLastName = binding.lastname.text.toString(),
+                       phoneNumber = binding.phonenumbner.text.toString(),
+                       emailAddress = binding.emailadress.text.toString(),
+                       companyName = binding.companyname.text.toString(),
+                       address = binding.adress.text.toString()
+
+                   )
+                   Log.d("CustomerDialog", "Customer data: $customer")
+                   viewModel.createCustomer(customer)
+               }
+               else {
+                   val customer = UpdateCustomerRequest(
+                       customerId = editRequest!!.customerId,
+                       customerType = binding.customerType.toString(),
+                      customerFirstName = binding.firstname.toString(),
+                       customerLastName = binding.lastname.toString(),
+                       phoneNumber = binding.phonenumbner.toString(),
+                       emailAddress = binding.emailadress.toString(),
+                       companyName = binding.companyname.toString(),
+                       address = binding.adress.toString()
+                   )
+                   viewModel.updateCustomer(customer)
+               }
+               }
 
         }
         binding.cancelcustomerbutton.setOnClickListener{
@@ -84,10 +118,44 @@ class CustomerDialog : DialogFragment() {
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
-    companion object {
-        fun newInstance(): CustomerDialog {
-            return CustomerDialog()
+    private fun validateInput(): Boolean {
+        return when {
+            binding.customerType.text.isNullOrBlank() -> {
+                Toast.makeText(context, "Customer Type name is required", Toast.LENGTH_SHORT).show()
+                false
+            }
+
+            binding.firstname.text.isNullOrBlank() -> {
+                Toast.makeText(context, "firstname is required", Toast.LENGTH_SHORT).show()
+                false
+            }
+
+            binding.lastname.text.isNullOrBlank() -> {
+                Toast.makeText(context, "Lastname is required", Toast.LENGTH_SHORT).show()
+                false
+            }
+
+            binding.phonenumbner.text.isNullOrBlank() -> {
+                Toast.makeText(context, "Phone number is required", Toast.LENGTH_SHORT).show()
+                false
+            }
+
+            binding.emailadress.text.isNullOrBlank() -> {
+                Toast.makeText(context, "Email  is required", Toast.LENGTH_SHORT).show()
+                false
+            }
+            binding.companyname.text.isNullOrBlank() -> {
+                Toast.makeText(context, "Company name is required", Toast.LENGTH_SHORT).show()
+                false
+            }
+            binding.adress.text.isNullOrBlank() -> {
+                Toast.makeText(context, "Address is required", Toast.LENGTH_SHORT).show()
+                false
+            }
+
+            else -> true
         }
     }
+
 
 }

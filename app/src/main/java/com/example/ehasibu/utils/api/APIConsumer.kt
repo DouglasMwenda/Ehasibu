@@ -3,6 +3,7 @@ package com.example.ehasibu.utils.api
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResItem
 import com.example.ehasibu.customerinformation.data.CustomerResponse
+import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.OtpRequest
@@ -81,6 +82,14 @@ interface APIConsumer {
     suspend fun getCustomers(): Response<ApiResponse<List<CustomerResItem>>>
 
 
+    @PUT("customers/customers/{id}")
+    suspend fun updateCustomer(@Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResItem>>
+
+    @DELETE("customers/{id}")
+    suspend fun deleteCustomer(@Query("id") id: Int): Response<DelResponse>
+
+
+
     //Purchases
     @GET("purchases/getAllPurchases")
     suspend fun fetchOrders(): Response<OrderResponse<List<OrderEntity>>>
@@ -89,7 +98,9 @@ interface APIConsumer {
     suspend fun approveOrder(@Query("id") id: String): Response<ApproveResponse>
 
     @POST("purchases/addPurchase")
+
     suspend fun addOrder(@Body order: PoRequest): Response<ApiResponse<PoResponse>>
+
 }
 
 
