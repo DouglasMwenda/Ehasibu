@@ -44,9 +44,6 @@ class Otp : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
-
-        Log.d(TAG, "onViewCreated called")
-
         (activity as? MainActivity)?.hideBottomNavigationView()
 
     }

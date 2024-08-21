@@ -60,6 +60,7 @@ class PurchaseOrder : Fragment() {
                 Log.d(TAG, "No orders to display")
             }
         }
+
         orderViewModel.order.observe(viewLifecycleOwner) { result ->
             result?.let {
                 Log.i(TAG, "Order approved: $it")
