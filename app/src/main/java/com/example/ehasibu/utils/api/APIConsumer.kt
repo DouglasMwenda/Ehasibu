@@ -92,6 +92,7 @@ interface APIConsumer {
     @POST("purchases/addPurchase")
     suspend fun addOrder(@Body order: PoRequest): Response<ApiResponse<PoResponse>>
 
+
     @POST("vendors/fetchAll")
     suspend fun fetchVendors(): Response<VendorResponse>
 }
