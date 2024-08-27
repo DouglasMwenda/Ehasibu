@@ -9,7 +9,7 @@
     android:padding="16dp"
     android:background="@color/white"
     android:id="@+id/product"
-    tools:context=".product.model.Product">
+    tools:context=".product.view.Product">
 
 
     <LinearLayout

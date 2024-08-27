@@ -1,7 +1,7 @@
 package com.example.ehasibu.vendors.moddel
 
-data class VendorResponse(
-    val entity: List<Entity>,
+data class EditResponse(
+    val entity: Entity,
     val message: String,
     val statusCode: Int
 )

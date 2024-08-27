@@ -5,17 +5,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.ehasibu.purchaseorder.data.Vendor
+import com.example.ehasibu.vendors.moddel.Entity
 import com.example.ehasibu.vendors.moddel.VendorRepo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class VendorViewModel(private val repo: VendorRepo) : ViewModel() {
-    private val _vendors = MutableLiveData<List<Vendor>>()
-    val vendors: LiveData<List<Vendor>> get() = _vendors
+    private val _vendors = MutableLiveData<List<Entity>>()
+    val vendors: LiveData<List<Entity>> get() = _vendors
 
-    fun updateVendors (vendor: List<Vendor>) {
+
+
+    init {
+
+        fetchVendors()
+    }
+
+    private fun fetchVendors () {
         viewModelScope.launch {
             while (isActive) {
                 try {
@@ -32,13 +39,16 @@ class VendorViewModel(private val repo: VendorRepo) : ViewModel() {
                 }
             }
 
-            delay(1000)
+           delay(10000)
 
         }
 
     }
 
+
 }
+
+
  class VendorProvider (private val repo: VendorRepo): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(VendorViewModel::class.java)) {

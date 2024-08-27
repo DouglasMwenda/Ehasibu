@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vendors.view.VendorFragment">
+    tools:context=".vendors.view.Vendor">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,17 +16,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="New Vendor" />
-
+            android:text="@string/new_vendor" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Vendor Name">
+            android:hint="@string/vendor_name">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/budgetType"
+                android:id="@+id/vendorname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -40,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Vendor Pin">
+            android:hint="@string/vendor_pin">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/vendorpin"
@@ -59,13 +58,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Email">
+            android:hint="@string/email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="number"
+                android:autofillHints=""
                 android:inputType="none"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
@@ -76,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Phone number">
+            android:hint="@string/phone_number">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phonenumber"
@@ -93,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Display Name">
+            android:hint="@string/display_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/displayname"
@@ -111,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Vendor Type">
+            android:hint="@string/vendor_type">
 
             <AutoCompleteTextView
                 android:id="@+id/vendortype"
@@ -130,10 +129,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Currency">
+            android:hint="@string/other_details">
 
             <AutoCompleteTextView
-                android:id="@+id/currency"
+                android:id="@+id/otherdetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -144,17 +143,18 @@
                 tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Address">
+            android:hint="@string/address">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="number"
+                android:autofillHints="text"
                 android:inputType="none"
                 android:textColor="#800000"
                 android:textColorHint="#800000"
@@ -173,7 +173,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:backgroundTint="#800000"
-                android:text="Save" />
+                android:text="@string/save" />
 
 
             <com.google.android.material.button.MaterialButton
@@ -184,7 +184,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:textColor="#800000"
                 app:strokeColor="#800000" />
         </LinearLayout>
