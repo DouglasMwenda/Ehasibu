@@ -204,7 +204,7 @@ class Dashboard : Fragment() {
                     true
                 }
                 R.id.nav_Vendors -> {
-                    findNavController().navigate(R.id.vendors)
+                    findNavController().navigate(R.id.vendor)
                     true
                 }
 
@@ -255,6 +255,7 @@ class Dashboard : Fragment() {
 
                     true
                 }
+
 
                 else -> false
 

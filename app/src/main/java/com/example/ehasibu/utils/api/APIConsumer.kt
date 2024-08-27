@@ -26,6 +26,7 @@ import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.data.OrderResponse
 import com.example.ehasibu.purchaseorder.data.PoRequest
 import com.example.ehasibu.purchaseorder.data.PoResponse
+import com.example.ehasibu.vendors.moddel.VendorResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -100,6 +101,11 @@ interface APIConsumer {
     @POST("purchases/addPurchase")
 
     suspend fun addOrder(@Body order: PoRequest): Response<ApiResponse<PoResponse>>
+
+
+
+    @POST("vendors/fetchAll")
+    suspend fun fetchVendors(): Response<VendorResponse>
 
 }
 

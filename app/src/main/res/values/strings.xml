@@ -189,6 +189,16 @@
     <string name="quantity_purchased">Quantity Purchased</string>
     <string name="add_expense">Add Expense</string>
     <string name="expense_type">Expense Type</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="display_name">Display Name</string>
+    <string name="vendor_type">Vendor Type</string>
+    <string name="other_details">Other Details</string>
+    <string name="vendor_id">Vendor Id</string>
+    <string name="vendor_pin">Vendor Pin</string>
+    <string name="pdf">pdf</string>
+    <string name="search_vendors">Search vendors</string>
+    <string name="active_vendors">Active Vendors</string>
+    <string name="all_vendors">All Vendors</string>
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>
         <item>Service Sales</item>

@@ -74,6 +74,10 @@
         <action
             android:id="@+id/action_dashboard_to_homeFragment"
             app:destination="@id/home" />
+        <action
+            android:id="@+id/action_dashboard_to_vendor"
+            app:destination="@id/vendor" />
+
     </fragment>
     <fragment
         android:id="@+id/accounts"
@@ -209,6 +213,10 @@
         android:name="com.example.ehasibu.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/vendor"
+        android:name="com.example.ehasibu.vendors.view.Vendor"
+        android:label="Vendor" />
 
 
 </navigation>
