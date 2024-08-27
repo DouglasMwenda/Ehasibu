@@ -3,6 +3,7 @@ package com.example.ehasibu.utils.api
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResItem
 import com.example.ehasibu.customerinformation.data.CustomerResponse
+import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.OtpRequest
@@ -25,10 +26,6 @@ import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.data.OrderResponse
 import com.example.ehasibu.purchaseorder.data.PoRequest
 import com.example.ehasibu.purchaseorder.data.PoResponse
-import com.example.ehasibu.vendors.moddel.AddRequest
-import com.example.ehasibu.vendors.moddel.AddVendorResponse
-import com.example.ehasibu.vendors.moddel.EditResponse
-import com.example.ehasibu.vendors.moddel.EditVRequest
 import com.example.ehasibu.vendors.moddel.VendorResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -86,6 +83,14 @@ interface APIConsumer {
     suspend fun getCustomers(): Response<ApiResponse<List<CustomerResItem>>>
 
 
+    @PUT("customers/customers/{id}")
+    suspend fun updateCustomer(@Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResItem>>
+
+    @DELETE("customers/{id}")
+    suspend fun deleteCustomer(@Query("id") id: Int): Response<DelResponse>
+
+
+
     //Purchases
     @GET("purchases/getAllPurchases")
     suspend fun fetchOrders(): Response<OrderResponse<List<OrderEntity>>>
@@ -94,19 +99,14 @@ interface APIConsumer {
     suspend fun approveOrder(@Query("id") id: String): Response<ApproveResponse>
 
     @POST("purchases/addPurchase")
+
     suspend fun addOrder(@Body order: PoRequest): Response<ApiResponse<PoResponse>>
 
 
-    @GET("vendors/fetchAll")
+
+    @POST("vendors/fetchAll")
     suspend fun fetchVendors(): Response<VendorResponse>
 
-    @PUT("vendors/vendorId")
-    suspend fun updateVendor(@Body editRequest: EditVRequest): Response<EditResponse>
-    @DELETE("vendors/vendorId")
-    suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelResponse>
-
-    @POST("vendors/add")
-    suspend fun addVendor(@Body vendor: AddRequest): Response<AddVendorResponse>
 }
 
 

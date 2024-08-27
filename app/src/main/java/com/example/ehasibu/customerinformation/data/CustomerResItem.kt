@@ -1,5 +1,7 @@
 package com.example.ehasibu.customerinformation.data
 
+import java.io.Serializable
+
 data class CustomerResItem(
     val address: String,
     val companyName: String,
@@ -13,4 +15,4 @@ data class CustomerResItem(
     val entryDate: String,
     val invoices: List<Invoice>,
     val phoneNumber: String
-)
+) : Serializable
