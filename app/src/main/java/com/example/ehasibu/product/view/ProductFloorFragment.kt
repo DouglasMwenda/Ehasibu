@@ -1,4 +1,4 @@
-package com.example.ehasibu.product.model
+package com.example.ehasibu.product.view
 /*
 import android.content.Context
 import android.os.Bundle

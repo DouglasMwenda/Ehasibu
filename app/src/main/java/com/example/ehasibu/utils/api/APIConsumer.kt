@@ -25,6 +25,10 @@ import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.data.OrderResponse
 import com.example.ehasibu.purchaseorder.data.PoRequest
 import com.example.ehasibu.purchaseorder.data.PoResponse
+import com.example.ehasibu.vendors.moddel.AddRequest
+import com.example.ehasibu.vendors.moddel.AddVendorResponse
+import com.example.ehasibu.vendors.moddel.EditResponse
+import com.example.ehasibu.vendors.moddel.EditVRequest
 import com.example.ehasibu.vendors.moddel.VendorResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -93,8 +97,16 @@ interface APIConsumer {
     suspend fun addOrder(@Body order: PoRequest): Response<ApiResponse<PoResponse>>
 
 
-    @POST("vendors/fetchAll")
+    @GET("vendors/fetchAll")
     suspend fun fetchVendors(): Response<VendorResponse>
+
+    @PUT("vendors/vendorId")
+    suspend fun updateVendor(@Body editRequest: EditVRequest): Response<EditResponse>
+    @DELETE("vendors/vendorId")
+    suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelResponse>
+
+    @POST("vendors/add")
+    suspend fun addVendor(@Body vendor: AddRequest): Response<AddVendorResponse>
 }
 
 

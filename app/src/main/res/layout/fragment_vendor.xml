@@ -128,12 +128,12 @@
                 android:stretchColumns="*">
 
                 <TableRow
-                    android:layout_width="1000dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="#800000">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="85dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/no"
@@ -157,7 +157,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:layout_width="65dp"
+                        android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/email"

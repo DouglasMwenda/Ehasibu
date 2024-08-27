@@ -1,11 +1,10 @@
-package com.example.ehasibu.product.model
+package com.example.ehasibu.product.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentSetpriceBinding
 
