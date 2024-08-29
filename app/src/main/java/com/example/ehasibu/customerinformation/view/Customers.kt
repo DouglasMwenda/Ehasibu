@@ -134,8 +134,9 @@ class Customers : Fragment() {
                         when (action) {
                             "Edit" -> {
 
-                             //   val dialog = CustomerDialog.newInstance(customerUpdate)
-                              //  dialog.show(parentFragmentManager, "edit customer")
+
+                               // val dialog = CustomerDialog.newInstance(customerUpdate)
+                               // dialog.show(parentFragmentManager, "edit customer")
                             }
 
                             "Delete" -> {
