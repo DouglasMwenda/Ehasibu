@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.TableLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentAccountsBinding
 
 class AccountsFragment : Fragment() {
