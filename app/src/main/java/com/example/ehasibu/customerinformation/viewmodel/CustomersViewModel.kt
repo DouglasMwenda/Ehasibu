@@ -5,14 +5,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.customerinformation.data.CustomerResItem
+import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.repo.CustomersRepo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
-    private val _customers = MutableLiveData<List<CustomerResItem>?>(emptyList())
-    val customer: MutableLiveData<List<CustomerResItem>?> get() = _customers
+    private val _customers = MutableLiveData<List<CustomerResponse>?>(emptyList())
+    val customer: MutableLiveData<List<CustomerResponse>?> get() = _customers
 
     init {
         getCustomers()
@@ -25,8 +26,8 @@ class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
                 try {
                     val response = repo.getAllCustomers()
                     if (response.isSuccessful) {
-                        response.body()?.let { customerRespo ->
-                            _customers.value = customerRespo.entity
+                        response.body()?.entity?.let {
+                            _customers.value = it
                         }
                     }
                     delay(10000)
