@@ -188,11 +188,14 @@ class Product : androidx.fragment.app.Fragment() {
 
                             "Delete" -> deleteProduct(product.productId)
                         }
+
                     }
+
 
                     override fun onNothingSelected(parent: AdapterView<*>) {
                         // Do nothing
                     }
+
                 }
                 setBackgroundResource(android.R.drawable.btn_default)
                 setPadding(0, 0, 0, 0)

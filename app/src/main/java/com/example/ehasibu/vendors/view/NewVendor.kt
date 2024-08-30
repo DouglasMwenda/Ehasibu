@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
@@ -19,7 +21,9 @@ import com.example.ehasibu.vendors.viewmodel.NewVendorViewModel
 
 class NewVendor : DialogFragment() {
     private lateinit var binding: FragmentNewVendorBinding
-    private var editRequest: AddRequest? = null
+    private lateinit var vendorType: AutoCompleteTextView
+    private lateinit var currency: AutoCompleteTextView
+    private var editRequest: EditVRequest? = null
     private val viewModel: NewVendorViewModel by viewModels {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")
@@ -53,7 +57,7 @@ class NewVendor : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNewVendorBinding.inflate(inflater, container, false)
         viewModel.isVendorAdded.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess == true) {
@@ -63,6 +67,16 @@ class NewVendor : DialogFragment() {
                 Toast.makeText(context, "Failed to save vendor", Toast.LENGTH_SHORT).show()
             }
         }
+        vendorType = binding.vendortype
+        val vendorTypes = arrayOf("Products", "Services")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, vendorTypes)
+        vendorType.setAdapter(adapter)
+
+        currency = binding.currency
+        val currencies = arrayOf("KES","USD","EUR","TZS","UGX","Rwandan franc","CFA franc","Kuwait dinar")
+        val adapter2 = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, currencies)
+        currency.setAdapter(adapter2)
+
 
         binding.savevendorbutton.setOnClickListener {
             if (validateInput()) {
@@ -74,29 +88,53 @@ class NewVendor : DialogFragment() {
                         address = binding.address.text.toString(),
                         phone = binding.phonenumber.text.toString(),
                         email = binding.email.text.toString(),
-                        otherDetails = binding.otherdetails.text.toString(),
+                        otherDetails = binding.currency.text.toString(),
                         displayName = binding.displayname.text.toString()
                     )
                     viewModel.addVendor(vendor)
 
                 } else {
                     val vendor = EditVRequest(
-                        vendorName = binding.vendorname.text.toString(),
-                        vendorPin = binding.vendorpin.text.toString(),
-                        vendorType = binding.vendortype.text.toString(),
-                        address = binding.address.text.toString(),
-                        phone = binding.phonenumber.text.toString(),
-                        email = binding.email.text.toString(),
-                        otherDetails = binding.otherdetails.text.toString(),
-                        displayName = binding.displayname.text.toString()
+                        vendorName = binding.vendorname.toString(),
+                        vendorPin = binding.vendorpin.toString(),
+                        vendorType = binding.vendortype.toString(),
+                        address = binding.address.toString(),
+                        phone = binding.phonenumber.toString(),
+                        email = binding.email.toString(),
+                        otherDetails = binding.currency.toString(),
+                        displayName = binding.displayname.toString()
                     )
                     viewModel.updateVendor(vendor)
                 }
 
             }
         }
+        binding.cancelVendorBtn.setOnClickListener {
+            dismiss()
+        }
+        editRequest?.let {
+            binding.vendorname.setText(it.vendorName)
+            binding.vendorpin.setText(it.vendorPin)
+            binding.vendortype.setText(it.vendorType)
+            binding.address.setText(it.address)
+            binding.phonenumber.setText(it.phone)
+            binding.email.setText(it.email)
+            binding.currency.setText(it.otherDetails)
+            binding.displayname.setText(it.displayName)
+        }
+
+
 
 return binding.root
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 
     private fun validateInput(): Boolean {

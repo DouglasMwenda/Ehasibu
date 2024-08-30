@@ -1,5 +1,10 @@
 package com.example.ehasibu.vendors.moddel
 
+import android.os.Parcel
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Entity(
     val address: String,
     val bills: List<Any>,
@@ -14,4 +19,12 @@ data class Entity(
     val vendorName: String,
     val vendorPin: String,
     val vendorType: String
-)
+) : Parcelable {
+    override fun describeContents(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        TODO("Not yet implemented")
+    }
+}

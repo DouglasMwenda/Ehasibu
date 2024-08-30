@@ -3,6 +3,7 @@ package com.example.ehasibu.utils.api
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResItem
 import com.example.ehasibu.customerinformation.data.CustomerResponse
+import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.OtpRequest
@@ -27,6 +28,7 @@ import com.example.ehasibu.purchaseorder.data.PoRequest
 import com.example.ehasibu.purchaseorder.data.PoResponse
 import com.example.ehasibu.vendors.moddel.AddRequest
 import com.example.ehasibu.vendors.moddel.AddVendorResponse
+import com.example.ehasibu.vendors.moddel.DelVResponse
 import com.example.ehasibu.vendors.moddel.EditResponse
 import com.example.ehasibu.vendors.moddel.EditVRequest
 import com.example.ehasibu.vendors.moddel.VendorResponse
@@ -84,6 +86,8 @@ interface APIConsumer {
 
     @GET("customers/customers")
     suspend fun getCustomers(): Response<ApiResponse<List<CustomerResItem>>>
+    @PUT("customers/customers")
+    suspend fun updateCustomer(@Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResItem>>
 
 
     //Purchases
@@ -100,10 +104,10 @@ interface APIConsumer {
     @GET("vendors/fetchAll")
     suspend fun fetchVendors(): Response<VendorResponse>
 
-    @PUT("vendors/vendorId")
+    @PUT("vendors/update-vendor")
     suspend fun updateVendor(@Body editRequest: EditVRequest): Response<EditResponse>
     @DELETE("vendors/vendorId")
-    suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelResponse>
+    suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelVResponse>
 
     @POST("vendors/add")
     suspend fun addVendor(@Body vendor: AddRequest): Response<AddVendorResponse>
