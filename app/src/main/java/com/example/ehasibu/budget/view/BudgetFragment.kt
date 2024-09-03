@@ -1,4 +1,4 @@
-package com.example.ehasibu.budget
+package com.example.ehasibu.budget.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.TableLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.ehasibu.R
+import com.example.ehasibu.budget.viemodel.BudgetViewModel
 import com.example.ehasibu.databinding.FragmentBudgetBinding
 
 class BudgetFragment : Fragment() {

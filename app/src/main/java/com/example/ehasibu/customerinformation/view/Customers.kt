@@ -19,6 +19,7 @@ import com.example.ehasibu.R
 import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.customerinformation.repo.CustomersRepo
+import com.example.ehasibu.customerinformation.viewmodel.CustomerProvider
 import com.example.ehasibu.customerinformation.viewmodel.CustomersViewModel
 import com.example.ehasibu.databinding.FragmentCustomersBinding
 import com.example.ehasibu.utils.API_TOKEN
@@ -32,7 +33,7 @@ class Customers : Fragment() {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo = CustomersRepo(token)
-        CustomersViewModel.CustomerProvider(repo)
+        CustomerProvider(repo)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -150,9 +151,7 @@ class Customers : Fragment() {
                                     dialog.show(parentFragmentManager, "edit customer")
                                 }
 
-                                "Delete" -> {
-                                    // Handle delete action
-                                }
+                                "Delete" -> deleteCustomer(customer.customerId)
                             }
                         }
 
@@ -178,6 +177,9 @@ class Customers : Fragment() {
 
             }
         }
+    }
+    private fun deleteCustomer(customerId: Int) {
+        customerViewModel.deleteCustomer(customerId)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.ehasibu.budget
+package com.example.ehasibu.budget.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.example.ehasibu.databinding.FragmentAddBudgetBinding
 import com.google.android.material.textfield.TextInputEditText

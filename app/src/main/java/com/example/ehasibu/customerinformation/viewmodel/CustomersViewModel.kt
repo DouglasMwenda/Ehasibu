@@ -38,7 +38,25 @@ class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
         }
     }
 
-    class CustomerProvider(private val repo: CustomersRepo) : ViewModelProvider.Factory {
+     fun deleteCustomer(customerId : Int) {
+        viewModelScope.launch {
+            try {
+                val response = repo.deleteCustomer(customerId)
+                if(response.isSuccessful) {
+                    val updatedCustomers = _customers.value?.filterNot { it.customerId == customerId }
+                    _customers.value = updatedCustomers
+
+                    }
+                delay(10000)
+                }
+            catch (t: Throwable){
+
+            }
+            }
+        }
+    }
+
+    class CustomerProvider( val repo: CustomersRepo) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CustomersViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
@@ -48,4 +66,3 @@ class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
         }
     }
 
-}

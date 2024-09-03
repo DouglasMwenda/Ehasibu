@@ -90,7 +90,7 @@ interface APIConsumer {
     suspend fun updateCustomer( @Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResponse>>
 
     @DELETE("customers/{id}")
-  //  suspend fun deleteCustomer(): Response<>
+    suspend fun deleteCustomer(@Query ("customerId") customerId : Int): Response<ApiResponse<CustomerResponse>>
 
 
     //Purchases
