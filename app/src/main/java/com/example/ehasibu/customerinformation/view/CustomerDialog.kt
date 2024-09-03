@@ -31,7 +31,6 @@ class CustomerDialog : DialogFragment() {
         val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo= CustomersRepo(token)
         AddCustomerViewmodel.AddCustomerProvider(repo)
-
     }
     companion object{
         private const val ARG_EDIT_REQUEST = "edit_request"

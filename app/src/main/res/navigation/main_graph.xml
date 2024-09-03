@@ -92,7 +92,7 @@
 
     <fragment
         android:id="@+id/budget"
-        android:name="com.example.ehasibu.budget.BudgetFragment"
+        android:name="com.example.ehasibu.budget.view.BudgetFragment"
         android:label="fragment_budget"
         tools:layout="@layout/fragment_budget" />
     <fragment

@@ -1,4 +1,4 @@
-package com.example.ehasibu.budget
+package com.example.ehasibu.budget.viemodel
 
 import androidx.lifecycle.ViewModel
 
