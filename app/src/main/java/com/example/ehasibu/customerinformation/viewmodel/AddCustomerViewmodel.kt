@@ -58,9 +58,13 @@ class AddCustomerViewmodel(private val repo: CustomersRepo):  ViewModel() {
 
 
 
-    class AddCustomerProvider(private val repo: CustomersRepo) : ViewModelProvider.Factory {
+    class AddCustomerProvider( val repo: CustomersRepo) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return AddCustomerViewmodel(repo) as T
+            if (modelClass.isAssignableFrom(AddCustomerViewmodel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return AddCustomerViewmodel(repo) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
 
