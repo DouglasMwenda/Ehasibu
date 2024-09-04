@@ -33,6 +33,7 @@ import com.example.ehasibu.purchaseorder.data.PoRequest
 import com.example.ehasibu.purchaseorder.data.PoResponse
 import com.example.ehasibu.vendors.moddel.AddRequest
 import com.example.ehasibu.vendors.moddel.AddVendorResponse
+import com.example.ehasibu.vendors.moddel.DelVResponse
 import com.example.ehasibu.vendors.moddel.EditResponse
 import com.example.ehasibu.vendors.moddel.EditVRequest
 import com.example.ehasibu.vendors.moddel.VendorResponse
@@ -89,6 +90,11 @@ interface APIConsumer {
     suspend fun createCustomer(@Body customer: CustomerRequest): Response<ApiResponse<CustomerResponse>>
 
     @GET("customers/customers")
+
+    suspend fun getCustomers(): Response<ApiResponse<List<CustomerResItem>>>
+    @PUT("customers/customers")
+    suspend fun updateCustomer(@Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResItem>>
+
     suspend fun getCustomers(): Response<ApiResponse<List<CustomerResponse>>>
 
     @PUT("customers/customers/{id}")
@@ -96,6 +102,7 @@ interface APIConsumer {
 
     @DELETE("customers/{id}")
     suspend fun deleteCustomer(@Query ("customerId") customerId : Int): Response<ApiResponse<CustomerResponse>>
+
 
 
     //Purchases
@@ -112,10 +119,10 @@ interface APIConsumer {
     @GET("vendors/fetchAll")
     suspend fun fetchVendors(): Response<VendorResponse>
 
-    @PUT("vendors/vendorId")
+    @PUT("vendors/update-vendor")
     suspend fun updateVendor(@Body editRequest: EditVRequest): Response<EditResponse>
     @DELETE("vendors/vendorId")
-    suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelResponse>
+    suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelVResponse>
 
     @POST("vendors/add")
     suspend fun addVendor(@Body vendor: AddRequest): Response<AddVendorResponse>

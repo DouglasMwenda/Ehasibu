@@ -129,10 +129,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="@string/other_details">
+            android:hint="@string/currency">
 
             <AutoCompleteTextView
-                android:id="@+id/otherdetails"
+                android:id="@+id/currency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -177,7 +177,7 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/cancelvendorButton"
+                android:id="@+id/cancelVendorBtn"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
