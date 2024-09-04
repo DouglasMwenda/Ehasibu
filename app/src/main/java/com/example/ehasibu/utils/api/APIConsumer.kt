@@ -1,5 +1,10 @@
 package com.example.ehasibu.utils.api
 
+import com.example.ehasibu.budget.data.AddBudgetResponse
+import com.example.ehasibu.budget.data.BudgetRequest
+import com.example.ehasibu.budget.data.BudgetResponse
+import com.example.ehasibu.budget.data.BudgetResponseItem
+import com.example.ehasibu.budget.data.Entity
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResItem
 import com.example.ehasibu.customerinformation.data.CustomerResponse
@@ -114,6 +119,18 @@ interface APIConsumer {
 
     @POST("vendors/add")
     suspend fun addVendor(@Body vendor: AddRequest): Response<AddVendorResponse>
+
+
+
+    //Budgets
+    @GET("budgets/budget")
+    suspend fun fetchBudgets(): Response<List<Entity>>
+
+    @POST("budgets/add")
+    suspend fun addBudget(@Body budget: BudgetRequest) : Response<AddBudgetResponse>
+
+    @PUT("budgets/{budgetId}")
+    suspend fun updateBudget (@Query ("budgetId") budgetId: Int) : Response<AddBudgetResponse>
 }
 
 
