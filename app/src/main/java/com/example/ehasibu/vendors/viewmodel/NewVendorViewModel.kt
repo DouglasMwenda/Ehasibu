@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.ehasibu.vendors.moddel.AddRequest
-import com.example.ehasibu.vendors.moddel.EditVRequest
-import com.example.ehasibu.vendors.moddel.Entity
-import com.example.ehasibu.vendors.moddel.VendorRepo
+import com.example.ehasibu.vendors.model.AddRequest
+import com.example.ehasibu.vendors.model.EditVRequest
+import com.example.ehasibu.vendors.model.Entity
+import com.example.ehasibu.vendors.model.VendorRepo
 import kotlinx.coroutines.launch
 
 class NewVendorViewModel(private val repository: VendorRepo) : ViewModel() {
