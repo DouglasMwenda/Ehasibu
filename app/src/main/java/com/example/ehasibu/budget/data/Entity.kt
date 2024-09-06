@@ -1,5 +1,7 @@
 package com.example.ehasibu.budget.data
 
+import java.io.Serializable
+
 data class Entity(
     val amountBudgeted: Int,
     val amountSpent: Int,
@@ -11,4 +13,4 @@ data class Entity(
     val description: String,
     val expenseModel: Any,
     val period: String
-)
+) : Serializable
