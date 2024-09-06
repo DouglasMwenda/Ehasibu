@@ -1,6 +1,11 @@
 package com.example.ehasibu.budget.data
 
-data class updateBudgetRequest(
+import android.os.Parcel
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class UpdateBudgetRequest(
     val amountBudgeted: Int,
     val amountSpent: Int,
     val budgetBalance: Int,
@@ -11,4 +16,12 @@ data class updateBudgetRequest(
     val description: String,
     val expenseModel: List<ExpenseModelX>,
     val period: String
-)
+) : Parcelable {
+    override fun describeContents(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun writeToParcel(p0: Parcel, p1: Int) {
+        TODO("Not yet implemented")
+    }
+}

@@ -8,29 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Spinner
-import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
 import com.example.ehasibu.budget.data.Entity
+import com.example.ehasibu.budget.data.ExpenseModelX
+import com.example.ehasibu.budget.data.UpdateBudgetRequest
 import com.example.ehasibu.budget.repo.BudgetRepository
 import com.example.ehasibu.budget.viemodel.BudgetViewModel
 import com.example.ehasibu.databinding.FragmentBudgetBinding
-import com.example.ehasibu.product.data.EditRequest
-import com.example.ehasibu.product.repo.ProductRepository
-import com.example.ehasibu.product.viewmodel.ProductProvider
-import com.example.ehasibu.product.viewmodel.ProductViewModel
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 
 class BudgetFragment : Fragment() {
     private lateinit var binding: FragmentBudgetBinding
-    private lateinit var addBudgetButton: Button
-    private lateinit var budgetTableLayout: TableLayout
+
 
     companion object {
         fun newInstance() = BudgetFragment()
@@ -43,11 +38,6 @@ class BudgetFragment : Fragment() {
         BudgetViewModel.BudgetProvider(repo)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -146,6 +136,20 @@ class BudgetFragment : Fragment() {
                         val action = parent.getItemAtPosition(position) as String
                         when (action) {
                             "Edit" -> {
+                                val budgetUpdate= UpdateBudgetRequest (
+                                    budgetId = budget.budgetId,
+                                    description = budget.description,
+                                    budgetType = budget.budgetType,
+                                    amountBudgeted = budget.amountBudgeted,
+                                    amountSpent = budget.amountSpent,
+                                    date= budget.date,
+                                    period = budget.period,
+                                    budgetBalance = budget.budgetBalance,
+                                    deleted = budget.deleted,
+                                    expenseModel = budget.expenseModel as List<ExpenseModelX>
+                                )
+                                val editDialog = AddBudgetFragment.newInstance(budgetUpdate)
+                                editDialog.show(parentFragmentManager, "AddBudgetFragment")
 
                             }
 
