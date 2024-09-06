@@ -199,10 +199,12 @@ class Dashboard : Fragment() {
 
                     true
                 }
-                 R.id.nav_bills -> {
-                     findNavController().navigate(R.id.bills)
+
+                R.id.nav_bills -> {
+                     findNavController().navigate(R.id.bill)
                     true
                 }
+
                 R.id.nav_Vendors -> {
                     findNavController().navigate(R.id.vendor)
                     true
@@ -223,6 +225,13 @@ class Dashboard : Fragment() {
 
                 R.id.nav_accounts -> {
                     findNavController().navigate(R.id.accounts)
+
+                    true
+                }
+
+                R.id.nav_bills->{
+
+                    findNavController().navigate(R.id.bills)
 
                     true
                 }

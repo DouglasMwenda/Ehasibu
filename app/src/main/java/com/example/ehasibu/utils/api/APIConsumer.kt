@@ -1,12 +1,10 @@
 package com.example.ehasibu.utils.api
 
+import com.example.ehasibu.bills.model.BillsResponse
 import com.example.ehasibu.budget.data.AddBudgetResponse
 import com.example.ehasibu.budget.data.BudgetRequest
-import com.example.ehasibu.budget.data.BudgetResponse
-import com.example.ehasibu.budget.data.BudgetResponseItem
 import com.example.ehasibu.budget.data.Entity
 import com.example.ehasibu.customerinformation.data.CustomerRequest
-import com.example.ehasibu.customerinformation.data.CustomerResItem
 import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.login.ApiResponse
@@ -90,11 +88,6 @@ interface APIConsumer {
     suspend fun createCustomer(@Body customer: CustomerRequest): Response<ApiResponse<CustomerResponse>>
 
     @GET("customers/customers")
-
-    suspend fun getCustomers(): Response<ApiResponse<List<CustomerResItem>>>
-    @PUT("customers/customers")
-    suspend fun updateCustomer(@Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResItem>>
-
     suspend fun getCustomers(): Response<ApiResponse<List<CustomerResponse>>>
 
     @PUT("customers/customers/{id}")
@@ -128,7 +121,6 @@ interface APIConsumer {
     suspend fun addVendor(@Body vendor: AddRequest): Response<AddVendorResponse>
 
 
-
     //Budgets
     @GET("budgets/budget")
     suspend fun fetchBudgets(): Response<List<Entity>>
@@ -138,6 +130,10 @@ interface APIConsumer {
 
     @PUT("budgets/{budgetId}")
     suspend fun updateBudget (@Query ("budgetId") budgetId: Int) : Response<AddBudgetResponse>
+
+    //bills
+    @GET("bills/getAllBills")
+    suspend fun fetchBills(): Response<BillsResponse>
 }
 
 
