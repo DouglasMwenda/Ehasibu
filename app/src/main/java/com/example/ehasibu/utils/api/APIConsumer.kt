@@ -1,5 +1,6 @@
 package com.example.ehasibu.utils.api
 
+import com.example.ehasibu.bills.model.BillsResponse
 import com.example.ehasibu.budget.data.AddBudgetResponse
 import com.example.ehasibu.budget.data.BudgetRequest
 import com.example.ehasibu.budget.data.Entity
@@ -29,12 +30,12 @@ import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.data.OrderResponse
 import com.example.ehasibu.purchaseorder.data.PoRequest
 import com.example.ehasibu.purchaseorder.data.PoResponse
-import com.example.ehasibu.vendors.moddel.AddRequest
-import com.example.ehasibu.vendors.moddel.AddVendorResponse
-import com.example.ehasibu.vendors.moddel.DelVResponse
-import com.example.ehasibu.vendors.moddel.EditResponse
-import com.example.ehasibu.vendors.moddel.EditVRequest
-import com.example.ehasibu.vendors.moddel.VendorResponse
+import com.example.ehasibu.vendors.model.AddRequest
+import com.example.ehasibu.vendors.model.AddVendorResponse
+import com.example.ehasibu.vendors.model.DelVResponse
+import com.example.ehasibu.vendors.model.EditResponse
+import com.example.ehasibu.vendors.model.EditVRequest
+import com.example.ehasibu.vendors.model.VendorResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -88,11 +89,6 @@ interface APIConsumer {
     suspend fun createCustomer(@Body customer: CustomerRequest): Response<ApiResponse<CustomerResponse>>
 
     @GET("customers/customers")
-
-    suspend fun getCustomers(): Response<ApiResponse<List<CustomerResItem>>>
-    @PUT("customers/customers")
-    suspend fun updateCustomer(@Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResItem>>
-
     suspend fun getCustomers(): Response<ApiResponse<List<CustomerResponse>>>
 
     @PUT("customers/customers/{id}")
@@ -126,7 +122,6 @@ interface APIConsumer {
     suspend fun addVendor(@Body vendor: AddRequest): Response<AddVendorResponse>
 
 
-
     //Budgets
     @GET("budgets/budget")
     suspend fun fetchBudgets(): Response<List<Entity>>
@@ -135,7 +130,15 @@ interface APIConsumer {
     suspend fun addBudget(@Body budget: BudgetRequest) : Response<AddBudgetResponse>
 
     @PUT("budgets/{budgetId}")
+
+    suspend fun updateBudget (@Query ("budgetId") budgetId: Int) : Response<AddBudgetResponse>
+
+    //bills
+    @GET("bills/getAllBills")
+    suspend fun fetchBills(): Response<BillsResponse>
+
     suspend fun updateBudget (@Body budgetRequest: UpdateBudgetRequest) : Response<AddBudgetResponse>
+
 }
 
 

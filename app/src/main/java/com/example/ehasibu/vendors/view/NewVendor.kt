@@ -13,9 +13,9 @@ import androidx.fragment.app.viewModels
 import com.example.ehasibu.databinding.FragmentNewVendorBinding
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
-import com.example.ehasibu.vendors.moddel.AddRequest
-import com.example.ehasibu.vendors.moddel.EditVRequest
-import com.example.ehasibu.vendors.moddel.VendorRepo
+import com.example.ehasibu.vendors.model.AddRequest
+import com.example.ehasibu.vendors.model.EditVRequest
+import com.example.ehasibu.vendors.model.VendorRepo
 import com.example.ehasibu.vendors.viewmodel.NewVendorViewModel
 
 
@@ -95,14 +95,14 @@ class NewVendor : DialogFragment() {
 
                 } else {
                     val vendor = EditVRequest(
-                        vendorName = binding.vendorname.toString(),
-                        vendorPin = binding.vendorpin.toString(),
+                        vendorName = binding.vendorname.text.toString(),
+                        vendorPin = binding.vendorpin.text.toString(),
                         vendorType = binding.vendortype.toString(),
-                        address = binding.address.toString(),
-                        phone = binding.phonenumber.toString(),
-                        email = binding.email.toString(),
-                        otherDetails = binding.currency.toString(),
-                        displayName = binding.displayname.toString()
+                        address = binding.address.text.toString(),
+                        phone = binding.phonenumber.text.toString(),
+                        email = binding.email.text.toString(),
+                        otherDetails = binding.currency.text.toString(),
+                        displayName = binding.displayname.text.toString()
                     )
                     viewModel.updateVendor(vendor)
                 }

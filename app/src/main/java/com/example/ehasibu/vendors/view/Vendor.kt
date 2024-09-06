@@ -19,9 +19,9 @@ import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentVendorBinding
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
-import com.example.ehasibu.vendors.moddel.EditVRequest
-import com.example.ehasibu.vendors.moddel.Entity
-import com.example.ehasibu.vendors.moddel.VendorRepo
+import com.example.ehasibu.vendors.model.EditVRequest
+import com.example.ehasibu.vendors.model.Entity
+import com.example.ehasibu.vendors.model.VendorRepo
 import com.example.ehasibu.vendors.viewmodel.VendorProvider
 import com.example.ehasibu.vendors.viewmodel.VendorViewModel
 
