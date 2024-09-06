@@ -4,6 +4,7 @@ import com.example.ehasibu.AppModule
 import com.example.ehasibu.budget.data.AddBudgetResponse
 import com.example.ehasibu.budget.data.BudgetRequest
 import com.example.ehasibu.budget.data.Entity
+import com.example.ehasibu.budget.data.UpdateBudgetRequest
 import retrofit2.Response
 
 class BudgetRepository (private val token: String) {
@@ -17,7 +18,7 @@ class BudgetRepository (private val token: String) {
         return apiConsumer.addBudget(budget)
     }
 
-    suspend fun updateBudget(budgetId: Int) : Response<AddBudgetResponse> {
-        return  apiConsumer.updateBudget(budgetId)
+    suspend fun updateBudget(budget: UpdateBudgetRequest) : Response<AddBudgetResponse> {
+        return  apiConsumer.updateBudget(budget)
     }
 }
