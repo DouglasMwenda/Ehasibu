@@ -2,16 +2,21 @@ package com.example.ehasibu.bills.viewmodel
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.bills.Repository.BillsRepo
-import com.example.ehasibu.bills.model.BillsResponse
+import com.example.ehasibu.bills.model.Bill
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class BillsViewModel(private val repo: BillsRepo) : ViewModel() {
-    val bill = MutableLiveData<BillsResponse>()
+    private val _bills = MutableLiveData<List<Bill>?>()
+    val bill: LiveData<List<Bill>?> get() = _bills
+
 
     init {
         fetchBills()
@@ -19,22 +24,26 @@ class BillsViewModel(private val repo: BillsRepo) : ViewModel() {
 
     private fun fetchBills() {
         viewModelScope.launch {
-            try {
-                val response = repo.getAllBills()
-                if (response.isSuccessful) {
-                    response.body()?.bills?.let {
-                        bill.value
+            while (isActive) {
+
+                try {
+                    val response = repo.getAllBills()
+                    if (response.isSuccessful) {
+                        response.body()?.let { bill ->
+                            _bills.value = bill.bills
+                        }
+                    } else {
+                        Log.e(TAG, "Error fetching bills: ${response.code()}")
                     }
-                } else {
-                    Log.e(TAG, "Error fetching bills: ${response.code()}")
+                    delay(1000)
+
+                } catch (t: Throwable) {
+                    Log.e(TAG, "Exception occurred: ${t.message}", t)
+
                 }
-
-            } catch (t: Throwable) {
-                Log.e(TAG, "Exception occurred: ${t.message}", t)
-
             }
-        }
 
+        }
     }
 }
 
