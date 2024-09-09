@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TableRow
 import android.widget.TextView
@@ -40,8 +39,9 @@ class Vendor : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): LinearLayout {
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentVendorBinding.inflate(inflater, container, false)
         vendorViewModel.vendors.observe(viewLifecycleOwner) { vendors ->
             if (vendors != null) {
