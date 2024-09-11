@@ -18,7 +18,8 @@ class NewBillViewModel(private val repository: BillsRepo) : ViewModel() {
             try {
                 val response = repository.addBill(bill)
                 if (response.isSuccessful) {
-                    _isBillAdded.value = true
+                    _isBillAdded.postValue(true)
+
                 } else {
                     _isBillAdded.value = false
                 }

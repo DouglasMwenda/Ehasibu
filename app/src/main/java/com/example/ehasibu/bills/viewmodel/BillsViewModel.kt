@@ -13,8 +13,8 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class BillsViewModel(private val repo: BillsRepo) : ViewModel() {
-    private val _bills = MutableLiveData<List<Bill>?>()
-    val bill: MutableLiveData<List<Bill>?> get() = _bills
+    val bills = MutableLiveData<List<Bill>?>(emptyList())
+    //val bill: LiveData<List<Bill>?> get() = _bills
 
 
     init {
@@ -28,8 +28,8 @@ class BillsViewModel(private val repo: BillsRepo) : ViewModel() {
                 try {
                     val response = repo.getAllBills()
                     if (response.isSuccessful) {
-                        response.body()?.let { bill ->
-                            _bills.value = bill.bills
+                        response.body()?.bills.let {
+                            bills.value = it
                         }
                     } else {
                         Log.e(TAG, "Error fetching bills: ${response.code()}")

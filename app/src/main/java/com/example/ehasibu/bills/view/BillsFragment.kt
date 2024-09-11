@@ -29,8 +29,8 @@ class Bills : Fragment() {
     private lateinit var binding: FragmentBillsBinding
 
     private val billsViewModel: BillsViewModel by viewModels {
-        val SharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
-        val token = SharedPrefs.getString(API_TOKEN, "")!!
+        val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
+        val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo = BillsRepo(token)
         BillsProvider(repo)
 
@@ -52,10 +52,10 @@ class Bills : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBillsBinding.inflate(inflater, container, false)
-        billsViewModel.bill.observe(viewLifecycleOwner) { bills ->
-            if (!bills.isNullOrEmpty()) {
+        billsViewModel.bills.observe(viewLifecycleOwner) { bills ->
+            if (bills!=null) {
                 updateBillsTable(bills)
-                Log.d("BillsFragment", "Fetched bills: $bills")
+                Log.d(TAG, "Fetched bills: $bills")
 
 
             } else {
