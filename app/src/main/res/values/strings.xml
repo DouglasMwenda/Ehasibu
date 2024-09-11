@@ -200,6 +200,17 @@
     <string name="active_vendors">Active Vendors</string>
     <string name="all_vendors">All Vendors</string>
     <string name="new_vendor">New Vendor</string>
+    <string name="currency">Currency</string>
+    <string name="input_tax">Input Tax</string>
+    <string name="billed_amount">Billed Amount</string>
+    <string name="witholding_tax">Witholding Tax</string>
+    <string name="payment_date">Payment Date</string>
+    <string name="po_number">PO. Number</string>
+    <string name="bill_id">Bill ID</string>
+    <string name="overdue_bills">Overdue Bills</string>
+    <string name="upcoming_bills">Upcoming Bills</string>
+    <string name="search_bills">Search Bills</string>
+    <string name="buying_price">Buying Price</string>
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>
         <item>Service Sales</item>

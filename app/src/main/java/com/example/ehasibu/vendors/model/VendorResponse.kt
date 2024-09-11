@@ -1,4 +1,4 @@
-package com.example.ehasibu.vendors.moddel
+package com.example.ehasibu.vendors.model
 
 data class VendorResponse(
     val entity: List<Entity>,

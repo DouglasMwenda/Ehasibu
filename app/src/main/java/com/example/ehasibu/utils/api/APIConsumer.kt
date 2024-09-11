@@ -1,5 +1,8 @@
 package com.example.ehasibu.utils.api
 
+import com.example.ehasibu.bills.model.AddBillResponse
+import com.example.ehasibu.bills.model.BillRequest
+import com.example.ehasibu.bills.model.BillsResponse
 import com.example.ehasibu.budget.data.AddBudgetResponse
 import com.example.ehasibu.budget.data.BudgetRequest
 import com.example.ehasibu.budget.data.Entity
@@ -29,11 +32,12 @@ import com.example.ehasibu.purchaseorder.data.OrderEntity
 import com.example.ehasibu.purchaseorder.data.OrderResponse
 import com.example.ehasibu.purchaseorder.data.PoRequest
 import com.example.ehasibu.purchaseorder.data.PoResponse
-import com.example.ehasibu.vendors.moddel.AddRequest
-import com.example.ehasibu.vendors.moddel.AddVendorResponse
-import com.example.ehasibu.vendors.moddel.EditResponse
-import com.example.ehasibu.vendors.moddel.EditVRequest
-import com.example.ehasibu.vendors.moddel.VendorResponse
+import com.example.ehasibu.vendors.model.AddRequest
+import com.example.ehasibu.vendors.model.AddVendorResponse
+import com.example.ehasibu.vendors.model.DelVResponse
+import com.example.ehasibu.vendors.model.EditResponse
+import com.example.ehasibu.vendors.model.EditVRequest
+import com.example.ehasibu.vendors.model.VendorResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -96,6 +100,7 @@ interface APIConsumer {
     suspend fun deleteCustomer(@Query ("customerId") customerId : Int): Response<ApiResponse<CustomerResponse>>
 
 
+
     //Purchases
     @GET("purchases/getAllPurchases")
     suspend fun fetchOrders(): Response<OrderResponse<List<OrderEntity>>>
@@ -110,14 +115,13 @@ interface APIConsumer {
     @GET("vendors/fetchAll")
     suspend fun fetchVendors(): Response<VendorResponse>
 
-    @PUT("vendors/vendorId")
+    @PUT("vendors/update-vendor")
     suspend fun updateVendor(@Body editRequest: EditVRequest): Response<EditResponse>
     @DELETE("vendors/vendorId")
-    suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelResponse>
+    suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelVResponse>
 
     @POST("vendors/add")
     suspend fun addVendor(@Body vendor: AddRequest): Response<AddVendorResponse>
-
 
 
     //Budgets
@@ -128,7 +132,20 @@ interface APIConsumer {
     suspend fun addBudget(@Body budget: BudgetRequest) : Response<AddBudgetResponse>
 
     @PUT("budgets/{budgetId}")
+
+    suspend fun updateBudget (@Query ("budgetId") budgetId: Int) : Response<AddBudgetResponse>
+
+    //bills
+    @POST
+    suspend fun addBill(@Body bill: BillRequest) : Response<AddBillResponse>
+
+    @GET("bills/getAllBills")
+    suspend fun fetchBills(): Response<BillsResponse>
+
+
+
     suspend fun updateBudget (@Body budgetRequest: UpdateBudgetRequest) : Response<AddBudgetResponse>
+
 }
 
 

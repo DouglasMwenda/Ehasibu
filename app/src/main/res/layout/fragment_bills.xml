@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
-            android:text="Bills"
+            android:text="@string/bills"
             android:textColor="#800000"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upcoming Bills"
+                android:text="@string/upcoming_bills"
                 android:textStyle="bold"
                 android:textSize="12sp"
                 android:textColor="#800000"
@@ -48,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Overdue Bills"
+                android:text="@string/overdue_bills"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#800000"
@@ -62,6 +62,7 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_marginEnd="24dp"
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="4dp"
-            android:hint="Search Bills">
+            android:hint="@string/search_bills">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/search_edit_text"
@@ -116,32 +117,48 @@
 
 
         <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:fillViewport="false">
             <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
                 <TableLayout
                     android:id="@+id/billstable"
                     android:layout_width="900dp"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent "
                     android:stretchColumns="*"
                     android:shrinkColumns="*">
 
                     <TableRow
                         android:layout_width="900dp"
                         android:layout_height="match_parent"
-                        android:backgroundTint="@color/colorMaroon"
+                        android:background="#800000"
                         >
 
                         <TextView
-                            android:layout_width="70dp"
+                            android:layout_width="30dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="ID"
+                            android:text="Id"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/po_number"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/vendor_name"
                             android:textAlignment="center"
                             android:textColor="@color/white" />
 
@@ -149,7 +166,16 @@
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="PO. Number"
+                            android:textAlignment="center"
+                            android:text="@string/payment_date"
+                            android:textColor="@color/white" />
+
+
+                        <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:text="@string/status"
                             android:textAlignment="center"
                             android:textColor="@color/white" />
 
@@ -157,8 +183,8 @@
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Vendor Name"
                             android:textAlignment="center"
+                            android:text="@string/witholding_tax"
                             android:textColor="@color/white" />
 
                         <TextView
@@ -166,16 +192,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="Payment Date"
-                            android:textColor="@color/white" />
-
-
-                        <TextView
-                            android:layout_width="85dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="Status"
+                            android:text="@string/billed_amount"
                             android:textColor="@color/white" />
 
                         <TextView
@@ -183,7 +200,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="Witholding Tax"
+                            android:text="@string/amount_payable"
                             android:textColor="@color/white" />
 
                         <TextView
@@ -191,7 +208,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="Billed Amount"
+                            android:text="@string/input_tax"
                             android:textColor="@color/white" />
 
                         <TextView
@@ -199,30 +216,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="Amount Payable"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:layout_width="85dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="Input Tax"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:layout_width="85dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="Vendor ID"
+                            android:text="@string/vendor_id"
                             android:textColor="@color/white" />
                         <TextView
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="Action"
+                            android:text="@string/action"
                             android:textColor="@color/white" />
 
 

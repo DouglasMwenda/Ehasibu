@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TableRow
 import android.widget.TextView
@@ -19,8 +18,9 @@ import com.example.ehasibu.R
 import com.example.ehasibu.databinding.FragmentVendorBinding
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
-import com.example.ehasibu.vendors.moddel.EditVRequest
-import com.example.ehasibu.vendors.moddel.VendorRepo
+import com.example.ehasibu.vendors.model.EditVRequest
+import com.example.ehasibu.vendors.model.Entity
+import com.example.ehasibu.vendors.model.VendorRepo
 import com.example.ehasibu.vendors.viewmodel.VendorProvider
 import com.example.ehasibu.vendors.viewmodel.VendorViewModel
 
@@ -39,12 +39,13 @@ class Vendor : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): LinearLayout {
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentVendorBinding.inflate(inflater, container, false)
         vendorViewModel.vendors.observe(viewLifecycleOwner) { vendors ->
             if (vendors != null) {
-                updateVendors(vendors)
+                updateVendorsTable(vendors)
             } else {
                 Log.d(TAG, "No vendors to display")
             }
@@ -54,7 +55,19 @@ class Vendor : Fragment() {
 
     }
 
-    private fun updateVendors(vendors: List<com.example.ehasibu.vendors.moddel.Entity>) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.addVendorBtn.setOnClickListener {
+            val dialog = NewVendor()
+            dialog.show(parentFragmentManager, "newVendor")
+
+        }
+
+
+    }
+
+    private fun updateVendorsTable(vendors: List<Entity>) {
         val tableLayout = binding.vendorstable
         while (tableLayout.childCount > 1) {
             tableLayout.removeViewAt(1)
@@ -114,7 +127,7 @@ class Vendor : Fragment() {
             }
 
             val actionSpinner = Spinner(context).apply {
-                gravity = Gravity.CENTER
+                gravity = Gravity.START
                 adapter = ArrayAdapter(
                     context,
                     android.R.layout.simple_spinner_item,
@@ -123,6 +136,7 @@ class Vendor : Fragment() {
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 }
 
+
                 onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
                         parent: AdapterView<*>,
@@ -130,30 +144,34 @@ class Vendor : Fragment() {
                         position: Int,
                         id: Long
                     ) {
+
+
                         val action = parent.getItemAtPosition(position) as String
                         when (action) {
+
                             "Edit" -> {
-                                val   editRequest = EditVRequest(
-                                    vendor.address,
-                                    vendor.displayName,
-                                    vendor.email,
-                                    vendor.otherDetails,
-                                    vendor.phone,
-                                    vendor.vendorName,
-                                    vendor.vendorPin,
-                                    vendor.vendorType
+                                val editRequest = EditVRequest(
+                                    address = vendor.address,
+                                    displayName = vendor.displayName,
+                                    email = vendor.email,
+                                    otherDetails = vendor.otherDetails,
+                                    phone = vendor.phone,
+                                    vendorName = vendor.vendorName,
+                                    vendorPin = vendor.vendorPin,
+                                    vendorType = vendor.vendorType
 
                                 )
                                 val dialog = NewVendor.newInstance(editRequest)
-                                dialog.show(parentFragmentManager, "editProduct")
+                                dialog.show(parentFragmentManager, "editVendor")
                             }
 
-                            "Delete" -> {}/*deleteProduct(product.productId)*/
+                            "Delete" ->deleteVendor(vendor.vendorId)
+
                         }
+                        view.requestFocus()
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>) {
-                        // Do nothing
                     }
                 }
                 setBackgroundResource(android.R.drawable.btn_default)
@@ -170,7 +188,11 @@ class Vendor : Fragment() {
             row.addView(otherInfo)
             row.addView(address)
             row.addView(actionSpinner)
+
             tableLayout.addView(row)
         }
+    }
+    private fun deleteVendor(vendorId: String) {
+        vendorViewModel.deleteVendor(vendorId)
     }
 }

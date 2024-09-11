@@ -77,6 +77,9 @@
         <action
             android:id="@+id/action_dashboard_to_vendor"
             app:destination="@id/vendor" />
+        <action
+            android:id="@+id/action_dashboard_to_bill"
+            app:destination="@id/bill" />
 
     </fragment>
     <fragment
@@ -217,6 +220,10 @@
         android:id="@+id/vendor"
         android:name="com.example.ehasibu.vendors.view.Vendor"
         android:label="Vendor" />
+    <fragment
+        android:id="@+id/bill"
+        android:name="com.example.ehasibu.bills.view.Bills"
+        android:label="Bills" />
 
 
 </navigation>

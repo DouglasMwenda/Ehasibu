@@ -1,4 +1,4 @@
-package com.example.ehasibu.vendors.moddel
+package com.example.ehasibu.vendors.model
 
 import android.os.Parcel
 import android.os.Parcelable
