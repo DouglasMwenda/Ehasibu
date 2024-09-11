@@ -26,12 +26,8 @@ class NewVendor : DialogFragment() {
     private var editRequest: EditVRequest? = null
     private val viewModel: NewVendorViewModel by viewModels {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
-        val token = sharedPrefs.getString(API_TOKEN, "")
-        if (token.isNullOrEmpty()) {
-            Toast.makeText(requireContext(), "API Token is missing", Toast.LENGTH_SHORT).show()
-            dismiss()
-            throw IllegalStateException("API Token is missing")
-        }
+        val token = sharedPrefs.getString(API_TOKEN, "")!!
+
         NewVendorViewModel.AddVProvider(VendorRepo(token))
 
     }

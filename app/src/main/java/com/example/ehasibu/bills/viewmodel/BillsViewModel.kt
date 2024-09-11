@@ -2,7 +2,6 @@ package com.example.ehasibu.bills.viewmodel
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class BillsViewModel(private val repo: BillsRepo) : ViewModel() {
     private val _bills = MutableLiveData<List<Bill>?>()
-    val bill: LiveData<List<Bill>?> get() = _bills
+    val bill: MutableLiveData<List<Bill>?> get() = _bills
 
 
     init {

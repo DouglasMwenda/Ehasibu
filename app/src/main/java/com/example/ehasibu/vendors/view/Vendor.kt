@@ -60,7 +60,7 @@ class Vendor : Fragment() {
 
         binding.addVendorBtn.setOnClickListener {
             val dialog = NewVendor()
-            dialog.show(parentFragmentManager, "newProduct")
+            dialog.show(parentFragmentManager, "newVendor")
 
         }
 
