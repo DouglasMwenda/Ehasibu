@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/accounts"
-        android:name="com.example.ehasibu.accounts.AccountsFragment"
+        android:name="com.example.ehasibu.accounts.view.AccountsFragment"
         android:label="fragment_accounts"
         tools:layout="@layout/fragment_accounts" />
     <fragment

@@ -13,11 +13,11 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "add budget"
 
-class AddBudgetViewModel (private val repo : BudgetRepository) : ViewModel() {
+class AddBudgetViewModel(private val repo: BudgetRepository) : ViewModel() {
     private val _isBudgetAdded = MutableLiveData<Boolean>()
-    val isBudgetAdded : LiveData<Boolean> = _isBudgetAdded
+    val isBudgetAdded: LiveData<Boolean> = _isBudgetAdded
 
-    fun addBudget(budget : BudgetRequest) {
+    fun addBudget(budget: BudgetRequest) {
         viewModelScope.launch {
             try {
                 val response = repo.addBudget(budget)
@@ -30,43 +30,40 @@ class AddBudgetViewModel (private val repo : BudgetRepository) : ViewModel() {
                 } else {
                     Log.d(TAG, "Error: ${response.message()}")
                 }
-                }
-            catch (t : Throwable)
-            {
+            } catch (t: Throwable) {
 
             }
-            }
         }
+    }
 
     fun editBudget(budgetRequest: UpdateBudgetRequest) {
         viewModelScope.launch {
             try {
                 val response = repo.updateBudget(budgetRequest)
-            if (response.isSuccessful) {
-                _isBudgetAdded.postValue(true)
-                val message = response.body()?.message
-                if (message != null) {
-                    Log.d(TAG, message)
+                if (response.isSuccessful) {
+                    _isBudgetAdded.postValue(true)
+                    val message = response.body()?.message
+                    if (message != null) {
+                        Log.d(TAG, message)
+                    }
+                } else {
+                    Log.d(TAG, "Error: ${response.message()}")
                 }
-            } else {
-                Log.d(TAG, "Error: ${response.message()}")
+            } catch (t: Throwable) {
+
             }
         }
-        catch (t : Throwable)
-        {
-
-        }
-        }
-    }
-
-    class AddBudgetProvider(val repo: BudgetRepository) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AddBudgetViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return AddBudgetViewModel(repo) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
-
     }
 }
+
+class AddBudgetProvider(val repo: BudgetRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(AddBudgetViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return AddBudgetViewModel(repo) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+
+}
+

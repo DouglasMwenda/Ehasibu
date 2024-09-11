@@ -1,4 +1,4 @@
-package com.example.ehasibu.accounts
+package com.example.ehasibu.accounts.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TableLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.ehasibu.accounts.viewmodel.AccountsViewModel
 import com.example.ehasibu.databinding.FragmentAccountsBinding
 
 class AccountsFragment : Fragment() {

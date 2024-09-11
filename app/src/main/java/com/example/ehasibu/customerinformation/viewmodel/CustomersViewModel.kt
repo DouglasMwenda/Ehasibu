@@ -12,8 +12,8 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
-    private val _customers = MutableLiveData<List<CustomerResponse>?>(emptyList())
-    val customer: MutableLiveData<List<CustomerResponse>?> get() = _customers
+     val customers = MutableLiveData<List<CustomerResponse>?>(emptyList())
+   // val customer: MutableLiveData<List<CustomerResponse>?> get() = _customers
 
     init {
         getCustomers()
@@ -27,7 +27,7 @@ class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
                     val response = repo.getAllCustomers()
                     if (response.isSuccessful) {
                         response.body()?.entity?.let {
-                            _customers.value = it
+                            customers.value = it
                         }
                     }
                     delay(10000)
@@ -43,8 +43,8 @@ class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
             try {
                 val response = repo.deleteCustomer(customerId)
                 if(response.isSuccessful) {
-                    val updatedCustomers = _customers.value?.filterNot { it.customerId == customerId }
-                    _customers.value = updatedCustomers
+                    val updatedCustomers = customers.value?.filterNot { it.customerId == customerId }
+                    customers.value = updatedCustomers
 
                     }
                 delay(10000)

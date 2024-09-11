@@ -1,4 +1,4 @@
-package com.example.ehasibu.accounts
+package com.example.ehasibu.accounts.viewmodel
 
 import androidx.lifecycle.ViewModel
 
