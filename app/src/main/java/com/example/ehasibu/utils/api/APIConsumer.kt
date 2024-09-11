@@ -1,6 +1,7 @@
 package com.example.ehasibu.utils.api
 
 import com.example.ehasibu.bills.model.AddBillResponse
+import com.example.ehasibu.bills.model.Bill
 import com.example.ehasibu.bills.model.BillRequest
 import com.example.ehasibu.bills.model.BillsResponse
 import com.example.ehasibu.budget.data.AddBudgetResponse
@@ -140,7 +141,7 @@ interface APIConsumer {
     suspend fun addBill(@Body bill: BillRequest) : Response<AddBillResponse>
 
     @GET("bills/getAllBills")
-    suspend fun fetchBills(): Response<BillsResponse>
+    suspend fun fetchBills(): Response<BillsResponse<List<Bill>>>
 
 
 
