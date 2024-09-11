@@ -53,8 +53,9 @@ class Customers : Fragment() {
             dialog.show(parentFragmentManager, "CustomerDialog")
         }
 
-        customerViewModel.customer.observe(viewLifecycleOwner){ customers ->
+        customerViewModel.customers.observe(viewLifecycleOwner){ customers ->
             if (customers != null) {
+                Log.d(TAG, "Received customers: $customers")
                 updateCustomers(customers)
             }
             else {
@@ -65,117 +66,115 @@ class Customers : Fragment() {
         return binding.root
 
     }
-    private fun updateCustomers(customers: List<CustomerResponse>?) {
+    private fun updateCustomers(customers: List<CustomerResponse>) {
 
         val customersTable= binding.customerstable
 
         while (customersTable.childCount > 1) {
           customersTable.removeViewAt(1)
         }
-        if (customers != null) {
-            for (customer in customers)  {
-                val row = TableRow(context).apply { gravity= Gravity.CENTER_HORIZONTAL }
-                val no = TextView(context).apply {
-                    text= customer.customerId.toString()
-                    setTextColor(resources.getColor(R.color.black, null))
-                }
-                val type = TextView(context).apply {
-                    text= customer.customerType
-                    gravity= Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.black, null))
-                }
-                val date = TextView(context).apply {
-                    text = customer.entryDate
-                    gravity= Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.black, null))
-                }
-                val firstName = TextView(context).apply {
-                    text= customer.customerFirstName
-                    gravity= Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.black, null))
-                }
-                val lastName= TextView(context).apply {
-                    text= customer.customerLastName
-                    gravity= Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.black, null))
-                }
-                val phoneNumber = TextView(context).apply {
-                    text = customer.phoneNumber
-                    gravity= Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.black, null))
-                }
-                val email = TextView(context).apply {
-                    text= customer.emailAddress
-                    gravity= Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.black, null))
-                }
-                val company = TextView(context).apply {
-                    text= customer.companyName
-                    gravity= Gravity.CENTER
-                    setTextColor(resources.getColor(R.color.black, null))
-                }
-
-                val actionSpinner = Spinner(context).apply {
-                    gravity = Gravity.START
-                    adapter = ArrayAdapter(
-                        context,
-                        android.R.layout.simple_spinner_item,
-                        listOf("Action", "Edit", "Delete")
-                    ).also { adapter ->
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                    }
-
-                    onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>,
-                            view: View,
-                            position: Int,
-                            id: Long
-                        ) {
-                            val action = parent.getItemAtPosition(position) as String
-                            when (action) {
-                                "Edit" -> {
-                                    val customerUpdate= UpdateCustomerRequest(
-                                        customerId = customer.customerId,
-                                        customerType = customer.customerType,
-                                        customerFirstName = customer.customerFirstName,
-                                        customerLastName = customer.customerLastName,
-                                        phoneNumber = customer.phoneNumber,
-                                        emailAddress = customer.emailAddress,
-                                        companyName = customer.companyName,
-                                        address = customer.address
-
-                                    )
-
-                                    val dialog = CustomerDialog.newInstance(customerUpdate)
-                                    dialog.show(parentFragmentManager, "edit customer")
-                                }
-
-                                "Delete" -> deleteCustomer(customer.customerId)
-                            }
-                        }
-
-                        override fun onNothingSelected(parent: AdapterView<*>) {
-                            // Do nothing
-                        }
-                    }
-                    setBackgroundResource(android.R.drawable.btn_default)
-                    setPadding(0, 0, 0, 0)
-                }
-
-                row.addView(no)
-                row.addView(type)
-                row.addView(firstName)
-                row.addView(lastName)
-                row.addView(date)
-                row.addView(phoneNumber)
-                row.addView(email)
-                row.addView(company)
-                row.addView(actionSpinner)
-                customersTable.addView(row)
-
-
+        for (customer in customers)  {
+            val row = TableRow(context).apply { gravity= Gravity.CENTER_HORIZONTAL }
+            val no = TextView(context).apply {
+                text= customer.customerId.toString()
+                setTextColor(resources.getColor(R.color.black, null))
             }
+            val type = TextView(context).apply {
+                text= customer.customerType
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val date = TextView(context).apply {
+                text = customer.entryDate
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val firstName = TextView(context).apply {
+                text= customer.customerFirstName
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val lastName= TextView(context).apply {
+                text= customer.customerLastName
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val phoneNumber = TextView(context).apply {
+                text = customer.phoneNumber
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val email = TextView(context).apply {
+                text= customer.emailAddress
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+            val company = TextView(context).apply {
+                text= customer.companyName
+                gravity= Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+
+            val actionSpinner = Spinner(context).apply {
+                gravity = Gravity.START
+                adapter = ArrayAdapter(
+                    context,
+                    android.R.layout.simple_spinner_item,
+                    listOf("Action", "Edit", "Delete")
+                ).also { adapter ->
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                }
+
+                onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+                        val action = parent.getItemAtPosition(position) as String
+                        when (action) {
+                            "Edit" -> {
+                                val customerUpdate= UpdateCustomerRequest(
+                                    customerId = customer.customerId,
+                                    customerType = customer.customerType,
+                                    customerFirstName = customer.customerFirstName,
+                                    customerLastName = customer.customerLastName,
+                                    phoneNumber = customer.phoneNumber,
+                                    emailAddress = customer.emailAddress,
+                                    companyName = customer.companyName,
+                                    address = customer.address
+
+                                )
+
+                                val dialog = CustomerDialog.newInstance(customerUpdate)
+                                dialog.show(parentFragmentManager, "edit customer")
+                            }
+
+                            "Delete" -> deleteCustomer(customer.customerId)
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                        // Do nothing
+                    }
+                }
+                setBackgroundResource(android.R.drawable.btn_default)
+                setPadding(0, 0, 0, 0)
+            }
+
+            row.addView(no)
+            row.addView(type)
+            row.addView(firstName)
+            row.addView(lastName)
+            row.addView(date)
+            row.addView(phoneNumber)
+            row.addView(email)
+            row.addView(company)
+            row.addView(actionSpinner)
+            customersTable.addView(row)
+
+
         }
     }
     private fun deleteCustomer(customerId: Int) {

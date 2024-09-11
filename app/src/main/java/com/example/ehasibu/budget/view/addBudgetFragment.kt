@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import com.example.ehasibu.budget.data.BudgetRequest
 import com.example.ehasibu.budget.data.UpdateBudgetRequest
 import com.example.ehasibu.budget.repo.BudgetRepository
+import com.example.ehasibu.budget.viemodel.AddBudgetProvider
 import com.example.ehasibu.budget.viemodel.AddBudgetViewModel
 import com.example.ehasibu.databinding.FragmentAddBudgetBinding
 import com.example.ehasibu.utils.API_TOKEN
@@ -30,7 +31,7 @@ class AddBudgetFragment : DialogFragment() {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo = BudgetRepository(token)
-        AddBudgetViewModel.AddBudgetProvider(repo)    }
+        AddBudgetProvider(repo)    }
 
 
     companion object {
@@ -98,6 +99,7 @@ class AddBudgetFragment : DialogFragment() {
                     period = periodText
                 )
                 viewModel.addBudget(budget)
+                dismiss()
 
             } else {
                 val budgetTypeText = binding.budgetType.text.toString()

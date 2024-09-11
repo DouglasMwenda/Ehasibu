@@ -1,25 +1,18 @@
-package com.example.ehasibu.accounts
+package com.example.ehasibu.accounts.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.example.ehasibu.databinding.FragmentAccountDialogBinding
-import com.google.android.material.textfield.TextInputEditText
 
 
 class AccountDialogFragment : DialogFragment() {
     private lateinit var binding: FragmentAccountDialogBinding
     private lateinit var accountType: AutoCompleteTextView
     private lateinit var accountName: AutoCompleteTextView
-    private lateinit var openingBalance: TextInputEditText
-    private lateinit var submitAccountButton: Button
-    private lateinit var cancelAccountButton: Button
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +26,12 @@ class AccountDialogFragment : DialogFragment() {
         binding = FragmentAccountDialogBinding.inflate(inflater,container,false)
         accountType= binding.accountType
         accountName = binding.accountName
-        openingBalance= binding.openingbalance
-        submitAccountButton = binding.submitaccountbutton
-        cancelAccountButton = binding.cancelaccountButton
 
-        submitAccountButton.setOnClickListener{
+
+        binding.submitaccountbutton.setOnClickListener{
 
         }
-        cancelAccountButton.setOnClickListener{
+        binding.cancelaccountButton.setOnClickListener{
 
         }
 
@@ -57,5 +48,4 @@ class AccountDialogFragment : DialogFragment() {
             return AccountDialogFragment()
         }
     }
-
 }
