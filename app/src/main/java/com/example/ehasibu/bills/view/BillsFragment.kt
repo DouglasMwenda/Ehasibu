@@ -23,7 +23,8 @@ import com.example.ehasibu.databinding.FragmentBillsBinding
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 
-private const val TAG ="bills"
+private const val TAG = "bills"
+
 class Bills : Fragment() {
     private lateinit var binding: FragmentBillsBinding
 
@@ -51,10 +52,10 @@ class Bills : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBillsBinding.inflate(inflater, container, false)
-        billsViewModel.bill.observe(viewLifecycleOwner) { response ->
-            if (!response.isNullOrEmpty()) {
-                updateBillsTable(response)
-                Log.d("BillsFragment", "Fetched bills: $response")
+        billsViewModel.bill.observe(viewLifecycleOwner) { bills ->
+            if (!bills.isNullOrEmpty()) {
+                updateBillsTable(bills)
+                Log.d("BillsFragment", "Fetched bills: $bills")
 
 
             } else {
@@ -65,7 +66,17 @@ class Bills : Fragment() {
 
         return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        binding.addbillbutton.setOnClickListener {
+            val dialog = NewBillFragment()
+            dialog.show(parentFragmentManager, "newBill")
+
+        }
+
+
+    }
 
     private fun updateBillsTable(bills: List<Bill>) {
         val tableLayout = binding.billstable
@@ -74,21 +85,21 @@ class Bills : Fragment() {
 
             for (bill in bills) {
 
-                val row = TableRow(context).apply {gravity= Gravity.CENTER_HORIZONTAL
+                val row = TableRow(context).apply {
+                    gravity = Gravity.CENTER_HORIZONTAL
                 }
 
                 val id = TextView(context).apply {
                     text = bill.id.toString()
                     gravity = Gravity.CENTER
                     setTextColor(resources.getColor(R.color.black, null))
-                    Log.d("BillsFragment", "Adding row for bill: ${bill.id}")
-
+                    println(bills)
                 }
 
                 val po = TextView(context).apply {
                     text = bill.poNumber
                     setTextColor(resources.getColor(R.color.black, null))
-                   gravity = Gravity.CENTER
+                    gravity = Gravity.CENTER
                 }
 
                 val name = TextView(context).apply {
