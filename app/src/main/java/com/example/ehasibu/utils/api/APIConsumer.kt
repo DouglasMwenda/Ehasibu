@@ -133,8 +133,8 @@ interface APIConsumer {
     suspend fun addBudget(@Body budget: BudgetRequest) : Response<AddBudgetResponse>
 
     @PUT("budgets/{budgetId}")
+    suspend fun updateBudget (@Body budgetRequest: UpdateBudgetRequest) : Response<AddBudgetResponse>
 
-    suspend fun updateBudget (@Query ("budgetId") budgetId: Int) : Response<AddBudgetResponse>
 
     //bills
     @POST
@@ -143,9 +143,6 @@ interface APIConsumer {
     @GET("bills/getAllBills")
     suspend fun fetchBills(): Response<BillsResponse<List<Bill>>>
 
-
-
-    suspend fun updateBudget (@Body budgetRequest: UpdateBudgetRequest) : Response<AddBudgetResponse>
 
 }
 
