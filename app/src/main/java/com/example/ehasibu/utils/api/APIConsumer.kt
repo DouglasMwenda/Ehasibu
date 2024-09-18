@@ -43,7 +43,6 @@ import com.example.ehasibu.vendors.model.DelVResponse
 import com.example.ehasibu.vendors.model.EditResponse
 import com.example.ehasibu.vendors.model.EditVRequest
 import com.example.ehasibu.vendors.model.VendorResponse
-import com.google.protobuf.Api
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -132,7 +131,7 @@ interface APIConsumer {
 
     //Budgets
     @GET("budgets/budget")
-    suspend fun fetchBudgets(): Response<ApiResponse<List<Entity>>>
+    suspend fun fetchBudgets(): Response<List<Entity>>
 
     @POST("budgets/add")
     suspend fun addBudget(@Body budget: BudgetRequest): Response<AddBudgetResponse>
