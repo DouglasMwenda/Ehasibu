@@ -6,13 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.budget.data.Entity
 import com.example.ehasibu.budget.repo.BudgetRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class BudgetViewModel (private val repo : BudgetRepository): ViewModel() {
-    private val _budgets = MutableLiveData<List<Entity>?>(emptyList())
-    val budgets: MutableLiveData<List<Entity>?> get() = _budgets
+    val budgets = MutableLiveData<List<Entity>?>(emptyList())
 
     init {
         getBudgets()
@@ -25,11 +23,11 @@ class BudgetViewModel (private val repo : BudgetRepository): ViewModel() {
                     val response = repo.getAllBudgets()
                     if (response.isSuccessful) {
                         response.body()?.let {
-                            _budgets.value = it
+                            budgets.value = it
                         }
                     }
-                    delay(10000)
-                } catch (t: Throwable) {
+                }
+                catch (t: Throwable) {
 
                 }
         }

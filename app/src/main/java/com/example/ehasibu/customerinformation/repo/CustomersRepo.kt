@@ -6,8 +6,6 @@ import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
 import com.example.ehasibu.login.ApiResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Query
 
 class CustomersRepo (private val token: String) {
 
@@ -17,7 +15,7 @@ class CustomersRepo (private val token: String) {
         return apiConsumer.createCustomer(customer)
 
     }
-    suspend fun getAllCustomers(): Response<ApiResponse<List<CustomerResponse>>> {
+    suspend fun getAllCustomers(): Response<List<CustomerResponse>> {
         return apiConsumer.getCustomers()
     }
 

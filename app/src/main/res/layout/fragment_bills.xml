@@ -130,7 +130,8 @@
                     android:layout_width="900dp"
                     android:layout_height="match_parent "
                     android:stretchColumns="*"
-                    android:shrinkColumns="*">
+                    android:shrinkColumns="*"
+                    android:visibility="visible">
 
                     <TableRow
                         android:layout_width="900dp"
@@ -167,40 +168,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="@string/payment_date"
-                            android:textColor="@color/white" />
-
-
-                        <TextView
-                            android:layout_width="85dp"
-                            android:layout_height="36dp"
-                            android:layout_weight="1"
-                            android:text="@string/status"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:layout_width="85dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="@string/witholding_tax"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:layout_width="85dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="@string/billed_amount"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:layout_width="85dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="@string/amount_payable"
+                            android:text="@string/vendor_id"
                             android:textColor="@color/white" />
 
                         <TextView
@@ -216,8 +184,58 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="@string/vendor_id"
+                            android:text="Amount For VAT"
                             android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="@string/billed_amount"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="@string/witholding_tax"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="@string/amount_payable"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/payment_date"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:text="@string/status"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+
+
+
+
+
+
+
+
+
                         <TextView
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"

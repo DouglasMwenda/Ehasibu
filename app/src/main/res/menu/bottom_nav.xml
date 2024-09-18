@@ -8,8 +8,5 @@
         android:id="@+id/dashboard"
         android:icon="@drawable/dashboard_24"
         android:title="@string/dashboard" />
-    <item
-        android:id="@+id/settings"
-        android:icon="@drawable/settings"
-        android:title="@string/settings" />
+
 </menu>

@@ -23,6 +23,7 @@ import com.example.ehasibu.customerinformation.view.CustomerDialog
 import com.example.ehasibu.databinding.FragmentDashboardBinding
 import com.example.ehasibu.productsales.view.Addsaledialog
 import com.example.ehasibu.quotation.Newquotedialog
+import com.example.ehasibu.vendors.view.NewVendor
 import com.google.android.material.navigation.NavigationView
 
 
@@ -63,6 +64,8 @@ class Dashboard : Fragment() {
             dialog.show(parentFragmentManager, "CustomerDialog")
         }
         binding.vendorcard.setOnClickListener {
+            val dialog = NewVendor()
+            dialog.show(parentFragmentManager, "NewVendor")
 
         }
         binding.purchasecard.setOnClickListener { }
@@ -185,7 +188,7 @@ class Dashboard : Fragment() {
                 }
 
                 R.id.nav_quotation-> {
-                    findNavController().navigate(R.id.quotation)
+                    findNavController().navigate(R.id.quotation2)
                     true
                 }
 

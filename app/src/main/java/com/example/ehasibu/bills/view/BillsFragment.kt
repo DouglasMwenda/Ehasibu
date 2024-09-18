@@ -36,15 +36,15 @@ class Bills : Fragment() {
 
     }
 
-    companion object {
-        fun newInstance() = Bills()
-    }
+    /* companion object {
+         fun newInstance() = Bills()
+     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
 
-        // TODO: Use the ViewModel
-    }
+         // TODO: Use the ViewModel
+     }*/
 
 
     override fun onCreateView(
@@ -52,20 +52,21 @@ class Bills : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBillsBinding.inflate(inflater, container, false)
+
         billsViewModel.bills.observe(viewLifecycleOwner) { bills ->
-            if (bills!=null) {
-                updateBillsTable(bills)
-                Log.d(TAG, "Fetched bills: $bills")
+            Log.d(TAG, "Fetched bills: $bills")
 
+            if (bills != null)
+                requireActivity().runOnUiThread() {
+                    updateBillsTable(bills)
 
-            } else {
-                Log.d("BillsFragment", "Bills response is null")
-            }
+                }
 
         }
 
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -80,8 +81,9 @@ class Bills : Fragment() {
 
     private fun updateBillsTable(bills: List<Bill>) {
         val tableLayout = binding.billstable
-        while (tableLayout.childCount > 1) {
-            tableLayout.removeViewAt(1)
+
+
+            tableLayout.removeViewsInLayout(1, tableLayout.childCount - 1)
 
             for (bill in bills) {
 
@@ -91,9 +93,7 @@ class Bills : Fragment() {
 
                 val id = TextView(context).apply {
                     text = bill.id.toString()
-                    gravity = Gravity.CENTER
                     setTextColor(resources.getColor(R.color.black, null))
-                    println(bills)
                 }
 
                 val po = TextView(context).apply {
@@ -108,7 +108,39 @@ class Bills : Fragment() {
                     gravity = Gravity.CENTER
                 }
 
-                val payment_date = TextView(context).apply {
+                val vendorId = TextView(context).apply {
+                    text = bill.vendor.vendorId
+                    setTextColor(resources.getColor(R.color.black, null))
+                    gravity = Gravity.CENTER
+                }
+                val amountForVAT = TextView(context).apply {
+                    text = bill.amountForVAT.toString()
+                    setTextColor(resources.getColor(R.color.black, null))
+                    gravity = Gravity.CENTER
+                }
+                val inputTax = TextView(context).apply {
+                    text = bill.inputTax.toString()
+                    setTextColor(resources.getColor(R.color.black, null))
+                    gravity = Gravity.CENTER
+                }
+                val billedAmount = TextView(context).apply {
+                    text = bill.billedAmount.toString()
+                    setTextColor(resources.getColor(R.color.black, null))
+                    gravity = Gravity.CENTER
+                }
+                val withholdingTax = TextView(context).apply {
+                    text = bill.withholdingTaxPayable.toString()
+                    setTextColor(resources.getColor(R.color.black, null))
+                    gravity = Gravity.CENTER
+                }
+
+                val amountPayable = TextView(context).apply {
+                    text = bill.amountPayable.toString()
+                    setTextColor(resources.getColor(R.color.black, null))
+                    gravity = Gravity.CENTER
+                }
+
+                val paymentDate = TextView(context).apply {
                     text = bill.paymentDate
                     setTextColor(resources.getColor(R.color.black, null))
                     gravity = Gravity.CENTER
@@ -116,36 +148,6 @@ class Bills : Fragment() {
 
                 val status = TextView(context).apply {
                     text = bill.status
-                    setTextColor(resources.getColor(R.color.black, null))
-                    gravity = Gravity.CENTER
-                }
-
-                val tax = TextView(context).apply {
-                    text = bill.withholdingTaxPayable.toString()
-                    setTextColor(resources.getColor(R.color.black, null))
-                    gravity = Gravity.CENTER
-                }
-
-                val billed_amount = TextView(context).apply {
-                    text = bill.billedAmount.toString()
-                    setTextColor(resources.getColor(R.color.black, null))
-                    gravity = Gravity.CENTER
-                }
-
-                val amount_payable = TextView(context).apply {
-                    text = bill.amountPayable.toString()
-                    setTextColor(resources.getColor(R.color.black, null))
-                    gravity = Gravity.CENTER
-                }
-
-                val input_tax = TextView(context).apply {
-                    text = bill.inputTax.toString()
-                    setTextColor(resources.getColor(R.color.black, null))
-                    gravity = Gravity.CENTER
-                }
-
-                val vendor_id = TextView(context).apply {
-                    text = bill.vendor.vendorId
                     setTextColor(resources.getColor(R.color.black, null))
                     gravity = Gravity.CENTER
                 }
@@ -190,20 +192,19 @@ class Bills : Fragment() {
                 row.addView(id)
                 row.addView(po)
                 row.addView(name)
-                row.addView(payment_date)
+                row.addView(vendorId)
+                row.addView(amountForVAT)
+                row.addView(inputTax)
+                row.addView(billedAmount)
+                row.addView(withholdingTax)
+                row.addView(amountPayable)
+                row.addView(paymentDate)
                 row.addView(status)
-                row.addView(tax)
-                row.addView(billed_amount)
-                row.addView(amount_payable)
-                row.addView(input_tax)
-                row.addView(vendor_id)
                 row.addView(actionSpinner)
 
                 tableLayout.addView(row)
             }
         }
-        // Request layout to redraw the table
-        tableLayout.requestLayout()
-        tableLayout.invalidate()
+
     }
-}
+

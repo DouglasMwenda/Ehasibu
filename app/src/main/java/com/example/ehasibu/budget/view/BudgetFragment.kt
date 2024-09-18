@@ -2,6 +2,7 @@ package com.example.ehasibu.budget.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,7 @@ import com.example.ehasibu.budget.viemodel.BudgetViewModel
 import com.example.ehasibu.databinding.FragmentBudgetBinding
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
+private const val TAG = "BUDGETS"
 
 class BudgetFragment : Fragment() {
     private lateinit var binding: FragmentBudgetBinding
@@ -45,8 +47,10 @@ class BudgetFragment : Fragment() {
     ): View {
         binding = FragmentBudgetBinding.inflate(inflater, container, false)
         budgetViewModel.budgets.observe(viewLifecycleOwner) { budgets->
-            if (budgets !== null)
+            Log.d(TAG,"$budgets")
+            if (budgets != null) {
                 updateBudgetTable(budgets)
+            }
 
         }
 
@@ -63,9 +67,7 @@ class BudgetFragment : Fragment() {
 
         val tableLayout = binding.budgetTable
 
-        while (tableLayout.childCount > 1) {
-            tableLayout.removeViewAt(1)
-        }
+        tableLayout.removeViewsInLayout(1, tableLayout.childCount - 1)
 
         for(budget in budgets) {
             val row = TableRow(context).apply { gravity = Gravity.CENTER_HORIZONTAL }
