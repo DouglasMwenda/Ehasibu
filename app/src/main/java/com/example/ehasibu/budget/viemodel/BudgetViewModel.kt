@@ -24,7 +24,7 @@ class BudgetViewModel (private val repo : BudgetRepository): ViewModel() {
                 try {
                     val response = repo.getAllBudgets()
                     if (response.isSuccessful) {
-                        response.body()?.let {
+                        response.body()?.entity?.let {
                             _budgets.value = it
                         }
                     }

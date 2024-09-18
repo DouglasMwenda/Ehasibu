@@ -1,5 +1,8 @@
 package com.example.ehasibu.utils.api
 
+import com.example.ehasibu.accounts.data.AccountRequest
+import com.example.ehasibu.accounts.data.AccountsEntity
+import com.example.ehasibu.accounts.data.AccountsResponse
 import com.example.ehasibu.bills.model.AddBillResponse
 import com.example.ehasibu.bills.model.Bill
 import com.example.ehasibu.bills.model.BillRequest
@@ -39,6 +42,7 @@ import com.example.ehasibu.vendors.model.DelVResponse
 import com.example.ehasibu.vendors.model.EditResponse
 import com.example.ehasibu.vendors.model.EditVRequest
 import com.example.ehasibu.vendors.model.VendorResponse
+import com.google.protobuf.Api
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -127,7 +131,7 @@ interface APIConsumer {
 
     //Budgets
     @GET("budgets/budget")
-    suspend fun fetchBudgets(): Response<List<Entity>>
+    suspend fun fetchBudgets(): Response<ApiResponse<List<Entity>>>
 
     @POST("budgets/add")
     suspend fun addBudget(@Body budget: BudgetRequest) : Response<AddBudgetResponse>
@@ -142,6 +146,14 @@ interface APIConsumer {
 
     @GET("bills/getAllBills")
     suspend fun fetchBills(): Response<BillsResponse<List<Bill>>>
+
+
+    //accounts
+    @GET("accounts")
+    suspend fun fetchAccounts(): Response<ApiResponse<List<AccountsEntity>>>
+
+    @POST("accounts/add")
+    suspend fun addAccount(@Body account : AccountRequest) : Response<AccountsResponse>
 
 
 }

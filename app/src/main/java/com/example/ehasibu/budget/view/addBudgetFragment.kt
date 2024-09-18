@@ -24,20 +24,21 @@ class AddBudgetFragment : DialogFragment() {
     private lateinit var binding: FragmentAddBudgetBinding
     private lateinit var budgetType: AutoCompleteTextView
     private lateinit var period: AutoCompleteTextView
-    private var editRequest: UpdateBudgetRequest?= null
+    private var editRequest: UpdateBudgetRequest? = null
 
 
     private val viewModel: AddBudgetViewModel by viewModels {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo = BudgetRepository(token)
-        AddBudgetProvider(repo)    }
+        AddBudgetProvider(repo)
+    }
 
 
     companion object {
         private const val ARG_EDIT_REQUEST = "edit_request"
         fun newInstance(editRequest: UpdateBudgetRequest? = null): AddBudgetFragment {
-            val fragment= AddBudgetFragment()
+            val fragment = AddBudgetFragment()
             val args = Bundle().apply {
                 putParcelable(ARG_EDIT_REQUEST, editRequest)
             }
@@ -58,22 +59,39 @@ class AddBudgetFragment : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= FragmentAddBudgetBinding.inflate(inflater,container,false)
+        binding = FragmentAddBudgetBinding.inflate(inflater, container, false)
         budgetType = binding.budgetType
-        val type= arrayOf("Annual Budget","Departmental Budget","Project Budget","Expense Budget","Revenue Budget","Cashflow Budget","Flexible Budget")
-        val budgetAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, type)
+        val type = arrayOf(
+            "Annual Budget",
+            "Departmental Budget",
+            "Project Budget",
+            "Expense Budget",
+            "Revenue Budget",
+            "Cashflow Budget",
+            "Flexible Budget"
+        )
+        val budgetAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, type)
         budgetType.setAdapter(budgetAdapter)
-        period= binding.period
-        val periods = arrayOf("Annually","Quarterly","Monthly","Weekly","Daily","Project Specific","Flexible Budget")
-        val periodAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, periods)
+        period = binding.period
+        val periods = arrayOf(
+            "Annually",
+            "Quarterly",
+            "Monthly",
+            "Weekly",
+            "Daily",
+            "Project Specific",
+            "Flexible Budget"
+        )
+        val periodAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, periods)
         period.setAdapter(periodAdapter)
 
         viewModel.isBudgetAdded.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess == true) {
-                Toast.makeText(context,"Budget added successfully", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                Toast.makeText(context,"Failed to add budget", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Budget added successfully", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Failed to add budget", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -127,9 +145,7 @@ class AddBudgetFragment : DialogFragment() {
 
                 viewModel.editBudget(budgetUpdate)
             }
-
         }
-
 
         binding.deletebudgetButton.setOnClickListener {
             dismiss()
@@ -142,10 +158,12 @@ class AddBudgetFragment : DialogFragment() {
     override fun onStart() {
         super.onStart()
 
-        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 
-
-    }
+}
 
 
