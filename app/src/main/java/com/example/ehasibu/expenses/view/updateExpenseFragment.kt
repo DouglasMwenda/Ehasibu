@@ -1,4 +1,4 @@
-package com.example.ehasibu.expenses
+package com.example.ehasibu.expenses.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

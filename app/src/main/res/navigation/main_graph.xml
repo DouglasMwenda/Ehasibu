@@ -80,6 +80,12 @@
         <action
             android:id="@+id/action_dashboard_to_bill"
             app:destination="@id/bill" />
+        <action
+            android:id="@+id/action_dashboard_to_quotation2"
+            app:destination="@id/quotation2" />
+        <action
+            android:id="@+id/action_dashboard_to_serviceSalesFragment"
+            app:destination="@id/serviceSales" />
 
     </fragment>
     <fragment
@@ -224,6 +230,15 @@
         android:id="@+id/bill"
         android:name="com.example.ehasibu.bills.view.Bills"
         android:label="Bills" />
+    <fragment
+        android:id="@+id/quotation2"
+        android:name="com.example.ehasibu.quotation.Quotation"
+        android:label="Quotation" />
+    <fragment
+        android:id="@+id/serviceSales"
+        android:name="com.example.ehasibu.sevicesales.ServiceSalesFragment"
+        android:label="fragment_service_sales"
+        tools:layout="@layout/fragment_service_sales" />
 
 
 </navigation>

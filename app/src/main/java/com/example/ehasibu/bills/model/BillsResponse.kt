@@ -1,7 +1,7 @@
 package com.example.ehasibu.bills.model
 
 data class BillsResponse<T>(
-    val bills: T,
+    val entity: T,
     val message: String,
     val statusCode: Int
 )

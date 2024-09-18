@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.bills.Repository.BillsRepo
 import com.example.ehasibu.bills.model.Bill
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
@@ -28,13 +27,12 @@ class BillsViewModel(private val repo: BillsRepo) : ViewModel() {
                 try {
                     val response = repo.getAllBills()
                     if (response.isSuccessful) {
-                        response.body()?.bills.let {
+                        response.body()?.entity?.let {
                             bills.value = it
                         }
                     } else {
                         Log.e(TAG, "Error fetching bills: ${response.code()}")
                     }
-                    delay(1000)
 
                 } catch (t: Throwable) {
                     Log.e(TAG, "Exception occurred: ${t.message}", t)

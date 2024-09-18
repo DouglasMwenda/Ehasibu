@@ -113,7 +113,9 @@ class Product : androidx.fragment.app.Fragment() {
 
         // Add rows for each product
         for (product in products) {
-            val row = TableRow(context).apply { gravity = Gravity.CENTER_HORIZONTAL }
+            val row = TableRow(context).apply {
+                gravity = Gravity.CENTER_HORIZONTAL
+            }
             val no = TextView(context).apply {
                 text = product.productId
                 setTextColor(resources.getColor(R.color.black, null))

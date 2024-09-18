@@ -53,7 +53,11 @@ class Customers : Fragment() {
             dialog.show(parentFragmentManager, "CustomerDialog")
         }
 
-        customerViewModel.customer.observe(viewLifecycleOwner){ customers ->
+ Douglas
+        customerViewModel.customers.observe(viewLifecycleOwner){ customers ->
+            Log.d(TAG, "Received customers: $customers")
+
+
             if (customers != null) {
                 Log.d(TAG, "Received customers: $customers")
                 updateCustomers(customers)
@@ -68,11 +72,10 @@ class Customers : Fragment() {
     }
     private fun updateCustomers(customers: List<CustomerResponse>) {
 
-        val customersTable= binding.customerstable
+        val tableLayout= binding.customerstable
 
-        while (customersTable.childCount > 1) {
-          customersTable.removeViewAt(1)
-        }
+        tableLayout.removeViewsInLayout(1, tableLayout.childCount - 1)
+
         for (customer in customers)  {
             val row = TableRow(context).apply { gravity= Gravity.CENTER_HORIZONTAL }
             val no = TextView(context).apply {
@@ -172,7 +175,8 @@ class Customers : Fragment() {
             row.addView(email)
             row.addView(company)
             row.addView(actionSpinner)
-            customersTable.addView(row)
+
+            tableLayout.addView(row)
 
 
         }

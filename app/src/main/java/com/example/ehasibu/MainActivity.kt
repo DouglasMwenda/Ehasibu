@@ -48,10 +48,10 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.dashboard)
                     true
                 }
-                R.id.settings -> {
-                    navController.navigate(R.id.settings)
-                    true
-                }
+              //  R.id.settings -> {
+                //    navController.navigate(R.id.nav_settings)
+                //    true
+               // }
 
                 else -> false
             }

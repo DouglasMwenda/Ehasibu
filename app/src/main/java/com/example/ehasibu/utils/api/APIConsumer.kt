@@ -14,6 +14,7 @@ import com.example.ehasibu.budget.data.UpdateBudgetRequest
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
+import com.example.ehasibu.expenses.model.ExpenseResponse
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.OtpRequest
@@ -96,14 +97,13 @@ interface APIConsumer {
     suspend fun createCustomer(@Body customer: CustomerRequest): Response<ApiResponse<CustomerResponse>>
 
     @GET("customers/customers")
-    suspend fun getCustomers(): Response<ApiResponse<List<CustomerResponse>>>
+    suspend fun getCustomers(): Response<List<CustomerResponse>>
 
     @PUT("customers/customers/{id}")
-    suspend fun updateCustomer( @Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResponse>>
+    suspend fun updateCustomer(@Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResponse>>
 
     @DELETE("customers/{id}")
-    suspend fun deleteCustomer(@Query ("customerId") customerId : Int): Response<ApiResponse<CustomerResponse>>
-
+    suspend fun deleteCustomer(@Query("customerId") customerId: Int): Response<ApiResponse<CustomerResponse>>
 
 
     //Purchases
@@ -122,6 +122,7 @@ interface APIConsumer {
 
     @PUT("vendors/update-vendor")
     suspend fun updateVendor(@Body editRequest: EditVRequest): Response<EditResponse>
+
     @DELETE("vendors/vendorId")
     suspend fun deleteVendor(@Query("vendorId") vendorId: String): Response<DelVResponse>
 
@@ -134,18 +135,21 @@ interface APIConsumer {
     suspend fun fetchBudgets(): Response<ApiResponse<List<Entity>>>
 
     @POST("budgets/add")
-    suspend fun addBudget(@Body budget: BudgetRequest) : Response<AddBudgetResponse>
+    suspend fun addBudget(@Body budget: BudgetRequest): Response<AddBudgetResponse>
 
     @PUT("budgets/{budgetId}")
-    suspend fun updateBudget (@Body budgetRequest: UpdateBudgetRequest) : Response<AddBudgetResponse>
-
+    suspend fun updateBudget(@Body budgetRequest: UpdateBudgetRequest): Response<AddBudgetResponse>
 
     //bills
     @POST
-    suspend fun addBill(@Body bill: BillRequest) : Response<AddBillResponse>
+    suspend fun addBill(@Body bill: BillRequest): Response<AddBillResponse>
 
     @GET("bills/getAllBills")
     suspend fun fetchBills(): Response<BillsResponse<List<Bill>>>
+
+    //Expenses
+    @GET
+    suspend fun fetchExpenses(): Response<ExpenseResponse>
 
 
     //accounts
