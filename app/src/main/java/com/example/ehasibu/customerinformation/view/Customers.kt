@@ -53,8 +53,10 @@ class Customers : Fragment() {
             dialog.show(parentFragmentManager, "CustomerDialog")
         }
 
+ Douglas
         customerViewModel.customers.observe(viewLifecycleOwner){ customers ->
             Log.d(TAG, "Received customers: $customers")
+
 
             if (customers != null) {
                 Log.d(TAG, "Received customers: $customers")
