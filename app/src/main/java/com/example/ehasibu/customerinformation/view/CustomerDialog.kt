@@ -103,7 +103,6 @@ class CustomerDialog : DialogFragment() {
                    viewModel.updateCustomer(customer)
                }
                }
-
         }
         binding.cancelcustomerbutton.setOnClickListener{
             dismiss()

@@ -53,7 +53,7 @@ class Customers : Fragment() {
             dialog.show(parentFragmentManager, "CustomerDialog")
         }
 
-        customerViewModel.customers.observe(viewLifecycleOwner){ customers ->
+        customerViewModel.customer.observe(viewLifecycleOwner){ customers ->
             if (customers != null) {
                 Log.d(TAG, "Received customers: $customers")
                 updateCustomers(customers)
