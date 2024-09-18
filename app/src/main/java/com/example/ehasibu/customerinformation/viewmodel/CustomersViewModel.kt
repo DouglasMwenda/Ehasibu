@@ -11,7 +11,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
-    private val customers = MutableLiveData<List<CustomerResponse>?>(emptyList())
+    val customers = MutableLiveData<List<CustomerResponse>?>(emptyList())
    val customer: MutableLiveData<List<CustomerResponse>?> get() = customers
 
     init {
