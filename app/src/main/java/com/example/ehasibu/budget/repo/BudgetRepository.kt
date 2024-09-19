@@ -5,7 +5,6 @@ import com.example.ehasibu.budget.data.AddBudgetResponse
 import com.example.ehasibu.budget.data.BudgetRequest
 import com.example.ehasibu.budget.data.Entity
 import com.example.ehasibu.budget.data.UpdateBudgetRequest
-import com.example.ehasibu.login.ApiResponse
 import retrofit2.Response
 
 class BudgetRepository (private val token: String) {
