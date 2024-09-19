@@ -132,7 +132,7 @@ interface APIConsumer {
 
     //Budgets
     @GET("budgets/budget")
-    suspend fun fetchBudgets(): Response<ApiResponse<List<Entity>>>
+    suspend fun fetchBudgets(): Response<List<Entity>>
 
     @POST("budgets/add")
     suspend fun addBudget(@Body budget: BudgetRequest): Response<AddBudgetResponse>

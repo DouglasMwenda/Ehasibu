@@ -11,7 +11,7 @@ import retrofit2.Response
 class BudgetRepository (private val token: String) {
     private val apiConsumer = AppModule().getRetrofitInstance(token)
 
-    suspend fun getAllBudgets(): Response<ApiResponse<List<Entity>>> {
+    suspend fun getAllBudgets(): Response<List<Entity>> {
         return apiConsumer.fetchBudgets()
     }
 
