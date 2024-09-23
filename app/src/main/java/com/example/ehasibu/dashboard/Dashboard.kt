@@ -247,7 +247,7 @@ class Dashboard : Fragment() {
                 }
 
                 R.id.nav_expenses -> {
-                    findNavController().navigate(R.id.expenses)
+                    findNavController().navigate(R.id.expenses2)
 
                     true
                 }

@@ -86,6 +86,9 @@
         <action
             android:id="@+id/action_dashboard_to_serviceSalesFragment"
             app:destination="@id/serviceSales" />
+        <action
+            android:id="@+id/action_dashboard_to_expenses2"
+            app:destination="@id/expenses2" />
 
     </fragment>
     <fragment
@@ -104,11 +107,6 @@
         android:name="com.example.ehasibu.budget.view.BudgetFragment"
         android:label="fragment_budget"
         tools:layout="@layout/fragment_budget" />
-    <fragment
-        android:id="@+id/expenses"
-        android:name="com.example.ehasibu.expenses.ExpensesFragment"
-        android:label="fragment_expenses"
-        tools:layout="@layout/fragment_expenses" />
 
     <fragment
         android:id="@+id/payment"
@@ -239,6 +237,10 @@
         android:name="com.example.ehasibu.sevicesales.ServiceSalesFragment"
         android:label="fragment_service_sales"
         tools:layout="@layout/fragment_service_sales" />
+    <fragment
+        android:id="@+id/expenses2"
+        android:name="com.example.ehasibu.expenses.view.Expenses"
+        android:label="Expenses" />
 
 
 </navigation>
