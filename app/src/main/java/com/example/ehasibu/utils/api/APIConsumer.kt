@@ -1,6 +1,7 @@
 package com.example.ehasibu.utils.api
 
 import com.example.ehasibu.accounts.data.AccountRequest
+import com.example.ehasibu.accounts.data.AccountsEditRequest
 import com.example.ehasibu.accounts.data.AccountsEntity
 import com.example.ehasibu.accounts.data.AccountsResponse
 import com.example.ehasibu.bills.model.AddBillResponse
@@ -160,6 +161,9 @@ interface APIConsumer {
 
     @POST("accounts/add")
     suspend fun addAccount(@Body account : AccountRequest) : Response<AccountsResponse>
+
+    @PUT("accounts/{accountCode}")
+    suspend fun updateAccount(@Body accountEdit: AccountsEditRequest) : Response<AccountsResponse>
 
 
 }
