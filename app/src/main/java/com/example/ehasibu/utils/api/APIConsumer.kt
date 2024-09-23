@@ -140,14 +140,17 @@ interface APIConsumer {
     suspend fun updateBudget(@Body budgetRequest: UpdateBudgetRequest): Response<AddBudgetResponse>
 
     //bills
-    @POST
+    @POST("bills/createBill")
     suspend fun addBill(@Body bill: BillRequest): Response<AddBillResponse>
 
     @GET("bills/getAllBills")
     suspend fun fetchBills(): Response<BillsResponse<List<Bill>>>
 
+    @PUT("bills/approve")
+    suspend fun approveBill(@Query("id") id: String): Response<AddBillResponse>
+
     //Expenses
-    @GET
+    @GET("findAllExpenses")
     suspend fun fetchExpenses(): Response<ExpenseResponse>
 
 
