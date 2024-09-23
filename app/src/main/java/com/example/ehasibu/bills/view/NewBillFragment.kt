@@ -3,6 +3,7 @@ package com.example.ehasibu.bills.view
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,7 @@ import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 import java.util.Calendar
 
-
+private const val TAG ="newbill"
 class NewBillFragment : DialogFragment() {
     private lateinit var binding: FragmentNewBillBinding
 
@@ -27,6 +28,7 @@ class NewBillFragment : DialogFragment() {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo = BillsRepo(token)
+
         NewBillProvider(repo)
 
     }
@@ -38,6 +40,7 @@ class NewBillFragment : DialogFragment() {
     ): View {
         binding = FragmentNewBillBinding.inflate(inflater, container, false)
         newBillViewModel.isBillAdded.observe(viewLifecycleOwner) { isSuccess ->
+            Log.d(TAG, "Bill saved successfully: $isSuccess")
             if (isSuccess == true) {
                 Toast.makeText(context, "Bill saved successfully", Toast.LENGTH_SHORT).show()
                 dismiss()
@@ -47,6 +50,9 @@ class NewBillFragment : DialogFragment() {
         }
         binding.paymentdate.setOnClickListener {
             showDatePicker()
+        }
+        binding.cancelbillbutton.setOnClickListener {
+            dismiss()
         }
         binding.savebillbutton.setOnClickListener {
             if (validInput()) {
@@ -59,13 +65,14 @@ class NewBillFragment : DialogFragment() {
                     paymentDate = binding.paymentdate.text.toString(),
                     amountForVAT = 0
                 )
-                newBillViewModel.addBill(bill
-                )
+                newBillViewModel.addBill(bill)
             }
 
         }
         return binding.root
     }
+
+
     override fun onStart() {
         super.onStart()
         val dialog = dialog ?: return
