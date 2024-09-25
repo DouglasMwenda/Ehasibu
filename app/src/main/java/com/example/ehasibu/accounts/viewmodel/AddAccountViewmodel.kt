@@ -20,7 +20,7 @@ class AddAccountViewmodel (private val repo: AccountRepo) : ViewModel() {
     private val _isAccountAdded= MutableLiveData<Boolean>()
     val isAccountAdded: LiveData<Boolean> = _isAccountAdded
 
-    fun createCustomer(account : AccountRequest){
+    fun createAccount(account : AccountRequest){
         viewModelScope.launch {
             try {
                 val response= repo.createAccount(account)
@@ -39,7 +39,7 @@ class AddAccountViewmodel (private val repo: AccountRepo) : ViewModel() {
         }
     }
 
-    fun updateCustomer(accountRequest: AccountsEditRequest){
+    fun updateAccount(accountRequest: AccountsEditRequest){
         viewModelScope.launch {
             try {
                 val response= repo.updateAccount(accountRequest)
@@ -60,11 +60,11 @@ class AddAccountViewmodel (private val repo: AccountRepo) : ViewModel() {
 
 
 
-    class AddCustomerProvider( val repo: CustomersRepo) : ViewModelProvider.Factory {
+    class AddAccountProvider( val repo: AccountRepo) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AddCustomerViewmodel::class.java)) {
+            if (modelClass.isAssignableFrom(AddAccountViewmodel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return AddCustomerViewmodel(repo) as T
+                return AddAccountViewmodel(repo) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }
