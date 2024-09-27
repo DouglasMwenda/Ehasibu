@@ -12,13 +12,11 @@ import com.example.ehasibu.databinding.FragmentServicesBinding
 
 class ServicesFragment : Fragment() {
     private lateinit var binding: FragmentServicesBinding
-    private lateinit var addSeviceButton: Button
 
     companion object {
         fun newInstance() = ServicesFragment()
     }
 
-    private val viewModel: ServicesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,15 +28,15 @@ class ServicesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= FragmentServicesBinding.inflate(inflater,container,false)
+        binding = FragmentServicesBinding.inflate(inflater, container, false)
 
-        addSeviceButton= binding.addaservicebutton
 
-        addSeviceButton.setOnClickListener {
+        binding.addaservicebutton.setOnClickListener {
             val dialog = AddServiceFragment()
-            dialog.show(parentFragmentManager,"{AddServiceFragment")
+            dialog.show(parentFragmentManager, "{AddServiceFragment")
         }
-return binding.root
+
+        return binding.root
 
 
     }
