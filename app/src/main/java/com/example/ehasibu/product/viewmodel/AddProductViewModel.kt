@@ -54,6 +54,8 @@ class AddProductViewModel(private val repository: ProductRepository) : ViewModel
         }
     }
 
+
+
     class AddProductProvider(private val rep: ProductRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return AddProductViewModel(rep) as T
