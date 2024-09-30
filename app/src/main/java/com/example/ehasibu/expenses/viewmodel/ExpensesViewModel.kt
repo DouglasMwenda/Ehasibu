@@ -39,6 +39,22 @@ class ExpensesViewModel (private val repo: ExpenseRepo): ViewModel() {
 
 
     }
+
+   /* fun deleteExpense(id: Int) {
+        viewModelScope.launch {
+            try {
+                val response = repo.deleteExpense(id)
+                if (response.isSuccessful) {
+                    Log.d("ExpensesViewModel", "deleted successfully")
+
+                }
+            }
+            catch (e: Exception) {
+                Log.e("ExpensesViewModel", "Error deleting expense", e)
+            }
+        }
+
+    }*/
 }
 class ExpenseProvider (private val repo :ExpenseRepo): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

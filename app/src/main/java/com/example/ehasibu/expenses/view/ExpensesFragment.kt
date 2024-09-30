@@ -62,7 +62,7 @@ class Expenses : Fragment() {
         }
             expenseButton = binding.addexpensebutton
             expenseButton.setOnClickListener {
-                val dialog = UpdateExpenseFragment()
+                val dialog = AddExpense()
                 dialog.show(parentFragmentManager, "UpdateExpenseFragment")
             }
             return binding.root
@@ -82,50 +82,42 @@ class Expenses : Fragment() {
                 val no = TextView(context).apply {
                     text = expense.id.toString()
                     gravity= Gravity.CENTER
-                    layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
                     setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
                 val budgetType = TextView(context).apply {
                     text = expense.budgetType
                     setTextColor(resources.getColor(R.color.black, null))
-                    layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
                     gravity = Gravity.START
                 }
                 val date = TextView(context).apply {
                     text = expense.expenseDate
                     setTextColor(resources.getColor(R.color.black, null))
-                    layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
                     gravity = Gravity.START
                 }
                 val amount = TextView(context).apply {
                     text = expense.amountSpent.toString()
                     setTextColor(resources.getColor(R.color.black, null))
-                    layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
                     gravity = Gravity.START
                 }
                 val expenseCategory = TextView(context).apply {
                     text = expense.category
                     setTextColor(resources.getColor(R.color.black, null))
-                    layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
                     gravity = Gravity.CENTER
                 }
                 val modeOfPayment = TextView(context).apply {
                     text = expense.modeOfPayment
                     setTextColor(resources.getColor(R.color.black, null))
-                    layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
                     gravity = Gravity.CENTER
                 }
 
                 val Status = TextView(context).apply {
                     text = expense.status
                     setTextColor(resources.getColor(R.color.black, null))
-                    layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
                     gravity = Gravity.CENTER
                 }
                 val expenseType = TextView(context).apply {
                     text = expense.expenseType
                     setTextColor(resources.getColor(R.color.black, null))
-                    layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
                     gravity = Gravity.CENTER
                 }
 
@@ -149,6 +141,8 @@ class Expenses : Fragment() {
                             val action = parent.getItemAtPosition(position) as String
                             when (action) {
                                 "Edit" -> {
+                                    val dialog = AddExpense()
+                                    dialog.show(parentFragmentManager, "UpdateExpenseFragment")
                                 }
 
                                 "Approve" -> {
@@ -164,6 +158,7 @@ class Expenses : Fragment() {
                                 }
 
                                 "Delete" -> {
+                                    //viewModel.deleteExpense(expense.id)
                                 }
 
                             }
