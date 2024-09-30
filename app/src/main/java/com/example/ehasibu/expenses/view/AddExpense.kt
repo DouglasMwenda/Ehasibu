@@ -133,6 +133,7 @@ class AddExpense : DialogFragment() {
 
                 }
             }
+
         }
         binding.deleteexpenseButton.setOnClickListener {
             dismiss()
