@@ -32,6 +32,7 @@ class AccountDialogFragment : DialogFragment() {
 
         }
         binding.cancelaccountButton.setOnClickListener{
+            dismiss()
 
         }
 

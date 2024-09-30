@@ -59,7 +59,8 @@ class CustomerDialog : DialogFragment() {
     ): View {
         binding = FragmentCustomerDialogBinding.inflate(inflater,container,false)
         customerType = binding.customerType
-        val customerTypes = arrayOf("Individual", "com.example.ehasibu.expenses.model.com.example.ehasibu.expenses.model.Business")
+
+        val customerTypes = arrayOf("Individual", "Business")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, customerTypes)
         customerType.setAdapter(adapter)
 

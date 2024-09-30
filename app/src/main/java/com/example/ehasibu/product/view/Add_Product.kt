@@ -15,6 +15,7 @@ import com.example.ehasibu.utils.PREF
 
 private const val TAG = "AddProduct"
 
+
 class AddProduct : DialogFragment() {
 
     private lateinit var binding: FragmentAddProductBinding

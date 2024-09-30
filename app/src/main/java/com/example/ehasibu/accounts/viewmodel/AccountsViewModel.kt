@@ -10,9 +10,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-class AccountsViewModel (private val repo : AccountRepo) : ViewModel() {
-     private val accounts = MutableLiveData<List<AccountsEntity>?>(emptyList())
-    val account : MutableLiveData<List<AccountsEntity>?> get() = accounts
+class AccountsViewModel(private val repo: AccountRepo) : ViewModel() {
+    private val accounts = MutableLiveData<List<AccountsEntity>?>(emptyList())
+    val account: MutableLiveData<List<AccountsEntity>?> get() = accounts
+
+
+    init {
+        fetchAccounts()
+    }
 
     private fun fetchAccounts() {
         viewModelScope.launch {
@@ -27,8 +32,7 @@ class AccountsViewModel (private val repo : AccountRepo) : ViewModel() {
                     }
 
                     delay(10000)
-                }
-                catch (t: Throwable) {
+                } catch (t: Throwable) {
 
                 }
             }
