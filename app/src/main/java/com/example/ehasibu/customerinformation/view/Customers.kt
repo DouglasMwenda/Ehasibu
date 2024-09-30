@@ -177,7 +177,6 @@ class Customers : Fragment() {
 
             tableLayout.addView(row)
 
-
         }
     }
     private fun deleteCustomer(customerId: Int) {
