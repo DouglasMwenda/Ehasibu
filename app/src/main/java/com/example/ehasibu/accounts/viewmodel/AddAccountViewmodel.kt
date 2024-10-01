@@ -17,13 +17,13 @@ private const val TAG = "addaccount"
 
 class AddAccountViewmodel (private val repo: AccountRepo) : ViewModel() {
 
-    private val _isAccountAdded= MutableLiveData<Boolean>()
+    private val _isAccountAdded = MutableLiveData<Boolean>()
     val isAccountAdded: LiveData<Boolean> = _isAccountAdded
 
-    fun createAccount(account : AccountRequest){
+    fun createAccount(account: AccountRequest) {
         viewModelScope.launch {
             try {
-                val response= repo.createAccount(account)
+                val response = repo.createAccount(account)
 
                 if (response.isSuccessful) {
                     _isAccountAdded.postValue(true)
@@ -39,10 +39,10 @@ class AddAccountViewmodel (private val repo: AccountRepo) : ViewModel() {
         }
     }
 
-    fun updateAccount(accountRequest: AccountsEditRequest){
+    fun updateAccount(accountRequest: AccountsEditRequest) {
         viewModelScope.launch {
             try {
-                val response= repo.updateAccount(accountRequest)
+                val response = repo.updateAccount(accountRequest)
 
                 if (response.isSuccessful) {
                     _isAccountAdded.postValue(true)
@@ -58,7 +58,7 @@ class AddAccountViewmodel (private val repo: AccountRepo) : ViewModel() {
         }
     }
 
-
+}
 
     class AddAccountProvider( val repo: AccountRepo) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -71,4 +71,3 @@ class AddAccountViewmodel (private val repo: AccountRepo) : ViewModel() {
     }
 
 
-}
