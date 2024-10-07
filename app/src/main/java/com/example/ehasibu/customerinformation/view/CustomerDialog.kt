@@ -92,14 +92,15 @@ class CustomerDialog : DialogFragment() {
                else {
                    val customer = UpdateCustomerRequest(
                        customerId = editRequest!!.customerId,
-                       customerType = binding.customerType.toString(),
-                      customerFirstName = binding.firstname.toString(),
-                       customerLastName = binding.lastname.toString(),
-                       phoneNumber = binding.phonenumbner.toString(),
-                       emailAddress = binding.emailadress.toString(),
-                       companyName = binding.companyname.toString(),
-                       address = binding.adress.toString()
+                       customerType = binding.customerType.text.toString(),
+                       customerFirstName = binding.firstname.text.toString(),
+                       customerLastName = binding.lastname.text.toString(),
+                       phoneNumber = binding.phonenumbner.text.toString(),
+                       emailAddress = binding.emailadress.text.toString(),
+                       companyName = binding.companyname.text.toString(),
+                       address = binding.adress.text.toString()
                    )
+
                    viewModel.updateCustomer(customer)
                }
                }

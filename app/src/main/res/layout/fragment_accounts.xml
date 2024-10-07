@@ -216,7 +216,6 @@
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
-
             </TableRow>
         </TableLayout>
             </ScrollView>
