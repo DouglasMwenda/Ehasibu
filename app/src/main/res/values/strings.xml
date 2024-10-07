@@ -211,6 +211,8 @@
     <string name="upcoming_bills">Upcoming Bills</string>
     <string name="search_bills">Search Bills</string>
     <string name="buying_price">Buying Price</string>
+    <string name="expense_category">Expense Category</string>
+    <string name="amount">Amount</string>
     <string-array name="sales_spinner_items">
         <item>Product Sales</item>
         <item>Service Sales</item>

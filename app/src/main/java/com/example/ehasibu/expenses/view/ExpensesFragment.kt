@@ -13,6 +13,7 @@ import android.widget.Spinner
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
@@ -24,6 +25,7 @@ import com.example.ehasibu.expenses.viewmodel.ExpensesViewModel
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 
+private const val TAG="expenses"
 class Expenses : Fragment() {
     private lateinit var binding: FragmentExpensesBinding
     private lateinit var expenseButton: Button
@@ -52,13 +54,15 @@ class Expenses : Fragment() {
     ): View {
         binding = FragmentExpensesBinding.inflate(inflater, container, false)
         viewModel.expenses.observe(viewLifecycleOwner) { expenses ->
+
+
             if (expenses != null) {
                 updateExpensesTable(expenses)
             }
         }
             expenseButton = binding.addexpensebutton
             expenseButton.setOnClickListener {
-                val dialog = UpdateExpenseFragment()
+                val dialog = AddExpense()
                 dialog.show(parentFragmentManager, "UpdateExpenseFragment")
             }
             return binding.root
@@ -66,6 +70,8 @@ class Expenses : Fragment() {
 
 
         private fun updateExpensesTable(expenses: List<Entity>) {
+
+            val context = requireContext()
             val expensesTableLayout = binding.expensestable
             expensesTableLayout.removeViewsInLayout(1, expensesTableLayout.childCount - 1)
 
@@ -75,22 +81,23 @@ class Expenses : Fragment() {
                 }
                 val no = TextView(context).apply {
                     text = expense.id.toString()
-                    setTextColor(resources.getColor(R.color.black, null))
+                    gravity= Gravity.CENTER
+                    setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
                 val budgetType = TextView(context).apply {
                     text = expense.budgetType
                     setTextColor(resources.getColor(R.color.black, null))
-                    gravity = Gravity.CENTER
+                    gravity = Gravity.START
                 }
                 val date = TextView(context).apply {
                     text = expense.expenseDate
                     setTextColor(resources.getColor(R.color.black, null))
-                    gravity = Gravity.CENTER
+                    gravity = Gravity.START
                 }
                 val amount = TextView(context).apply {
                     text = expense.amountSpent.toString()
                     setTextColor(resources.getColor(R.color.black, null))
-                    gravity = Gravity.CENTER
+                    gravity = Gravity.START
                 }
                 val expenseCategory = TextView(context).apply {
                     text = expense.category
@@ -120,7 +127,7 @@ class Expenses : Fragment() {
                     adapter = ArrayAdapter(
                         context,
                         android.R.layout.simple_spinner_item,
-                        listOf("Action", "Edit", "Delete")
+                        listOf("Action", "Edit", "Approve", "Pay", "Delete")
                     ).also { adapter ->
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     }
@@ -134,6 +141,8 @@ class Expenses : Fragment() {
                             val action = parent.getItemAtPosition(position) as String
                             when (action) {
                                 "Edit" -> {
+                                    val dialog = AddExpense()
+                                    dialog.show(parentFragmentManager, "UpdateExpenseFragment")
                                 }
 
                                 "Approve" -> {
@@ -149,6 +158,7 @@ class Expenses : Fragment() {
                                 }
 
                                 "Delete" -> {
+                                    //viewModel.deleteExpense(expense.id)
                                 }
 
                             }
@@ -162,6 +172,7 @@ class Expenses : Fragment() {
                     setPadding(0, 0, 0, 0)
 
                 }
+
                 row.addView(no)
                 row.addView(budgetType)
                 row.addView(date)
@@ -171,7 +182,6 @@ class Expenses : Fragment() {
                 row.addView(Status)
                 row.addView(expenseType)
                 row.addView(actionSpinner)
-                row.setPadding(0, 8, 0, 8)
                 expensesTableLayout.addView(row)
             }
 
