@@ -25,7 +25,7 @@ import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 private const val TAG = "BUDGETS"
 
-class BudgetFragment : Fragment() {
+class  BudgetFragment : Fragment() {
     private lateinit var binding: FragmentBudgetBinding
 
 
