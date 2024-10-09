@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductFetchRequest
 import com.example.ehasibu.product.repo.ProductRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -31,7 +32,7 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
     }
 
     private fun getProducts() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             while (isActive) {
                 try {
                     val response = repository.getAllProducts()
@@ -42,7 +43,6 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
                                 it // Initialize filteredProducts with all products
                         }
                     }
-                    delay(10000)
                 } catch (t: Throwable) {
                     Log.e(TAG, "Exception occurred: ${t.message}", t)
                 }
@@ -51,7 +51,7 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
     }
 
     fun fetchProduct(request: ProductFetchRequest) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repository.fetchProduct(request.productName)
                 if (response.isSuccessful) {
@@ -80,7 +80,7 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
     }
 
     fun deleteProduct(productId: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repository.deleteProduct(productId)
                 if (response.isSuccessful) {
