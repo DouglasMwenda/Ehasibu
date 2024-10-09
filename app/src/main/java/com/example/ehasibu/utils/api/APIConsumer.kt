@@ -15,7 +15,10 @@ import com.example.ehasibu.budget.data.UpdateBudgetRequest
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
-import com.example.ehasibu.expenses.model.ExpenseResponse
+import com.example.ehasibu.expenses.model.EditExpRequest
+import com.example.ehasibu.expenses.model.ExpAddResponse
+import com.example.ehasibu.expenses.model.ExpenseRequest
+import com.example.ehasibu.expenses.model.ExpensesResponse
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.login.data.AuthUserResponse
 import com.example.ehasibu.login.data.OtpRequest
@@ -151,8 +154,14 @@ interface APIConsumer {
     suspend fun approveBill(@Query("id") id: String): Response<AddBillResponse>
 
     //Expenses
+    @POST("addExpense")
+    suspend fun addExpense(@Body expense: ExpenseRequest): Response<ExpAddResponse>
+
+    @PUT("updateExpense")// Not okay, to be rectifiied.....
+    suspend fun updateExpense(@Body expenseRequest: EditExpRequest): Response<ExpensesResponse>
+
     @GET("findAllExpenses")
-    suspend fun fetchExpenses(): Response<ExpenseResponse>
+    suspend fun fetchExpenses(): Response<ExpensesResponse>
 
 
     //accounts
@@ -160,7 +169,7 @@ interface APIConsumer {
     suspend fun fetchAccounts(): Response<ApiResponse<List<AccountsEntity>>>
 
     @POST("accounts/add")
-    suspend fun addAccount(@Body account : AccountRequest) : Response<AccountsResponse>
+    suspend fun addAccount(@Body account: AccountRequest): Response<AccountsResponse>
 
     @PUT("accounts/{accountCode}")
     suspend fun updateAccount(@Body accountEdit: AccountsEditRequest) : Response<AccountsResponse>

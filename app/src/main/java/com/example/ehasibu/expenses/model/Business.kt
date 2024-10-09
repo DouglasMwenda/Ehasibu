@@ -16,3 +16,4 @@ data class Business(
     val registrationStatus: String,
     val vatRegistrationStatus: String
 )
+
