@@ -3,6 +3,7 @@ package com.example.ehasibu.expenses.view
 import android.R
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,7 @@ import com.example.ehasibu.expenses.viewmodel.AddExpProvider
 import com.example.ehasibu.expenses.viewmodel.AddExpenseViewModel
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
-
+private const val TAG = "addexpense"
 
 class AddExpense : DialogFragment() {
     private lateinit var binding: FragmentAddExpenseBinding
@@ -63,13 +64,15 @@ class AddExpense : DialogFragment() {
         binding = FragmentAddExpenseBinding.inflate(inflater, container, false)
         viewModel.isExpenseAdded.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess == true) {
+                Log.d(TAG, "Expense added successfully ${isSuccess}")
+                Toast.makeText(context, "Expense added successfully", Toast.LENGTH_SHORT).show()
                 dismiss()
             } else {
                 Toast.makeText(context, "Failed to add expense", Toast.LENGTH_SHORT).show()
             }
         }
         expenseType = binding.expensetype
-        val expenseTypes = arrayOf("Operating Expense", "Non-Operating")
+        val expenseTypes = arrayOf("OPERATING_EXPENSES", "NON_OPERATING_EXPENSES")
         val adapter =
             ArrayAdapter(requireContext(), R.layout.simple_dropdown_item_1line, expenseTypes)
         expenseType.setAdapter(adapter)
@@ -91,9 +94,17 @@ class AddExpense : DialogFragment() {
         val category = binding.category
         val categories = mapOf(
             "Operating expenses" to arrayOf(
-                "Salaries", "Bank Charges", "Tax", "Insurance", "Meals and Entertainment",
-                "Rent", "Utilities", "Advertisement", "Office Expense", "Shipping and Delivery",
-                "Travel", "Salaries and Wages"
+                "Salaries",
+                "Bank Charges",
+                "Tax", "Insurance",
+                "Meals and Entertainment",
+                "Rent",
+                "Utilities",
+                "Advertisement",
+                "Office Expense",
+                "Shipping and Delivery",
+                "Travel",
+                "Salaries and Wages"
             ),
             "Non-operating expenses" to arrayOf(
                 "Interest", "Losses on Sale of Assets"
@@ -135,7 +146,7 @@ class AddExpense : DialogFragment() {
             }
 
         }
-        binding.deleteexpenseButton.setOnClickListener {
+        binding.cancelExpenseButton.setOnClickListener {
             dismiss()
         }
 
@@ -145,8 +156,7 @@ class AddExpense : DialogFragment() {
             binding.category.setText(it.category)
             binding.amountspent.setText(it.amountSpent.toString())
             binding.modeOfPayment.setText(it.modeOfPayment)
-            binding.submitexpensebutton.text = "Update"
-            binding.deleteexpenseButton.visibility = View.VISIBLE
+            binding.cancelExpenseButton.visibility = View.VISIBLE
         }
 
         return binding.root
