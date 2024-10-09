@@ -165,6 +165,9 @@ interface APIConsumer {
     @PUT("accounts/{accountCode}")
     suspend fun updateAccount(@Body accountEdit: AccountsEditRequest) : Response<AccountsResponse>
 
+    @DELETE("accounts/delete")
+    suspend fun deleteAccount(@Query("accountCode") accountCode: Int) : Response<AccountsResponse>
+
 
 }
 

@@ -110,9 +110,8 @@ class AccountsFragment : Fragment() {
                                 // Handle edit action
                             }
 
-                            "Delete" -> {
-                                // Handle delete action
-                            }
+                            "Delete" -> deleteAccount(account.accountCode)
+
                         }
                     }
 
@@ -133,5 +132,9 @@ class AccountsFragment : Fragment() {
 
         }
 
+    }
+
+    private fun deleteAccount(accountCode: Int) {
+        accountsViewModel.deleteProduct(accountCode)
     }
 }

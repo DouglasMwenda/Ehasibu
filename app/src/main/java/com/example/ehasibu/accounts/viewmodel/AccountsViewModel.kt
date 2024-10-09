@@ -1,5 +1,7 @@
 package com.example.ehasibu.accounts.viewmodel
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -35,6 +37,23 @@ class AccountsViewModel(private val repo: AccountRepo) : ViewModel() {
                 } catch (t: Throwable) {
 
                 }
+            }
+        }
+    }
+
+    fun deleteProduct(accountCode: Int) {
+        viewModelScope.launch {
+            try {
+                val response = repo.deleteAccount(accountCode)
+                if (response.isSuccessful) {
+                    val updatedAccounts = accounts.value?.filterNot { it.accountCode == accountCode }
+                    accounts.value = updatedAccounts
+                    Log.d(ContentValues.TAG, "message: ${response.message()}")
+                } else {
+                    Log.d(ContentValues.TAG, "message: ${response.message()}")
+                }
+            } catch (t: Throwable) {
+                Log.e(ContentValues.TAG, "Exception occurred: ${t.message}", t)
             }
         }
     }
