@@ -41,7 +41,7 @@ class AccountsViewModel(private val repo: AccountRepo) : ViewModel() {
         }
     }
 
-    fun deleteProduct(accountCode: Int) {
+    fun deleteAccount(accountCode: Int) {
         viewModelScope.launch {
             try {
                 val response = repo.deleteAccount(accountCode)
