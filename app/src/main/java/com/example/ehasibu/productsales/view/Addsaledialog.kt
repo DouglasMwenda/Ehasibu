@@ -10,8 +10,9 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
-import com.example.ehasibu.MainActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.ehasibu.R
+import com.example.ehasibu.customerinformation.viewmodel.CustomersViewModel
 import com.example.ehasibu.databinding.FragmentAddsaledialogBinding
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
@@ -31,7 +32,6 @@ class Addsaledialog : DialogFragment() {
     private lateinit var paybutton: Button
     private lateinit var cancelbutton: Button
 
-    // private val viewModel: ProductSalesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +44,8 @@ class Addsaledialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val viewModel = ViewModelProvider(requireParentFragment()).get(CustomersViewModel::class.java)
+
         datePickerEditText = binding.datepicker
         customerNameField = binding.customerNameField
         summaryTotal = binding.summaryTotal
@@ -51,6 +53,11 @@ class Addsaledialog : DialogFragment() {
         summaryNetTotal = binding.summaryNetTotal
         amountPaid = binding.amountPaid
         modeOfPayment = binding.modeofpayment
+
+        datePickerEditText.setOnClickListener {
+            showDatePickerDialog(datePickerEditText)
+        }
+
 
         val paymentModesArray: Array<String> = resources.getStringArray(R.array.payment_modes)
         val adapter = ArrayAdapter(
@@ -73,40 +80,28 @@ class Addsaledialog : DialogFragment() {
         paybutton = binding.paybutton
         cancelbutton = binding.cancelButton
 
-        val customerAdapter =
-            ArrayAdapter<String>(requireContext(), android.R.layout.simple_dropdown_item_1line)
-        binding.customerNameField.setAdapter(customerAdapter)
+        viewModel.customers.observe(viewLifecycleOwner) { customerResponses ->
+            customerResponses?.let { customers ->
+                val customerNames = customers.map { it.customerFirstName }
 
-        /*viewModel.customers.observe(viewLifecycleOwner) { customers ->
-            customerAdapter.clear()
-            customerAdapter.addAll(customers)
-            customerAdapter.notifyDataSetChanged()
-        }*/
+                val customerAdapter = ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_dropdown_item_1line,
+                    customerNames
+                )
+                customerNameField.setAdapter(customerAdapter)
 
-        datePickerEditText.setOnClickListener {
-            showDatePickerDialog(datePickerEditText)
+                customerNameField.setOnClickListener {
+                    customerNameField.showDropDown()
+                }
+            }
         }
 
 
         binding.addproductbutton.setOnClickListener {
 
         }
-        val activity: MainActivity by lazy { requireActivity() as MainActivity }
-        /* binding.paybutton.setOnClickListener {
-             val customerName = binding.customerNameField.text.toString()
-             val total = viewModel.summaryTotal.value?.toDoubleOrNull() ?: 0.0
-             val tax = viewModel.summaryTax.value?.toDoubleOrNull() ?: 0.0
-             val netTotal = viewModel.summaryNetTotal.value?.toDoubleOrNull() ?: 0.0
-             val paidAmount = viewModel.amountPaid.value?.toDoubleOrNull() ?: 0.0
 
-
-             val paymentFragment = PaymentFragment.newInstance(customerName, total, tax, netTotal, paidAmount)
-
-             activity.supportFragmentManager.beginTransaction()
-                 .replace(R.id.addSaleDialog, paymentFragment)
-                 .addToBackStack(null)
-                 .commit()
-          }*/
 
         binding.cancelButton.setOnClickListener {
             dismiss()

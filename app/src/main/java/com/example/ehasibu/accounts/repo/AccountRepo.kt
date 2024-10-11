@@ -23,4 +23,8 @@ class AccountRepo (private val token : String) {
    suspend fun updateAccount(accountEdit : AccountsEditRequest) : Response<AccountsResponse> {
       return apiConsumer.updateAccount(accountEdit)
    }
+
+   suspend fun deleteAccount(accountCode : Int) : Response<AccountsResponse>{
+      return apiConsumer.deleteAccount(accountCode)
+   }
 }

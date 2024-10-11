@@ -68,6 +68,7 @@ class AccountDialogFragment : DialogFragment() {
             ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, type)
         accountType.setAdapter(typeAdapter)
         accountName = binding.accountName
+        setupAccountNameAdapter()
 
         binding.submitaccountbutton.setOnClickListener {
 
@@ -95,6 +96,28 @@ class AccountDialogFragment : DialogFragment() {
 
         return binding.root
     }
+
+    private fun setupAccountNameAdapter() {
+        accountType.setOnItemClickListener { _, _, position, _ ->
+            val selectedType = accountType.adapter.getItem(position).toString()
+
+            val accountNames = when (selectedType) {
+                "Current Assets" -> arrayOf("Cash", "Bank","Accounts Receivable", "Inventory")
+                "Fixed Assets" -> arrayOf("Buildings", "Land")
+                "Current Liabilities" -> arrayOf("Accounts Payable", "Short-term Loans")
+                "Long-term liabilities" -> arrayOf("Bonds Payable", "Long-term Loans")
+                "Equity" -> arrayOf( "Retained Earnings", "Owner's Equity")
+                "Non-Operating Expenses" -> arrayOf("Loss on Sale of Asset", "Interest Expense")
+                "Operating Income" -> arrayOf( "Service Revenue")
+                "Non-Operating Income" -> arrayOf("Interest Income", "Gain on Sale of Assets")
+                else -> emptyArray()
+            }
+
+            val nameAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, accountNames)
+            accountName.setAdapter(nameAdapter)
+        }
+    }
+
     override fun onStart() {
         super.onStart()
 

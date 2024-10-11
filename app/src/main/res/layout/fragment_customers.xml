@@ -171,18 +171,9 @@
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
-                        android:text="Date"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="75dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
                         android:text="FirstName"
+                        android:textAlignment="center"
                         android:textColor="@color/white" />
-
 
                     <TextView
                         android:layout_width="75dp"
@@ -190,6 +181,15 @@
                         android:layout_weight="1"
                         android:textAlignment="center"
                         android:text="LastName"
+                        android:textColor="@color/white" />
+
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="Date"
                         android:textColor="@color/white" />
 
                     <TextView

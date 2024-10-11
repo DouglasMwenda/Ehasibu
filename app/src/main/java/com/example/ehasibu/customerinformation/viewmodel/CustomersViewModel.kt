@@ -43,11 +43,11 @@ class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
             try {
                 val response = repo.deleteCustomer(customerId)
                 if(response.isSuccessful) {
-                    val updatedCustomers = customers.value?.filterNot { it.customerId == customerId }
+                    val updatedCustomers =
+                        customers.value?.filterNot { it.customerId == customerId }
                     customers.value = updatedCustomers
 
-                    }
-                delay(10000)
+                }
                 }
             catch (t: Throwable){
 
