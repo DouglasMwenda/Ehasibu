@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.expenses.model.Entity
 import com.example.ehasibu.expenses.repo.ExpenseRepo
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ExpensesViewModel (private val repo: ExpenseRepo): ViewModel() {
@@ -18,7 +19,7 @@ class ExpensesViewModel (private val repo: ExpenseRepo): ViewModel() {
 
      private fun getExpenses() {
 
-         viewModelScope.launch {
+         viewModelScope.launch(Dispatchers.IO) {
              try {
                  val response = repo.fetchExpenses()
                  if (response.isSuccessful) {
