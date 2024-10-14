@@ -61,13 +61,10 @@ class AccountsFragment : Fragment() {
     private fun updateAccountsTable (accounts : List<AccountsEntity>) {
         val accountsTable = binding.accountsTable
 
-        while (accountsTable.childCount > 1) {
-            accountsTable.removeViewAt(1)
-        }
 
         for (account in accounts) {
             val row = TableRow(context).apply { gravity = Gravity.CENTER_HORIZONTAL }
-            val no = TextView(context).apply {
+            val code = TextView(context).apply {
                 text = account.accountCode.toString()
                 setTextColor(resources.getColor(R.color.black, null))
             }
@@ -83,6 +80,12 @@ class AccountsFragment : Fragment() {
             }
             val balance = TextView(context).apply {
                 text = account.accountBalance.toString()
+                gravity = Gravity.CENTER
+                setTextColor(resources.getColor(R.color.black, null))
+            }
+
+            val description = TextView(context).apply {
+                text = account.description
                 gravity = Gravity.CENTER
                 setTextColor(resources.getColor(R.color.black, null))
             }
@@ -110,9 +113,8 @@ class AccountsFragment : Fragment() {
                                 // Handle edit action
                             }
 
-                            "Delete" -> {
-                                // Handle delete action
-                            }
+                            "Delete" -> deleteAccount(account.accountCode)
+
                         }
                     }
 
@@ -124,14 +126,19 @@ class AccountsFragment : Fragment() {
                 setPadding(0, 0, 0, 0)
             }
 
-            row.addView(no)
+            row.addView(code)
             row.addView(name)
             row.addView(type)
             row.addView(balance)
+            row.addView(description)
             row.addView(actionSpinner)
             accountsTable.addView(row)
 
         }
 
+    }
+
+    private fun deleteAccount(accountCode: Int) {
+        accountsViewModel.deleteAccount(accountCode)
     }
 }

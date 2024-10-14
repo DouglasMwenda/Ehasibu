@@ -107,7 +107,7 @@ interface APIConsumer {
     suspend fun updateCustomer(@Body customer: UpdateCustomerRequest): Response<ApiResponse<CustomerResponse>>
 
     @DELETE("customers/{id}")
-    suspend fun deleteCustomer(@Query("customerId") customerId: Int): Response<ApiResponse<CustomerResponse>>
+    suspend fun deleteCustomer(@Query("customerId") customerId: Long): Response<ApiResponse<CustomerResponse>>
 
 
     //Purchases
@@ -177,6 +177,9 @@ interface APIConsumer {
 
     @PUT("accounts/{accountCode}")
     suspend fun updateAccount(@Body accountEdit: AccountsEditRequest) : Response<AccountsResponse>
+
+    @DELETE("accounts/delete")
+    suspend fun deleteAccount(@Query("accountCode") accountCode: Int) : Response<AccountsResponse>
 
 
 }

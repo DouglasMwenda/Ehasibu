@@ -38,16 +38,16 @@ class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
         }
     }
 
-     fun deleteCustomer(customerId : Int) {
+     fun deleteCustomer(customerId : Long) {
         viewModelScope.launch {
             try {
                 val response = repo.deleteCustomer(customerId)
                 if(response.isSuccessful) {
-                    val updatedCustomers = customers.value?.filterNot { it.customerId == customerId }
+                    val updatedCustomers =
+                        customers.value?.filterNot { it.customerId == customerId }
                     customers.value = updatedCustomers
 
-                    }
-                delay(10000)
+                }
                 }
             catch (t: Throwable){
 
