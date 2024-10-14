@@ -179,7 +179,7 @@ class Customers : Fragment() {
 
         }
     }
-    private fun deleteCustomer(customerId: Int) {
+    private fun deleteCustomer(customerId: Long) {
         customerViewModel.deleteCustomer(customerId)
     }
 

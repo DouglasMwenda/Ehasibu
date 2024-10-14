@@ -23,7 +23,7 @@ class CustomersRepo (private val token: String) {
         return apiConsumer.updateCustomer(customer)
     }
 
-    suspend fun deleteCustomer( customerId: Int) : Response<ApiResponse<CustomerResponse>> {
+    suspend fun deleteCustomer( customerId: Long) : Response<ApiResponse<CustomerResponse>> {
         return apiConsumer.deleteCustomer(customerId)
 
     }
