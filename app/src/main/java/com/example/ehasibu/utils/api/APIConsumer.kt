@@ -15,6 +15,7 @@ import com.example.ehasibu.budget.data.UpdateBudgetRequest
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
+import com.example.ehasibu.expenses.model.DeleteExpenseResponse
 import com.example.ehasibu.expenses.model.EditExpRequest
 import com.example.ehasibu.expenses.model.ExpAddResponse
 import com.example.ehasibu.expenses.model.ExpenseRequest
@@ -159,6 +160,9 @@ interface APIConsumer {
 
     @PUT("updateExpense")// Not okay, to be rectifiied.....
     suspend fun updateExpense(@Body expenseRequest: EditExpRequest): Response<ExpensesResponse>
+
+    @DELETE("deleteExpense")
+    suspend fun deleteExpense(@Query ("id") id: Long): Response<DeleteExpenseResponse>
 
     @GET("findAllExpenses")
     suspend fun fetchExpenses(): Response<ExpensesResponse>
