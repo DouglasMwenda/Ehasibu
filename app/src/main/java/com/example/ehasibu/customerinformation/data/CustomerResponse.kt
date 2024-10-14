@@ -7,7 +7,7 @@ data class CustomerResponse(
     val companyName: String,
     val createdAt: String,
     val customerFirstName: String,
-    val customerId: Int,
+    val customerId: Long,
     val customerLastName: String,
     val customerType: String,
     val deleted: Boolean,

@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class UpdateCustomerRequest(
-    val customerId: Int,
+    val customerId: Long,
     val customerType: String,
     val customerFirstName: String,
     val customerLastName: String,
@@ -13,9 +13,9 @@ data class UpdateCustomerRequest(
     val companyName: String,
     val address: String,
 
-) : Parcelable {
+    ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readLong(),
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),

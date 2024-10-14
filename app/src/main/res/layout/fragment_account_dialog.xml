@@ -54,7 +54,6 @@
             android:layout_height="wrap_content"
             android:autofillHints="number"
             android:inputType="none"
-            android:hint="Select Account Name"
             android:textColor="#800000"
             android:textColorHint="#800000"
             android:textSize="16sp"

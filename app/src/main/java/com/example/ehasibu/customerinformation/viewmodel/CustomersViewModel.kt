@@ -38,7 +38,7 @@ class CustomersViewModel(private val repo: CustomersRepo) : ViewModel() {
         }
     }
 
-     fun deleteCustomer(customerId : Int) {
+     fun deleteCustomer(customerId : Long) {
         viewModelScope.launch {
             try {
                 val response = repo.deleteCustomer(customerId)
