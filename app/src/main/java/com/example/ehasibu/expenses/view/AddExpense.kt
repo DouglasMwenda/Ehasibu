@@ -146,7 +146,7 @@ class AddExpense : DialogFragment() {
             }
 
         }
-        binding.cancelExpenseButton.setOnClickListener {
+        binding.deleteexpenseButton.setOnClickListener {
             dismiss()
         }
 
@@ -156,7 +156,7 @@ class AddExpense : DialogFragment() {
             binding.category.setText(it.category)
             binding.amountspent.setText(it.amountSpent.toString())
             binding.modeOfPayment.setText(it.modeOfPayment)
-            binding.cancelExpenseButton.visibility = View.VISIBLE
+            binding.deleteexpenseButton.visibility = View.VISIBLE
         }
 
         return binding.root

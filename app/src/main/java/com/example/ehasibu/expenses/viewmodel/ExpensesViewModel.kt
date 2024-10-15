@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.ehasibu.expenses.model.Entity
 import com.example.ehasibu.expenses.repo.ExpenseRepo
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ExpensesViewModel (private val repo: ExpenseRepo): ViewModel() {
@@ -19,7 +18,7 @@ class ExpensesViewModel (private val repo: ExpenseRepo): ViewModel() {
 
      private fun getExpenses() {
 
-         viewModelScope.launch(Dispatchers.IO) {
+         viewModelScope.launch() {
              try {
                  val response = repo.fetchExpenses()
                  if (response.isSuccessful) {
@@ -41,12 +40,17 @@ class ExpensesViewModel (private val repo: ExpenseRepo): ViewModel() {
 
     }
 
-   /* fun deleteExpense(id: Int) {
-        viewModelScope.launch {
+
+   fun deleteExpense(id: Long) {
+        viewModelScope.launch (){
             try {
-                val response = repo.deleteExpense(id)
+                val response = repo.deleteExpe(id)
                 if (response.isSuccessful) {
-                    Log.d("ExpensesViewModel", "deleted successfully")
+                    val updatedExpenses = expenses.value?.filterNot { it.id == id }
+                    expenses.value = updatedExpenses
+                    Log.d("ExpensesViewModel", "Expense deleted successfully")
+                } else {
+                    Log.e("ExpensesViewModel", "Error deleting expense: ${response.errorBody()?.string()}")
 
                 }
             }
@@ -55,7 +59,7 @@ class ExpensesViewModel (private val repo: ExpenseRepo): ViewModel() {
             }
         }
 
-    }*/
+    }
 }
 class ExpenseProvider (private val repo :ExpenseRepo): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

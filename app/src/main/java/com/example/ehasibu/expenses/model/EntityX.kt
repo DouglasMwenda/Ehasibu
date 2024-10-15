@@ -9,7 +9,7 @@ data class EntityX(
     val deleted: Boolean,
     val expenseDate: String,
     val expenseType: String,
-    val id: Int,
+    val id: Long,
     val modeOfPayment: String,
     val status: String
 )

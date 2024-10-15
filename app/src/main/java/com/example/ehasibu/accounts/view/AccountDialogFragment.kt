@@ -25,6 +25,8 @@ class AccountDialogFragment : DialogFragment() {
     private lateinit var accountName: AutoCompleteTextView
 
 
+
+
     private val viewModel: AddAccountViewmodel by viewModels {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")!!

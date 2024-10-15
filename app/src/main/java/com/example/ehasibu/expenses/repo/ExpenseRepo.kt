@@ -1,6 +1,7 @@
 package com.example.ehasibu.expenses.repo
 
 import com.example.ehasibu.AppModule
+import com.example.ehasibu.expenses.model.DeleteExpenseResponse
 import com.example.ehasibu.expenses.model.ExpAddResponse
 import com.example.ehasibu.expenses.model.ExpenseRequest
 import com.example.ehasibu.expenses.model.ExpensesResponse
@@ -14,5 +15,9 @@ class ExpenseRepo(private val token: String) {
     }
     suspend fun addExpense(expense: ExpenseRequest):Response<ExpAddResponse>{
         return apiConsumer.addExpense(expense)
+    }
+
+    suspend fun deleteExpe(id: Long): Response<DeleteExpenseResponse>{
+        return apiConsumer.deleteExpense(id)
     }
 }

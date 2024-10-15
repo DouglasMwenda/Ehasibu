@@ -16,6 +16,11 @@ class AccountRepo (private val token : String) {
       return apiConsumer.fetchAccounts()
    }
 
+
+//   suspend fun getAccount(accountCode : Int) : Response<AccountsResponse> {
+////      return apiConsumer.getAccount(accountCode)
+////   }
+
    suspend fun createAccount(account: AccountRequest) : Response<AccountsResponse> {
       return apiConsumer.addAccount(account)
    }
