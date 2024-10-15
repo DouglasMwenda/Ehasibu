@@ -49,7 +49,8 @@ class Addsaledialog : DialogFragment() {
     private lateinit var cancelbutton: Button
 
 
-    private val customerViewModel: CustomersViewModel by viewModels{
+    private val
+            customerViewModel: CustomersViewModel by viewModels{
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo = CustomersRepo(token)

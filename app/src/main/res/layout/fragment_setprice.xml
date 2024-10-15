@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Product"
+            android:text="@string/product"
             android:paddingBottom="16dp"/>
 
 
@@ -25,9 +25,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Product Name">
+            android:hint="@string/productname">
 
             <AutoCompleteTextView
+                android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -35,16 +36,17 @@
                 android:textColorHint="#800000"
                 android:textSize="16sp"
                 android:visibility="visible"
-                tools:ignore="LabelFor" />
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Buying Price">
+            android:hint="@string/buying_price">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/b_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="number"
@@ -59,9 +61,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Buying Price">
+            android:hint="@string/selling_price">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/s_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="number"
@@ -76,24 +79,24 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/setpricebutton"
+                android:id="@+id/setpricebtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:backgroundTint="#800000"
-                android:text="Set Price" />
+                android:text="@string/set_price" />
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/cancelpriceButton"
+                android:id="@+id/cancelbtn"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:textColor="#800000"
                 app:strokeColor="#800000" />
         </LinearLayout>
