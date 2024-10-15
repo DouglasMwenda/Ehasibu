@@ -40,6 +40,7 @@ class ExpensesViewModel (private val repo: ExpenseRepo): ViewModel() {
 
     }
 
+
    fun deleteExpense(id: Long) {
         viewModelScope.launch (){
             try {

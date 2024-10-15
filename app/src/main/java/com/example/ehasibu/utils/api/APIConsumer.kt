@@ -55,6 +55,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface APIConsumer {
@@ -162,7 +163,7 @@ interface APIConsumer {
     suspend fun updateExpense(@Body expenseRequest: EditExpRequest): Response<ExpensesResponse>
 
     @DELETE("deleteExpense")
-    suspend fun deleteExpense(@Query ("id") id: Long): Response<DeleteExpenseResponse>
+    suspend fun deleteExpense(@Query("expenseId") expenseId: Long): Response<DeleteExpenseResponse>
 
     @GET("findAllExpenses")
     suspend fun fetchExpenses(): Response<ExpensesResponse>
