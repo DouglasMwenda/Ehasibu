@@ -89,6 +89,9 @@ interface APIConsumer {
     @DELETE("products/productId")
     suspend fun deleteProduct(@Query("productId") productId: String): Response<DelResponse>
 
+    @PUT("products/adjustBuyingPrice")
+    suspend fun adjustBuyingPrice(@Body product: EditRequest): Response<DelResponse>
+
     @PUT("products/updateProduct")
     suspend fun updateProduct(@Body product: EditRequest): Response<DelResponse>
 

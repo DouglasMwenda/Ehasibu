@@ -97,7 +97,7 @@ class Product : androidx.fragment.app.Fragment() {
         }
 
         binding.setPriceBtn.setOnClickListener {
-            val dialog = Set_Price()
+            val dialog = SetPrice()
             dialog.show(parentFragmentManager, "Set_Price")
         }
 
