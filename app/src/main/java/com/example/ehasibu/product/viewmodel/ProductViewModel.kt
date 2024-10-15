@@ -32,7 +32,7 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
     }
 
     private fun getProducts() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch() {
             while (isActive) {
                 try {
                     val response = repository.getAllProducts()
@@ -51,7 +51,7 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
     }
 
     fun fetchProduct(request: ProductFetchRequest) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch() {
             try {
                 val response = repository.fetchProduct(request.productName)
                 if (response.isSuccessful) {

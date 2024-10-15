@@ -21,6 +21,7 @@ class AccountsViewModel(private val repo: AccountRepo) : ViewModel() {
         fetchAccounts()
     }
 
+
     private fun fetchAccounts() {
         viewModelScope.launch {
             while (isActive) {

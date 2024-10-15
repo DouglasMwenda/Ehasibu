@@ -15,6 +15,7 @@ import com.example.ehasibu.budget.data.UpdateBudgetRequest
 import com.example.ehasibu.customerinformation.data.CustomerRequest
 import com.example.ehasibu.customerinformation.data.CustomerResponse
 import com.example.ehasibu.customerinformation.data.UpdateCustomerRequest
+import com.example.ehasibu.expenses.model.DeleteExpenseResponse
 import com.example.ehasibu.expenses.model.EditExpRequest
 import com.example.ehasibu.expenses.model.ExpAddResponse
 import com.example.ehasibu.expenses.model.ExpenseRequest
@@ -55,6 +56,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface APIConsumer {
@@ -163,6 +165,9 @@ interface APIConsumer {
 
     @PUT("updateExpense")// Not okay, to be rectifiied.....
     suspend fun updateExpense(@Body expenseRequest: EditExpRequest): Response<ExpensesResponse>
+
+    @DELETE("deleteExpense")
+    suspend fun deleteExpense(@Query("expenseId") expenseId: Long): Response<DeleteExpenseResponse>
 
     @GET("findAllExpenses")
     suspend fun fetchExpenses(): Response<ExpensesResponse>
