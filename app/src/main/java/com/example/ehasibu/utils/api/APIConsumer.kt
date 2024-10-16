@@ -32,10 +32,10 @@ import com.example.ehasibu.login.forgot_password.OtpValResponse
 import com.example.ehasibu.login.reset_password.PasswordRequest
 import com.example.ehasibu.product.data.DelResponse
 import com.example.ehasibu.product.data.EditRequest
+import com.example.ehasibu.product.data.PriceRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.data.ProductResponse
-import com.example.ehasibu.productsales.data.AddSaleRequest
 import com.example.ehasibu.productsales.data.SalesEntity
 import com.example.ehasibu.productsales.data.SalesPResponse
 import com.example.ehasibu.purchaseorder.data.ApproveResponse
@@ -90,7 +90,7 @@ interface APIConsumer {
     suspend fun deleteProduct(@Query("productId") productId: String): Response<DelResponse>
 
     @PUT("products/adjustBuyingPrice")
-    suspend fun adjustBuyingPrice(@Body product: EditRequest): Response<DelResponse>
+    suspend fun setBuyingPrice(@Body request: PriceRequest): Response<SetPriceResponse>
 
     @PUT("products/updateProduct")
     suspend fun updateProduct(@Body product: EditRequest): Response<DelResponse>

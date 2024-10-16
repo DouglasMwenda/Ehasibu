@@ -4,9 +4,11 @@ import com.example.ehasibu.AppModule
 import com.example.ehasibu.login.ApiResponse
 import com.example.ehasibu.product.data.DelResponse
 import com.example.ehasibu.product.data.EditRequest
+import com.example.ehasibu.product.data.PriceRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.data.ProductResponse
+import com.example.ehasibu.product.data.SetPriceResponse
 import retrofit2.Response
 
 class ProductRepository(private val token: String) {
@@ -31,5 +33,9 @@ class ProductRepository(private val token: String) {
 
     suspend fun updateProduct(product: EditRequest): Response<DelResponse> {
         return apiConsumer.updateProduct(product)
+    }
+
+    suspend fun setPrice (request: PriceRequest): Response<SetPriceResponse>{
+        return apiConsumer.setBuyingPrice(request)
     }
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.ehasibu.product.data.PriceRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductFetchRequest
 import com.example.ehasibu.product.repo.ProductRepository
@@ -21,6 +22,8 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
 
     private val _product = MutableLiveData<ProdResponse>()
     val product: LiveData<ProdResponse> get() = _product
+
+
    // private val _updateProductResponse = MutableLiveData<DelResponse>()
   //  val updateProductResponse: LiveData<DelResponse> = _updateProductResponse
 
@@ -80,7 +83,7 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
     }
 
     fun deleteProduct(productId: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             try {
                 val response = repository.deleteProduct(productId)
                 if (response.isSuccessful) {
@@ -95,6 +98,29 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
             }
         }
     }
+
+
+    fun setPrice(request: PriceRequest) {
+        viewModelScope.launch {
+            try {
+                val response = repository.setPrice(request)
+
+                if (response.isSuccessful) {
+                    val setPriceResponse = response.body()
+                    setPriceResponse?.let {
+                        products.value
+                    }
+                } else {
+                    Log.d(TAG, "Error: ${response.message()}")
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception occurred: ${e.message}", e)
+            }
+        }
+    }
+
+
+
 }
 
 
