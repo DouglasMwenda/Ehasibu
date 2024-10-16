@@ -57,20 +57,17 @@ class SetPrice : DialogFragment() {
             }
         }
 
-        // Show dropdown on click
         productname.setOnClickListener {
             productname.showDropDown()
         }
 
-        // Cancel button listener
         binding.cancelbtn.setOnClickListener {
             dismiss()
         }
 
-        // Set price button listener
         binding.setpricebtn.setOnClickListener {
-            // Implement price setting logic here
-            dismiss()
+
+
         }
     }
 }
