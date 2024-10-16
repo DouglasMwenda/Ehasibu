@@ -7,9 +7,7 @@ const val API_TOKEN = "auth_token"
 
 
 
-
-
-const val BASE_URL = "http://192.168.162.143:9922/api/v1/"
+const val BASE_URL = "http://172.16.11.150:9922/api/v1/"
 
 
 

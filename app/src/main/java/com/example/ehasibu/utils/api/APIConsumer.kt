@@ -36,7 +36,6 @@ import com.example.ehasibu.product.data.PriceRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.data.ProductRequest
 import com.example.ehasibu.product.data.ProductResponse
-import com.example.ehasibu.product.data.SetPriceResponse
 import com.example.ehasibu.productsales.data.SalesEntity
 import com.example.ehasibu.productsales.data.SalesPResponse
 import com.example.ehasibu.purchaseorder.data.ApproveResponse
@@ -100,6 +99,9 @@ interface APIConsumer {
     //productsales
     @GET("sales/findAllSales")
     suspend fun getSales(): Response<SalesPResponse<List<SalesEntity>>>
+
+    @POST("sales/add-sale")
+    suspend fun addSale(@Body sale : AddSaleRequest): Response<SalesPResponse<SalesEntity>>
 
 
     //customers
