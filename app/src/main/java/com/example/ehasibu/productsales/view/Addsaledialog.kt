@@ -7,27 +7,26 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.ehasibu.R
 import com.example.ehasibu.customerinformation.repo.CustomersRepo
 import com.example.ehasibu.customerinformation.viewmodel.CustomerProvider
 import com.example.ehasibu.customerinformation.viewmodel.CustomersViewModel
 import com.example.ehasibu.databinding.FragmentAddsaledialogBinding
-import com.example.ehasibu.product.data.EditRequest
 import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.repo.ProductRepository
 import com.example.ehasibu.product.viewmodel.ProductProvider
 import com.example.ehasibu.product.viewmodel.ProductViewModel
+import com.example.ehasibu.productsales.repo.SalesRepository
+import com.example.ehasibu.productsales.viewModel.ProductSalesViewModel
+import com.example.ehasibu.productsales.viewModel.SalesProvider
 import com.example.ehasibu.utils.API_TOKEN
 import com.example.ehasibu.utils.PREF
 import com.google.android.material.textfield.TextInputEditText
@@ -49,8 +48,7 @@ class Addsaledialog : DialogFragment() {
     private lateinit var cancelbutton: Button
 
 
-    private val
-            customerViewModel: CustomersViewModel by viewModels{
+    private val customerViewModel: CustomersViewModel by viewModels {
         val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
         val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo = CustomersRepo(token)
@@ -62,6 +60,13 @@ class Addsaledialog : DialogFragment() {
         val token = sharedPrefs.getString(API_TOKEN, "")!!
         val repo = ProductRepository(token)
         ProductProvider(repo)
+    }
+
+    private val salesViewmodel: ProductSalesViewModel by viewModels {
+        val sharedPrefs = requireContext().getSharedPreferences(PREF, Context.MODE_PRIVATE)
+        val token = sharedPrefs.getString(API_TOKEN, "")!!
+        val repo = SalesRepository(token)
+        SalesProvider(repo)
     }
 
 
@@ -77,8 +82,6 @@ class Addsaledialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         datePickerEditText = binding.datepicker
         customerNameField = binding.customerNameField
         summaryTotal = binding.summaryTotal
@@ -90,7 +93,6 @@ class Addsaledialog : DialogFragment() {
         datePickerEditText.setOnClickListener {
             showDatePickerDialog(datePickerEditText)
         }
-
 
         val paymentModesArray: Array<String> = resources.getStringArray(R.array.payment_modes)
         val adapter = ArrayAdapter(
@@ -116,8 +118,7 @@ class Addsaledialog : DialogFragment() {
         customerViewModel.customers.observe(viewLifecycleOwner) { customerResponses ->
             customerResponses?.let { customers ->
                 if (customers.isNotEmpty()) {
-                    val customerNames =
-                        customers.map { "${it.customerFirstName} ${it.customerLastName}" }
+                    val customerNames = customers.map { "${it.customerFirstName} ${it.customerLastName}" }
 
                     val customerAdapter = ArrayAdapter(
                         requireContext(),
@@ -131,12 +132,9 @@ class Addsaledialog : DialogFragment() {
             }
         }
 
-
         customerNameField.setOnClickListener {
             customerNameField.showDropDown()
         }
-
-
 
         binding.addproductbutton.setOnClickListener {
             productViewModel.products.observe(viewLifecycleOwner) { products ->
