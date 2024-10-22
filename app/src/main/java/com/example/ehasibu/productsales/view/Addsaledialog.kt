@@ -20,7 +20,6 @@ import com.example.ehasibu.customerinformation.repo.CustomersRepo
 import com.example.ehasibu.customerinformation.viewmodel.CustomerProvider
 import com.example.ehasibu.customerinformation.viewmodel.CustomersViewModel
 import com.example.ehasibu.databinding.FragmentAddsaledialogBinding
-import com.example.ehasibu.product.data.ProdResponse
 import com.example.ehasibu.product.repo.ProductRepository
 import com.example.ehasibu.product.viewmodel.ProductProvider
 import com.example.ehasibu.product.viewmodel.ProductViewModel
@@ -137,19 +136,72 @@ class Addsaledialog : DialogFragment() {
         }
 
         binding.addproductbutton.setOnClickListener {
-            productViewModel.products.observe(viewLifecycleOwner) { products ->
-                if (products != null) {
-                    updateTable(products)
-                }
+            val tableLayout = binding.productTable
+
+            val row = TableRow(context).apply {
+                gravity = Gravity.CENTER_HORIZONTAL
             }
 
-        }
+            val productAutoCompleteTextView = AutoCompleteTextView(context).apply {
+                layoutParams = TableRow.LayoutParams(
+                    TableRow.LayoutParams.WRAP_CONTENT,
+                    TableRow.LayoutParams.WRAP_CONTENT
+                )
+                hint = "Select Product"
+            }
 
+            val descriptionTextView = TextView(context)
+            val categoryTextView = TextView(context)
+            val unitTextView = TextView(context)
+            val buyingPriceTextView = TextView(context)
+            val sellingPriceTextView = TextView(context)
+
+            row.addView(productAutoCompleteTextView)
+            row.addView(descriptionTextView)
+            row.addView(categoryTextView)
+            row.addView(unitTextView)
+            row.addView(buyingPriceTextView)
+            row.addView(sellingPriceTextView)
+
+
+            tableLayout.addView(row)
+
+
+            productViewModel.products.observe(viewLifecycleOwner) { productList ->
+                productList?.let { nonNullProductList ->
+                    val productNames = nonNullProductList.map { it.productName }
+
+
+                    val adapter = ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_dropdown_item_1line,
+                        productNames
+                    )
+                    productAutoCompleteTextView.setAdapter(adapter)
+
+
+                    productAutoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
+                        val selectedProductName = productNames[position]
+                        val selectedProduct = nonNullProductList.find { it.productName == selectedProductName }
+
+                        selectedProduct?.let {
+                            descriptionTextView.text = it.description
+                            categoryTextView.text = it.category
+                            unitTextView.text = it.unit
+                            buyingPriceTextView.text = it.buyingPrice.toString()
+                            sellingPriceTextView.text = it.sellingPrice.toString()
+                        }
+                    }
+                }
+            }
+        }
 
         binding.cancelButton.setOnClickListener {
             dismiss()
         }
         paybutton.setOnClickListener {
+
+
             dismiss()
             val dialog = PaymentFragment()
             dialog.show(parentFragmentManager, "PaymentFragment")
@@ -167,84 +219,19 @@ class Addsaledialog : DialogFragment() {
             requireContext(),
             { _, selectedYear, selectedMonth, _ ->
                 val selectedDate = Calendar.getInstance()
-                selectedDate.set(selectedYear, selectedMonth, 1)
-                val format = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+                selectedDate.set(selectedYear, selectedMonth + 1, 1)
+                val format = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                 editText.setText(format.format(selectedDate.time))
             },
-            year, month, day
+           day, month, year
+
         )
         datePickerDialog.show()
     }
 
-    private fun updateTable(products: List<ProdResponse>) {
-        val tableLayout = binding.producttable
-
-        while (tableLayout.childCount > 1) {
-            tableLayout.removeViewAt(1)
-        }
-
-        // Add rows for each product
-        for (product in products) {
-            val row = TableRow(context).apply {
-                gravity = Gravity.CENTER_HORIZONTAL
-            }
-            val no = TextView(context).apply {
-                text = product.productId
-                setTextColor(resources.getColor(R.color.black, null))
-            }
-            val name = TextView(context).apply {
-                text = product.productName
-                gravity = Gravity.CENTER
-                setTextColor(resources.getColor(R.color.black, null))
-            }
-            val description = TextView(context).apply {
-                text = product.description
-                gravity = Gravity.CENTER
-                setTextColor(resources.getColor(R.color.black, null))
-            }
-            val category = TextView(context).apply {
-                text = product.category
-                gravity = Gravity.CENTER
-                setTextColor(resources.getColor(R.color.black, null))
-            }
-            val quantity = TextView(context).apply {
-                text = product.quantity.toString()
-                gravity = Gravity.CENTER
-                setTextColor(resources.getColor(R.color.black, null))
-            }
-            val unit = TextView(context).apply {
-                text = product.unit
-                gravity = Gravity.CENTER
-                setTextColor(resources.getColor(R.color.black, null))
-            }
-            val buyingPrice = TextView(context).apply {
-                text = product.buyingPrice.toString()
-                gravity = Gravity.CENTER
-                setTextColor(resources.getColor(R.color.black, null))
-            }
-            val sellingPrice = TextView(context).apply {
-                text = product.sellingPrice.toString()
-                gravity = Gravity.CENTER
-                setTextColor(resources.getColor(R.color.black, null))
-            }
-
-
-            // Add all views to the row
-            row.addView(no)
-            row.addView(name)
-            row.addView(description)
-            row.addView(category)
-            row.addView(quantity)
-            row.addView(unit)
-            row.addView(buyingPrice)
-            row.addView(sellingPrice)
-
-            tableLayout.addView(row)
-        }
-
-    }
 
 }
+
 
 
 
