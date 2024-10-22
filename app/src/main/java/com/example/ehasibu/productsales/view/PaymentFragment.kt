@@ -24,15 +24,8 @@ class PaymentFragment : DialogFragment() {
 
 
     companion object {
-        fun newInstance(
-            customerName: String,
-            total: Double,
-            tax: Double,
-            netTotal: Double,
-            paidAmount: Double
-        ) = PaymentFragment()
-    }
 
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
