@@ -32,56 +32,103 @@
                 android:textSize="16sp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
-        <HorizontalScrollView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TableLayout
-                android:id="@+id/productTable"
+            <HorizontalScrollView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-                <TableRow
-                    android:id="@+id/table_row"
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <AutoCompleteTextView
-                        android:id="@+id/productAutoCompleteTextView"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:hint="Select Product"/>
+                    <TableLayout
+                        android:id="@+id/productTable"
+                        android:layout_width="700dp"
+                        android:layout_height="0dp">
 
-                    <TextView
-                        android:id="@+id/descriptionTextView"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:id="@+id/categoryTextView"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:id="@+id/unitTextView"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:id="@+id/buyingPriceTextView"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:id="@+id/sellingPriceTextView"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"/>
-                </TableRow>
+                        <TableRow
+                            android:layout_width="700dp"
+                            android:layout_height="wrap_content"
+                            android:background="#800000">
 
 
-            </TableLayout>
-        </HorizontalScrollView>
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="No."
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
 
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Product"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Description"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Unit"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Sales Price"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Quantity"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Amount"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Action"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+
+                        </TableRow>
+                    </TableLayout>
+                </ScrollView>
+            </HorizontalScrollView>
+        </FrameLayout>
 
         <Button
             android:layout_width="wrap_content"
