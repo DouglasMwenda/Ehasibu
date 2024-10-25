@@ -1,67 +1,58 @@
 package com.example.ehasibu.productsales.view
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import com.example.ehasibu.databinding.FragmentPaymentBinding
 import com.example.ehasibu.productsales.viewModel.PaymentViewModel
 
 class PaymentFragment : DialogFragment() {
-    private lateinit var binding:FragmentPaymentBinding
+    private lateinit var binding: FragmentPaymentBinding
     private val viewModel: PaymentViewModel by viewModels()
-    private lateinit var modeOfPaymentEditText: EditText
-    private lateinit var amountPayableEditText: EditText
-    private lateinit var amountReceivedEditText: EditText
-    private lateinit var amountPaidEditText: EditText
-    private lateinit var balanceEditText: EditText
-    private lateinit var submitButton: Button
-    private lateinit var cancelButton: Button
-
-
-    companion object {
-
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPaymentBinding.inflate(inflater,container,false)
-        modeOfPaymentEditText= binding.modeOfPayment
-        amountPayableEditText = binding.amountPayable
-        amountReceivedEditText= binding.amountReceived
-        amountPaidEditText = binding.amountPaid
-        balanceEditText= binding.balance
-        submitButton = binding.submitpaymentbutton
-        cancelButton = binding.cancelpaymentbutton
 
-
-        submitButton.setOnClickListener{
-
-
-        }
-        cancelButton.setOnClickListener {
-            dismiss()
-
-        }
-
-
+        binding = FragmentPaymentBinding.inflate(inflater, container, false)
         return binding.root
     }
-    override fun onStart() {
-        super.onStart()
 
-        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize UI elements
+        val modeOfPaymentEditText = binding.modeOfPayment
+        val amountPayableEditText = binding.amountPayable
+        val amountReceivedEditText = binding.amountReceived
+        val amountPaidEditText = binding.amountPaid
+        val balanceEditText = binding.balance
+        val submitButton = binding.submitpaymentbutton
+        val cancelButton = binding.cancelpaymentbutton
+
+        // Handle the payment process for cash payment
+        submitButton.setOnClickListener {
+            // Logic to handle payment submission
+            val amountPayable = amountPayableEditText.text.toString().toDoubleOrNull()
+            val amountReceived = amountReceivedEditText.text.toString().toDoubleOrNull()
+
+            if (amountPayable != null && amountReceived != null) {
+                val balance = amountReceived - amountPayable
+                balanceEditText.setText(balance.toString())
+
+                dismiss()
+            } else {
+                // Handle error (invalid input)
+            }
+        }
+
+        cancelButton.setOnClickListener {
+            // Close the dialog
+            dismiss()
+        }
     }
 }

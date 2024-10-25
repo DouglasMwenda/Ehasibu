@@ -13,6 +13,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.compose.material3.Text
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.ehasibu.R
@@ -155,6 +157,14 @@ class Addsaledialog : DialogFragment() {
             val unitTextView = TextView(context)
             val buyingPriceTextView = TextView(context)
             val sellingPriceTextView = TextView(context)
+            val quantityEditTextView = EditText(context).apply {
+                layoutParams = TableRow.LayoutParams(
+                    TableRow.LayoutParams.WRAP_CONTENT,
+                    TableRow.LayoutParams.WRAP_CONTENT
+                )
+                hint = "Quantity"
+                inputType = android.text.InputType.TYPE_CLASS_NUMBER
+            }
 
             row.addView(productAutoCompleteTextView)
             row.addView(descriptionTextView)
@@ -162,15 +172,13 @@ class Addsaledialog : DialogFragment() {
             row.addView(unitTextView)
             row.addView(buyingPriceTextView)
             row.addView(sellingPriceTextView)
-
+            row.addView(quantityEditTextView)
 
             tableLayout.addView(row)
-
 
             productViewModel.products.observe(viewLifecycleOwner) { productList ->
                 productList?.let { nonNullProductList ->
                     val productNames = nonNullProductList.map { it.productName }
-
 
                     val adapter = ArrayAdapter(
                         requireContext(),
@@ -178,7 +186,6 @@ class Addsaledialog : DialogFragment() {
                         productNames
                     )
                     productAutoCompleteTextView.setAdapter(adapter)
-
 
                     productAutoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
                         val selectedProductName = productNames[position]
@@ -190,17 +197,43 @@ class Addsaledialog : DialogFragment() {
                             unitTextView.text = it.unit
                             buyingPriceTextView.text = it.buyingPrice.toString()
                             sellingPriceTextView.text = it.sellingPrice.toString()
+
+                            val availableQuantity = it.quantity // Assuming `quantity` represents the stock
+                            quantityEditTextView.setText(availableQuantity.toString())
+
+                            // Calculate the initial totals based on available quantity
+                            var quantity = availableQuantity
+                            var total = it.sellingPrice * quantity
+                            var tax = calculateTax(total) // Tax calculation method
+                            var netTotal = total + tax
+
+
+                            summaryTotal.setText(total.toString())
+                            summaryTax.setText(tax.toString())
+                            summaryNetTotal.setText(netTotal.toString())
+
+                            quantityEditTextView.addTextChangedListener { quantityText ->
+                                val enteredQuantity = quantityText.toString().toIntOrNull() ?: availableQuantity
+
+                                total = it.sellingPrice * enteredQuantity
+                                tax = calculateTax(total)
+                                netTotal = total + tax
+
+                                summaryTotal.setText(total.toString())
+                                summaryTax.setText(tax.toString())
+                                summaryNetTotal.setText(netTotal.toString())
+                            }
                         }
                     }
                 }
             }
         }
 
+
         binding.cancelButton.setOnClickListener {
             dismiss()
         }
         paybutton.setOnClickListener {
-
 
             dismiss()
             val dialog = PaymentFragment()
@@ -227,6 +260,11 @@ class Addsaledialog : DialogFragment() {
 
         )
         datePickerDialog.show()
+    }
+
+    private fun calculateTax(total: Double): Double {
+        val taxPercentage = 0.16
+        return total * taxPercentage
     }
 
 
